@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>课程作业系统</title>
+    <style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif; color: #000000; background: linear-gradient(120deg, #DFFAF5, #E0F0FF); min-height: 100vh; overflow-x: hidden; }
+.navbar { position: fixed; top: 0; width: 100%; background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(168, 210, 255, 0.3); z-index: 1000; transition: all 0.3s ease; }
+.nav-container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; height: 60px; }
+.logo { font-size: 1.5rem; font-weight: 600; color: #000000; }
+.nav-menu { display: flex; list-style: none; gap: 2rem; align-items: center; }
+.nav-item { padding: 0.5rem 1rem; cursor: pointer; font-weight: 500; position: relative; transition: all 0.3s ease; }
+.nav-item:hover, .nav-item.active { color: #A8D2FF; transform: scale(1.05); }
+.has-dropdown { position: relative; }
+.dropdown { display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-radius: 16px; padding: 1rem; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); border: 1px solid rgba(168, 210, 255, 0.3); min-width: 400px; }
+.has-dropdown:hover .dropdown { display: block; animation: fadeInDown 0.3s ease; }
+.dropdown-weeks { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.week-btn { padding: 0.5rem 1rem; border: none; background: rgba(168, 210, 255, 0.1); border-radius: 20px; cursor: pointer; font-size: 0.9rem; font-weight: 500; transition: all 0.3s ease; }
+.week-btn:hover, .week-btn.active { background: #A8D2FF; transform: scale(1.05); box-shadow: 0 4px 12px rgba(168, 210, 255, 0.4); }
+.dropdown-item { padding: 0.7rem 1.2rem; border: none; background: linear-gradient(120deg, rgba(168, 210, 255, 0.2), rgba(192, 224, 255, 0.2)); border-radius: 12px; cursor: pointer; font-size: 1rem; font-weight: 600; transition: all 0.3s ease; width: 100%; text-align: left; margin-bottom: 0.5rem; }
+.dropdown-item:hover { background: linear-gradient(120deg, #A8D2FF, #C0E0FF); transform: scale(1.02); box-shadow: 0 4px 12px rgba(168, 210, 255, 0.4); }
+.dropdown-divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(168, 210, 255, 0.5), transparent); margin: 0.5rem 0; }
+.language-switch { display: flex; align-items: center; gap: 0.3rem; padding: 0.5rem 1rem; background: rgba(168, 210, 255, 0.1); border-radius: 20px; cursor: pointer; }
+.lang-btn { font-weight: 600; transition: all 0.3s ease; opacity: 0.5; }
+.lang-btn.active { opacity: 1; color: #A8D2FF; }
+.lang-divider { opacity: 0.3; }
+.main-content { padding-top: 100px; max-width: 1200px; margin: 0 auto; padding-left: 2rem; padding-right: 2rem; padding-bottom: 2rem; }
+.page { display: none; animation: fadeIn 0.5s ease; }
+.page.active { display: block; }
+.page-title { font-size: 3rem; font-weight: 700; margin-bottom: 1rem; text-align: center; }
+.title-divider { height: 2px; background: linear-gradient(90deg, transparent, rgba(168, 210, 255, 0.5), transparent); margin: 2rem auto; width: 60%; }
+.progress-section { margin: 3rem 0; }
+.progress-card { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-radius: 20px; padding: 2rem; border: 1px solid rgba(168, 210, 255, 0.3); box-shadow: 0 8px 32px rgba(168, 210, 255, 0.2); display: flex; align-items: center; gap: 2rem; transition: all 0.3s ease; cursor: pointer; }
+.progress-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(168, 210, 255, 0.3); }
+.progress-label { font-size: 1.1rem; font-weight: 600; min-width: 100px; }
+.progress-bar-container { flex: 1; height: 12px; background: rgba(255, 255, 255, 0.5); border-radius: 6px; overflow: hidden; position: relative; }
+.progress-bar { height: 100%; width: 30%; background: linear-gradient(120deg, #A8D2FF, #C0E0FF); border-radius: 6px; position: relative; overflow: hidden; }
+.progress-bar::after { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent); animation: shimmer 2s infinite; }
+.progress-text { font-size: 1rem; font-weight: 500; min-width: 120px; text-align: right; }
+.notification-section { margin: 2rem 0; }
+.notification-bar { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-radius: 16px; padding: 1rem; border: 1px solid rgba(168, 210, 255, 0.3); overflow: hidden; position: relative; height: 50px; }
+.notification-content { display: flex; animation: scroll 20s linear infinite; white-space: nowrap; }
+.notification-item { padding: 0 2rem; font-size: 0.95rem; cursor: pointer; transition: color 0.3s ease; }
+.notification-item:hover { color: #A8D2FF; }
+.notification-bar:hover .notification-content { animation-play-state: paused; }
+.cards-section { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
+.feature-card { background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-radius: 20px; padding: 2rem; border: 1px solid rgba(168, 210, 255, 0.3); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08); transition: all 0.3s ease; cursor: pointer; text-align: center; }
+.feature-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(168, 210, 255, 0.3); background: rgba(255, 255, 255, 0.8); }
+.card-icon { font-size: 3rem; margin-bottom: 1rem; }
+.feature-card h3 { font-size: 1.3rem; margin-bottom: 0.5rem; font-weight: 600; }
+.feature-card p { color: rgba(0, 0, 0, 0.7); font-size: 0.95rem; line-height: 1.6; }
+.homework-header { text-align: center; margin-bottom: 2rem; }
+.week-badge { display: inline-block; background: linear-gradient(120deg, #A8D2FF, #C0E0FF); color: #000000; padding: 0.5rem 2rem; border-radius: 20px; font-weight: 600; margin-bottom: 1rem; }
+.week-title { font-size: 2rem; font-weight: 600; margin-bottom: 1rem; }
+.homework-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
+.homework-intro { background: rgba(255, 255, 255, 0.6); border-radius: 20px; padding: 2rem; margin-bottom: 2rem; border: 1px solid rgba(168, 210, 255, 0.2); }
+.homework-intro h3 { margin-bottom: 1rem; font-size: 1.3rem; }
+.homework-intro p { line-height: 1.8; color: rgba(0, 0, 0, 0.8); }
+.homework-checklist h3 { margin-bottom: 1rem; font-size: 1.3rem; }
+.checklist { list-style: none; }
+.checklist-item { padding: 1rem; margin-bottom: 0.5rem; background: rgba(255, 255, 255, 0.5); border-radius: 12px; display: flex; align-items: center; gap: 1rem; transition: all 0.3s ease; cursor: pointer; border-bottom: 1px solid rgba(168, 210, 255, 0.2); }
+.checklist-item:hover { background: rgba(255, 255, 255, 0.8); transform: translateX(4px); }
+.checklist-item.completed { opacity: 0.6; text-decoration: line-through; }
+.check-icon { width: 24px; height: 24px; border-radius: 50%; background: rgba(168, 210, 255, 0.3); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; flex-shrink: 0; }
+.checklist-item.completed .check-icon { background: #A8D2FF; }
+.submit-card { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-radius: 20px; padding: 2rem; border: 1px solid rgba(168, 210, 255, 0.3); box-shadow: 0 8px 32px rgba(168, 210, 255, 0.2); }
+.submit-card h3 { margin-bottom: 1.5rem; font-size: 1.3rem; }
+.upload-area { border: 2px dashed rgba(168, 210, 255, 0.5); border-radius: 16px; padding: 3rem 2rem; text-align: center; cursor: pointer; transition: all 0.3s ease; margin-bottom: 1rem; }
+.upload-area:hover { border-color: #A8D2FF; background: rgba(168, 210, 255, 0.1); }
+.upload-icon { font-size: 3rem; margin-bottom: 1rem; }
+.upload-hint { font-size: 0.85rem; color: rgba(0, 0, 0, 0.5); margin-top: 0.5rem; }
+.file-list { margin: 1rem 0; }
+.file-item { padding: 0.8rem; background: rgba(255, 255, 255, 0.5); border-radius: 8px; margin-bottom: 0.5rem; display: flex; justify-content: space-between; align-items: center; }
+.submit-btn { width: 100%; padding: 1rem; background: linear-gradient(120deg, #A8D2FF, #C0E0FF); border: none; border-radius: 12px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; margin-top: 1rem; }
+.submit-btn:hover { transform: scale(1.02); box-shadow: 0 8px 24px rgba(168, 210, 255, 0.4); }
+.project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 3rem; }
+.project-card { background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-radius: 20px; overflow: hidden; border: 1px solid rgba(168, 210, 255, 0.3); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08); transition: all 0.3s ease; cursor: pointer; }
+.project-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(168, 210, 255, 0.3); }
+.project-image { height: 200px; background: linear-gradient(135deg, #A8D2FF, #C0E0FF); }
+.project-card h3 { padding: 1.5rem 1.5rem 0.5rem; font-size: 1.2rem; }
+.project-card p { padding: 0 1.5rem 1.5rem; color: rgba(0, 0, 0, 0.7); line-height: 1.6; }
+.webdev-header { text-align: center; margin-bottom: 2rem; }
+.webdev-content { max-width: 1000px; margin: 0 auto; }
+.webdev-section { margin-bottom: 3rem; }
+.webdev-section h2 { font-size: 1.8rem; margin-bottom: 1.5rem; font-weight: 600; }
+.upload-area-large { border: 3px dashed rgba(168, 210, 255, 0.5); border-radius: 24px; padding: 4rem 2rem; text-align: center; cursor: pointer; transition: all 0.3s ease; background: rgba(255, 255, 255, 0.5); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+.upload-area-large:hover { border-color: #A8D2FF; background: rgba(168, 210, 255, 0.1); transform: scale(1.02); }
+.upload-area-large .upload-icon { font-size: 4rem; margin-bottom: 1rem; }
+.upload-area-large p { font-size: 1.1rem; margin-bottom: 0.5rem; }
+.image-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+.gallery-item { position: relative; border-radius: 16px; overflow: hidden; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08); aspect-ratio: 16/9; }
+.gallery-item:hover { transform: scale(1.05); box-shadow: 0 12px 40px rgba(168, 210, 255, 0.3); }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: all 0.3s ease; }
+.gallery-item:hover img { transform: scale(1.1); }
+.gallery-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.5); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; }
+.gallery-item:hover .gallery-overlay { opacity: 1; }
+.gallery-overlay span { color: white; font-size: 1.2rem; font-weight: 600; }
+.challenges-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+.challenge-card { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-radius: 20px; padding: 2rem; border: 1px solid rgba(168, 210, 255, 0.3); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08); transition: all 0.3s ease; text-align: center; }
+.challenge-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(168, 210, 255, 0.3); }
+.challenge-icon { font-size: 3rem; margin-bottom: 1rem; }
+.challenge-card h3 { font-size: 1.2rem; margin-bottom: 0.8rem; font-weight: 600; }
+.challenge-card p { color: rgba(0, 0, 0, 0.7); line-height: 1.6; font-size: 0.95rem; }
+.image-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); backdrop-filter: blur(20px); z-index: 3000; align-items: center; justify-content: center; }
+.image-modal.active { display: flex; animation: fadeIn 0.3s ease; }
+.image-modal-content { max-width: 90%; max-height: 90%; position: relative; }
+.image-modal-content img { max-width: 100%; max-height: 85vh; border-radius: 12px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5); }
+.modal-close { position: absolute; top: -40px; right: 0; font-size: 2.5rem; color: white; cursor: pointer; transition: all 0.3s ease; background: rgba(255, 255, 255, 0.2); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.modal-close:hover { background: rgba(255, 255, 255, 0.3); transform: rotate(90deg); }
+.team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 3rem; max-width: 900px; margin-left: auto; margin-right: auto; }
+.team-member { text-align: center; padding: 2rem; background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-radius: 20px; border: 1px solid rgba(168, 210, 255, 0.3); transition: all 0.3s ease; }
+.team-member:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(168, 210, 255, 0.3); }
+.leader-member { grid-column: 1 / -1; max-width: 300px; margin: 0 auto 1rem; background: rgba(255, 255, 255, 0.8); border: 2px solid rgba(168, 210, 255, 0.5); box-shadow: 0 12px 40px rgba(168, 210, 255, 0.3); }
+.leader-avatar { width: 120px !important; height: 120px !important; }
+.leader-badge { display: inline-block; background: linear-gradient(120deg, #FFD700, #FFA500); color: #000; padding: 0.3rem 1rem; border-radius: 12px; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.8rem; box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4); }
+.member-avatar { width: 100px; height: 100px; border-radius: 50%; background: rgba(255, 255, 255, 0.8); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; position: relative; font-size: 3rem; }
+.avatar-glow { position: absolute; top: -5px; left: -5px; right: -5px; bottom: -5px; border-radius: 50%; background: linear-gradient(135deg, rgba(168, 210, 255, 0.3), transparent); animation: pulse 2s infinite; }
+.member-role { color: rgba(0, 0, 0, 0.7); font-size: 0.9rem; }
+.modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(10px); z-index: 2000; align-items: center; justify-content: center; }
+.modal.active { display: flex; animation: fadeIn 0.3s ease; }
+.modal-content { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px); border-radius: 20px; padding: 2rem; max-width: 400px; width: 90%; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2); }
+.modal-content h3 { margin-bottom: 1rem; font-size: 1.5rem; }
+.modal-content p { margin-bottom: 2rem; color: rgba(0, 0, 0, 0.7); }
+.modal-actions { display: flex; gap: 1rem; }
+.modal-btn { flex: 1; padding: 0.8rem; border: none; border-radius: 12px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; }
+.cancel-btn { background: rgba(168, 210, 255, 0.2); }
+.cancel-btn:hover { background: rgba(168, 210, 255, 0.3); }
+.confirm-btn { background: linear-gradient(120deg, #A8D2FF, #C0E0FF); }
+.confirm-btn:hover { transform: scale(1.05); box-shadow: 0 8px 24px rgba(168, 210, 255, 0.4); }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeInDown { from { opacity: 0; transform: translateX(-50%) translateY(-10px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
+@keyframes shimmer { 0% { left: -100%; } 100% { left: 100%; } }
+@keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+@keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+@keyframes fadeInScale { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+@media (max-width: 768px) { .nav-menu { gap: 1rem; font-size: 0.9rem; } .page-title { font-size: 2rem; } .homework-layout { grid-template-columns: 1fr; } .progress-card { flex-direction: column; text-align: center; } .progress-bar-container { width: 100%; } .dropdown { min-width: 300px; } }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" data-i18n="logo">课程系统</div>
+            <ul class="nav-menu">
+                <li class="nav-item active" data-page="home" data-i18n="nav_home">Home</li>
+                <li class="nav-item has-dropdown" data-page="homework">
+                    <span data-i18n="nav_homework">作业</span>
+                    <div class="dropdown">
+                        <div class="dropdown-weeks">
+                            <button class="dropdown-item dropdown-special" data-page="webdev">🌐 <span data-i18n="nav_webdev">网页搭建</span></button>
+                            <div class="dropdown-divider"></div>
+                            <button class="week-btn active" data-week="1">Week 1</button>
+                            <button class="week-btn" data-week="2">Week 2</button>
+                            <button class="week-btn" data-week="3">Week 3</button>
+                            <button class="week-btn" data-week="4">Week 4</button>
+                            <button class="week-btn" data-week="5">Week 5</button>
+                            <button class="week-btn" data-week="6">Week 6</button>
+                            <button class="week-btn" data-week="7">Week 7</button>
+                            <button class="week-btn" data-week="8">Week 8</button>
+                            <button class="week-btn" data-week="9">Week 9</button>
+                            <button class="week-btn" data-week="10">Week 10</button>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item" data-page="project" data-i18n="nav_project">项目</li>
+                <li class="nav-item" data-page="team" data-i18n="nav_team">团队介绍</li>
+                <li class="nav-item language-switch" id="languageSwitch">
+                    <span class="lang-btn active" data-lang="zh">中</span>
+                    <span class="lang-divider">/</span>
+                    <span class="lang-btn" data-lang="en">EN</span>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <!-- 首页 -->
+        <section id="home" class="page active">
+            <div class="home-header">
+                <h1 class="page-title" data-i18n="home_title">欢迎使用课程作业系统</h1>
+                <div class="title-divider"></div>
+            </div>
+            <div class="progress-section">
+                <div class="progress-card">
+                    <span class="progress-label" data-i18n="progress_label">课程进度</span>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar"><div class="progress-fill"></div></div>
+                    </div>
+                    <span class="progress-text" data-i18n="progress_text">已完成 <span id="completedWeeks">3</span>/10 周</span>
+                </div>
+            </div>
+            <div class="notification-section">
+                <div class="notification-bar">
+                    <div class="notification-content" id="notificationContent">
+                        <div class="notification-item" data-i18n="notif1">📢 Week 4 作业截止日期：4月15日</div>
+                        <div class="notification-item" data-i18n="notif2">🎉 恭喜！Week 3 作业获得优秀评价</div>
+                        <div class="notification-item" data-i18n="notif3">📚 新项目模板已发布，请及时查看</div>
+                        <div class="notification-item" data-i18n="notif4">👥 团队会议：本周五下午2点</div>
+                    </div>
+                </div>
+            </div>
+            <div class="cards-section">
+                <div class="feature-card" data-navigate-to="homework">
+                    <div class="card-icon">📝</div>
+                    <h3 data-i18n="card_latest_homework">最新作业</h3>
+                    <p data-i18n="card_latest_homework_desc">查看本周发布的作业任务和截止日期</p>
+                </div>
+                <div class="feature-card" data-navigate-to="project">
+                    <div class="card-icon">💼</div>
+                    <h3 data-i18n="card_ongoing_projects">进行中的项目</h3>
+                    <p data-i18n="card_ongoing_projects_desc">跟踪您的项目进展和里程碑</p>
+                </div>
+                <div class="feature-card" data-navigate-to="team">
+                    <div class="card-icon">🚀</div>
+                    <h3 data-i18n="card_team_updates">团队新动态</h3>
+                    <p data-i18n="card_team_updates_desc">了解团队成员的最新更新和分享</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 网页搭建页 -->
+        <section id="webdev" class="page">
+            <div class="webdev-header">
+                <h1 class="page-title" data-i18n="webdev_title">网页搭建过程</h1>
+                <div class="title-divider"></div>
+            </div>
+            <div class="webdev-content">
+                <div class="webdev-section">
+                    <h2 data-i18n="webdev_upload_title">搭建过程截图</h2>
+                    <div class="upload-area-large" id="webdevUploadArea">
+                        <div class="upload-icon">📷</div>
+                        <p data-i18n="webdev_upload_text">拖拽图片到此处或点击上传</p>
+                        <p class="upload-hint" data-i18n="webdev_upload_hint">支持 PNG、JPEG 格式</p>
+                        <input type="file" id="webdevFileInput" multiple accept="image/png,image/jpeg" hidden>
+                    </div>
+                </div>
+                <div class="webdev-section">
+                    <h2 data-i18n="webdev_gallery_title">图片预览</h2>
+                    <div class="image-gallery" id="imageGallery"></div>
+                </div>
+                <div class="webdev-section">
+                    <h2 data-i18n="webdev_challenges_title">遇到的难点</h2>
+                    <div class="challenges-grid">
+                        <div class="challenge-card">
+                            <div class="challenge-icon">📄</div>
+                            <h3 data-i18n="challenge1_title">页面显示空白</h3>
+                            <p data-i18n="challenge1_desc">HTML 结构或 CSS 样式配置错误，导致页面内容无法正常渲染显示</p>
+                        </div>
+                        <div class="challenge-card">
+                            <div class="challenge-icon">🌍</div>
+                            <h3 data-i18n="challenge2_title">中英文切换不彻底</h3>
+                            <p data-i18n="challenge2_desc">部分动态内容或 JavaScript 生成的文本遗漏翻译键，导致切换语言时显示不完整</p>
+                        </div>
+                        <div class="challenge-card">
+                            <div class="challenge-icon">🔤</div>
+                            <h3 data-i18n="challenge3_title">网页出现乱码</h3>
+                            <p data-i18n="challenge3_desc">字符编码设置不正确，特殊字符和中文内容显示为乱码或方块</p>
+                        </div>
+                        <div class="challenge-card">
+                            <div class="challenge-icon">📌</div>
+                            <h3 data-i18n="challenge4_title">二级菜单无法展开或跳转</h3>
+                            <p data-i18n="challenge4_desc">下拉菜单事件处理或页面路由逻辑错误，导致导航功能失效</p>
+                        </div>
+                        <div class="challenge-card">
+                            <div class="challenge-icon">💻</div>
+                            <h3 data-i18n="challenge5_title">网页只能本地查看</h3>
+                            <p data-i18n="challenge5_desc">文件使用本地路径引用，未部署到服务器，其他设备无法通过链接访问</p>
+                        </div>
+                        <div class="challenge-card">
+                            <div class="challenge-icon">🖼️</div>
+                            <h3 data-i18n="challenge6_title">本机图片上传无法在外部查看</h3>
+                            <p data-i18n="challenge6_desc">使用 FileReader 读取本地图片，仅在浏览器会话中有效，刷新后数据丢失</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 作业页 -->
+        <section id="homework" class="page">
+            <div class="homework-header">
+                <div class="week-badge" id="currentWeekBadge">Week 1</div>
+                <h2 class="week-title" id="weekTitle">网站开发基础</h2>
+                <div class="title-divider"></div>
+            </div>
+            <div class="homework-layout">
+                <div class="homework-left">
+                    <div class="homework-intro">
+                        <h3 data-i18n="homework_intro_title">作业简介</h3>
+                        <p id="homeworkDescription" data-i18n="homework_desc">本周作业要求您创建一个基本的响应式网页，掌握 HTML5 语义化标签和 CSS3 基础样式设计。</p>
+                    </div>
+                    <div class="homework-checklist">
+                        <h3 data-i18n="homework_checklist_title">作业清单</h3>
+                        <ul class="checklist" id="checklist">
+                            <li class="checklist-item completed" data-task="1">
+                                <span class="check-icon">✓</span>
+                                <span class="task-text" data-i18n="task1">创建 HTML 基础结构</span>
+                            </li>
+                            <li class="checklist-item completed" data-task="2">
+                                <span class="check-icon">✓</span>
+                                <span class="task-text" data-i18n="task2">实现响应式布局</span>
+                            </li>
+                            <li class="checklist-item" data-task="3">
+                                <span class="check-icon"></span>
+                                <span class="task-text" data-i18n="task3">添加 CSS 样式</span>
+                            </li>
+                            <li class="checklist-item" data-task="4">
+                                <span class="check-icon"></span>
+                                <span class="task-text" data-i18n="task4">测试跨浏览器兼容性</span>
+                            </li>
+                            <li class="checklist-item" data-task="5">
+                                <span class="check-icon"></span>
+                                <span class="task-text" data-i18n="task5">提交作业</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="homework-right">
+                    <div class="submit-card">
+                        <h3 data-i18n="submit_card_title">提交作业</h3>
+                        <div class="upload-area" id="uploadArea">
+                            <div class="upload-icon">📁</div>
+                            <p data-i18n="upload_text">拖拽文件到此处或点击上传</p>
+                            <p class="upload-hint" data-i18n="upload_hint">支持 PNG、JPEG、PDF、DOCX 格式</p>
+                            <input type="file" id="fileInput" multiple accept=".png,.jpeg,.jpg,.pdf,.docx" hidden>
+                        </div>
+                        <div class="file-list" id="fileList"></div>
+                        <button class="submit-btn" id="submitBtn" data-i18n="submit_btn">确认提交</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 项目页 -->
+        <section id="project" class="page">
+            <div class="project-header">
+                <h1 class="page-title" data-i18n="project_title">最终项目展示</h1>
+                <div class="title-divider"></div>
+            </div>
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="project-image"></div>
+                    <h3 data-i18n="project1_title">电子商务平台</h3>
+                    <p data-i18n="project1_desc">一个完整的在线购物系统，包含用户认证、商品管理和支付功能</p>
+                </div>
+                <div class="project-card">
+                    <div class="project-image"></div>
+                    <h3 data-i18n="project2_title">社交媒体应用</h3>
+                    <p data-i18n="project2_desc">支持实时消息、动态分享和用户互动的社交平台</p>
+                </div>
+                <div class="project-card">
+                    <div class="project-image"></div>
+                    <h3 data-i18n="project3_title">数据可视化面板</h3>
+                    <p data-i18n="project3_desc">交互式数据分析工具，展示实时数据图表和趋势</p>
+                </div>
+                <div class="project-card">
+                    <div class="project-image"></div>
+                    <h3 data-i18n="project4_title">在线学习平台</h3>
+                    <p data-i18n="project4_desc">提供课程管理、视频播放和作业提交的教育系统</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 团队介绍页 -->
+        <section id="team" class="page">
+            <div class="team-header">
+                <h1 class="page-title" data-i18n="team_title">团队介绍</h1>
+                <div class="title-divider"></div>
+            </div>
+            <div class="team-grid">
+                <div class="team-member leader-member">
+                    <div class="member-avatar leader-avatar">
+                        <div class="avatar-glow"></div>
+                        <span>👑</span>
+                    </div>
+                    <div class="leader-badge" data-i18n="leader_badge">Team Leader</div>
+                    <h3 data-i18n="member1_name">张三</h3>
+                    <p class="member-role" data-i18n="role_frontend">前端开发</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">
+                        <div class="avatar-glow"></div>
+                        <span>👤</span>
+                    </div>
+                    <h3 data-i18n="member2_name">李四</h3>
+                    <p class="member-role" data-i18n="role_backend">后端开发</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">
+                        <div class="avatar-glow"></div>
+                        <span>👤</span>
+                    </div>
+                    <h3 data-i18n="member3_name">王五</h3>
+                    <p class="member-role" data-i18n="role_ui">UI设计</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">
+                        <div class="avatar-glow"></div>
+                        <span>👤</span>
+                    </div>
+                    <h3 data-i18n="member4_name">赵六</h3>
+                    <p class="member-role" data-i18n="role_pm">项目管理</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">
+                        <div class="avatar-glow"></div>
+                        <span>👤</span>
+                    </div>
+                    <h3 data-i18n="member5_name">钱七</h3>
+                    <p class="member-role" data-i18n="role_test">测试工程师</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">
+                        <div class="avatar-glow"></div>
+                        <span>👤</span>
+                    </div>
+                    <h3 data-i18n="member6_name">孙八</h3>
+                    <p class="member-role" data-i18n="role_doc">文档编写</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 图片放大模态框 -->
+    <div class="modal image-modal" id="imageModal">
+        <div class="image-modal-content">
+            <span class="modal-close" id="modalClose">&times;</span>
+            <img src="" alt="放大预览" id="modalImage">
+        </div>
+    </div>
+
+    <!-- 提交确认模态框 -->
+    <div class="modal" id="submitModal">
+        <div class="modal-content">
+            <h3 data-i18n="modal_title">确认提交</h3>
+            <p data-i18n="modal_text">确定要提交作业吗？提交后将无法修改。</p>
+            <div class="modal-actions">
+                <button class="modal-btn cancel-btn" id="cancelBtn" data-i18n="modal_cancel">取消</button>
+                <button class="modal-btn confirm-btn" id="confirmBtn" data-i18n="modal_confirm">确认提交</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const navItems = document.querySelectorAll('.nav-item:not(.language-switch)');
+    const pages = document.querySelectorAll('.page');
+    const weekBtns = document.querySelectorAll('.week-btn');
+    const progressBar = document.querySelector('.progress-fill');
+    const completedWeeks = document.getElementById('completedWeeks');
+    const currentWeekBadge = document.getElementById('currentWeekBadge');
+    const weekTitle = document.getElementById('weekTitle');
+    const homeworkDescription = document.getElementById('homeworkDescription');
+    const checklist = document.querySelectorAll('.checklist-item');
+    const uploadArea = document.getElementById('uploadArea');
+    const fileInput = document.getElementById('fileInput');
+    const fileList = document.getElementById('fileList');
+    const submitBtn = document.getElementById('submitBtn');
+    const submitModal = document.getElementById('submitModal');
+    const cancelBtn = document.getElementById('cancelBtn');
+    const confirmBtn = document.getElementById('confirmBtn');
+    const webdevUploadArea = document.getElementById('webdevUploadArea');
+    const webdevFileInput = document.getElementById('webdevFileInput');
+    const imageGallery = document.getElementById('imageGallery');
+    const imageModal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalClose = document.getElementById('modalClose');
+    const languageSwitch = document.getElementById('languageSwitch');
+    const langBtns = document.querySelectorAll('.lang-btn');
+    let currentLang = 'zh';
+    let currentWeek = 1;
+
+    const translations = {
+        zh: {
+            logo: '课程系统', nav_home: 'Home', nav_homework: '作业', nav_webdev: '网页搭建', nav_project: '项目', nav_team: '团队介绍',
+            home_title: '欢迎使用课程作业系统', progress_label: '课程进度', progress_text: '已完成 3/10 周',
+            notif1: '📢 Week 4 作业截止日期：4月15日', notif2: '🎉 恭喜！Week 3 作业获得优秀评价',
+            notif3: '📚 新项目模板已发布，请及时查看', notif4: '👥 团队会议：本周五下午2点',
+            card_latest_homework: '最新作业', card_latest_homework_desc: '查看本周发布的作业任务和截止日期',
+            card_ongoing_projects: '进行中的项目', card_ongoing_projects_desc: '跟踪您的项目进展和里程碑',
+            card_team_updates: '团队新动态', card_team_updates_desc: '了解团队成员的最新更新和分享',
+            webdev_title: '网页搭建过程', webdev_upload_title: '搭建过程截图', webdev_upload_text: '拖拽图片到此处或点击上传',
+            webdev_upload_hint: '支持 PNG、JPEG 格式', webdev_gallery_title: '图片预览', webdev_challenges_title: '遇到的难点',
+            challenge1_title: '页面显示空白', challenge1_desc: 'HTML 结构或 CSS 样式配置错误，导致页面内容无法正常渲染显示',
+            challenge2_title: '中英文切换不彻底', challenge2_desc: '部分动态内容或 JavaScript 生成的文本遗漏翻译键，导致切换语言时显示不完整',
+            challenge3_title: '网页出现乱码', challenge3_desc: '字符编码设置不正确，特殊字符和中文内容显示为乱码或方块',
+            challenge4_title: '二级菜单无法展开或跳转', challenge4_desc: '下拉菜单事件处理或页面路由逻辑错误，导致导航功能失效',
+            challenge5_title: '网页只能本地查看', challenge5_desc: '文件使用本地路径引用，未部署到服务器，其他设备无法通过链接访问',
+            challenge6_title: '本机图片上传无法在外部查看', challenge6_desc: '使用 FileReader 读取本地图片，仅在浏览器会话中有效，刷新后数据丢失',
+            homework_intro_title: '作业简介', homework_desc: '本周作业要求您创建一个基本的响应式网页，掌握 HTML5 语义化标签和 CSS3 基础样式设计。',
+            homework_checklist_title: '作业清单', task1: '创建 HTML 基础结构', task2: '实现响应式布局', task3: '添加 CSS 样式',
+            task4: '测试跨浏览器兼容性', task5: '提交作业', submit_card_title: '提交作业',
+            upload_text: '拖拽文件到此处或点击上传', upload_hint: '支持 PNG、JPEG、PDF、DOCX 格式', submit_btn: '确认提交',
+            project_title: '最终项目展示', project1_title: '电子商务平台', project1_desc: '一个完整的在线购物系统，包含用户认证、商品管理和支付功能',
+            project2_title: '社交媒体应用', project2_desc: '支持实时消息、动态分享和用户互动的社交平台',
+            project3_title: '数据可视化面板', project3_desc: '交互式数据分析工具，展示实时数据图表和趋势',
+            project4_title: '在线学习平台', project4_desc: '提供课程管理、视频播放和作业提交的教育系统',
+            team_title: '团队介绍', leader_badge: 'Team Leader', member1_name: '张三', member2_name: '李四', member3_name: '王五',
+            member4_name: '赵六', member5_name: '钱七', member6_name: '孙八', role_frontend: '前端开发', role_backend: '后端开发',
+            role_ui: 'UI设计', role_pm: '项目管理', role_test: '测试工程师', role_doc: '文档编写',
+            modal_title: '确认提交', modal_text: '确定要提交作业吗？提交后将无法修改。', modal_cancel: '取消', modal_confirm: '确认提交',
+            week1_title: '网站开发基础', week1_desc: '本周作业要求您创建一个基本的响应式网页，掌握 HTML5 语义化标签和 CSS3 基础样式设计。',
+            week2_title: 'JavaScript 入门', week2_desc: '学习 JavaScript 基础语法，实现网页交互功能，包括事件处理和 DOM 操作。',
+            week3_title: 'CSS 动画与过渡', week3_desc: '掌握 CSS3 动画和过渡效果，创建流畅的用户界面交互体验。',
+            week4_title: '响应式设计', week4_desc: '学习响应式设计原则，使用媒体查询和弹性布局创建适配不同设备的网页。',
+            week5_title: '前端框架入门', week5_desc: '了解现代前端框架（如 Vue 或 React）的基础概念和使用方法。',
+            week6_title: 'API 调用与数据处理', week6_desc: '学习如何使用 Fetch API 获取数据，并在网页中展示和处理数据。',
+            week7_title: '表单验证与优化', week7_desc: '实现复杂的表单验证逻辑，优化用户体验和表单交互。',
+            week8_title: '性能优化', week8_desc: '学习网页性能优化技巧，包括图片优化、代码压缩和缓存策略。',
+            week9_title: '项目实战', week9_desc: '将所学知识应用到实际项目中，开发一个完整的前端应用。',
+            week10_title: '最终项目展示', week10_desc: '完成最终项目，准备演示文稿，展示您的学习成果。'
+        },
+        en: {
+            logo: 'Course System', nav_home: 'Home', nav_homework: 'Homework', nav_webdev: 'Web Dev', nav_project: 'Projects', nav_team: 'Team',
+            home_title: 'Welcome to Course System', progress_label: 'Course Progress', progress_text: 'Completed 3/10 Weeks',
+            notif1: '📢 Week 4 Deadline: April 15', notif2: '🎉 Congratulations! Week 3 received excellent rating',
+            notif3: '📚 New project template released, please check it', notif4: '👥 Team meeting: This Friday 2 PM',
+            card_latest_homework: 'Latest Homework', card_latest_homework_desc: 'View this week\'s assignments and deadlines',
+            card_ongoing_projects: 'Ongoing Projects', card_ongoing_projects_desc: 'Track your project progress and milestones',
+            card_team_updates: 'Team Updates', card_team_updates_desc: 'Stay updated with the latest team news',
+            webdev_title: 'Web Development Process', webdev_upload_title: 'Development Screenshots',
+            webdev_upload_text: 'Drag images here or click to upload', webdev_upload_hint: 'Supports PNG, JPEG formats',
+            webdev_gallery_title: 'Image Gallery', webdev_challenges_title: 'Challenges Encountered',
+            challenge1_title: 'Blank Page Display', challenge1_desc: 'HTML structure or CSS configuration errors prevent page content from rendering properly',
+            challenge2_title: 'Incomplete Language Switching', challenge2_desc: 'Some dynamic content or JavaScript-generated text missing translation keys, causing incomplete display when switching languages',
+            challenge3_title: 'Garbled Text on Page', challenge3_desc: 'Incorrect character encoding causes special characters and Chinese text to display as garbled text or squares',
+            challenge4_title: 'Dropdown Menu Not Working', challenge4_desc: 'Dropdown menu event handling or page routing logic errors causing navigation features to fail',
+            challenge5_title: 'Page Only Viewable Locally', challenge5_desc: 'Files use local path references without server deployment, preventing other devices from accessing via links',
+            challenge6_title: 'Local Images Not Viewable Externally', challenge6_desc: 'Using FileReader to read local images only works in browser session, data lost after refresh',
+            homework_intro_title: 'Assignment Overview', homework_desc: 'This week\'s assignment requires you to create a basic responsive webpage, mastering HTML5 semantic tags and CSS3 basic styling.',
+            homework_checklist_title: 'Task Checklist', task1: 'Create HTML basic structure', task2: 'Implement responsive layout',
+            task3: 'Add CSS styles', task4: 'Test cross-browser compatibility', task5: 'Submit assignment',
+            submit_card_title: 'Submit Assignment', upload_text: 'Drag files here or click to upload',
+            upload_hint: 'Supports PNG, JPEG, PDF, DOCX formats', submit_btn: 'Submit',
+            project_title: 'Final Project Showcase', project1_title: 'E-Commerce Platform',
+            project1_desc: 'A complete online shopping system with user authentication, product management, and payment features',
+            project2_title: 'Social Media App', project2_desc: 'A social platform supporting real-time messaging, content sharing, and user interaction',
+            project3_title: 'Data Visualization Dashboard', project3_desc: 'Interactive data analysis tool displaying real-time charts and trends',
+            project4_title: 'Online Learning Platform', project4_desc: 'An educational system providing course management, video playback, and assignment submission',
+            team_title: 'Team Introduction', leader_badge: 'Team Leader', member1_name: 'Zhang San', member2_name: 'Li Si',
+            member3_name: 'Wang Wu', member4_name: 'Zhao Liu', member5_name: 'Qian Qi', member6_name: 'Sun Ba',
+            role_frontend: 'Frontend Developer', role_backend: 'Backend Developer', role_ui: 'UI Designer',
+            role_pm: 'Project Manager', role_test: 'Test Engineer', role_doc: 'Documentation Writer',
+            modal_title: 'Confirm Submission', modal_text: 'Are you sure you want to submit? You won\'t be able to modify it after submission.',
+            modal_cancel: 'Cancel', modal_confirm: 'Confirm Submit',
+            week1_title: 'Web Development Basics', week1_desc: 'This week\'s assignment requires you to create a basic responsive webpage, mastering HTML5 semantic tags and CSS3 basic styling.',
+            week2_title: 'JavaScript Introduction', week2_desc: 'Learn JavaScript basic syntax, implement webpage interaction features including event handling and DOM manipulation.',
+            week3_title: 'CSS Animations & Transitions', week3_desc: 'Master CSS3 animations and transitions, create smooth user interface interactions.',
+            week4_title: 'Responsive Design', week4_desc: 'Learn responsive design principles, use media queries and flexbox to create pages that adapt to different devices.',
+            week5_title: 'Frontend Framework Introduction', week5_desc: 'Understand the basic concepts and usage of modern frontend frameworks like Vue or React.',
+            week6_title: 'API Calls & Data Processing', week6_desc: 'Learn how to use Fetch API to get data and display/process it on webpages.',
+            week7_title: 'Form Validation & Optimization', week7_desc: 'Implement complex form validation logic, optimize user experience and form interactions.',
+            week8_title: 'Performance Optimization', week8_desc: 'Learn webpage performance optimization techniques including image optimization, code minification, and caching strategies.',
+            week9_title: 'Project Practice', week9_desc: 'Apply learned knowledge to real projects, develop a complete frontend application.',
+            week10_title: 'Final Project Showcase', week10_desc: 'Complete the final project, prepare presentation materials, showcase your learning achievements.'
+        }
+    };
+
+    function switchLanguage(lang) {
+        currentLang = lang;
+        const elements = document.querySelectorAll('[data-i18n]');
+        elements.forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[lang][key]) {
+                if (key === 'progress_text') { el.innerHTML = translations[lang][key]; }
+                else { el.textContent = translations[lang][key]; }
+            }
+        });
+        updateNotifications();
+        updateHomeworkDescription();
+        langBtns.forEach(btn => { btn.classList.toggle('active', btn.dataset.lang === lang); });
+    }
+
+    function updateNotifications() {
+        const notificationContent = document.getElementById('notificationContent');
+        if (notificationContent) {
+            const notifications = [translations[currentLang].notif1, translations[currentLang].notif2, translations[currentLang].notif3, translations[currentLang].notif4];
+            const html = notifications.map(n => `<div class="notification-item">${n}</div>`).join('');
+            notificationContent.innerHTML = html + html;
+        }
+    }
+
+    function updateHomeworkDescription() {
+        const homeworkDescription = document.getElementById('homeworkDescription');
+        if (homeworkDescription && currentWeek === 1) {
+            homeworkDescription.textContent = translations[currentLang].homework_desc;
+        }
+    }
+
+    languageSwitch.addEventListener('click', (e) => {
+        if (e.target.classList.contains('lang-btn')) { switchLanguage(e.target.dataset.lang); }
+    });
+
+    navItems.forEach(item => {
+        item.addEventListener('click', () => {
+            navItems.forEach(i => i.classList.remove('active'));
+            item.classList.add('active');
+            const page = item.dataset.page;
+            pages.forEach(p => p.classList.remove('active'));
+            document.getElementById(page).classList.add('active');
+        });
+    });
+
+    const webdevNavBtn = document.querySelector('.dropdown-special');
+    if (webdevNavBtn) {
+        webdevNavBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navItems.forEach(i => i.classList.remove('active'));
+            document.querySelector('[data-page="homework"]').classList.add('active');
+            pages.forEach(p => p.classList.remove('active'));
+            document.getElementById('webdev').classList.add('active');
+        });
+    }
+
+    weekBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            weekBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentWeek = parseInt(btn.dataset.week);
+            currentWeekBadge.textContent = `Week ${currentWeek}`;
+            const weekKey = `week${currentWeek}_title`;
+            const descKey = `week${currentWeek}_desc`;
+            weekTitle.textContent = translations[currentLang][weekKey];
+            homeworkDescription.textContent = translations[currentLang][descKey];
+            navItems.forEach(i => i.classList.remove('active'));
+            document.querySelector('[data-page="homework"]').classList.add('active');
+            pages.forEach(p => p.classList.remove('active'));
+            document.getElementById('homework').classList.add('active');
+        });
+    });
+
+    progressBar.style.width = `${(currentWeek / 10) * 100}%`;
+
+    document.querySelector('.progress-card').addEventListener('click', () => {
+        navItems.forEach(i => i.classList.remove('active'));
+        document.querySelector('[data-page="homework"]').classList.add('active');
+        pages.forEach(p => p.classList.remove('active'));
+        document.getElementById('homework').classList.add('active');
+    });
+
+    checklist.forEach(item => {
+        item.addEventListener('click', () => {
+            item.classList.toggle('completed');
+            updateProgress();
+        });
+    });
+
+    function updateProgress() {
+        const completed = document.querySelectorAll('.checklist-item.completed').length;
+        const total = checklist.length;
+        completedWeeks.textContent = completed;
+        progressBar.style.width = `${(completed / total) * 100}%`;
+    }
+
+    uploadArea.addEventListener('click', () => { fileInput.click(); });
+    uploadArea.addEventListener('dragover', (e) => { e.preventDefault(); uploadArea.style.borderColor = '#A8D2FF'; uploadArea.style.background = 'rgba(168, 210, 255, 0.1)'; });
+    uploadArea.addEventListener('dragleave', () => { uploadArea.style.borderColor = 'rgba(168, 210, 255, 0.5)'; uploadArea.style.background = 'transparent'; });
+    uploadArea.addEventListener('drop', (e) => { e.preventDefault(); uploadArea.style.borderColor = 'rgba(168, 210, 255, 0.5)'; uploadArea.style.background = 'transparent'; handleFiles(e.dataTransfer.files); });
+    fileInput.addEventListener('change', (e) => { handleFiles(e.target.files); });
+
+    function handleFiles(files) { Array.from(files).forEach(file => { addFileToList(file); }); }
+    function addFileToList(file) {
+        const fileItem = document.createElement('div');
+        fileItem.className = 'file-item';
+        fileItem.innerHTML = `<span>${file.name}</span><span>${(file.size / 1024).toFixed(1)} KB</span>`;
+        fileList.appendChild(fileItem);
+    }
+
+    submitBtn.addEventListener('click', () => { submitModal.classList.add('active'); });
+    cancelBtn.addEventListener('click', () => { submitModal.classList.remove('active'); });
+    confirmBtn.addEventListener('click', () => {
+        submitModal.classList.remove('active');
+        const lastItem = checklist[checklist.length - 1];
+        if (!lastItem.classList.contains('completed')) { lastItem.classList.add('completed'); updateProgress(); }
+        alert('作业提交成功！');
+    });
+    submitModal.addEventListener('click', (e) => { if (e.target === submitModal) { submitModal.classList.remove('active'); } });
+
+    const notificationContent = document.getElementById('notificationContent');
+    const notifications = notificationContent.innerHTML;
+    notificationContent.innerHTML += notifications;
+
+    document.querySelectorAll('.feature-card').forEach(card => {
+        card.addEventListener('click', () => {
+            const targetPage = card.dataset.navigateTo;
+            if (targetPage) {
+                navItems.forEach(i => i.classList.remove('active'));
+                document.querySelector(`[data-page="${targetPage}"]`).classList.add('active');
+                pages.forEach(p => p.classList.remove('active'));
+                document.getElementById(targetPage).classList.add('active');
+            }
+        });
+    });
+
+    if (webdevUploadArea) {
+        webdevUploadArea.addEventListener('click', () => { webdevFileInput.click(); });
+        webdevUploadArea.addEventListener('dragover', (e) => { e.preventDefault(); webdevUploadArea.style.borderColor = '#A8D2FF'; webdevUploadArea.style.background = 'rgba(168, 210, 255, 0.1)'; });
+        webdevUploadArea.addEventListener('dragleave', () => { webdevUploadArea.style.borderColor = 'rgba(168, 210, 255, 0.5)'; webdevUploadArea.style.background = 'rgba(255, 255, 255, 0.5)'; });
+        webdevUploadArea.addEventListener('drop', (e) => { e.preventDefault(); webdevUploadArea.style.borderColor = 'rgba(168, 210, 255, 0.5)'; webdevUploadArea.style.background = 'rgba(255, 255, 255, 0.5)'; handleWebdevFiles(e.dataTransfer.files); });
+        webdevFileInput.addEventListener('change', (e) => { handleWebdevFiles(e.target.files); });
+    }
+
+    function handleWebdevFiles(files) { Array.from(files).forEach(file => { if (file.type.startsWith('image/')) { addImageToGallery(file); } }); }
+    function addImageToGallery(file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            const galleryItem = document.createElement('div');
+            galleryItem.className = 'gallery-item';
+            galleryItem.innerHTML = `<img src="${e.target.result}" alt="${file.name}"><div class="gallery-overlay"><span>🔍 点击查看大图</span></div>`;
+            galleryItem.addEventListener('click', () => { openImageModal(e.target.result); });
+            imageGallery.appendChild(galleryItem);
+        };
+        reader.readAsDataURL(file);
+    }
+
+    function openImageModal(src) { modalImage.src = src; imageModal.classList.add('active'); document.body.style.overflow = 'hidden'; }
+    function closeImageModal() { imageModal.classList.remove('active'); document.body.style.overflow = ''; }
+    if (modalClose) { modalClose.addEventListener('click', closeImageModal); }
+    if (imageModal) { imageModal.addEventListener('click', (e) => { if (e.target === imageModal) { closeImageModal(); } }); }
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            if (imageModal.classList.contains('active')) { closeImageModal(); }
+            if (submitModal.classList.contains('active')) { submitModal.classList.remove('active'); }
+        }
+    });
+});
+    </script>
+</body>
+</html>
