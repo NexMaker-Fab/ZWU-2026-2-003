@@ -136,6 +136,51 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe 
 @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
 @keyframes fadeInScale { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
 @media (max-width: 768px) { .nav-menu { gap: 1rem; font-size: 0.9rem; } .page-title { font-size: 2rem; } .homework-layout { grid-template-columns: 1fr; } .progress-card { flex-direction: column; text-align: center; } .progress-bar-container { width: 100%; } .dropdown { min-width: 300px; } }
+.static-images-section {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(168, 210, 255, 0.3);
+}
+
+.static-image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.2rem;
+}
+
+.static-image-card {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(168, 210, 255, 0.3);
+}
+
+.static-image-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(168, 210, 255, 0.3);
+}
+
+.static-image-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    display: block;
+}
+
+.static-image-caption {
+    padding: 0.8rem;
+    font-size: 0.85rem;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+    color: #333;
+}       
     </style>
 </head>
 <body>
@@ -187,7 +232,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe 
                     <div class="progress-bar-container">
                         <div class="progress-bar"><div class="progress-fill"></div></div>
                     </div>
-                    <span class="progress-text" data-i18n="progress_text">已完成 <span id="completedWeeks">3</span>/10 周</span>
+                    <span class="progress-text" data-i18n="progress_text">已完成 <span id="completedWeeks">6</span>/18 周</span>
                 </div>
             </div>
             <div class="notification-section">
@@ -220,6 +265,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe 
         </section>
 
         <!-- 网页搭建页 -->
+                <!-- 网页搭建页 -->
         <section id="webdev" class="page">
             <div class="webdev-header">
                 <h1 class="page-title" data-i18n="webdev_title">网页搭建过程</h1>
@@ -228,17 +274,43 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe 
             <div class="webdev-content">
                 <div class="webdev-section">
                     <h2 data-i18n="webdev_upload_title">搭建过程截图</h2>
-                    <div class="upload-area-large" id="webdevUploadArea">
+                    
+                    <!-- 直接放置的图片区域 -->
+                    <div class="static-images-section">
+                        <h3 style="margin-bottom: 1rem; font-size: 1.2rem;">📸 网页搭建步骤截图</h3>
+                        <div class="static-image-grid">
+                            <!-- 步骤1 - 把 src 里面的路径改成您的图片路径 -->
+                            <div class="static-image-card">
+                                <img src="images/1.png" alt="步骤1：CSS样式设计" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 400 300%27%3E%3Crect width=%27400%27 height=%27300%27 fill=%27%23A8D2FF%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 dominant-baseline=%27middle%27 text-anchor=%27middle%27 fill=%27white%27 font-size=%2720%27%3E图片加载失败%3C/text%3E%3C/svg%3E'">
+                                <div class="static-image-caption">步骤1：CSS样式设计</div>
+                            </div>
+                            <!-- 步骤3 -->
+                            <div class="static-image-card">
+                                <img src="images/2.png" alt="步骤2：响应式布局" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 400 300%27%3E%3Crect width=%27400%27 height=%27300%27 fill=%27%2390B8E0%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 dominant-baseline=%27middle%27 text-anchor=%27middle%27 fill=%27white%27 font-size=%2720%27%3E图片加载失败%3C/text%3E%3C/svg%3E'">
+                                <div class="static-image-caption">步骤2：实现响应式网格布局</div>
+                            </div>
+                            <!-- 步骤4 -->
+                            <div class="static-image-card">
+                                <img src="images/3.png" alt="步骤3：实际交互过程" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 400 300%27%3E%3Crect width=%27400%27 height=%27300%27 fill=%27%2370A0D0%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 dominant-baseline=%27middle%27 text-anchor=%27middle%27 fill=%27white%27 font-size=%2720%27%3E图片加载失败%3C/text%3E%3C/svg%3E'">
+                                <div class="static-image-caption">步骤3：实际交互过程</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 上传区域（可选，不需要可以删除） -->
+                    <div class="upload-area-large" id="webdevUploadArea" style="margin-top: 2rem;">
                         <div class="upload-icon">📷</div>
-                        <p data-i18n="webdev_upload_text">拖拽图片到此处或点击上传</p>
+                        <p data-i18n="webdev_upload_text">拖拽图片到此处或点击上传更多截图</p>
                         <p class="upload-hint" data-i18n="webdev_upload_hint">支持 PNG、JPEG 格式</p>
                         <input type="file" id="webdevFileInput" multiple accept="image/png,image/jpeg" hidden>
                     </div>
                 </div>
+                
                 <div class="webdev-section">
                     <h2 data-i18n="webdev_gallery_title">图片预览</h2>
                     <div class="image-gallery" id="imageGallery"></div>
                 </div>
+                
                 <div class="webdev-section">
                     <h2 data-i18n="webdev_challenges_title">遇到的难点</h2>
                     <div class="challenges-grid">
