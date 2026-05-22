@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 1 - Arduino 硬件分析与白噪音装置</title>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" id="goHome">课程系统</div>
+            <ul class="nav-menu">
+                <li class="nav-item" data-page="home">Home</li>
+                <li class="nav-item has-dropdown active" data-page="homework">
+                    <span>作业</span>
+                    <div class="dropdown">
+                        <div class="dropdown-weeks">
+                            <button class="week-btn active" data-week="1">Week 1</button>
+                            <button class="week-btn" data-week="2">Week 2</button>
+                            <button class="week-btn" data-week="3">Week 3</button>
+                            <button class="week-btn" data-week="4">Week 4</button>
+                            <button class="week-btn" data-week="5">Week 5</button>
+                            <button class="week-btn" data-week="6">Week 6</button>
+                            <button class="week-btn" data-week="7">Week 7</button>
+                            <button class="week-btn" data-week="8">Week 8</button>
+                            <button class="week-btn" data-week="9">Week 9</button>
+                            <button class="week-btn" data-week="10">Week 10</button>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item" data-page="project">项目</li>
+                <li class="nav-item" data-page="team">团队介绍</li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <section class="page active">
+            <div class="homework-header">
+                <div class="week-badge">Week 1</div>
+                <h1 class="week-title">Arduino 硬件分析与白噪音装置</h1>
+                <div class="title-divider"></div>
+            </div>
+
+            <div class="view-toggle">
+                <button class="view-btn active" data-view="final">📄 最终版本</button>
+                <button class="view-btn" data-view="process">🔧 制作过程</button>
+            </div>
+
+            <div id="finalView" class="view-content active">
+                <div class="homework-checklist">
+                    <h3>✅ 作业清单</h3>
+                    <ul class="checklist" id="checklist">
+                        <li class="checklist-item" data-task="1">
+                            <span class="check-icon"></span>
+                            <span class="task-text">硬件选型与采购（压力传感器、触摸传感器、Arduino 板）</span>
+                        </li>
+                        <li class="checklist-item" data-task="2">
+                            <span class="check-icon"></span>
+                            <span class="task-text">电路连接与调试</span>
+                        </li>
+                        <li class="checklist-item" data-task="3">
+                            <span class="check-icon"></span>
+                            <span class="task-text">Arduino 代码编写（传感器数据读取）</span>
+                        </li>
+                        <li class="checklist-item" data-task="4">
+                            <span class="check-icon"></span>
+                            <span class="task-text">白噪音模块集成与声音测试</span>
+                        </li>
+                        <li class="checklist-item" data-task="5">
+                            <span class="check-icon"></span>
+                            <span class="task-text">整体封装与展示视频拍摄</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="final-version-content">
+                    <h3>🎯 最终成果展示</h3>
+
+                    <div class="hardware-section">
+                        <h4>🔧 运用到的 Arduino 硬件分析</h4>
+
+                        <h5>1. 压力传感器</h5>
+                        <p>薄膜压力传感器是基于新型纳米压敏材料辅以舒适板式模量的超薄薄膜衬底一次性贴片而成，兼具防水和压敏双重功能。当传感器感知到外界压力时，传感器电阻值发生变化，我们采用电路将传感器感知压力变化的压力信号转换成相应变化强度的电信号输出。这样我们就可以通过检测电信号变化就可以得到压力变化情况。</p>
+
+                        <div class="image-illustration">
+                            <img src="assets/pressure-sensor.svg" alt="压力传感器示意图" onclick="openImageModal(this.src)">
+                            <p>图1：薄膜压力传感器工作原理示意图</p>
+                        </div>
+
+                        <h5>2. 触摸传感器</h5>
+                        <p>该模块是一个基于触摸检测 IC(TTP223B)的电容式点动型触摸开关模块。常态下，模块输出低电平，模式为低功耗模式；当用手指触摸相应位置时，模块会输出高电平，模式切换为快速模式；当持续 12 秒没有触摸时，模式又切换为低功耗模式。可以将模块安装在非金属材料如塑料、玻璃的表面，另外将薄薄的纸片(非金属)覆盖在模块的表面，只要触摸的位置正确，即可做成隐藏在墙壁、桌面等地方的按键。</p>
+
+                        <div class="image-illustration">
+                            <img src="assets/touch-sensor.svg" alt="触摸传感器示意图" onclick="openImageModal(this.src)">
+                            <p>图2：TTP223B 电容式触摸传感器模块</p>
+                        </div>
+                    </div>
+
+                    <div class="hardware-section">
+                        <h4>🎵 自然白噪音模块</h4>
+                        <p>通过压力传感器控制音量大小，触摸传感器切换不同白噪音场景（雨声、海浪声、风声、篝火声）。装置可放置在卧室、办公室等场景，帮助用户放松身心、提高专注力。</p>
+
+                        <div class="image-illustration">
+                            <img src="assets/circuit-diagram.svg" alt="电路连接示意图" onclick="openImageModal(this.src)">
+                            <p>图3：Arduino 电路连接示意图</p>
+                        </div>
+
+                        <div class="image-illustration">
+                            <img src="assets/product-demo.svg" alt="成品展示图" onclick="openImageModal(this.src)">
+                            <p>图4：白噪音装置成品展示</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="processView" class="view-content">
+                <div class="process-content">
+                    <h3>🔨 制作过程记录</h3>
+                    <div class="process-step">
+                        <h4>📌 第一步：硬件准备</h4>
+                        <p>采购 Arduino Uno 开发板、薄膜压力传感器、TTP223B 触摸传感器模块、DFPlayer Mini 声音模块、小喇叭、面包板及杜邦线若干。</p>
+                        <div class="image-illustration">
+                            <img src="assets/hardware-setup.svg" alt="硬件准备" onclick="openImageModal(this.src)">
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <h4>📌 第二步：电路搭建</h4>
+                        <p>按照电路图连接各模块：压力传感器连接到模拟输入口 A0，触摸传感器连接到数字口 D2，DFPlayer Mini 连接到串口（D3/D4），喇叭连接到 DFPlayer 输出端。</p>
+                        <div class="image-illustration">
+                            <img src="assets/circuit-build.svg" alt="电路搭建" onclick="openImageModal(this.src)">
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <h4>📌 第三步：代码编写</h4>
+                        <p>编写 Arduino 代码实现：读取压力传感器值（0-1023）映射到音量（0-30）；检测触摸传感器触发切换白噪音场景；通过串口与 DFPlayer 通信控制播放。</p>
+                    </div>
+                    <div class="process-step">
+                        <h4>📌 第四步：测试与调试</h4>
+                        <p>逐个测试各传感器功能，调整压力传感器的灵敏度阈值，确保触摸响应及时。遇到问题：压力传感器初始值不稳定，通过软件滤波解决。</p>
+                    </div>
+                    <div class="process-step">
+                        <h4>📌 第五步：封装与展示</h4>
+                        <p>将电路板放入亚克力外壳，固定传感器在面板上。录制演示视频，展示触摸切换场景和按压控制音量的完整功能。</p>
+                        <div class="image-illustration">
+                            <img src="assets/product-test.svg" alt="成品测试" onclick="openImageModal(this.src)">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal image-modal" id="imageModal">
+        <div class="image-modal-content">
+            <span class="modal-close" id="modalClose">&times;</span>
+            <img src="" alt="放大预览" id="modalImage">
+        </div>
+    </div>
+
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const navItems = document.querySelectorAll('.nav-item');
+    const weekBtns = document.querySelectorAll('.week-btn');
+    const viewBtns = document.querySelectorAll('.view-btn');
+    const finalView = document.getElementById('finalView');
+    const processView = document.getElementById('processView');
+    const checklist = document.querySelectorAll('.checklist-item');
+    const imageModal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalClose = document.getElementById('modalClose');
+    const goHome = document.getElementById('goHome');
+
+    viewBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+            const view = btn.dataset.view;
+            viewBtns.forEach((item) => item.classList.remove('active'));
+            btn.classList.add('active');
+
+            if (view === 'final') {
+                finalView.classList.add('active');
+                processView.classList.remove('active');
+            } else {
+                finalView.classList.remove('active');
+                processView.classList.add('active');
+            }
+        });
+    });
+
+    checklist.forEach((item) => {
+        item.addEventListener('click', () => {
+            item.classList.toggle('completed');
+        });
+    });
+
+    window.openImageModal = function(src) {
+        modalImage.src = src;
+        imageModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    };
+
+    function closeImageModal() {
+        imageModal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    if (modalClose) modalClose.addEventListener('click', closeImageModal);
+    if (imageModal) {
+        imageModal.addEventListener('click', (event) => {
+            if (event.target === imageModal) {
+                closeImageModal();
+            }
+        });
+    }
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && imageModal.classList.contains('active')) {
+            closeImageModal();
+        }
+    });
+
+    if (goHome) {
+        goHome.addEventListener('click', () => {
+            window.location.href = '../../index.html';
+        });
+    }
+
+    navItems.forEach((item) => {
+        item.addEventListener('click', () => {
+            const page = item.dataset.page;
+            if (!page || page === 'homework') {
+                return;
+            }
+            window.location.href = '../../index.html';
+        });
+    });
+
+    weekBtns.forEach((btn) => {
+        btn.addEventListener('click', (event) => {
+            event.stopPropagation();
+            const week = Number.parseInt(btn.dataset.week, 10);
+            if (week === 1) {
+                window.location.href = 'week1.html';
+                return;
+            }
+            if (week === 2) {
+                window.location.href = '../week2/week2.html';
+                return;
+            }
+            window.location.href = '../../index.html';
+        });
+    });
+});
+    </script>
+</body>
+</html>
