@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#6b7280"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="700" rx="36" fill="url(#bg)"/>
+  <path d="M150 470 C260 300, 360 300, 470 470 S680 640, 790 470 S1010 300, 1110 470" fill="none" stroke="#67e8f9" stroke-width="12" stroke-linecap="round" opacity="0.9"/>
+  <circle cx="260" cy="410" r="32" fill="#f472b6"/>
+  <circle cx="450" cy="360" r="32" fill="#60a5fa"/>
+  <circle cx="640" cy="430" r="32" fill="#34d399"/>
+  <circle cx="840" cy="370" r="32" fill="#fbbf24"/>
+  <circle cx="1020" cy="440" r="32" fill="#f97316"/>
+  <text x="600" y="155" text-anchor="middle" fill="#f8fafc" font-size="54" font-family="Arial, sans-serif" font-weight="700">CSS Animation</text>
+  <text x="600" y="585" text-anchor="middle" fill="#d1d5db" font-size="30" font-family="Arial, sans-serif">Keyframes, rhythm and looping motion</text>
+</svg>

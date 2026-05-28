@@ -318,6 +318,60 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe 
 .layer-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(168,210,255,0.2); }
 .layer-card .layer-icon { font-size: 2rem; margin-bottom: 0.5rem; }
 .layer-card h4 { font-weight: 700; margin-bottom: 0.5rem; font-size: 1rem; }
+
+/* ===== Week 3: CAD 小车建模样式 ===== */
+.editable-note {
+    margin: 0 0 1rem 0;
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+    background: rgba(168, 210, 255, 0.16);
+    border: 1px dashed rgba(74, 144, 176, 0.45);
+    color: #4a90b0;
+    font-size: 0.9rem;
+}
+
+.version-block {
+    margin: 1.2rem 0 1.8rem 0;
+    padding: 1rem;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(168, 210, 255, 0.25);
+}
+
+.version-block h5 {
+    margin-bottom: 0.6rem;
+    color: #4a90b0;
+    font-size: 1.05rem;
+}
+
+.version-block p {
+    margin-bottom: 1rem;
+}
+
+.version-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.version-column {
+    background: rgba(255, 255, 255, 0.72);
+    border-radius: 12px;
+    padding: 0.8rem;
+    border: 1px solid rgba(168, 210, 255, 0.2);
+}
+
+.version-column h6 {
+    margin: 0.2rem 0 0.8rem 0;
+    color: #5a6b7a;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+    .version-layout {
+        grid-template-columns: 1fr;
+    }
+}
 .layer-card p { font-size: 0.85rem; color: rgba(0,0,0,0.6); line-height: 1.6; }
 .layer-card .layer-detail { margin-top: 0.8rem; font-size: 0.8rem; color: rgba(0,0,0,0.5); }
 .layer-card .layer-detail span { display: inline-block; background: rgba(168,210,255,0.15); padding: 0.2rem 0.7rem; border-radius: 10px; margin: 0.15rem; }
