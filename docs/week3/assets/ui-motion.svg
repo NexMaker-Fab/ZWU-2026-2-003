@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#082f49"/>
+      <stop offset="100%" stop-color="#0f766e"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="700" rx="36" fill="url(#bg)"/>
+  <rect x="220" y="170" width="760" height="360" rx="28" fill="#0b1220" opacity="0.45" stroke="#99f6e4" stroke-opacity="0.35"/>
+  <rect x="270" y="225" width="200" height="260" rx="22" fill="#14b8a6" opacity="0.92"/>
+  <rect x="500" y="225" width="200" height="260" rx="22" fill="#38bdf8" opacity="0.92"/>
+  <rect x="730" y="225" width="200" height="260" rx="22" fill="#a78bfa" opacity="0.92"/>
+  <text x="600" y="150" text-anchor="middle" fill="#f8fafc" font-size="54" font-family="Arial, sans-serif" font-weight="700">UI Motion</text>
+  <text x="600" y="585" text-anchor="middle" fill="#ccfbf1" font-size="30" font-family="Arial, sans-serif">Feedback, hierarchy and interactive rhythm</text>
+</svg>

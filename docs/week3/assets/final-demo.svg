@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1e1b4b"/>
+      <stop offset="100%" stop-color="#4c1d95"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="700" rx="36" fill="url(#bg)"/>
+  <rect x="180" y="180" width="840" height="340" rx="30" fill="#ffffff" opacity="0.08" stroke="#c4b5fd" stroke-opacity="0.32"/>
+  <circle cx="320" cy="350" r="70" fill="#818cf8"/>
+  <circle cx="600" cy="350" r="70" fill="#a78bfa"/>
+  <circle cx="880" cy="350" r="70" fill="#f472b6"/>
+  <text x="600" y="135" text-anchor="middle" fill="#f8fafc" font-size="54" font-family="Arial, sans-serif" font-weight="700">Final Presentation</text>
+  <text x="600" y="585" text-anchor="middle" fill="#ddd6fe" font-size="30" font-family="Arial, sans-serif">A complete independent week 3 showcase</text>
+</svg>

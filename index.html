@@ -278,6 +278,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 window.location.href = 'docs/week2/week2.html';
                 return;
             }
+            if (week === 3) {
+                window.location.href = 'docs/week3/week3.html';
+                return;
+            }
             weekBtns.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             currentWeek = week;
