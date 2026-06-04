@@ -84,18 +84,8 @@
                         <h5>1. WS2812灯环</h5>
                         <p>WS2812灯环是将多颗可寻址LED集成于一体的环形RGB灯板，每颗灯珠内置驱动芯片，仅需一根信号线即可独立控制每颗灯珠的任意颜色和亮度。使用时将VCC接5V、GND接地、DIN接Arduino的数字引脚，配合NeoPixel库即可轻松实现跑马灯、呼吸灯等炫彩效果。常用于指示灯、氛围灯、创意装饰及互动灯光项目中。</p>
 
-                        <div class="image-illustration">
-                            <img src="assets/arduino-connection.png" alt="Arduino连接示意图" onclick="openImageModal(this.src)">
-                            <p>图1：Arduino 与 WS2812、HS-S05B 连接示意图</p>
-                        </div>
-
                         <h5>2. HS-S05B超声波传感器</h5>
                         <p>HS-S05B超声波传感器通过发射40kHz超声波并检测回波来测量物体距离，非接触、精度高、成本低。使用时Trig引脚发送一个10μs高电平触发测量，Echo引脚输出高电平宽度对应距离值，通过Arduino的pulseIn()函数即可计算出距离（单位厘米）。常用于避障机器人、智能车位检测、倒车雷达及液位测量等场景。</p>
-
-                        <div class="image-illustration">
-                            <img src="assets/sensor-connection.png" alt="传感器连接实物图" onclick="openImageModal(this.src)">
-                            <p>图2：传感器与 Arduino 连接实物图</p>
-                        </div>
                     </div>
 
                     <div class="hardware-section">
@@ -103,13 +93,18 @@
                         <p>通过WS2812灯环实现炫彩灯光效果，配合超声波传感器测量距离实现互动灯光控制。装置可用于创意装饰、智能感应灯、互动展示等场景，根据距离变化动态调整灯光颜色和亮度。</p>
 
                         <div class="image-illustration">
+                            <img src="assets/sensor-connection.png" alt="传感器连接实物图" onclick="openImageModal(this.src)">
+                            <p>图1：传感器与 Arduino 连接实物图</p>
+                        </div>
+
+                        <div class="image-illustration">
                             <img src="assets/circuit-diagram.svg" alt="电路连接示意图" onclick="openImageModal(this.src)">
-                            <p>图3：完整电路连接示意图</p>
+                            <p>图2：完整电路连接示意图</p>
                         </div>
 
                         <div class="image-illustration">
                             <img src="assets/product-demo.svg" alt="成品展示图" onclick="openImageModal(this.src)">
-                            <p>图4：智能灯光装置成品展示</p>
+                            <p>图3：智能灯光装置成品展示</p>
                         </div>
                     </div>
                 </div>
@@ -129,12 +124,26 @@
                         <h4>📌 第二步：电路搭建</h4>
                         <p>按照电路图连接各模块：WS2812灯环的VCC接5V、GND接地、DIN接数字引脚D8；HS-S05B超声波传感器的VCC接5V、GND接地、Trig接D7、Echo接D6。</p>
                         <div class="image-illustration">
+                            <img src="assets/arduino-connection.png" alt="Arduino连接示意图" onclick="openImageModal(this.src)">
+                            <p>图1：Arduino 与 WS2812、HS-S05B 连接示意图</p>
+                        </div>
+                        <div class="image-illustration">
                             <img src="assets/circuit-build.svg" alt="电路搭建" onclick="openImageModal(this.src)">
+                            <p>图2：电路搭建实物图</p>
                         </div>
                     </div>
                     <div class="process-step">
                         <h4>📌 第三步：代码编写</h4>
-                        <p>编写 Arduino 代码实现：初始化 NeoPixel 库控制 WS2812 灯环；使用 pulseIn() 函数读取超声波传感器距离；根据距离值动态调整灯环颜色和亮度。</p>
+                        <p>编写 Arduino 代码实现：初始化 FastLED 库控制 WS2812 灯环；使用 pulseIn() 函数读取传感器信号；实现拍手开灯和吹气关灯的互动功能。</p>
+                        <p style="color: #ff6b6b; font-weight: bold; margin-top: 10px;">💡 AI 帮助编写代码</p>
+                        <div class="image-illustration">
+                            <img src="assets/code-part1.png" alt="代码第一部分" onclick="openImageModal(this.src)">
+                            <p>图1：Arduino 代码 - 硬件引脚定义和初始化部分</p>
+                        </div>
+                        <div class="image-illustration">
+                            <img src="assets/code-part2.png" alt="代码第二部分" onclick="openImageModal(this.src)">
+                            <p>图2：Arduino 代码 - 拍手检测和吹气检测逻辑</p>
+                        </div>
                     </div>
                     <div class="process-step">
                         <h4>📌 第四步：测试与调试</h4>
