@@ -291,12 +291,24 @@
             <!-- 压力传感器 最终成果 -->
             <div id="pressure-final" class="sensor-content">
                 <div class="content-section">
-                    <h3>🎯 压力传感器 - 最终成果展示</h3>
+                    <h3> 压力传感器 - 最终成果展示</h3>
                     <div class="hardware-section">
-                        <h4>🔧 压力传感器介绍</h4>
-                        <p>薄膜压力传感器内容待添加...</p>
+                        <h4>🔧 运用到的 Arduino 硬件分析</h4>
+
+                        <h5>3. SG90舵机</h5>
+                        <p>SG90是一款微型9g舵机，内部集成直流电机、减速齿轮组与位置反馈电路，通过接收PWM（脉冲宽度调制）信号来精确控制输出轴的角度位置。其旋转角度范围为0至180度，工作电压为3.5V至6V，通常推荐5V供电，最大输出扭矩约为1.2至1.6KG/cm。连线方法为：棕色（或黑色）线接GND、红色线接5V VCC、橙色（或黄色）信号线接Arduino的数字PWM引脚。在Arduino中只需引入Servo库，使用`attach()`函数绑定引脚，再用`write(angle)`函数即可让舵机旋转到0到180度之间的指定角度。SG90常用于机器人关节、云台摇头、简易机械臂及模型控制等需要精确定位的场景。</p>
+
                         <div class="image-illustration">
-                            <p style="color: #999; text-align: center; padding: 40px;">内容待补充</p>
+                            <img src="assets/servo-motor.png" alt="SG90舵机" onclick="openImageModal(this.src)">
+                            <p>图1：SG90舵机实物图</p>
+                        </div>
+
+                        <h5>4. 压力传感器FSR402</h5>
+                        <p>FSR402是一种圆形力敏电阻（Force Sensing Resistor），以超薄高分子薄膜作为敏感材料，当传感器表面受到压力时，内部电路导通面积增加，导致其电阻值随压力增大而减小。FSR402的有效感应直径为18.28mm，厚度仅约0.45mm，可检测约100g至10kg的压力范围，具有成本低、易安装、响应快（小于3ms）等优点。使用中需将FSR402和一个固定电阻（通常为10kΩ）串联构成分压电路，一端接5V，另一端接Arduino模拟输入引脚（如A0），Arduino通过读取模拟电压值来判断压力大小。该传感器适用于触摸检测、压力感知开关、交互装置及人体存在感应等无需精密标定的压力识别任务。</p>
+
+                        <div class="image-illustration">
+                            <img src="assets/pressure-sensor.png" alt="压力传感器FSR402" onclick="openImageModal(this.src)">
+                            <p>图2：压力传感器FSR402实物图</p>
                         </div>
                     </div>
                 </div>
@@ -317,10 +329,22 @@
                 <div class="content-section">
                     <h3>🎯 舵机 - 最终成果展示</h3>
                     <div class="hardware-section">
-                        <h4>🔧 舵机介绍</h4>
-                        <p>舵机内容待添加...</p>
+                        <h4>🔧 运用到的 Arduino 硬件分析</h4>
+
+                        <h5>3. SG90舵机</h5>
+                        <p>SG90是一款微型9g舵机，内部集成直流电机、减速齿轮组与位置反馈电路，通过接收PWM（脉冲宽度调制）信号来精确控制输出轴的角度位置。其旋转角度范围为0至180度，工作电压为3.5V至6V，通常推荐5V供电，最大输出扭矩约为1.2至1.6KG/cm。连线方法为：棕色（或黑色）线接GND、红色线接5V VCC、橙色（或黄色）信号线接Arduino的数字PWM引脚。在Arduino中只需引入Servo库，使用`attach()`函数绑定引脚，再用`write(angle)`函数即可让舵机旋转到0到180度之间的指定角度。SG90常用于机器人关节、云台摇头、简易机械臂及模型控制等需要精确定位的场景。</p>
+
                         <div class="image-illustration">
-                            <p style="color: #999; text-align: center; padding: 40px;">内容待补充</p>
+                            <img src="assets/servo-motor.png" alt="SG90舵机" onclick="openImageModal(this.src)">
+                            <p>图1：SG90舵机实物图</p>
+                        </div>
+
+                        <h5>4. 压力传感器FSR402</h5>
+                        <p>FSR402是一种圆形力敏电阻（Force Sensing Resistor），以超薄高分子薄膜作为敏感材料，当传感器表面受到压力时，内部电路导通面积增加，导致其电阻值随压力增大而减小。FSR402的有效感应直径为18.28mm，厚度仅约0.45mm，可检测约100g至10kg的压力范围，具有成本低、易安装、响应快（小于3ms）等优点。使用中需将FSR402和一个固定电阻（通常为10kΩ）串联构成分压电路，一端接5V，另一端接Arduino模拟输入引脚（如A0），Arduino通过读取模拟电压值来判断压力大小。该传感器适用于触摸检测、压力感知开关、交互装置及人体存在感应等无需精密标定的压力识别任务。</p>
+
+                        <div class="image-illustration">
+                            <img src="assets/pressure-sensor.png" alt="压力传感器FSR402" onclick="openImageModal(this.src)">
+                            <p>图2：压力传感器FSR402实物图</p>
                         </div>
                     </div>
                 </div>
