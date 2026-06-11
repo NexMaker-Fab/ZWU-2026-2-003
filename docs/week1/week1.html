@@ -43,8 +43,59 @@
                 <div class="title-divider"></div>
             </div>
 
+            <div class="homework-checklist">
+                <h3>✅ 作业清单</h3>
+                <ul class="checklist" id="checklist">
+                    <li class="checklist-item" data-task="1">
+                        <span class="check-icon"></span>
+                        <span class="task-text">收集网页参考示例</span>
+                    </li>
+                    <li class="checklist-item" data-task="2">
+                        <span class="check-icon"></span>
+                        <span class="task-text">在灵码中创建 zwu2026 文件夹，用于存放网页文件</span>
+                    </li>
+                    <li class="checklist-item" data-task="3">
+                        <span class="check-icon"></span>
+                        <span class="task-text">设计网页基本结构（导航栏、主页、子页面等）</span>
+                    </li>
+                    <li class="checklist-item" data-task="4">
+                        <span class="check-icon"></span>
+                        <span class="task-text">使用灵码 AI 指令生成网页代码及调整网页样式和功能</span>
+                    </li>
+                    <li class="checklist-item" data-task="5">
+                        <span class="check-icon"></span>
+                        <span class="task-text">保存最终网页文件并准备部署展示</span>
+                    </li>
+                </ul>
+            </div>
+
             <div class="content-section">
-                <p style="text-align: center; color: #999; padding: 40px;">Week 1 内容待添加...</p>
+                <h3>🌐 搭建网页过程及内容</h3>
+                
+                <div class="process-step">
+                    <h4>📌 第一步：收集网页参考示例</h4>
+                    <p>浏览优秀的网页设计案例，分析其布局、配色、交互等设计元素，为后续网页制作提供参考灵感。</p>
+                </div>
+
+                <div class="process-step">
+                    <h4>📁 第二步：创建项目文件夹</h4>
+                    <p>在灵码中创建 zwu2026 文件夹，建立清晰的目录结构，用于存放HTML、CSS、JavaScript及图片等资源文件。</p>
+                </div>
+
+                <div class="process-step">
+                    <h4>🏗️ 第三步：设计网页基本结构</h4>
+                    <p>规划网页的整体架构，包括顶部导航栏、主页内容区域、各个子页面（如作业页、项目页、团队介绍页等），确保页面之间能够顺畅跳转。</p>
+                </div>
+
+                <div class="process-step">
+                    <h4>💻 第四步：使用灵码 AI 生成代码</h4>
+                    <p>利用灵码 AI 助手编写网页代码，通过自然语言指令快速生成HTML结构、CSS样式和JavaScript交互功能，并根据需求进行调整和优化。</p>
+                </div>
+
+                <div class="process-step">
+                    <h4>🚀 第五步：保存与部署</h4>
+                    <p>完成网页开发后，保存所有文件，检查页面功能和样式是否正常，准备将网页部署到服务器进行在线展示。</p>
+                </div>
             </div>
         </section>
     </main>
@@ -53,7 +104,15 @@
 document.addEventListener('DOMContentLoaded', () => {
     const navItems = document.querySelectorAll('.nav-item');
     const weekBtns = document.querySelectorAll('.week-btn');
+    const checklist = document.querySelectorAll('.checklist-item');
     const goHome = document.getElementById('goHome');
+
+    // 作业清单点击事件
+    checklist.forEach((item) => {
+        item.addEventListener('click', () => {
+            item.classList.toggle('completed');
+        });
+    });
 
     if (goHome) {
         goHome.addEventListener('click', () => {
