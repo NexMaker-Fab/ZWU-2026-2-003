@@ -94,10 +94,10 @@
                 <div class="title-divider"></div>
             </div>
             <div class="project-grid">
-                <div class="project-card">
+                <div class="project-card" data-navigate-to="project">
                     <div class="project-image"></div>
-                    <h3>自然白噪音装置</h3>
-                    <p>基于 Arduino 的智能白噪音助眠装置，支持触摸切换场景、压力控制音量</p>
+                    <h3>点击查看项目内容</h3>
+                    <p>本项目内容已迁移至独立页面，点击进入 Week 2 项目展示。</p>
                 </div>
             </div>
         </section>
@@ -258,6 +258,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 window.location.href = 'docs/week1/week1.html';
                 return;
             }
+            if (page === 'project') {
+                window.location.href = 'docs/project/work.html';
+                return;
+            }
             navItems.forEach(i => i.classList.remove('active'));
             item.classList.add('active');
             pages.forEach(p => p.classList.remove('active'));
@@ -321,6 +325,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (targetPage) {
                 if (targetPage === 'homework') {
                     window.location.href = 'docs/week1/week1.html';
+                    return;
+                }
+                if (targetPage === 'project') {
+                    window.location.href = 'docs/project/work.html';
                     return;
                 }
                 navItems.forEach(i => i.classList.remove('active'));

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>项目展示 - ASD 多感官互动沙盘系统</title>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" id="goHome">课程系统</div>
+            <ul class="nav-menu">
+                <li class="nav-item" data-page="home">Home</li>
+                <li class="nav-item" data-page="homework">作业</li>
+                <li class="nav-item active" data-page="project">项目</li>
+                <li class="nav-item" data-page="team">团队介绍</li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <section class="page active">
+            <div class="sandbox-project" style="display:block;">
+                <div class="sandbox-hero">
+                    <div class="week-badge">项目展示</div>
+                    <h1>ASD 儿童多感官互动沙盘系统</h1>
+                    <p class="subtitle">Multisensory Interactive Sandbox for ASD Children · 面向 ASD 儿童的多感官互动项目</p>
+                    <div class="sandbox-keywords">
+                        <span class="kw-tag">多感官互动</span>
+                        <span class="kw-tag">情绪调节</span>
+                        <span class="kw-tag">沙盘治疗</span>
+                        <span class="kw-tag">感官反馈</span>
+                        <span class="kw-tag">低刺激体验</span>
+                        <span class="kw-tag">互动环境</span>
+                        <span class="kw-tag">情绪陪伴</span>
+                        <span class="kw-tag">沉浸式互动</span>
+                    </div>
+                </div>
+
+                <section class="sandbox-section">
+                    <h2><span class="sec-icon">💡</span> 项目概念</h2>
+                    <p>本项目面向自闭症谱系障碍（ASD）儿童，设计一个融合<strong>触觉、视觉、听觉、动态反馈与环境感知</strong>的多感官互动沙盘系统。儿童可以通过触摸、按压、移动沙子、停留手部等行为与沙盘产生互动，系统会实时感知动作变化，并通过灯光、声音、振动、动态画面等方式给予反馈，构建一个<strong>低刺激、可探索、具有安全感</strong>的沉浸式互动环境。</p>
+                    <div class="goal-grid">
+                        <div class="goal-card">
+                            <div class="goal-icon">🔍</div>
+                            <h4>感官探索</h4>
+                            <p>通过多感官通道进行自由的感官探索体验</p>
+                        </div>
+                        <div class="goal-card">
+                            <div class="goal-icon">🤗</div>
+                            <h4>情绪安全感</h4>
+                            <p>建立可预测、柔和的互动环境，增强安全感</p>
+                        </div>
+                        <div class="goal-card">
+                            <div class="goal-icon">🧠</div>
+                            <h4>提升专注力</h4>
+                            <p>以渐进式反馈引导儿童保持注意力集中</p>
+                        </div>
+                        <div class="goal-card">
+                            <div class="goal-icon">🌿</div>
+                            <h4>缓解焦虑</h4>
+                            <p>通过柔和感官反馈缓解焦虑与情绪紧张</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="sandbox-section">
+                    <h2><span class="sec-icon">🔄</span> 核心交互逻辑：动作 - 感知 - 情绪反馈</h2>
+                    <div class="interaction-flow">
+                        <div class="flow-step">
+                            <div class="step-icon">✋</div>
+                            <div class="step-title">动作</div>
+                            <div class="step-desc">抚摸 / 按压 / 划动 / 停留</div>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">
+                            <div class="step-icon">📡</div>
+                            <div class="step-title">感知</div>
+                            <div class="step-desc">多传感器实时采集</div>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">
+                            <div class="step-icon">💫</div>
+                            <div class="step-title">情绪反馈</div>
+                            <div class="step-desc">灯光 / 声音 / 振动 / 画面</div>
+                        </div>
+                    </div>
+                    <div class="flow-principle">
+                        <strong>设计原则：</strong>用户行为不会触发强刺激，而是形成 <strong>缓慢 → 柔和 → 可预测 → 渐进式</strong> 的感官反馈体验
+                    </div>
+                </section>
+
+                <section class="sandbox-section">
+                    <h2><span class="sec-icon">🏗️</span> 沙盘系统整体结构</h2>
+                    <div class="layer-grid">
+                        <div class="layer-card">
+                            <div class="layer-icon">🖐️</div>
+                            <h4>一、触觉层（Touch）</h4>
+                            <p>儿童通过抚摸沙子、按压沙面、划动沙子、长时间停留、双手互动等行为触发系统反馈。</p>
+                            <div class="layer-detail">
+                                <span>抚摸沙子</span><span>按压沙面</span><span>划动沙子</span><span>停留手部</span><span>双手互动</span>
+                            </div>
+                        </div>
+                        <div class="layer-card">
+                            <div class="layer-icon">✨</div>
+                            <h4>二、视觉层（Visual）</h4>
+                            <p>通过动态灯光与屏幕内容形成情绪氛围。包括呼吸灯、光波扩散、水波纹动画、粒子流动效果、情绪颜色变化、星空/海洋动态氛围。</p>
+                            <div class="layer-detail">
+                                <span>呼吸灯</span><span>光波扩散</span><span>水波纹</span><span>粒子流动</span><span>星空海洋</span>
+                            </div>
+                        </div>
+                        <div class="layer-card">
+                            <div class="layer-icon">🔊</div>
+                            <h4>三、听觉层（Audio）</h4>
+                            <p>根据不同动作触发海浪声、雨声、白噪音、森林环境音、风声、柔和钢琴音效。声音根据交互强度变化音量、节奏和层次，避免突然刺激。</p>
+                            <div class="layer-detail">
+                                <span>海浪声</span><span>雨声</span><span>白噪音</span><span>森林音</span><span>钢琴</span>
+                            </div>
+                        </div>
+                        <div class="layer-card">
+                            <div class="layer-icon">💓</div>
+                            <h4>四、触觉反馈层（Haptic）</h4>
+                            <p>通过振动模块模拟呼吸感、心跳感、情绪节奏、柔和震动安抚，增强身体层面的感官参与。</p>
+                            <div class="layer-detail">
+                                <span>呼吸感</span><span>心跳感</span><span>情绪节奏</span><span>震动安抚</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="sandbox-section">
+                    <h2><span class="sec-icon">📡</span> 传感器系统</h2>
+                    <div class="module-grid">
+                        <div class="module-card">
+                            <div class="mod-icon">⚖️</div>
+                            <div class="mod-info">
+                                <h4>FSR 压力传感器</h4>
+                                <div class="mod-type">力敏电阻 | 模拟信号</div>
+                                <p>检测沙子按压力度 → 不同力度触发不同颜色、波纹大小变化、动态光扩散</p>
+                            </div>
+                        </div>
+                        <div class="module-card">
+                            <div class="mod-icon">📏</div>
+                            <div class="mod-info">
+                                <h4>ToF 距离传感器（VL53L0X）</h4>
+                                <div class="mod-type">激光测距 | I²C</div>
+                                <p>检测手部距离与悬停动作 → 手靠近灯光亮起、悬停触发粒子动画、高度变化反馈</p>
+                            </div>
+                        </div>
+                        <div class="module-card">
+                            <div class="mod-icon">📐</div>
+                            <div class="mod-info">
+                                <h4>超声波传感器（HC-SR04）</h4>
+                                <div class="mod-type">超声波测距 | 数字信号</div>
+                                <p>检测大范围靠近行为 → 用户接近时进入互动状态，自动开启环境灯光与声音</p>
+                            </div>
+                        </div>
+                        <div class="module-card">
+                            <div class="mod-icon">👆</div>
+                            <div class="mod-info">
+                                <h4>电容触摸模块（TTP223）</h4>
+                                <div class="mod-type">触摸感应 | 数字输出</div>
+                                <p>检测轻触动作 → 轻触触发柔和反馈、长按进入"安抚模式"</p>
+                            </div>
+                        </div>
+                        <div class="module-card">
+                            <div class="mod-icon">🎤</div>
+                            <div class="mod-info">
+                                <h4>麦克风模块（声音传感器）</h4>
+                                <div class="mod-type">声音检测 | 模拟信号</div>
+                                <p>检测环境声音或儿童发声 → 声音大小影响灯光动态、互动式声音反馈</p>
+                            </div>
+                        </div>
+                        <div class="module-card">
+                            <div class="mod-icon">🌡️</div>
+                            <div class="mod-info">
+                                <h4>MLX90614 红外测温传感器</h4>
+                                <div class="mod-type">非接触测温 | I²C</div>
+                                <p>检测手部温度变化 → 关联情绪状态、自动调整灯光色调、"情绪感知"反馈</p>
+                            </div>
+                        </div>
+                        <div class="module-card">
+                            <div class="mod-icon">🌀</div>
+                            <div class="mod-info">
+                                <h4>MPU6050 姿态传感器（可选）</h4>
+                                <div class="mod-type">6轴陀螺仪+加速度计 | I²C</div>
+                                <p>检测沙盘晃动与整体动作 → 倾斜触发流动光效、动态环境变化</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="sandbox-section">
+                    <h2><span class="sec-icon">🎨</span> 输出模块设计</h2>
+                    <div class="module-grid">
+                        <div class="module-card">
+                            <div class="mod-icon">💡</div>
+                            <div class="mod-info">
+                                <h4>WS2812 RGB LED 灯带</h4>
+                                <div class="mod-type">可编程全彩LED</div>
+                                <p>情绪氛围光 · 波纹扩散 · 呼吸灯 · 动态渐变</p>
+                            </div>
+                        </div>
+                        <div class="module-card">
+                            <div class="mod-icon">🖥️</div>
+                            <div class="mod-info">
+                                <h4>OLED / TFT 屏幕</h4>
+                                <div class="mod-type">显示模块 | SPI/I²C</div>
+                                <p>动态自然场景 · 情绪图案 · 粒子动画 · 沉浸式视觉内容</p>
+                            </div>
+                        </div>
+                        <div class="module-card">
+                            <div class="mod-icon">🔈</div>
+                            <div class="mod-info">
+                                <h4>DFPlayer Mini + 喇叭</h4>
+                                <div class="mod-type">MP3播放模块 | UART</div>
+                                <p>环境音 · 白噪音 · 治愈音效 · 情绪反馈声音</p>
+                            </div>
+                        </div>
+                        <div class="module-card">
+                            <div class="mod-icon">📳</div>
+                            <div class="mod-info">
+                                <h4>振动马达</h4>
+                                <div class="mod-type">触觉反馈 | PWM</div>
+                                <p>柔和震动反馈 · 节奏安抚 · 情绪触觉反馈</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="sandbox-section">
+                    <h2><span class="sec-icon">🧪</span> 当前阶段 Arduino 基础实验</h2>
+                    <div class="experiment-card">
+                        <div class="exp-header">
+                            <div class="exp-num">1</div>
+                            <h4>实验一：距离感应呼吸灯</h4>
+                        </div>
+                        <p><strong>功能：</strong>用户靠近沙盘时 → 灯光逐渐亮起、声音缓慢出现；离开后缓慢熄灭。</p>
+                        <p style="margin-top:0.5rem;"><strong>测试目标：</strong>渐进式反馈 / 情绪安抚效果 / 距离感知交互</p>
+                    </div>
+                    <div class="experiment-card">
+                        <div class="exp-header">
+                            <div class="exp-num">2</div>
+                            <h4>实验二：压力感应情绪波纹系统</h4>
+                        </div>
+                        <p><strong>功能：</strong>通过按压沙子触发波纹灯效、环境音变化、触觉振动反馈。不同力度对应不同反馈：</p>
+                        <table class="interaction-table">
+                            <thead>
+                                <tr><th>动作</th><th>系统反馈</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>轻触</td><td>蓝色柔和波纹</td></tr>
+                                <tr><td>长按</td><td>呼吸灯扩散</td></tr>
+                                <tr><td>重压</td><td>暖色动态反馈</td></tr>
+                                <tr><td>停留</td><td>环境音渐强</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section class="sandbox-section">
+                    <h2><span class="sec-icon">🖼️</span> 项目图片记录</h2>
+                    <div class="image-grid">
+                        <div class="image-illustration">
+                            <img src="../week2/assets/1.png" alt="项目图片 1" onclick="openImageModal(this.src)">
+                            <p>图1：项目实验记录图</p>
+                        </div>
+                        <div class="image-illustration">
+                            <img src="../week2/assets/2.png" alt="项目图片 2" onclick="openImageModal(this.src)">
+                            <p>图2：项目实验记录图</p>
+                        </div>
+                        <div class="image-illustration">
+                            <img src="../week2/assets/3.png" alt="项目图片 3" onclick="openImageModal(this.src)">
+                            <p>图3：项目实验记录图</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="sandbox-section">
+                    <h2><span class="sec-icon">⭐</span> 项目创新点</h2>
+                    <ul class="innovation-list">
+                        <li><span class="inno-icon">🔗</span> 将"沙盘治疗"与"多感官互动"结合，开创ASD辅助治疗新范式</li>
+                        <li><span class="inno-icon">🌊</span> 强调低刺激与可预测反馈，专为ASD儿童感官特点设计</li>
+                        <li><span class="inno-icon">🧬</span> 利用多种传感器构建情绪感知系统，实现多维度交互</li>
+                        <li><span class="inno-icon">🏠</span> 构建沉浸式动态情绪空间，不强调任务与竞争，更关注情绪陪伴</li>
+                    </ul>
+                </section>
+
+                <section class="sandbox-section">
+                    <h2><span class="sec-icon">📋</span> 当前阶段总结</h2>
+                    <div class="stage-summary">
+                        <div class="stage-done">
+                            <h4>✅ 已完成</h4>
+                            <ul>
+                                <li>沙盘互动方向确定</li>
+                                <li>多感官系统框架建立</li>
+                                <li>主要输入输出模块筛选</li>
+                                <li>Arduino 基础交互实验规划</li>
+                                <li>情绪反馈逻辑初步设计</li>
+                            </ul>
+                        </div>
+                        <div class="stage-next">
+                            <h4>🔜 下一阶段计划</h4>
+                            <ul>
+                                <li>完善动态视觉系统</li>
+                                <li>优化声音反馈逻辑</li>
+                                <li>研究 ASD 用户交互体验</li>
+                                <li>搭建沙盘原型结构</li>
+                                <li>测试多传感器联动效果</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal image-modal" id="imageModal">
+        <div class="image-modal-content">
+            <span class="modal-close" id="modalClose">&times;</span>
+            <img src="" alt="放大预览" id="modalImage">
+        </div>
+    </div>
+
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const navItems = document.querySelectorAll('.nav-item');
+    const imageModal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalClose = document.getElementById('modalClose');
+    const goHome = document.getElementById('goHome');
+
+    window.openImageModal = function(src) {
+        modalImage.src = src;
+        imageModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    };
+
+    function closeImageModal() {
+        imageModal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    if (modalClose) modalClose.addEventListener('click', closeImageModal);
+    if (imageModal) {
+        imageModal.addEventListener('click', (event) => {
+            if (event.target === imageModal) {
+                closeImageModal();
+            }
+        });
+    }
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && imageModal.classList.contains('active')) {
+            closeImageModal();
+        }
+    });
+
+    if (goHome) {
+        goHome.addEventListener('click', () => {
+            window.location.href = '../../index.html';
+        });
+    }
+
+    navItems.forEach((item) => {
+        item.addEventListener('click', () => {
+            const page = item.dataset.page;
+            if (page === 'home') {
+                window.location.href = '../../index.html';
+                return;
+            }
+            if (page === 'homework') {
+                window.location.href = '../week1/week1.html';
+                return;
+            }
+            if (page === 'project') {
+                window.location.href = 'work.html';
+                return;
+            }
+            if (page === 'team') {
+                window.location.href = '../../index.html';
+            }
+        });
+    });
+});
+    </script>
+</body>
+</html>

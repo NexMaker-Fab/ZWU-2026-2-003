@@ -457,6 +457,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!page || page === 'homework') {
                 return;
             }
+            if (page === 'project') {
+                window.location.href = 'week2.html';
+                return;
+            }
             window.location.href = '../../index.html';
         });
     });
