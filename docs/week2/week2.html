@@ -3,8 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Week 2 - ASD 多感官互动沙盘系统</title>
+    <title>Week 2 - Arduino 硬件分析与智能灯光控制</title>
     <link rel="stylesheet" href="../../style.css">
+    <style>
+        /* 传感器导航栏样式 */
+        .sensor-nav-container {
+            display: flex;
+            gap: 20px;
+            margin: 30px 0;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .sensor-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* 添加一个透明的连接区域，防止鼠标移动时失去hover */
+        .sensor-dropdown::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            height: 10px;
+            display: none;
+        }
+
+        .sensor-dropdown:hover::after {
+            display: block;
+        }
+
+        .sensor-btn {
+            background: linear-gradient(135deg, #5B7C99 0%, #4A6B8A 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .sensor-btn:hover,
+        .sensor-btn.active {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(135deg, #4A6B8A 0%, #3D5A73 100%);
+        }
+
+        .sensor-submenu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: 0;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            z-index: 100;
+            min-width: 150px;
+        }
+
+        .sensor-dropdown:hover .sensor-submenu {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+
+        .submenu-btn {
+            display: block;
+            width: 100%;
+            background: white;
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #333;
+            transition: all 0.2s ease;
+            text-align: center;
+        }
+
+        .submenu-btn:hover {
+            background: #f0f0f0;
+        }
+
+        .submenu-btn.active {
+            background: #5B7C99;
+            color: white;
+        }
+
+        /* 内容区域样式 */
+        .sensor-content {
+            display: none;
+        }
+
+        .sensor-content.active {
+            display: block;
+        }
+
+        .content-section {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -39,300 +158,194 @@
         <section class="page active">
             <div class="homework-header">
                 <div class="week-badge">Week 2</div>
-                <h1 class="week-title">ASD 多感官互动沙盘系统</h1>
+                <h1 class="week-title">Arduino 硬件分析与智能灯光控制</h1>
                 <div class="title-divider"></div>
             </div>
 
-            <div class="sandbox-project" style="display:block;">
-                <div class="sandbox-hero">
-                    <h1>ASD 儿童多感官互动沙盘系统</h1>
-                    <p class="subtitle">Multisensory Interactive Sandbox for ASD Children</p>
-                    <div class="sandbox-keywords">
-                        <span class="kw-tag">多感官互动</span>
-                        <span class="kw-tag">情绪调节</span>
-                        <span class="kw-tag">沙盘治疗</span>
-                        <span class="kw-tag">感官反馈</span>
-                        <span class="kw-tag">低刺激体验</span>
-                        <span class="kw-tag">互动环境</span>
-                        <span class="kw-tag">情绪陪伴</span>
-                        <span class="kw-tag">沉浸式互动</span>
+            <div class="homework-checklist">
+                <h3>✅ 作业清单</h3>
+                <ul class="checklist" id="checklist">
+                    <li class="checklist-item" data-task="1">
+                        <span class="check-icon"></span>
+                        <span class="task-text">硬件选型与采购（WS2812灯环、HS-S05B超声波传感器、Arduino 板）</span>
+                    </li>
+                    <li class="checklist-item" data-task="2">
+                        <span class="check-icon"></span>
+                        <span class="task-text">电路连接与调试</span>
+                    </li>
+                    <li class="checklist-item" data-task="3">
+                        <span class="check-icon"></span>
+                        <span class="task-text">Arduino 代码编写（传感器数据读取）</span>
+                    </li>
+                    <li class="checklist-item" data-task="4">
+                        <span class="check-icon"></span>
+                        <span class="task-text">灯效控制与距离测量功能测试</span>
+                    </li>
+                    <li class="checklist-item" data-task="5">
+                        <span class="check-icon"></span>
+                        <span class="task-text">整体封装与展示视频拍摄</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 传感器导航栏 -->
+            <div class="sensor-nav-container">
+                <div class="sensor-dropdown">
+                    <button class="sensor-btn active" data-sensor="ws2812">WS2812和HS-S05B</button>
+                    <div class="sensor-submenu">
+                        <button class="submenu-btn active" data-view="ws2812-final">最终成果</button>
+                        <button class="submenu-btn" data-view="ws2812-process">制作过程</button>
                     </div>
                 </div>
+                <div class="sensor-dropdown">
+                    <button class="sensor-btn" data-sensor="pressure">压力传感器</button>
+                    <div class="sensor-submenu">
+                        <button class="submenu-btn" data-view="pressure-final">最终成果</button>
+                        <button class="submenu-btn" data-view="pressure-process">制作过程</button>
+                    </div>
+                </div>
+                <div class="sensor-dropdown">
+                    <button class="sensor-btn" data-sensor="servo">舵机</button>
+                    <div class="sensor-submenu">
+                        <button class="submenu-btn" data-view="servo-final">最终成果</button>
+                        <button class="submenu-btn" data-view="servo-process">制作过程</button>
+                    </div>
+                </div>
+            </div>
 
-                <section class="sandbox-section">
-                    <h2><span class="sec-icon">💡</span> 项目概念</h2>
-                    <p>本项目面向自闭症谱系障碍（ASD）儿童，设计一个融合<strong>触觉、视觉、听觉、动态反馈与环境感知</strong>的多感官互动沙盘系统。儿童可以通过触摸、按压、移动沙子、停留手部等行为与沙盘产生互动，系统会实时感知动作变化，并通过灯光、声音、振动、动态画面等方式给予反馈，构建一个<strong>低刺激、可探索、具有安全感</strong>的沉浸式互动环境。</p>
-                    <div class="goal-grid">
-                        <div class="goal-card">
-                            <div class="goal-icon">🔍</div>
-                            <h4>感官探索</h4>
-                            <p>通过多感官通道进行自由的感官探索体验</p>
-                        </div>
-                        <div class="goal-card">
-                            <div class="goal-icon">🤗</div>
-                            <h4>情绪安全感</h4>
-                            <p>建立可预测、柔和的互动环境，增强安全感</p>
-                        </div>
-                        <div class="goal-card">
-                            <div class="goal-icon">🧠</div>
-                            <h4>提升专注力</h4>
-                            <p>以渐进式反馈引导儿童保持注意力集中</p>
-                        </div>
-                        <div class="goal-card">
-                            <div class="goal-icon">🌿</div>
-                            <h4>缓解焦虑</h4>
-                            <p>通过柔和感官反馈缓解焦虑与情绪紧张</p>
-                        </div>
-                    </div>
-                </section>
+            <!-- WS2812和HS-S05B 最终成果 -->
+            <div id="ws2812-final" class="sensor-content active">
+                <div class="content-section">
+                    <h3>🎯 WS2812和HS-S05B - 最终成果展示</h3>
 
-                <section class="sandbox-section">
-                    <h2><span class="sec-icon">🔄</span> 核心交互逻辑："动作 - 感知 - 情绪反馈"</h2>
-                    <div class="interaction-flow">
-                        <div class="flow-step">
-                            <div class="step-icon">✋</div>
-                            <div class="step-title">动作</div>
-                            <div class="step-desc">抚摸 / 按压 / 划动 / 停留</div>
-                        </div>
-                        <div class="flow-arrow">→</div>
-                        <div class="flow-step">
-                            <div class="step-icon">📡</div>
-                            <div class="step-title">感知</div>
-                            <div class="step-desc">多传感器实时采集</div>
-                        </div>
-                        <div class="flow-arrow">→</div>
-                        <div class="flow-step">
-                            <div class="step-icon">💫</div>
-                            <div class="step-title">情绪反馈</div>
-                            <div class="step-desc">灯光 / 声音 / 振动 / 画面</div>
-                        </div>
-                    </div>
-                    <div class="flow-principle">
-                        <strong>设计原则：</strong>用户行为不会触发强刺激，而是形成 <strong>缓慢 → 柔和 → 可预测 → 渐进式</strong> 的感官反馈体验
-                    </div>
-                </section>
+                    <div class="hardware-section">
+                        <h4>🔧 运用到的 Arduino 硬件分析</h4>
 
-                <section class="sandbox-section">
-                    <h2><span class="sec-icon">🏗️</span> 沙盘系统整体结构</h2>
-                    <div class="layer-grid">
-                        <div class="layer-card">
-                            <div class="layer-icon">🖐️</div>
-                            <h4>一、触觉层（Touch）</h4>
-                            <p>儿童通过抚摸沙子、按压沙面、划动沙子、长时间停留、双手互动等行为触发系统反馈。</p>
-                            <div class="layer-detail">
-                                <span>抚摸沙子</span><span>按压沙面</span><span>划动沙子</span><span>停留手部</span><span>双手互动</span>
-                            </div>
-                        </div>
-                        <div class="layer-card">
-                            <div class="layer-icon">✨</div>
-                            <h4>二、视觉层（Visual）</h4>
-                            <p>通过动态灯光与屏幕内容形成情绪氛围。包括呼吸灯、光波扩散、水波纹动画、粒子流动效果、情绪颜色变化、星空/海洋动态氛围。</p>
-                            <div class="layer-detail">
-                                <span>呼吸灯</span><span>光波扩散</span><span>水波纹</span><span>粒子流动</span><span>星空海洋</span>
-                            </div>
-                        </div>
-                        <div class="layer-card">
-                            <div class="layer-icon">🔊</div>
-                            <h4>三、听觉层（Audio）</h4>
-                            <p>根据不同动作触发海浪声、雨声、白噪音、森林环境音、风声、柔和钢琴音效。声音根据交互强度变化音量、节奏和层次，避免突然刺激。</p>
-                            <div class="layer-detail">
-                                <span>海浪声</span><span>雨声</span><span>白噪音</span><span>森林音</span><span>钢琴</span>
-                            </div>
-                        </div>
-                        <div class="layer-card">
-                            <div class="layer-icon">💓</div>
-                            <h4>四、触觉反馈层（Haptic）</h4>
-                            <p>通过振动模块模拟呼吸感、心跳感、情绪节奏、柔和震动安抚，增强身体层面的感官参与。</p>
-                            <div class="layer-detail">
-                                <span>呼吸感</span><span>心跳感</span><span>情绪节奏</span><span>震动安抚</span>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                        <h5>1. WS2812灯环</h5>
+                        <p>WS2812灯环是将多颗可寻址LED集成于一体的环形RGB灯板，每颗灯珠内置驱动芯片，仅需一根信号线即可独立控制每颗灯珠的任意颜色和亮度。使用时将VCC接5V、GND接地、DIN接Arduino的数字引脚，配合NeoPixel库即可轻松实现跑马灯、呼吸灯等炫彩效果。常用于指示灯、氛围灯、创意装饰及互动灯光项目中。</p>
 
-                <section class="sandbox-section">
-                    <h2><span class="sec-icon">📡</span> 传感器系统</h2>
-                    <div class="module-grid">
-                        <div class="module-card">
-                            <div class="mod-icon">⚖️</div>
-                            <div class="mod-info">
-                                <h4>FSR 压力传感器</h4>
-                                <div class="mod-type">力敏电阻 | 模拟信号</div>
-                                <p>检测沙子按压力度 → 不同力度触发不同颜色、波纹大小变化、动态光扩散</p>
-                            </div>
-                        </div>
-                        <div class="module-card">
-                            <div class="mod-icon">📏</div>
-                            <div class="mod-info">
-                                <h4>ToF 距离传感器（VL53L0X）</h4>
-                                <div class="mod-type">激光测距 | I²C</div>
-                                <p>检测手部距离与悬停动作 → 手靠近灯光亮起、悬停触发粒子动画、高度变化反馈</p>
-                            </div>
-                        </div>
-                        <div class="module-card">
-                            <div class="mod-icon">📐</div>
-                            <div class="mod-info">
-                                <h4>超声波传感器（HC-SR04）</h4>
-                                <div class="mod-type">超声波测距 | 数字信号</div>
-                                <p>检测大范围靠近行为 → 用户接近时进入互动状态，自动开启环境灯光与声音</p>
-                            </div>
-                        </div>
-                        <div class="module-card">
-                            <div class="mod-icon">👆</div>
-                            <div class="mod-info">
-                                <h4>电容触摸模块（TTP223）</h4>
-                                <div class="mod-type">触摸感应 | 数字输出</div>
-                                <p>检测轻触动作 → 轻触触发柔和反馈、长按进入"安抚模式"</p>
-                            </div>
-                        </div>
-                        <div class="module-card">
-                            <div class="mod-icon">🎤</div>
-                            <div class="mod-info">
-                                <h4>麦克风模块（声音传感器）</h4>
-                                <div class="mod-type">声音检测 | 模拟信号</div>
-                                <p>检测环境声音或儿童发声 → 声音大小影响灯光动态、互动式声音反馈</p>
-                            </div>
-                        </div>
-                        <div class="module-card">
-                            <div class="mod-icon">🌡️</div>
-                            <div class="mod-info">
-                                <h4>MLX90614 红外测温传感器</h4>
-                                <div class="mod-type">非接触测温 | I²C</div>
-                                <p>检测手部温度变化 → 关联情绪状态、自动调整灯光色调、"情绪感知"反馈</p>
-                            </div>
-                        </div>
-                        <div class="module-card">
-                            <div class="mod-icon">🌀</div>
-                            <div class="mod-info">
-                                <h4>MPU6050 姿态传感器（可选）</h4>
-                                <div class="mod-type">6轴陀螺仪+加速度计 | I²C</div>
-                                <p>检测沙盘晃动与整体动作 → 倾斜触发流动光效、动态环境变化</p>
-                            </div>
-                        </div>
+                        <h5>2. HS-S05B超声波传感器</h5>
+                        <p>HS-S05B超声波传感器通过发射40kHz超声波并检测回波来测量物体距离，非接触、精度高、成本低。使用时Trig引脚发送一个10μs高电平触发测量，Echo引脚输出高电平宽度对应距离值，通过Arduino的pulseIn()函数即可计算出距离（单位厘米）。常用于避障机器人、智能车位检测、倒车雷达及液位测量等场景。</p>
                     </div>
-                </section>
 
-                <section class="sandbox-section">
-                    <h2><span class="sec-icon">🎨</span> 输出模块设计</h2>
-                    <div class="module-grid">
-                        <div class="module-card">
-                            <div class="mod-icon">💡</div>
-                            <div class="mod-info">
-                                <h4>WS2812 RGB LED 灯带</h4>
-                                <div class="mod-type">可编程全彩LED</div>
-                                <p>情绪氛围光 · 波纹扩散 · 呼吸灯 · 动态渐变</p>
-                            </div>
-                        </div>
-                        <div class="module-card">
-                            <div class="mod-icon">🖥️</div>
-                            <div class="mod-info">
-                                <h4>OLED / TFT 屏幕</h4>
-                                <div class="mod-type">显示模块 | SPI/I²C</div>
-                                <p>动态自然场景 · 情绪图案 · 粒子动画 · 沉浸式视觉内容</p>
-                            </div>
-                        </div>
-                        <div class="module-card">
-                            <div class="mod-icon">🔈</div>
-                            <div class="mod-info">
-                                <h4>DFPlayer Mini + 喇叭</h4>
-                                <div class="mod-type">MP3播放模块 | UART</div>
-                                <p>环境音 · 白噪音 · 治愈音效 · 情绪反馈声音</p>
-                            </div>
-                        </div>
-                        <div class="module-card">
-                            <div class="mod-icon">📳</div>
-                            <div class="mod-info">
-                                <h4>振动马达</h4>
-                                <div class="mod-type">触觉反馈 | PWM</div>
-                                <p>柔和震动反馈 · 节奏安抚 · 情绪触觉反馈</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                    <div class="hardware-section">
+                        <h4> 应用场景展示</h4>
+                        <p>通过WS2812灯环实现炫彩灯光效果，配合超声波传感器测量距离实现互动灯光控制。装置可用于创意装饰、智能感应灯、互动展示等场景，根据距离变化动态调整灯光颜色和亮度。</p>
 
-                <section class="sandbox-section">
-                    <h2><span class="sec-icon">🧪</span> 当前阶段 Arduino 基础实验</h2>
-                    <div class="experiment-card">
-                        <div class="exp-header">
-                            <div class="exp-num">1</div>
-                            <h4>实验一：距离感应呼吸灯</h4>
-                        </div>
-                        <p><strong>功能：</strong>用户靠近沙盘时 → 灯光逐渐亮起、声音缓慢出现；离开后缓慢熄灭。</p>
-                        <p style="margin-top:0.5rem;"><strong>测试目标：</strong>渐进式反馈 / 情绪安抚效果 / 距离感知交互</p>
-                    </div>
-                    <div class="experiment-card">
-                        <div class="exp-header">
-                            <div class="exp-num">2</div>
-                            <h4>实验二：压力感应情绪波纹系统</h4>
-                        </div>
-                        <p><strong>功能：</strong>通过按压沙子触发波纹灯效、环境音变化、触觉振动反馈。不同力度对应不同反馈：</p>
-                        <table class="interaction-table">
-                            <thead>
-                                <tr><th>动作</th><th>系统反馈</th></tr>
-                            </thead>
-                            <tbody>
-                                <tr><td>轻触</td><td>蓝色柔和波纹</td></tr>
-                                <tr><td>长按</td><td>呼吸灯扩散</td></tr>
-                                <tr><td>重压</td><td>暖色动态反馈</td></tr>
-                                <tr><td>停留</td><td>环境音渐强</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-
-                <section class="sandbox-section">
-                    <h2><span class="sec-icon">🖼️</span> Week 2 图片记录</h2>
-                    <div class="image-grid">
                         <div class="image-illustration">
-                            <img src="assets/1.png" alt="Week 2 图片 1" onclick="openImageModal(this.src)">
-                            <p>图1：Week 2 实验记录图</p>
+                            <img src="assets/sensor-connection.png" alt="传感器连接实物图" onclick="openImageModal(this.src)">
+                            <p>图1：传感器与 Arduino 连接实物图</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- WS2812和HS-S05B 制作过程 -->
+            <div id="ws2812-process" class="sensor-content">
+                <div class="content-section">
+                    <h3> WS2812和HS-S05B - 制作过程记录</h3>
+                    <div class="process-step">
+                        <h4>📌 第一步：硬件准备</h4>
+                        <p>采购 Arduino Uno 开发板、WS2812灯环、HS-S05B超声波传感器、面包板及杜邦线若干。</p>
+                    </div>
+                    <div class="process-step">
+                        <h4> 第二步：电路搭建</h4>
+                        <p>按照电路图连接各模块：WS2812灯环的VCC接5V、GND接地、DIN接数字引脚D8；HS-S05B超声波传感器的VCC接5V、GND接地、Trig接D7、Echo接D6。</p>
+                        <div class="image-illustration">
+                            <img src="assets/arduino-connection.png" alt="Arduino连接示意图" onclick="openImageModal(this.src)">
+                            <p>图1：Arduino 与 WS2812、HS-S05B 连接示意图</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <h4>📌 第三步：代码编写</h4>
+                        <p>编写 Arduino 代码实现：初始化 FastLED 库控制 WS2812 灯环；使用 pulseIn() 函数读取传感器信号；实现拍手开灯和吹气关灯的互动功能。</p>
+                        <p style="color: #ff6b6b; font-weight: bold; margin-top: 10px;">💡 AI 帮助编写代码</p>
+                        <div class="image-illustration">
+                            <img src="assets/code-part1.png" alt="代码第一部分" onclick="openImageModal(this.src)">
+                            <p>图1：Arduino 代码 - 硬件引脚定义和初始化部分</p>
                         </div>
                         <div class="image-illustration">
-                            <img src="assets/2.png" alt="Week 2 图片 2" onclick="openImageModal(this.src)">
-                            <p>图2：Week 2 实验记录图</p>
+                            <img src="assets/code-part2.png" alt="代码第二部分" onclick="openImageModal(this.src)">
+                            <p>图2：Arduino 代码 - 拍手检测和吹气检测逻辑</p>
                         </div>
+                    </div>
+                    <div class="process-step">
+                        <h4> 第四步：测试与调试</h4>
+                        <p>逐个测试各传感器功能，调整超声波传感器的测量精度，确保灯效响应及时。遇到问题：超声波测量不稳定，通过多次测量取平均值解决。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 压力传感器 最终成果 -->
+            <div id="pressure-final" class="sensor-content">
+                <div class="content-section">
+                    <h3>🎯 压力传感器 - 最终成果展示</h3>
+                    <div class="hardware-section">
+                        <h4>🔧 运用到的 Arduino 硬件分析</h4>
+
+                        <h5>3. SG90舵机</h5>
+                        <p>SG90是一款微型9g舵机，内部集成直流电机、减速齿轮组与位置反馈电路，通过接收PWM（脉冲宽度调制）信号来精确控制输出轴的角度位置。其旋转角度范围为0至180度，工作电压为3.5V至6V，通常推荐5V供电，最大输出扭矩约为1.2至1.6KG/cm。连线方法为：棕色（或黑色）线接GND、红色线接5V VCC、橙色（或黄色）信号线接Arduino的数字PWM引脚。在Arduino中只需引入Servo库，使用`attach()`函数绑定引脚，再用`write(angle)`函数即可让舵机旋转到0到180度之间的指定角度。SG90常用于机器人关节、云台摇头、简易机械臂及模型控制等需要精确定位的场景。</p>
+
                         <div class="image-illustration">
-                            <img src="assets/3.png" alt="Week 2 图片 3" onclick="openImageModal(this.src)">
-                            <p>图3：Week 2 实验记录图</p>
+                            <img src="assets/servo-motor.png" alt="SG90舵机" onclick="openImageModal(this.src)">
+                            <p>图1：SG90舵机实物图</p>
+                        </div>
+
+                        <h5>4. 压力传感器FSR402</h5>
+                        <p>FSR402是一种圆形力敏电阻（Force Sensing Resistor），以超薄高分子薄膜作为敏感材料，当传感器表面受到压力时，内部电路导通面积增加，导致其电阻值随压力增大而减小。FSR402的有效感应直径为18.28mm，厚度仅约0.45mm，可检测约100g至10kg的压力范围，具有成本低、易安装、响应快（小于3ms）等优点。使用中需将FSR402和一个固定电阻（通常为10kΩ）串联构成分压电路，一端接5V，另一端接Arduino模拟输入引脚（如A0），Arduino通过读取模拟电压值来判断压力大小。该传感器适用于触摸检测、压力感知开关、交互装置及人体存在感应等无需精密标定的压力识别任务。</p>
+
+                        <div class="image-illustration">
+                            <img src="assets/pressure-sensor.png" alt="压力传感器FSR402" onclick="openImageModal(this.src)">
+                            <p>图2：压力传感器FSR402实物图</p>
                         </div>
                     </div>
-                </section>
+                </div>
+            </div>
 
-                <section class="sandbox-section">
-                    <h2><span class="sec-icon">⭐</span> 项目创新点</h2>
-                    <ul class="innovation-list">
-                        <li><span class="inno-icon">🔗</span> 将"沙盘治疗"与"多感官互动"结合，开创ASD辅助治疗新范式</li>
-                        <li><span class="inno-icon">🌊</span> 强调低刺激与可预测反馈，专为ASD儿童感官特点设计</li>
-                        <li><span class="inno-icon">🧬</span> 利用多种传感器构建情绪感知系统，实现多维度交互</li>
-                        <li><span class="inno-icon">🏠</span> 构建沉浸式动态情绪空间，不强调任务与竞争，更关注情绪陪伴</li>
-                    </ul>
-                </section>
+            <!-- 压力传感器 制作过程 -->
+            <div id="pressure-process" class="sensor-content">
+                <div class="content-section">
+                    <h3>🔨 压力传感器 - 制作过程记录</h3>
+                    <div class="process-step">
+                        <p style="color: #999; text-align: center; padding: 40px;">内容待补充</p>
+                    </div>
+                </div>
+            </div>
 
-                <section class="sandbox-section">
-                    <h2><span class="sec-icon">📋</span> 当前阶段总结</h2>
-                    <div class="stage-summary">
-                        <div class="stage-done">
-                            <h4>✅ 已完成</h4>
-                            <ul>
-                                <li>沙盘互动方向确定</li>
-                                <li>多感官系统框架建立</li>
-                                <li>主要输入输出模块筛选</li>
-                                <li>Arduino 基础交互实验规划</li>
-                                <li>情绪反馈逻辑初步设计</li>
-                            </ul>
+            <!-- 舵机 最终成果 -->
+            <div id="servo-final" class="sensor-content">
+                <div class="content-section">
+                    <h3>🎯 舵机 - 最终成果展示</h3>
+                    <div class="hardware-section">
+                        <h4>🔧 运用到的 Arduino 硬件分析</h4>
+
+                        <h5>3. SG90舵机</h5>
+                        <p>SG90是一款微型9g舵机，内部集成直流电机、减速齿轮组与位置反馈电路，通过接收PWM（脉冲宽度调制）信号来精确控制输出轴的角度位置。其旋转角度范围为0至180度，工作电压为3.5V至6V，通常推荐5V供电，最大输出扭矩约为1.2至1.6KG/cm。连线方法为：棕色（或黑色）线接GND、红色线接5V VCC、橙色（或黄色）信号线接Arduino的数字PWM引脚。在Arduino中只需引入Servo库，使用`attach()`函数绑定引脚，再用`write(angle)`函数即可让舵机旋转到0到180度之间的指定角度。SG90常用于机器人关节、云台摇头、简易机械臂及模型控制等需要精确定位的场景。</p>
+
+                        <div class="image-illustration">
+                            <img src="assets/servo-motor.png" alt="SG90舵机" onclick="openImageModal(this.src)">
+                            <p>图1：SG90舵机实物图</p>
                         </div>
-                        <div class="stage-next">
-                            <h4>🔜 下一阶段计划</h4>
-                            <ul>
-                                <li>完善动态视觉系统</li>
-                                <li>优化声音反馈逻辑</li>
-                                <li>研究 ASD 用户交互体验</li>
-                                <li>搭建沙盘原型结构</li>
-                                <li>测试多传感器联动效果</li>
-                            </ul>
+
+                        <h5>4. 压力传感器FSR402</h5>
+                        <p>FSR402是一种圆形力敏电阻（Force Sensing Resistor），以超薄高分子薄膜作为敏感材料，当传感器表面受到压力时，内部电路导通面积增加，导致其电阻值随压力增大而减小。FSR402的有效感应直径为18.28mm，厚度仅约0.45mm，可检测约100g至10kg的压力范围，具有成本低、易安装、响应快（小于3ms）等优点。使用中需将FSR402和一个固定电阻（通常为10kΩ）串联构成分压电路，一端接5V，另一端接Arduino模拟输入引脚（如A0），Arduino通过读取模拟电压值来判断压力大小。该传感器适用于触摸检测、压力感知开关、交互装置及人体存在感应等无需精密标定的压力识别任务。</p>
+
+                        <div class="image-illustration">
+                            <img src="assets/pressure-sensor.png" alt="压力传感器FSR402" onclick="openImageModal(this.src)">
+                            <p>图2：压力传感器FSR402实物图</p>
                         </div>
                     </div>
-                </section>
+                </div>
+            </div>
+
+            <!-- 舵机 制作过程 -->
+            <div id="servo-process" class="sensor-content">
+                <div class="content-section">
+                    <h3>🔨 舵机 - 制作过程记录</h3>
+                    <div class="process-step">
+                        <p style="color: #999; text-align: center; padding: 40px;">内容待补充</p>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -348,10 +361,51 @@
 document.addEventListener('DOMContentLoaded', () => {
     const navItems = document.querySelectorAll('.nav-item');
     const weekBtns = document.querySelectorAll('.week-btn');
+    const checklist = document.querySelectorAll('.checklist-item');
     const imageModal = document.getElementById('imageModal');
     const modalImage = document.getElementById('modalImage');
     const modalClose = document.getElementById('modalClose');
     const goHome = document.getElementById('goHome');
+    const sensorBtns = document.querySelectorAll('.sensor-btn');
+    const submenuBtns = document.querySelectorAll('.submenu-btn');
+    const sensorContents = document.querySelectorAll('.sensor-content');
+
+    // 传感器按钮点击事件
+    sensorBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+            // 移除所有active类
+            sensorBtns.forEach(b => b.classList.remove('active'));
+            // 添加active类到当前按钮
+            btn.classList.add('active');
+        });
+    });
+
+    // 子菜单按钮点击事件
+    submenuBtns.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const viewId = btn.dataset.view;
+            
+            // 移除所有submenu-btn的active类
+            submenuBtns.forEach(b => b.classList.remove('active'));
+            // 添加active类到当前按钮
+            btn.classList.add('active');
+            
+            // 隐藏所有内容
+            sensorContents.forEach(content => content.classList.remove('active'));
+            // 显示对应内容
+            const targetContent = document.getElementById(viewId);
+            if (targetContent) {
+                targetContent.classList.add('active');
+            }
+        });
+    });
+
+    checklist.forEach((item) => {
+        item.addEventListener('click', () => {
+            item.classList.toggle('completed');
+        });
+    });
 
     window.openImageModal = function(src) {
         modalImage.src = src;
