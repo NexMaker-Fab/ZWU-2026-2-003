@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 4 - 3D 打印练习</title>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" id="goHome">课程系统</div>
+            <ul class="nav-menu">
+                <li class="nav-item" data-page="home">Home</li>
+                <li class="nav-item has-dropdown active" data-page="homework">
+                    <span>作业</span>
+                    <div class="dropdown">
+                        <div class="dropdown-weeks">
+                            <button class="week-btn" data-week="1">Week 1</button>
+                            <button class="week-btn" data-week="2">Week 2</button>
+                            <button class="week-btn" data-week="3">Week 3</button>
+                            <button class="week-btn active" data-week="4">Week 4</button>
+                            <button class="week-btn" data-week="5">Week 5</button>
+                            <button class="week-btn" data-week="6">Week 6</button>
+                            <button class="week-btn" data-week="7">Week 7</button>
+                            <button class="week-btn" data-week="8">Week 8</button>
+                            <button class="week-btn" data-week="9">Week 9</button>
+                            <button class="week-btn" data-week="10">Week 10</button>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item" data-page="project">项目</li>
+                <li class="nav-item" data-page="team">团队介绍</li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <section class="page active">
+            <div class="homework-header">
+                <div class="week-badge">Week 4</div>
+                <h1 class="week-title">3D 打印练习</h1>
+                <div class="title-divider"></div>
+            </div>
+
+            <div class="view-toggle">
+                <button class="view-btn active" data-view="final">📄 最终版本</button>
+                <button class="view-btn" data-view="process">🔧 制作过程</button>
+            </div>
+
+            <div id="finalView" class="view-content active">
+                <div class="homework-checklist">
+                    <h3>✅ 作业清单</h3>
+                    <ul class="checklist" id="checklist">
+                        <li class="checklist-item" data-task="1"><span class="check-icon"></span><span class="task-text">完成打印前的建模与尺寸确认</span></li>
+                        <li class="checklist-item" data-task="2"><span class="check-icon"></span><span class="task-text">确定打印参数与支撑方案</span></li>
+                        <li class="checklist-item" data-task="3"><span class="check-icon"></span><span class="task-text">记录 D1-D5 的打印过程变化</span></li>
+                        <li class="checklist-item" data-task="4"><span class="check-icon"></span><span class="task-text">整理最终成品与问题总结</span></li>
+                    </ul>
+                </div>
+
+                <div class="final-version-content">
+                    <h3>🎯 3D 打印练习成果</h3>
+                    <p class="editable-note">本次练习围绕 3D 打印的完整流程展开：先完成 D0 阶段的建模与准备，再依次记录 D1 到 D5 的打印过程，最终形成一套清晰可展示的打印实践记录。</p>
+
+                    <div class="hardware-section">
+                        <h4>🛠️ 项目介绍</h4>
+                        <p contenteditable="true">本周主要完成 3D 打印实践，重点是从建模准备开始，逐步走完整个打印流程，包括模型切片、打印参数设置、成型过程观察以及最终成品整理。</p>
+
+                        <h4>🧩 练习重点</h4>
+                        <p contenteditable="true">D0：打印前建模与结构确认；D1-D5：打印过程中的层层推进，包括初始成型、细节稳定、支撑与表面优化等。</p>
+
+                        <div class="version-block">
+                            <h5>阶段 D0：打印前建模</h5>
+                            <p contenteditable="true">在打印开始前，先完成模型的基本建模与结构检查。这里的重点是确认尺寸、厚度、连接方式和打印可行性，避免后续打印中出现结构失衡或粘连问题。</p>
+                            <div class="stage-note">
+                                <span class="stage-chip">设计重点</span>
+                                <ul>
+                                    <li>确认模型比例与可打印性</li>
+                                    <li>检查支撑和底部接触面是否合理</li>
+                                    <li>为后续打印过程提供稳定的基础</li>
+                                </ul>
+                            </div>
+                            <div class="image-illustration">
+                                <img src="assets/d0.png" alt="打印前建模" onclick="openImageModal(this.src)">
+                                <p>D0 建模准备</p>
+                            </div>
+                        </div>
+
+                        <div class="version-block">
+                            <h5>阶段 D1：打印启动</h5>
+                            <p contenteditable="true">打印开始后，首先观察喷头起始位置、底层附着与首层流量是否稳定。这一阶段决定后续打印是否能顺利推进。</p>
+                            <div class="stage-note">
+                                <span class="stage-chip">过程重点</span>
+                                <ul>
+                                    <li>检查首层是否均匀贴合</li>
+                                    <li>观察打印起始是否稳定</li>
+                                    <li>及时纠正初始偏移问题</li>
+                                </ul>
+                            </div>
+                            <div class="image-illustration">
+                                <img src="assets/d1.jpg" alt="D1 打印初始" onclick="openImageModal(this.src)">
+                                <p>D1 初始打印状态</p>
+                            </div>
+                        </div>
+
+                        <div class="version-block">
+                            <h5>阶段 D2：打印推进</h5>
+                            <p contenteditable="true">随着打印进度推进，模型的外形逐渐清晰。此时需要关注层与层之间的连续性，以及材料是否出现轻微错位或翘边。</p>
+                            <div class="stage-note">
+                                <span class="stage-chip">过程重点</span>
+                                <ul>
+                                    <li>观察模型外轮廓是否稳定</li>
+                                    <li>确认层高和填充是否均匀</li>
+                                    <li>避免结构中途出现明显偏差</li>
+                                </ul>
+                            </div>
+                            <div class="image-illustration">
+                                <img src="assets/d2.jpg" alt="D2 中段打印" onclick="openImageModal(this.src)">
+                                <p>D2 中段成型</p>
+                            </div>
+                        </div>
+
+                        <div class="version-block">
+                            <h5>阶段 D3：细节成型</h5>
+                            <p contenteditable="true">进入细节成型阶段后，模型轮廓和局部形态开始更清楚地呈现。这个阶段重点是保持稳定的挤出与细微结构的完整性。</p>
+                            <div class="stage-note">
+                                <span class="stage-chip">过程重点</span>
+                                <ul>
+                                    <li>关注小尺寸细节是否完整</li>
+                                    <li>避免局部过度挤出导致毛刺</li>
+                                    <li>确保打印速度在可控范围内</li>
+                                </ul>
+                            </div>
+                            <div class="image-illustration">
+                                <img src="assets/d3.jpg" alt="D3 细节阶段" onclick="openImageModal(this.src)">
+                                <p>D3 细节成型</p>
+                            </div>
+                        </div>
+
+                        <div class="version-block">
+                            <h5>阶段 D4：接近完成</h5>
+                            <p contenteditable="true">当模型接近完成时，表面轮廓已经基本稳定。此时需要检查是否有轻微翘边、支撑残留或表面层次不均等问题。</p>
+                            <div class="stage-note">
+                                <span class="stage-chip">过程重点</span>
+                                <ul>
+                                    <li>确认表面是否平整</li>
+                                    <li>检查支撑与悬空结构是否可移除</li>
+                                    <li>为最终成品整理做准备</li>
+                                </ul>
+                            </div>
+                            <div class="image-illustration">
+                                <img src="assets/d4.jpg" alt="D4 接近完成" onclick="openImageModal(this.src)">
+                                <p>D4 接近成品</p>
+                            </div>
+                        </div>
+
+                        <div class="version-block">
+                            <h5>阶段 D5：最终成品</h5>
+                            <p contenteditable="true">最后一阶段是打印完成后的整体整理与成品展示。通过观察最终效果，可以总结本次练习中的成功点和可优化项。</p>
+                            <div class="stage-note">
+                                <span class="stage-chip">总结重点</span>
+                                <ul>
+                                    <li>整理最终打印成果</li>
+                                    <li>记录整体效果与细节问题</li>
+                                    <li>形成完整的 3D 打印实践总结</li>
+                                </ul>
+                            </div>
+                            <div class="image-illustration">
+                                <img src="assets/d5.jpg" alt="D5 最终成品" onclick="openImageModal(this.src)">
+                                <p>D5 最终成品</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="processView" class="view-content">
+                <div class="process-content">
+                    <h3>🔨 制作过程记录</h3>
+                    <p class="editable-note">这部分用于记录从 D0 建模准备到 D5 最终成品的完整打印流程，方便后续整理和展示。</p>
+
+                    <div class="process-step">
+                        <h4>📌 第一步：D0 建模准备</h4>
+                        <p contenteditable="true">先确认模型结构、尺寸和打印可行性，避免后续过程中出现偏移、支撑不合理或底层附着不稳的情况。</p>
+                        <div class="image-illustration"><img src="assets/d0.png" alt="D0 建模准备" onclick="openImageModal(this.src)"></div>
+                    </div>
+                    <div class="process-step">
+                        <h4>📌 第二步：D1-D2 打印起始与推进</h4>
+                        <p contenteditable="true">记录首层稳定性和结构推进过程，观察打印是否平稳，并及时处理初期出现的偏差。</p>
+                        <div class="image-grid">
+                            <div class="image-illustration"><img src="assets/d1.jpg" alt="D1 打印初始" onclick="openImageModal(this.src)"></div>
+                            <div class="image-illustration"><img src="assets/d2.jpg" alt="D2 中段打印" onclick="openImageModal(this.src)"></div>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <h4>📌 第三步：D3-D4 细节与表面调整</h4>
+                        <p contenteditable="true">进入细节成型后，重点关注局部表面、支撑效果和打印顺滑度，保证最终成品更加完整。</p>
+                        <div class="image-grid">
+                            <div class="image-illustration"><img src="assets/d3.jpg" alt="D3 细节阶段" onclick="openImageModal(this.src)"></div>
+                            <div class="image-illustration"><img src="assets/d4.jpg" alt="D4 接近完成" onclick="openImageModal(this.src)"></div>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <h4>📌 第四步：D5 最终成品总结</h4>
+                        <p contenteditable="true">最后整理成品效果并记录本次打印实践中值得保留的经验与可改进的地方。</p>
+                        <div class="image-illustration"><img src="assets/d5.jpg" alt="D5 最终成品" onclick="openImageModal(this.src)"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal image-modal" id="imageModal">
+        <div class="image-modal-content">
+            <span class="modal-close" id="modalClose">&times;</span>
+            <img src="" alt="放大预览" id="modalImage">
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navItems = document.querySelectorAll('.nav-item');
+            const weekBtns = document.querySelectorAll('.week-btn');
+            const viewBtns = document.querySelectorAll('.view-btn');
+            const finalView = document.getElementById('finalView');
+            const processView = document.getElementById('processView');
+            const checklist = document.querySelectorAll('.checklist-item');
+            const imageModal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalClose = document.getElementById('modalClose');
+            const goHome = document.getElementById('goHome');
+
+            viewBtns.forEach((btn) => {
+                btn.addEventListener('click', () => {
+                    const view = btn.dataset.view;
+                    viewBtns.forEach((item) => item.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    if (view === 'final') {
+                        finalView.classList.add('active');
+                        processView.classList.remove('active');
+                    } else {
+                        finalView.classList.remove('active');
+                        processView.classList.add('active');
+                    }
+                });
+            });
+
+            checklist.forEach((item) => {
+                item.addEventListener('click', () => item.classList.toggle('completed'));
+            });
+
+            window.openImageModal = function(src) {
+                modalImage.src = src;
+                imageModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            };
+
+            function closeImageModal() {
+                imageModal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            if (modalClose) modalClose.addEventListener('click', closeImageModal);
+            if (imageModal) {
+                imageModal.addEventListener('click', (event) => {
+                    if (event.target === imageModal) closeImageModal();
+                });
+            }
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && imageModal.classList.contains('active')) closeImageModal();
+            });
+
+            if (goHome) {
+                goHome.addEventListener('click', () => {
+                    window.location.href = '../../index.html';
+                });
+            }
+
+            navItems.forEach((item) => {
+                item.addEventListener('click', () => {
+                    const page = item.dataset.page;
+                    if (!page || page === 'homework') return;
+                    window.location.href = '../../index.html';
+                });
+            });
+
+            weekBtns.forEach((btn) => {
+                btn.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    const week = Number.parseInt(btn.dataset.week, 10);
+                    if (week === 1) return window.location.href = '../week1/week1.html';
+                    if (week === 2) return window.location.href = '../week2/week2.html';
+                    if (week === 3) return window.location.href = '../week3/week3.html';
+                    if (week === 4) return window.location.href = 'week4.html';
+                    window.location.href = '../../index.html';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

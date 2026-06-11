@@ -114,18 +114,25 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe 
 
 /* 图片辅助说明样式 */
 .image-illustration {
-    margin: 1.5rem 0;
-    padding: 1rem;
-    background: rgba(255, 255, 255, 0.7);
-    border-radius: 16px;
+    margin: 1rem auto;
+    padding: 1.1rem;
+    background: rgba(255, 255, 255, 0.88);
+    border-radius: 18px;
     text-align: center;
+    max-width: 980px;
+    box-shadow: 0 10px 24px rgba(168, 210, 255, 0.18);
 }
 .image-illustration img {
     max-width: 100%;
+    width: 100%;
+    max-height: 520px;
+    object-fit: contain;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     transition: transform 0.3s ease;
+    display: block;
+    margin: 0 auto;
 }
 .image-illustration img:hover {
     transform: scale(1.02);
@@ -137,9 +144,11 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe 
 }
 .image-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: 1fr;
     gap: 1rem;
     margin: 1rem 0 0;
+    justify-items: center;
+    align-items: start;
 }
 
 /* 作业清单样式 */
@@ -231,8 +240,40 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe 
 }
 .process-step img {
     max-width: 100%;
-    border-radius: 8px;
+    width: 100%;
+    max-height: 520px;
+    object-fit: contain;
+    border-radius: 12px;
     margin-top: 0.5rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.process-step .image-illustration {
+    max-width: 920px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.process-step .image-grid {
+    justify-items: center;
+    align-items: start;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+    max-width: 980px;
+    margin: 0 auto;
+}
+
+.final-version-content .image-grid,
+.final-version-content .image-illustration {
+    max-width: 980px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.final-version-content .image-grid {
+    grid-template-columns: 1fr;
 }
 
 .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 3rem; }
@@ -400,9 +441,11 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe 
 }
 
 .version-column .image-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr;
     gap: 0.8rem;
     margin: 0;
+    width: 100%;
+    max-width: 980px;
 }
 
 @media (max-width: 768px) {

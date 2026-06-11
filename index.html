@@ -286,6 +286,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 window.location.href = 'docs/week3/week3.html';
                 return;
             }
+            if (week === 4) {
+                window.location.href = 'docs/week4/week4.html';
+                return;
+            }
             weekBtns.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             currentWeek = week;
