@@ -137,9 +137,9 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe 
 }
 .image-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    margin: 1.5rem 0;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0 0;
 }
 
 /* 作业清单样式 */
@@ -348,13 +348,45 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe 
     margin-bottom: 1rem;
 }
 
+.stage-note {
+    margin: 0.8rem 0 1rem;
+    padding: 0.9rem 1rem;
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(168, 210, 255, 0.12), rgba(255, 255, 255, 0.75));
+    border: 1px solid rgba(168, 210, 255, 0.25);
+}
+
+.stage-chip {
+    display: inline-block;
+    margin-bottom: 0.45rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    background: rgba(168, 210, 255, 0.25);
+    color: #4a7fb5;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.stage-note ul {
+    margin-left: 1rem;
+    color: rgba(0, 0, 0, 0.72);
+    font-size: 0.92rem;
+    line-height: 1.6;
+}
+
 .version-layout {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1rem;
+    align-items: start;
 }
 
 .version-column {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
     background: rgba(255, 255, 255, 0.72);
     border-radius: 12px;
     padding: 0.8rem;
@@ -367,8 +399,18 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe 
     font-size: 0.95rem;
 }
 
+.version-column .image-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.8rem;
+    margin: 0;
+}
+
 @media (max-width: 768px) {
     .version-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .version-column .image-grid {
         grid-template-columns: 1fr;
     }
 }
