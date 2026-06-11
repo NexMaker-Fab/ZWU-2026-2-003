@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Week 2 - ASD 多感官互动沙盘系统</title>
+    <title>项目展示 - ASD 多感官互动沙盘系统</title>
     <link rel="stylesheet" href="../../style.css">
 </head>
 <body>
@@ -12,24 +12,8 @@
             <div class="logo" id="goHome">课程系统</div>
             <ul class="nav-menu">
                 <li class="nav-item" data-page="home">Home</li>
-                <li class="nav-item has-dropdown active" data-page="homework">
-                    <span>作业</span>
-                    <div class="dropdown">
-                        <div class="dropdown-weeks">
-                            <button class="week-btn" data-week="1">Week 1</button>
-                            <button class="week-btn active" data-week="2">Week 2</button>
-                            <button class="week-btn" data-week="3">Week 3</button>
-                            <button class="week-btn" data-week="4">Week 4</button>
-                            <button class="week-btn" data-week="5">Week 5</button>
-                            <button class="week-btn" data-week="6">Week 6</button>
-                            <button class="week-btn" data-week="7">Week 7</button>
-                            <button class="week-btn" data-week="8">Week 8</button>
-                            <button class="week-btn" data-week="9">Week 9</button>
-                            <button class="week-btn" data-week="10">Week 10</button>
-                        </div>
-                    </div>
-                </li>
-                <li class="nav-item" data-page="project">项目</li>
+                <li class="nav-item" data-page="homework">作业</li>
+                <li class="nav-item active" data-page="project">项目</li>
                 <li class="nav-item" data-page="team">团队介绍</li>
             </ul>
         </div>
@@ -37,16 +21,11 @@
 
     <main class="main-content">
         <section class="page active">
-            <div class="homework-header">
-                <div class="week-badge">Week 2</div>
-                <h1 class="week-title">ASD 多感官互动沙盘系统</h1>
-                <div class="title-divider"></div>
-            </div>
-
             <div class="sandbox-project" style="display:block;">
                 <div class="sandbox-hero">
+                    <div class="week-badge">项目展示</div>
                     <h1>ASD 儿童多感官互动沙盘系统</h1>
-                    <p class="subtitle">Multisensory Interactive Sandbox for ASD Children</p>
+                    <p class="subtitle">Multisensory Interactive Sandbox for ASD Children · 面向 ASD 儿童的多感官互动项目</p>
                     <div class="sandbox-keywords">
                         <span class="kw-tag">多感官互动</span>
                         <span class="kw-tag">情绪调节</span>
@@ -87,7 +66,7 @@
                 </section>
 
                 <section class="sandbox-section">
-                    <h2><span class="sec-icon">🔄</span> 核心交互逻辑："动作 - 感知 - 情绪反馈"</h2>
+                    <h2><span class="sec-icon">🔄</span> 核心交互逻辑：动作 - 感知 - 情绪反馈</h2>
                     <div class="interaction-flow">
                         <div class="flow-step">
                             <div class="step-icon">✋</div>
@@ -281,19 +260,19 @@
                 </section>
 
                 <section class="sandbox-section">
-                    <h2><span class="sec-icon">🖼️</span> Week 2 图片记录</h2>
+                    <h2><span class="sec-icon">🖼️</span> 项目图片记录</h2>
                     <div class="image-grid">
                         <div class="image-illustration">
-                            <img src="assets/1.png" alt="Week 2 图片 1" onclick="openImageModal(this.src)">
-                            <p>图1：Week 2 实验记录图</p>
+                            <img src="../week2/assets/1.png" alt="项目图片 1" onclick="openImageModal(this.src)">
+                            <p>图1：项目实验记录图</p>
                         </div>
                         <div class="image-illustration">
-                            <img src="assets/2.png" alt="Week 2 图片 2" onclick="openImageModal(this.src)">
-                            <p>图2：Week 2 实验记录图</p>
+                            <img src="../week2/assets/2.png" alt="项目图片 2" onclick="openImageModal(this.src)">
+                            <p>图2：项目实验记录图</p>
                         </div>
                         <div class="image-illustration">
-                            <img src="assets/3.png" alt="Week 2 图片 3" onclick="openImageModal(this.src)">
-                            <p>图3：Week 2 实验记录图</p>
+                            <img src="../week2/assets/3.png" alt="项目图片 3" onclick="openImageModal(this.src)">
+                            <p>图3：项目实验记录图</p>
                         </div>
                     </div>
                 </section>
@@ -347,7 +326,6 @@
     <script>
 document.addEventListener('DOMContentLoaded', () => {
     const navItems = document.querySelectorAll('.nav-item');
-    const weekBtns = document.querySelectorAll('.week-btn');
     const imageModal = document.getElementById('imageModal');
     const modalImage = document.getElementById('modalImage');
     const modalClose = document.getElementById('modalClose');
@@ -388,34 +366,21 @@ document.addEventListener('DOMContentLoaded', () => {
     navItems.forEach((item) => {
         item.addEventListener('click', () => {
             const page = item.dataset.page;
-            if (!page || page === 'homework') {
+            if (page === 'home') {
+                window.location.href = '../../index.html';
                 return;
             }
-            if (page === 'project') {
-                window.location.href = 'week2.html';
-                return;
-            }
-            window.location.href = '../../index.html';
-        });
-    });
-
-    weekBtns.forEach((btn) => {
-        btn.addEventListener('click', (event) => {
-            event.stopPropagation();
-            const week = Number.parseInt(btn.dataset.week, 10);
-            if (week === 1) {
+            if (page === 'homework') {
                 window.location.href = '../week1/week1.html';
                 return;
             }
-            if (week === 2) {
-                window.location.href = 'week2.html';
+            if (page === 'project') {
+                window.location.href = 'work.html';
                 return;
             }
-            if (week === 3) {
-                window.location.href = '../week3/week3.html';
-                return;
+            if (page === 'team') {
+                window.location.href = '../../index.html';
             }
-            window.location.href = '../../index.html';
         });
     });
 });
