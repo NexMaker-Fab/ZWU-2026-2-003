@@ -5,6 +5,137 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Week 1 - Arduino 硬件分析与智能灯光控制</title>
     <link rel="stylesheet" href="../../style.css">
+    <style>
+        /* 传感器导航栏样式 */
+        .sensor-nav-container {
+            display: flex;
+            gap: 20px;
+            margin: 30px 0;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .sensor-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* 添加一个透明的连接区域，防止鼠标移动时失去hover */
+        .sensor-dropdown::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            height: 10px;
+            display: none;
+        }
+
+        .sensor-dropdown:hover::after {
+            display: block;
+        }
+
+        .sensor-btn {
+            background: linear-gradient(135deg, #5B7C99 0%, #4A6B8A 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .sensor-btn:hover,
+        .sensor-btn.active {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(135deg, #4A6B8A 0%, #3D5A73 100%);
+        }
+
+        .sensor-submenu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: 0;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            z-index: 100;
+            min-width: 150px;
+        }
+
+        .sensor-dropdown:hover .sensor-submenu {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+
+        .submenu-btn {
+            display: block;
+            width: 100%;
+            background: white;
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #333;
+            transition: all 0.2s ease;
+            text-align: center;
+        }
+
+        .submenu-btn:hover {
+            background: #f0f0f0;
+        }
+
+        .submenu-btn.active {
+            background: #5B7C99;
+            color: white;
+        }
+
+        /* 内容区域样式 */
+        .sensor-content {
+            display: none;
+            animation: slideIn 0.4s ease;
+        }
+
+        .sensor-content.active {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .content-section {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -43,40 +174,61 @@
                 <div class="title-divider"></div>
             </div>
 
-            <div class="view-toggle">
-                <button class="view-btn active" data-view="final">📄 最终版本</button>
-                <button class="view-btn" data-view="process">🔧 制作过程</button>
+            <div class="homework-checklist">
+                <h3>✅ 作业清单</h3>
+                <ul class="checklist" id="checklist">
+                    <li class="checklist-item" data-task="1">
+                        <span class="check-icon"></span>
+                        <span class="task-text">硬件选型与采购（WS2812灯环、HS-S05B超声波传感器、Arduino 板）</span>
+                    </li>
+                    <li class="checklist-item" data-task="2">
+                        <span class="check-icon"></span>
+                        <span class="task-text">电路连接与调试</span>
+                    </li>
+                    <li class="checklist-item" data-task="3">
+                        <span class="check-icon"></span>
+                        <span class="task-text">Arduino 代码编写（传感器数据读取）</span>
+                    </li>
+                    <li class="checklist-item" data-task="4">
+                        <span class="check-icon"></span>
+                        <span class="task-text">灯效控制与距离测量功能测试</span>
+                    </li>
+                    <li class="checklist-item" data-task="5">
+                        <span class="check-icon"></span>
+                        <span class="task-text">整体封装与展示视频拍摄</span>
+                    </li>
+                </ul>
             </div>
 
-            <div id="finalView" class="view-content active">
-                <div class="homework-checklist">
-                    <h3>✅ 作业清单</h3>
-                    <ul class="checklist" id="checklist">
-                        <li class="checklist-item" data-task="1">
-                            <span class="check-icon"></span>
-                            <span class="task-text">硬件选型与采购（WS2812灯环、HS-S05B超声波传感器、Arduino 板）</span>
-                        </li>
-                        <li class="checklist-item" data-task="2">
-                            <span class="check-icon"></span>
-                            <span class="task-text">电路连接与调试</span>
-                        </li>
-                        <li class="checklist-item" data-task="3">
-                            <span class="check-icon"></span>
-                            <span class="task-text">Arduino 代码编写（传感器数据读取）</span>
-                        </li>
-                        <li class="checklist-item" data-task="4">
-                            <span class="check-icon"></span>
-                            <span class="task-text">灯效控制与距离测量功能测试</span>
-                        </li>
-                        <li class="checklist-item" data-task="5">
-                            <span class="check-icon"></span>
-                            <span class="task-text">整体封装与展示视频拍摄</span>
-                        </li>
-                    </ul>
+            <!-- 传感器导航栏 -->
+            <div class="sensor-nav-container">
+                <div class="sensor-dropdown">
+                    <button class="sensor-btn active" data-sensor="ws2812">WS2812和HS-S05B</button>
+                    <div class="sensor-submenu">
+                        <button class="submenu-btn active" data-view="ws2812-final">最终成果</button>
+                        <button class="submenu-btn" data-view="ws2812-process">制作过程</button>
+                    </div>
                 </div>
+                <div class="sensor-dropdown">
+                    <button class="sensor-btn" data-sensor="pressure">压力传感器</button>
+                    <div class="sensor-submenu">
+                        <button class="submenu-btn" data-view="pressure-final">最终成果</button>
+                        <button class="submenu-btn" data-view="pressure-process">制作过程</button>
+                    </div>
+                </div>
+                <div class="sensor-dropdown">
+                    <button class="sensor-btn" data-sensor="servo">舵机</button>
+                    <div class="sensor-submenu">
+                        <button class="submenu-btn" data-view="servo-final">最终成果</button>
+                        <button class="submenu-btn" data-view="servo-process">制作过程</button>
+                    </div>
+                </div>
+            </div>
 
-                <div class="final-version-content">
-                    <h3>🎯 最终成果展示</h3>
+            <!-- WS2812和HS-S05B 最终成果 -->
+            <div id="ws2812-final" class="sensor-content active">
+                <div class="content-section">
+                    <h3>🎯 WS2812和HS-S05B - 最终成果展示</h3>
 
                     <div class="hardware-section">
                         <h4>🔧 运用到的 Arduino 硬件分析</h4>
@@ -84,68 +236,110 @@
                         <h5>1. WS2812灯环</h5>
                         <p>WS2812灯环是将多颗可寻址LED集成于一体的环形RGB灯板，每颗灯珠内置驱动芯片，仅需一根信号线即可独立控制每颗灯珠的任意颜色和亮度。使用时将VCC接5V、GND接地、DIN接Arduino的数字引脚，配合NeoPixel库即可轻松实现跑马灯、呼吸灯等炫彩效果。常用于指示灯、氛围灯、创意装饰及互动灯光项目中。</p>
 
-                        <div class="image-illustration">
-                            <img src="assets/arduino-connection.png" alt="Arduino连接示意图" onclick="openImageModal(this.src)">
-                            <p>图1：Arduino 与 WS2812、HS-S05B 连接示意图</p>
-                        </div>
-
                         <h5>2. HS-S05B超声波传感器</h5>
                         <p>HS-S05B超声波传感器通过发射40kHz超声波并检测回波来测量物体距离，非接触、精度高、成本低。使用时Trig引脚发送一个10μs高电平触发测量，Echo引脚输出高电平宽度对应距离值，通过Arduino的pulseIn()函数即可计算出距离（单位厘米）。常用于避障机器人、智能车位检测、倒车雷达及液位测量等场景。</p>
-
-                        <div class="image-illustration">
-                            <img src="assets/sensor-connection.png" alt="传感器连接实物图" onclick="openImageModal(this.src)">
-                            <p>图2：传感器与 Arduino 连接实物图</p>
-                        </div>
                     </div>
 
                     <div class="hardware-section">
-                        <h4> 应用场景展示</h4>
+                        <h4>🎨 应用场景展示</h4>
                         <p>通过WS2812灯环实现炫彩灯光效果，配合超声波传感器测量距离实现互动灯光控制。装置可用于创意装饰、智能感应灯、互动展示等场景，根据距离变化动态调整灯光颜色和亮度。</p>
 
                         <div class="image-illustration">
-                            <img src="assets/circuit-diagram.svg" alt="电路连接示意图" onclick="openImageModal(this.src)">
-                            <p>图3：完整电路连接示意图</p>
-                        </div>
-
-                        <div class="image-illustration">
-                            <img src="assets/product-demo.svg" alt="成品展示图" onclick="openImageModal(this.src)">
-                            <p>图4：智能灯光装置成品展示</p>
+                            <img src="assets/sensor-connection.png" alt="传感器连接实物图" onclick="openImageModal(this.src)">
+                            <p>图1：传感器与 Arduino 连接实物图</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div id="processView" class="view-content">
-                <div class="process-content">
-                    <h3>🔨 制作过程记录</h3>
+            <!-- WS2812和HS-S05B 制作过程 -->
+            <div id="ws2812-process" class="sensor-content">
+                <div class="content-section">
+                    <h3>🔨 WS2812和HS-S05B - 制作过程记录</h3>
                     <div class="process-step">
                         <h4>📌 第一步：硬件准备</h4>
                         <p>采购 Arduino Uno 开发板、WS2812灯环、HS-S05B超声波传感器、面包板及杜邦线若干。</p>
-                        <div class="image-illustration">
-                            <img src="assets/hardware-setup.svg" alt="硬件准备" onclick="openImageModal(this.src)">
-                        </div>
                     </div>
                     <div class="process-step">
                         <h4>📌 第二步：电路搭建</h4>
                         <p>按照电路图连接各模块：WS2812灯环的VCC接5V、GND接地、DIN接数字引脚D8；HS-S05B超声波传感器的VCC接5V、GND接地、Trig接D7、Echo接D6。</p>
                         <div class="image-illustration">
-                            <img src="assets/circuit-build.svg" alt="电路搭建" onclick="openImageModal(this.src)">
+                            <img src="assets/arduino-connection.png" alt="Arduino连接示意图" onclick="openImageModal(this.src)">
+                            <p>图1：Arduino 与 WS2812、HS-S05B 连接示意图</p>
                         </div>
                     </div>
                     <div class="process-step">
                         <h4>📌 第三步：代码编写</h4>
-                        <p>编写 Arduino 代码实现：初始化 NeoPixel 库控制 WS2812 灯环；使用 pulseIn() 函数读取超声波传感器距离；根据距离值动态调整灯环颜色和亮度。</p>
+                        <p>编写 Arduino 代码实现：初始化 FastLED 库控制 WS2812 灯环；使用 pulseIn() 函数读取传感器信号；实现拍手开灯和吹气关灯的互动功能。</p>
+                        <p style="color: #ff6b6b; font-weight: bold; margin-top: 10px;">💡 AI 帮助编写代码</p>
+                        <div class="image-illustration">
+                            <img src="assets/code-part1.png" alt="代码第一部分" onclick="openImageModal(this.src)">
+                            <p>图1：Arduino 代码 - 硬件引脚定义和初始化部分</p>
+                        </div>
+                        <div class="image-illustration">
+                            <img src="assets/code-part2.png" alt="代码第二部分" onclick="openImageModal(this.src)">
+                            <p>图2：Arduino 代码 - 拍手检测和吹气检测逻辑</p>
+                        </div>
                     </div>
                     <div class="process-step">
                         <h4>📌 第四步：测试与调试</h4>
                         <p>逐个测试各传感器功能，调整超声波传感器的测量精度，确保灯效响应及时。遇到问题：超声波测量不稳定，通过多次测量取平均值解决。</p>
                     </div>
-                    <div class="process-step">
-                        <h4>📌 第五步：封装与展示</h4>
-                        <p>将电路板放入亚克力外壳，固定传感器和灯环在面板上。录制演示视频，展示距离感应控制灯光的完整功能。</p>
+                </div>
+            </div>
+
+            <!-- 压力传感器 最终成果 -->
+            <div id="pressure-final" class="sensor-content">
+                <div class="content-section">
+                    <h3> 压力传感器 - 最终成果展示</h3>
+                    <div class="hardware-section">
+                        <h4>🔧 运用到的 Arduino 硬件分析</h4>
+
+                        <h5>压力传感器FSR402</h5>
+                        <p>FSR402是一种圆形力敏电阻（Force Sensing Resistor），以超薄高分子薄膜作为敏感材料，当传感器表面受到压力时，内部电路导通面积增加，导致其电阻值随压力增大而减小。FSR402的有效感应直径为18.28mm，厚度仅约0.45mm，可检测约100g至10kg的压力范围，具有成本低、易安装、响应快（小于3ms）等优点。使用中需将FSR402和一个固定电阻（通常为10kΩ）串联构成分压电路，一端接5V，另一端接Arduino模拟输入引脚（如A0），Arduino通过读取模拟电压值来判断压力大小。该传感器适用于触摸检测、压力感知开关、交互装置及人体存在感应等无需精密标定的压力识别任务。</p>
+
                         <div class="image-illustration">
-                            <img src="assets/product-test.svg" alt="成品测试" onclick="openImageModal(this.src)">
+                            <img src="assets/pressure-sensor.png" alt="压力传感器FSR402" onclick="openImageModal(this.src)">
+                            <p>图1：压力传感器FSR402实物图</p>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 压力传感器 制作过程 -->
+            <div id="pressure-process" class="sensor-content">
+                <div class="content-section">
+                    <h3>🔨 压力传感器 - 制作过程记录</h3>
+                    <div class="process-step">
+                        <p style="color: #999; text-align: center; padding: 40px;">内容待补充</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 舵机 最终成果 -->
+            <div id="servo-final" class="sensor-content">
+                <div class="content-section">
+                    <h3>🎯 舵机 - 最终成果展示</h3>
+                    <div class="hardware-section">
+                        <h4>🔧 运用到的 Arduino 硬件分析</h4>
+
+                        <h5>SG90舵机</h5>
+                        <p>SG90是一款微型9g舵机，内部集成直流电机、减速齿轮组与位置反馈电路，通过接收PWM（脉冲宽度调制）信号来精确控制输出轴的角度位置。其旋转角度范围为0至180度，工作电压为3.5V至6V，通常推荐5V供电，最大输出扭矩约为1.2至1.6KG/cm。连线方法为：棕色（或黑色）线接GND、红色线接5V VCC、橙色（或黄色）信号线接Arduino的数字PWM引脚。在Arduino中只需引入Servo库，使用`attach()`函数绑定引脚，再用`write(angle)`函数即可让舵机旋转到0到180度之间的指定角度。SG90常用于机器人关节、云台摇头、简易机械臂及模型控制等需要精确定位的场景。</p>
+
+                        <div class="image-illustration">
+                            <img src="assets/servo-motor.png" alt="SG90舵机" onclick="openImageModal(this.src)">
+                            <p>图1：SG90舵机实物图</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 舵机 制作过程 -->
+            <div id="servo-process" class="sensor-content">
+                <div class="content-section">
+                    <h3>🔨 舵机 - 制作过程记录</h3>
+                    <div class="process-step">
+                        <p style="color: #999; text-align: center; padding: 40px;">内容待补充</p>
                     </div>
                 </div>
             </div>
@@ -163,27 +357,42 @@
 document.addEventListener('DOMContentLoaded', () => {
     const navItems = document.querySelectorAll('.nav-item');
     const weekBtns = document.querySelectorAll('.week-btn');
-    const viewBtns = document.querySelectorAll('.view-btn');
-    const finalView = document.getElementById('finalView');
-    const processView = document.getElementById('processView');
     const checklist = document.querySelectorAll('.checklist-item');
     const imageModal = document.getElementById('imageModal');
     const modalImage = document.getElementById('modalImage');
     const modalClose = document.getElementById('modalClose');
     const goHome = document.getElementById('goHome');
+    const sensorBtns = document.querySelectorAll('.sensor-btn');
+    const submenuBtns = document.querySelectorAll('.submenu-btn');
+    const sensorContents = document.querySelectorAll('.sensor-content');
 
-    viewBtns.forEach((btn) => {
+    // 传感器按钮点击事件
+    sensorBtns.forEach((btn) => {
         btn.addEventListener('click', () => {
-            const view = btn.dataset.view;
-            viewBtns.forEach((item) => item.classList.remove('active'));
+            // 移除所有active类
+            sensorBtns.forEach(b => b.classList.remove('active'));
+            // 添加active类到当前按钮
             btn.classList.add('active');
+        });
+    });
 
-            if (view === 'final') {
-                finalView.classList.add('active');
-                processView.classList.remove('active');
-            } else {
-                finalView.classList.remove('active');
-                processView.classList.add('active');
+    // 子菜单按钮点击事件
+    submenuBtns.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const viewId = btn.dataset.view;
+            
+            // 移除所有submenu-btn的active类
+            submenuBtns.forEach(b => b.classList.remove('active'));
+            // 添加active类到当前按钮
+            btn.classList.add('active');
+            
+            // 隐藏所有内容
+            sensorContents.forEach(content => content.classList.remove('active'));
+            // 显示对应内容
+            const targetContent = document.getElementById(viewId);
+            if (targetContent) {
+                targetContent.classList.add('active');
             }
         });
     });
