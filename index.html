@@ -114,7 +114,7 @@
                     <h3>Yana</h3>
                     <p class="member-role">后端开发</p>
                 </div>
-                <div class="team-member">
+                <div class="team-member" data-navigate-to="niki">
                     <div class="member-avatar"><div class="avatar-glow"></div><span>👤</span></div>
                     <h3>Niki</h3>
                     <p class="member-role">前端开发</p>
@@ -339,6 +339,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.querySelector(`[data-page="${targetPage}"]`).classList.add('active');
                 pages.forEach(p => p.classList.remove('active'));
                 document.getElementById(targetPage).classList.add('active');
+            }
+        });
+    });
+
+    // 团队成员点击跳转
+    document.querySelectorAll('.team-member').forEach(member => {
+        member.addEventListener('click', () => {
+            const targetPage = member.dataset.navigateTo;
+            if (targetPage === 'niki') {
+                window.location.href = 'Niki_html.html';
             }
         });
     });
