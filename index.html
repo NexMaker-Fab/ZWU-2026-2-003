@@ -16,16 +16,10 @@
                     <span>作业</span>
                     <div class="dropdown">
                         <div class="dropdown-weeks">
-                            <button class="week-btn active" data-week="1">Week 1</button>
-                            <button class="week-btn" data-week="2">Week 2</button>
-                            <button class="week-btn" data-week="3">Week 3</button>
-                            <button class="week-btn" data-week="4">Week 4</button>
-                            <button class="week-btn" data-week="5">Week 5</button>
-                            <button class="week-btn" data-week="6">Week 6</button>
-                            <button class="week-btn" data-week="7">Week 7</button>
-                            <button class="week-btn" data-week="8">Week 8</button>
-                            <button class="week-btn" data-week="9">Week 9</button>
-                            <button class="week-btn" data-week="10">Week 10</button>
+                            <button class="week-btn active" data-week="1">Week 1 - 网络搭建</button>
+                            <button class="week-btn" data-week="2">Week 2 - Arduino硬件</button>
+                            <button class="week-btn" data-week="3">Week 3 - CAD小车</button>
+                            <button class="week-btn" data-week="4">Week 4 - 3D打印</button>
                         </div>
                     </div>
                 </li>
@@ -312,17 +306,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 window.location.href = 'docs/week4/week4.html';
                 return;
             }
-            weekBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            currentWeek = week;
-            if (currentWeekBadge) currentWeekBadge.textContent = `Week ${currentWeek}`;
-            const titles = ['Arduino 硬件分析与白噪音装置', 'ASD 多感官互动沙盘系统', 'CSS 动画与过渡', '响应式设计', '前端框架入门', '网页搭建过程', '表单验证与优化', '性能优化', '项目实战', '最终项目展示'];
-            if (weekTitle) weekTitle.textContent = titles[currentWeek - 1];
-            toggleSandboxContent(currentWeek);
-            navItems.forEach(i => i.classList.remove('active'));
-            document.querySelector('[data-page="homework"]').classList.add('active');
-            pages.forEach(p => p.classList.remove('active'));
-            document.getElementById('homework').classList.add('active');
         });
     });
     
@@ -361,6 +344,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.querySelector(`[data-page="${targetPage}"]`).classList.add('active');
                 pages.forEach(p => p.classList.remove('active'));
                 document.getElementById(targetPage).classList.add('active');
+            }
+        });
+    });
+
+    // 团队成员点击跳转
+    document.querySelectorAll('.team-member').forEach(member => {
+        member.addEventListener('click', () => {
+            const targetPage = member.dataset.navigateTo;
+            if (targetPage === 'niki') {
+                window.location.href = 'Niki_html.html';
             }
         });
     });
