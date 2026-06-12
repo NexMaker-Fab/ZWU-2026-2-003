@@ -284,17 +284,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 window.location.href = 'docs/week4/week4.html';
                 return;
             }
-            weekBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            currentWeek = week;
-            if (currentWeekBadge) currentWeekBadge.textContent = `Week ${currentWeek}`;
-            const titles = ['Arduino 硬件分析与白噪音装置', 'ASD 多感官互动沙盘系统', 'CSS 动画与过渡', '响应式设计', '前端框架入门', '网页搭建过程', '表单验证与优化', '性能优化', '项目实战', '最终项目展示'];
-            if (weekTitle) weekTitle.textContent = titles[currentWeek - 1];
-            toggleSandboxContent(currentWeek);
-            navItems.forEach(i => i.classList.remove('active'));
-            document.querySelector('[data-page="homework"]').classList.add('active');
-            pages.forEach(p => p.classList.remove('active'));
-            document.getElementById('homework').classList.add('active');
         });
     });
     
