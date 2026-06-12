@@ -106,7 +106,7 @@
                 </div>
 
                 <div class="team-grid">
-                    <article class="team-card">
+                    <article class="team-card" data-navigate-to="yana">
                         <div class="card-avatar">
                             <span class="avatar-border"></span>
                             <span class="avatar-icon">🌟</span>
@@ -349,13 +349,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 团队成员点击跳转
-    document.querySelectorAll('.team-card').forEach((card, index) => {
+    document.querySelectorAll('.team-card').forEach(card => {
         card.addEventListener('click', () => {
-            const memberNames = ['yana', 'niki', 'sophia', 'milky', 'kakei', 'lynn'];
-            const memberName = memberNames[index];
-            if (memberName === 'yana') {
+            const targetPage = card.dataset.navigateTo;
+            if (targetPage === 'yana') {
                 window.location.href = 'docs/yana/yana.html';
-            } else if (memberName === 'niki') {
+            } else if (targetPage === 'niki') {
                 window.location.href = 'docs/Niki/Niki_html.html';
             }
         });
