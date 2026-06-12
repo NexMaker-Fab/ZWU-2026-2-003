@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -42,22 +42,22 @@
                     <div class="progress-bar-container">
                         <div class="progress-bar"></div>
                     </div>
-                    <span class="progress-text">已完成 <span id="completedWeeks">8</span>/18 周</span>
+                    <span class="progress-text">已完成<span id="completedWeeks">8</span>/18 周</span>
                 </div>
             </div>
             <div class="cards-section">
                 <div class="feature-card" data-navigate-to="homework">
-                    <div class="card-icon">📝</div>
+                    <div class="card-icon">📚</div>
                     <h3>最新作业</h3>
                     <p>查看本周发布的作业任务和截止日期</p>
                 </div>
                 <div class="feature-card" data-navigate-to="project">
-                    <div class="card-icon">💼</div>
+                    <div class="card-icon">🎨</div>
                     <h3>进行中的项目</h3>
                     <p>跟踪您的项目进展和里程碑</p>
                 </div>
                 <div class="feature-card" data-navigate-to="team">
-                    <div class="card-icon">🚀</div>
+                    <div class="card-icon"></div>
                     <h3>团队新动态</h3>
                     <p>了解团队成员的最新更新和分享</p>
                 </div>
@@ -191,23 +191,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const sandboxContent = document.getElementById('sandbox-content');
 
     let currentWeek = 2;
-    
-    // ========== 视图切换功能 ==========
-    viewBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const view = btn.dataset.view;
-            viewBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            
-            if (view === 'final') {
-                finalView.classList.add('active');
-                processView.classList.remove('active');
-            } else {
-                finalView.classList.remove('active');
-                processView.classList.add('active');
-            }
-        });
-    });
     
     // ========== 作业清单功能（修复图标不统一问题） ==========
     function updateChecklistIcons() {
@@ -357,6 +340,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 window.location.href = 'docs/yana/yana.html';
             } else if (memberName === 'niki') {
                 window.location.href = 'docs/Niki/Niki.html';
+            } else if (memberName === 'milky') {
+                window.location.href = '../../Milky2026/index.html';
             } else if (memberName === 'kakei') {
                 window.location.href = 'docs/kakei/kakei.html';
             }
