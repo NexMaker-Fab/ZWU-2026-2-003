@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>吴畅洋 · Yana | 艺术与科技 · 作品集</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #eef5ff;   /* 柔和淡蓝基调 */
+            color: #1e2a3e;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        ::-webkit-scrollbar {
+            width: 7px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #d4e2f0;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #7c9bc0;
+            border-radius: 10px;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 1.8rem;
+        }
+
+        /* 导航 */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid #bfd9f0;
+        }
+        .logo {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: #2563eb;
+            letter-spacing: -0.3px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #2c3e66;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: #1e40af;
+        }
+
+        @media (max-width: 640px) {
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+            .container {
+                padding: 1.2rem;
+            }
+        }
+
+        /* Hero区域 - 淡蓝白卡片 */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            margin-bottom: 4rem;
+            background: white;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            box-shadow: 0 6px 14px rgba(0, 20, 40, 0.05);
+            border: 1px solid #cfe3ff;
+        }
+        .hero-content {
+            flex: 1;
+        }
+        .hero-badge {
+            background: #dbeafe;
+            color: #1e40af;
+            display: inline-block;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .hero-content h1 {
+            font-size: 2.6rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: #0f2b3d;
+        }
+        .hero-content p {
+            font-size: 1rem;
+            color: #2c4c6e;
+            margin-bottom: 1.8rem;
+            max-width: 90%;
+        }
+        .hero-avatar {
+            flex-shrink: 0;
+            width: 170px;
+            height: 170px;
+            background: #e6f0ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid white;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+        }
+        .hero-avatar i {
+            font-size: 5rem;
+            color: #3b82f6;
+        }
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.5rem;
+            border-radius: 40px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.2s;
+            border: 1px solid transparent;
+        }
+        .btn-primary {
+            background: #3b82f6;
+            color: white;
+            box-shadow: 0 2px 6px rgba(59,130,246,0.2);
+        }
+        .btn-primary:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+        }
+        .btn-outline {
+            border-color: #bfd9f0;
+            color: #1f4a7a;
+            background: white;
+        }
+        .btn-outline:hover {
+            border-color: #3b82f6;
+            color: #2563eb;
+            transform: translateY(-2px);
+        }
+
+        .section {
+            margin-bottom: 4rem;
+        }
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 1.6rem;
+            color: #1e3a5f;
+            border-left: 5px solid #3b82f6;
+            padding-left: 1rem;
+        }
+
+        /* 技能标签 - 淡蓝风格 */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+        .skill-tag {
+            background: white;
+            border-radius: 40px;
+            padding: 0.4rem 1.2rem;
+            font-weight: 500;
+            border: 1px solid #cfe3ff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+        .skill-tag i {
+            color: #3b82f6;
+        }
+        .skill-tag:hover {
+            border-color: #3b82f6;
+            background: #f0f7ff;
+        }
+
+        /* 作品集网格 */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.8rem;
+        }
+        .portfolio-card {
+            background: white;
+            border-radius: 1.2rem;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+            border: 1px solid #deecfc;
+        }
+        .portfolio-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 28px -12px rgba(0, 32, 64, 0.12);
+            border-color: #b9d6f2;
+        }
+        .card-img {
+            background: #e9f2fc;
+            height: 170px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #2c6280;
+        }
+        .card-content {
+            padding: 1.4rem;
+        }
+        .card-category {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 700;
+            color: #3b82f6;
+            margin-bottom: 0.4rem;
+        }
+        .card-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.4rem;
+        }
+        .card-content p {
+            color: #3a5a7a;
+            font-size: 0.85rem;
+            margin-bottom: 0.8rem;
+        }
+        .card-hint {
+            font-size: 0.75rem;
+            color: #6c8db0;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* 关于区域 - 突出负责人角色 */
+        .about-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            background: white;
+            border-radius: 1.2rem;
+            padding: 1.8rem;
+            border: 1px solid #deecfc;
+        }
+        .about-text {
+            flex: 2;
+        }
+        .info-list {
+            flex: 1;
+            background: #f5faff;
+            border-radius: 1rem;
+            padding: 1.3rem;
+        }
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.7rem 0;
+            border-bottom: 1px solid #d9e9ff;
+        }
+        .info-item i {
+            width: 28px;
+            color: #3b82f6;
+        }
+        .timeline-item {
+            margin-bottom: 1.2rem;
+        }
+        .timeline-year {
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+        }
+        .role-highlight {
+            background: #e6f0ff;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #1e40af;
+        }
+
+        /* 联系区 */
+        .contact-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            background: white;
+            border-radius: 1.2rem;
+            padding: 1.6rem;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #deecfc;
+        }
+        .contact-info {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #f0f7ff;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            text-decoration: none;
+            color: #1e3a5f;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+        .contact-link i {
+            color: #3b82f6;
+        }
+        .contact-link:hover {
+            background: #e0edfe;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 1.5rem 0;
+            border-top: 1px solid #cfe3ff;
+            color: #4b6f8e;
+            font-size: 0.8rem;
+        }
+
+        /* 模态框展示作品详情 */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(30, 40, 60, 0.85);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0.2s, opacity 0.2s;
+        }
+        .modal-overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+        .modal-container {
+            background: white;
+            width: 90%;
+            max-width: 900px;
+            max-height: 85vh;
+            border-radius: 1.8rem;
+            overflow-y: auto;
+            box-shadow: 0 25px 40px rgba(0,0,0,0.2);
+            position: relative;
+            animation: modalFadeIn 0.25s ease;
+        }
+        @keyframes modalFadeIn {
+            from { transform: scale(0.96); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 1.8rem;
+            border-bottom: 1px solid #e2edfc;
+        }
+        .modal-header h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #1e3a5f;
+        }
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #6f9bc0;
+            transition: 0.2s;
+        }
+        .close-modal:hover {
+            color: #1e40af;
+        }
+        .modal-body {
+            padding: 1.8rem;
+        }
+        .media-wrapper {
+            margin-bottom: 1.2rem;
+            text-align: center;
+            background: #f2f8ff;
+            border-radius: 1rem;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .media-wrapper img, .media-wrapper video {
+            max-width: 100%;
+            max-height: 55vh;
+            border-radius: 0.8rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .media-wrapper iframe {
+            width: 100%;
+            height: 400px;
+            border-radius: 0.8rem;
+            border: none;
+        }
+        .project-description {
+            margin-top: 1rem;
+            color: #2c4a6e;
+        }
+        .extra-link {
+            display: inline-block;
+            margin-top: 0.8rem;
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        @media (max-width: 640px) {
+            .modal-body {
+                padding: 1rem;
+            }
+            .media-wrapper iframe {
+                height: 240px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- 顶部导航 -->
+    <div class="navbar">
+        <div class="logo">✨ Yana · 吴畅洋</div>
+        <div class="nav-links">
+            <a href="#home">首页</a>
+            <a href="#portfolio">作品集</a>
+            <a href="#about">关于</a>
+            <a href="#contact">联系</a>
+        </div>
+    </div>
+
+    <!-- Hero 区域 -->
+    <section id="home">
+        <div class="hero">
+            <div class="hero-content">
+                <span class="hero-badge"><i class="fas fa-code"></i> 项目负责人 · 前端 & 设计统筹</span>
+                <h1>吴畅洋 <span style="color:#3b82f6;">Yana</span><br>艺术与科技 · 创造者</h1>
+                <p>艺术与科技交叉学科背景，担任团队项目负责人及前端开发。善于将创意设计与技术实现融合，统筹网页搭建、交互体验与整体视觉落地。相信跨学科协作能带来更深刻的作品。</p>
+                <div class="btn-group">
+                    <a href="#portfolio" class="btn btn-primary"><i class="fas fa-grid-2"></i> 探索作品集</a>
+                    <a href="#contact" class="btn btn-outline"><i class="fas fa-message"></i> 联系合作</a>
+                </div>
+            </div>
+            <div class="hero-avatar">
+                <i class="fas fa-user-astronaut"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心技能区 (按需求细化) -->
+    <div class="section">
+        <h2 class="section-title"><i class="fas fa-cog" style="margin-right: 8px;"></i> 核心能力 · 工具链</h2>
+        <div class="skills-grid">
+            <div class="skill-tag"><i class="fab fa-js"></i> JavaScript</div>
+            <div class="skill-tag"><i class="fas fa-code"></i> VSCode</div>
+            <div class="skill-tag"><i class="fab fa-adobe"></i> Illustrator</div>
+            <div class="skill-tag"><i class="fab fa-adobe"></i> Photoshop</div>
+            <div class="skill-tag"><i class="fas fa-video"></i> After Effects</div>
+            <div class="skill-tag"><i class="fas fa-cubes"></i> Unreal Engine</div>
+            <div class="skill-tag"><i class="fas fa-chalkboard-user"></i> Canvas API</div>
+            <div class="skill-tag"><i class="fas fa-layer-group"></i> 设计系统</div>
+            <div class="skill-tag"><i class="fas fa-mobile-alt"></i> 响应式设计</div>
+            <div class="skill-tag"><i class="fas fa-tasks"></i> 项目统筹</div>
+        </div>
+    </div>
+
+    <!-- 作品集区域 - 展示项目负责人作品案例，点击展示具体图片/视频/网页 -->
+    <section id="portfolio" class="section">
+        <h2 class="section-title"><i class="fas fa-th-large"></i> 作品集 · 点击卡片查看细节</h2>
+        <div class="portfolio-grid" id="portfolioGrid"></div>
+    </section>
+
+    <!-- 关于&经历 强化负责人、艺术与科技背景 -->
+    <section id="about" class="section">
+        <h2 class="section-title"><i class="fas fa-user"></i> 关于 · 吴畅洋 Yana</h2>
+        <div class="about-wrapper">
+            <div class="about-text">
+                <p style="margin-bottom: 1rem;"><span class="role-highlight"><i class="fas fa-crown"></i> 项目负责人 / 前端&设计统筹</span></p>
+                <p>🎓 艺术与科技专业，融合数字媒体艺术与计算机思维。在多个跨学科团队中担任组织者，主导从概念到落地的全流程：包括用户调研、界面设计、前端开发及团队进度协调。相信技术与美学的化学反应能创造有影响力的体验。</p>
+                <p style="margin-top: 12px;">💡 2023年带领团队完成“未来文化遗产”交互装置，获得学院创新基金；独立开发多个响应式网站与设计系统，持续探索Unreal引擎在艺术表达中的可能。</p>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;">
+                    <span><i class="fas fa-award" style="color:#3b82f6;"></i> 校级优秀项目负责人</span>
+                    <span><i class="fas fa-laptop-code"></i> 前端开发认证</span>
+                </div>
+            </div>
+            <div class="info-list">
+                <div class="info-item"><i class="fas fa-user-graduate"></i> 艺术与科技 · 学士 (在读/应届)</div>
+                <div class="info-item"><i class="fas fa-envelope"></i> yana.wu@portfolio.me</div>
+                <div class="info-item"><i class="fas fa-map-marker-alt"></i> 中国 · 上海/杭州</div>
+                <div class="info-item"><i class="fas fa-bullhorn"></i> 项目负责人经验 2+年</div>
+                <div class="timeline-item"><div class="timeline-year">2024 — 至今</div> 创新实验室 · 技术统筹与前端架构</div>
+                <div class="timeline-item"><div class="timeline-year">2022 — 2024</div> 艺术与科技交叉学科项目 · 负责人/主设计师</div>
+                <div class="timeline-item"><div class="timeline-year">2021 — 2022</div> 数媒工作室 · 设计开发实习生</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系 -->
+    <section id="contact" class="section">
+        <h2 class="section-title"><i class="fas fa-paper-plane"></i> 合作与社交</h2>
+        <div class="contact-flex">
+            <div>
+                <p style="margin-bottom: 0.8rem;">📬 欢迎交流项目合作 / 设计开发 / 艺术科技跨界。</p>
+                <div class="contact-info">
+                    <a href="mailto:yana.wu@portfolio.me" class="contact-link"><i class="fas fa-envelope"></i> 邮箱</a>
+                    <a href="#" class="contact-link"><i class="fab fa-github"></i> GitHub</a>
+                    <a href="#" class="contact-link"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    <a href="#" class="contact-link"><i class="fab fa-behance"></i> Behance</a>
+                </div>
+            </div>
+            <i class="fas fa-hand-peace" style="font-size: 2rem; color:#98b9e0;"></i>
+        </div>
+    </section>
+    <div class="footer">
+        <p>© 2025 吴畅洋 Yana · 艺术与科技作品集 | 点击任意卡片查看作品详情（图片/视频/网页演示）</p>
+    </div>
+</div>
+
+<!-- 模态框 -->
+<div id="projectModal" class="modal-overlay">
+    <div class="modal-container">
+        <div class="modal-header">
+            <h3 id="modalTitle">作品标题</h3>
+            <button class="close-modal" id="closeModalBtn">&times;</button>
+        </div>
+        <div class="modal-body" id="modalBody"></div>
+    </div>
+</div>
+
+<script>
+    // 作品数据 (展示图片、视频、或网页内嵌，反映负责人参与的多类型项目)
+    const projectsData = [
+        {
+            id: 1,
+            title: "「光影折叠」交互装置",
+            category: "Unreal + TouchDesigner",
+            summary: "艺术与科技跨媒体作品，实时生成视觉。",
+            mediaType: "image",
+            mediaSrc: "https://picsum.photos/id/15/800/500",  // 示例装置艺术风格图片
+            description: "作为项目负责人，统筹设计与程序开发：运用Unreal Engine制作实时渲染场景，结合传感器捕捉观众动态。作品在2024年数字艺术节展出，获得最佳创意奖。",
+            extraLink: "#", extraLinkText: "了解更多创作过程"
+        },
+        {
+            id: 2,
+            title: "视觉设计系统 · 动态组件库",
+            category: "设计系统 / 前端工程",
+            summary: "响应式组件库 & Canvas 动效工具",
+            mediaType: "video",
+            mediaSrc: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+            description: "独立搭建一整套设计系统，包含色彩、间距、以及基于Canvas的动效工具。实现高效协同，并完成多端适配的响应式前端架构。",
+            extraLink: "#", extraLinkText: "访问组件文档"
+        },
+        {
+            id: 3,
+            title: "未来博物馆 · 线上展厅",
+            category: "网页开发 / 策展统筹",
+            summary: "Three.js 轻量级3D展厅 + 响应式布局",
+            mediaType: "iframe",
+            mediaSrc: "https://my.spline.design/untitled-3d41c6e9b5c5f2a8b9e3c4d5b1f8a7c9/",  // 嵌入一个示例3D展厅 (spline demo示意)
+            description: "负责整体前端架构与团队协作，搭建支持多设备的线上虚拟展厅，融合艺术藏品展示和交互叙事。优化加载性能并设计沉浸式浏览路径。",
+            extraLink: "https://example.com", extraLinkText: "预览线上展厅 (示例)"
+        },
+        {
+            id: 4,
+            title: "After Effects 实验动画",
+            category: "动态设计 / 艺术短片",
+            summary: "风格化动画短片 与 声音设计",
+            mediaType: "video",
+            mediaSrc: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+            description: "个人实验动画作品，融合手绘与AE特效。担任导演与动画师，探索抽象叙事与视觉节奏。",
+            extraLink: "#", extraLinkText: "观看完整短片"
+        },
+        {
+            id: 5,
+            title: "创意生成画布 · Canvas 交互应用",
+            category: "创意编程 / 前端",
+            summary: "利用Canvas API实现绘图工具与生成艺术",
+            mediaType: "image",
+            mediaSrc: "https://picsum.photos/id/106/800/500",
+            description: "开发网页端互动画板，支持多种画笔算法与着色器效果。项目总结为开源工具，用于教学与创意编码工作坊。",
+            extraLink: "#", extraLinkText: "体验线上Demo"
+        },
+        {
+            id: 6,
+            title: "响应式设计案例集",
+            category: "网站设计与统筹",
+            summary: "品牌落地页 & 多端自适应方案",
+            mediaType: "iframe",
+            mediaSrc: "https://www.w3schools.com/css/css_rwd_intro.asp",  // 内嵌示例（响应式教学页面只是示意）
+            description: "领导团队完成三个品牌的响应式官网，严格遵循设计系统与移动优先理念。保证跨设备无障碍访问，提升用户留存。",
+            extraLink: "#", extraLinkText: "查看案例研究"
+        }
+    ];
+
+    const portfolioGrid = document.getElementById('portfolioGrid');
+    function renderCards() {
+        portfolioGrid.innerHTML = '';
+        projectsData.forEach(proj => {
+            const card = document.createElement('div');
+            card.className = 'portfolio-card';
+            let iconHtml = '';
+            if(proj.mediaType === 'image') iconHtml = '<i class="fas fa-image"></i>';
+            else if(proj.mediaType === 'video') iconHtml = '<i class="fas fa-video"></i>';
+            else iconHtml = '<i class="fas fa-globe"></i>';
+            card.innerHTML = `
+                <div class="card-img">
+                    ${iconHtml}
+                </div>
+                <div class="card-content">
+                    <div class="card-category">${proj.category}</div>
+                    <h3>${proj.title}</h3>
+                    <p>${proj.summary}</p>
+                    <div class="card-hint"><i class="fas fa-mouse-pointer"></i> 点击查看详细展示</div>
+                </div>
+            `;
+            card.addEventListener('click', () => openModal(proj));
+            portfolioGrid.appendChild(card);
+        });
+    }
+
+    const modal = document.getElementById('projectModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalBody = document.getElementById('modalBody');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+
+    function openModal(project) {
+        modalTitle.innerText = project.title;
+        let mediaHtml = '';
+        if (project.mediaType === 'image') {
+            mediaHtml = `<img src="${project.mediaSrc}" alt="${project.title}" loading="lazy" style="max-width:100%; border-radius:12px;">`;
+        } else if (project.mediaType === 'video') {
+            mediaHtml = `<video controls autoplay muted loop style="max-width:100%; border-radius:12px;">
+                            <source src="${project.mediaSrc}" type="video/mp4">
+                            您的浏览器不支持视频标签。
+                         </video>`;
+        } else if (project.mediaType === 'iframe') {
+            mediaHtml = `<iframe src="${project.mediaSrc}" title="${project.title}" allowfullscreen style="width:100%; min-height: 360px; border-radius:12px;"></iframe>`;
+        }
+        const extraLinkHtml = project.extraLink && project.extraLink !== '#' ? 
+            `<a href="${project.extraLink}" target="_blank" class="extra-link"><i class="fas fa-external-link-alt"></i> ${project.extraLinkText || '访问链接'}</a>` : 
+            (project.extraLinkText ? `<span class="extra-link" style="opacity:0.7;">${project.extraLinkText}</span>` : '');
+        modalBody.innerHTML = `
+            <div class="media-wrapper">
+                ${mediaHtml}
+            </div>
+            <div class="project-description">
+                <p><strong>项目详情 / 我的角色</strong><br>${project.description}</p>
+                ${extraLinkHtml ? `<div style="margin-top: 12px;">${extraLinkHtml}</div>` : ''}
+                <div style="margin-top: 16px; font-size:0.85rem; color:#4a6f8f;"><i class="fas fa-info-circle"></i> 作为项目负责人参与设计/开发统筹</div>
+            </div>
+        `;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    closeModalBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(); });
+    document.addEventListener('keydown', (e) => { if(e.key === 'Escape' && modal.classList.contains('active')) closeModal(); });
+
+    document.querySelectorAll('.nav-links a, .btn-primary, .btn-outline').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const hash = this.getAttribute('href');
+            if(hash && hash.startsWith('#')) {
+                const targetEl = document.querySelector(hash);
+                if(targetEl && hash !== '#') {
+                    e.preventDefault();
+                    targetEl.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        });
+    });
+    renderCards();
+</script>
+</body>
+</html>
