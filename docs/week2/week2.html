@@ -123,6 +123,37 @@
             border-radius: 12px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
+
+        /* 代码高亮样式 */
+        .code-block {
+            background: #2d2d2d;
+            border-radius: 8px;
+            padding: 20px;
+            overflow-x: auto;
+            margin-top: 15px;
+        }
+
+        .code-block pre {
+            margin: 0;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #f8f8f2;
+        }
+
+        .code-block code {
+            font-family: inherit;
+        }
+
+        /* 语法高亮颜色 */
+        .code-comment { color: #75715e; }
+        .code-keyword { color: #66d9ef; font-weight: bold; }
+        .code-type { color: #a6e22e; }
+        .code-function { color: #fd971f; }
+        .code-string { color: #e6db74; }
+        .code-number { color: #ae81ff; }
+        .code-preprocessor { color: #f92672; }
+        .code-link { color: #66d9ef; text-decoration: underline; cursor: pointer; }
     </style>
 </head>
 <body>
@@ -193,28 +224,108 @@
                 <div class="sensor-dropdown">
                     <button class="sensor-btn active" data-sensor="ws2812">WS2812和HS-S05B</button>
                     <div class="sensor-submenu">
-                        <button class="submenu-btn active" data-view="ws2812-final">最终成果</button>
-                        <button class="submenu-btn" data-view="ws2812-process">制作过程</button>
+                        <button class="submenu-btn active" data-view="ws2812-process">制作过程</button>
+                        <button class="submenu-btn" data-view="ws2812-final">最终成果</button>
                     </div>
                 </div>
                 <div class="sensor-dropdown">
                     <button class="sensor-btn" data-sensor="pressure">压力传感器</button>
                     <div class="sensor-submenu">
-                        <button class="submenu-btn" data-view="pressure-final">最终成果</button>
                         <button class="submenu-btn" data-view="pressure-process">制作过程</button>
+                        <button class="submenu-btn" data-view="pressure-final">最终成果</button>
                     </div>
                 </div>
                 <div class="sensor-dropdown">
                     <button class="sensor-btn" data-sensor="servo">舵机</button>
                     <div class="sensor-submenu">
-                        <button class="submenu-btn" data-view="servo-final">最终成果</button>
                         <button class="submenu-btn" data-view="servo-process">制作过程</button>
+                        <button class="submenu-btn" data-view="servo-final">最终成果</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- WS2812和HS-S05B 制作过程 -->
+            <div id="ws2812-process" class="sensor-content active">
+                <div class="content-section">
+                    <h3>🔨 WS2812和HS-S05B - 制作过程记录</h3>
+                    <div class="process-step">
+                        <h4>📌 第一步：硬件准备</h4>
+                        <p>采购 Arduino Uno R4 WIFI开发板、WS2812灯环、HS-S05B超声波传感器、面包板及杜邦线若干。</p>
+                    </div>
+                    <div class="process-step">
+                        <h4>📌 第二步：电路搭建</h4>
+                        <p>按照电路图连接各模块：WS2812灯环的VCC接5V、GND接地、DIN接数字引脚D8；HS-S05B超声波传感器的VCC接5V、GND接地、Trig接D7、Echo接D6。</p>
+                        <div class="image-illustration">
+                            <img src="assets/arduino-connection.png" alt="Arduino连接示意图" onclick="openImageModal(this.src)">
+                            <p>图1：Arduino 与 WS2812、HS-S05B 连接示意图</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <h4>📌 第三步：代码编写</h4>
+                        <p>编写 Arduino 代码实现：初始化 FastLED 库控制 WS2812 灯环；使用 pulseIn() 函数读取传感器信号；实现拍手开灯和吹气关灯的互动功能。</p>
+                        <p style="color: #ff6b6b; font-weight: bold; margin-top: 10px;">💡 AI 帮助编写代码</p>
+                        <p style="margin-top: 10px;">FastLED 库链接：<a href="https://github.com/dmadison/FastLED_NeoPixel" target="_blank" style="color: #5B7C99; text-decoration: underline;">https://github.com/dmadison/FastLED_NeoPixel</a></p>
+                        
+                        <div class="code-block">
+                            <pre><code><span class="code-preprocessor">#include</span> &lt;<a href="https://github.com/dmadison/FastLED_NeoPixel" target="_blank" class="code-link">FastLED.h</a>&gt;
+<span class="code-comment">// 硬件引脚定义（声音传感器接D7，灯环接D8）</span>
+
+<span class="code-preprocessor">#define</span> <span class="code-type">LED_PIN</span>     <span class="code-number">8</span>       <span class="code-comment">// WS2812灯环数据引脚</span>
+<span class="code-preprocessor">#define</span> <span class="code-type">SOUND_PIN</span>   <span class="code-number">7</span>       <span class="code-comment">// HS-S05B声音传感器信号引脚</span>
+<span class="code-preprocessor">#define</span> <span class="code-type">NUM_LEDS</span>    <span class="code-number">12</span>      <span class="code-comment">// 灯环LED数量</span>
+
+<span class="code-comment">// 脉冲时间阈值（单位：微秒，需根据实际调试）</span>
+<span class="code-preprocessor">#define</span> <span class="code-type">CLAP_PULSE_MIN</span> <span class="code-number">100</span>  <span class="code-comment">// 拍手脉冲最小时间</span>
+<span class="code-preprocessor">#define</span> <span class="code-type">CLAP_PULSE_MAX</span> <span class="code-number">500</span>  <span class="code-comment">// 拍手脉冲最大时间</span>
+<span class="code-preprocessor">#define</span> <span class="code-type">BLOW_PULSE_MIN</span> <span class="code-number">600</span>  <span class="code-comment">// 吹气脉冲最小时间</span>
+<span class="code-preprocessor">#define</span> <span class="code-type">BLOW_PULSE_MAX</span> <span class="code-number">2000</span> <span class="code-comment">// 吹气脉冲最大时间</span>
+
+<span class="code-type">CRGB</span> leds[<span class="code-type">NUM_LEDS</span>];
+<span class="code-type">bool</span> isLightOn = <span class="code-keyword">false</span>;     <span class="code-comment">// 灯的状态，初始为灭</span>
+
+<span class="code-type">void</span> <span class="code-function">setup</span>() {
+  <span class="code-function">pinMode</span>(<span class="code-type">SOUND_PIN</span>, <span class="code-type">INPUT</span>); <span class="code-comment">// 设置声音传感器引脚为输入模式</span>
+  <span class="code-type">FastLED</span>.<span class="code-function">addLeds</span>&lt;<span class="code-type">WS2812</span>, <span class="code-type">LED_PIN</span>, <span class="code-type">GRB</span>&gt;(leds, <span class="code-type">NUM_LEDS</span>);
+  <span class="code-type">FastLED</span>.<span class="code-function">setBrightness</span>(<span class="code-number">100</span>); <span class="code-comment">// 设置亮度</span>
+  <span class="code-type">Serial</span>.<span class="code-function">begin</span>(<span class="code-number">9600</span>); <span class="code-comment">// 打开串口用于调试</span>
+  <span class="code-type">Serial</span>.<span class="code-function">println</span>(<span class="code-string">"系统启动，等待拍手或吹气触发..."</span>);
+}
+
+<span class="code-type">void</span> <span class="code-function">loop</span>() {
+  <span class="code-comment">// 读取高电平脉冲时间（检测拍手或吹气的脉冲）</span>
+  <span class="code-type">unsigned long</span> pulseTime = <span class="code-function">pulseIn</span>(<span class="code-type">SOUND_PIN</span>, <span class="code-type">HIGH</span>);
+  
+  <span class="code-type">Serial</span>.<span class="code-function">print</span>(<span class="code-string">"脉冲时间: "</span>);
+  <span class="code-type">Serial</span>.<span class="code-function">println</span>(pulseTime);
+
+  <span class="code-comment">// 拍手检测：脉冲时间在拍手阈值范围内，且灯当前是灭的</span>
+  <span class="code-keyword">if</span> (pulseTime >= <span class="code-type">CLAP_PULSE_MIN</span> && pulseTime <= <span class="code-type">CLAP_PULSE_MAX</span> && !isLightOn) {
+    isLightOn = <span class="code-keyword">true</span>; <span class="code-comment">// 开灯</span>
+    <span class="code-function">fill_solid</span>(leds, <span class="code-type">NUM_LEDS</span>, <span class="code-type">CRGB</span>::Red); <span class="code-comment">// 设置为红色，可自定义颜色</span>
+    <span class="code-type">FastLED</span>.<span class="code-function">show</span>();
+    <span class="code-type">Serial</span>.<span class="code-function">println</span>(<span class="code-string">"检测到拍手，开灯"</span>);
+    <span class="code-function">delay</span>(<span class="code-number">200</span>); <span class="code-comment">// 防抖动</span>
+  }
+  <span class="code-comment">// 吹气检测：脉冲时间在吹气阈值范围内，且灯当前是亮的</span>
+  <span class="code-keyword">else if</span> (pulseTime >= <span class="code-type">BLOW_PULSE_MIN</span> && pulseTime <= <span class="code-type">BLOW_PULSE_MAX</span> && isLightOn) {
+    isLightOn = <span class="code-keyword">false</span>; <span class="code-comment">// 关灯</span>
+    <span class="code-function">fill_solid</span>(leds, <span class="code-type">NUM_LEDS</span>, <span class="code-type">CRGB</span>::Black); <span class="code-comment">// 熄灭</span>
+    <span class="code-type">FastLED</span>.<span class="code-function">show</span>();
+    <span class="code-type">Serial</span>.<span class="code-function">println</span>(<span class="code-string">"检测到吹气，关灯"</span>);
+    <span class="code-function">delay</span>(<span class="code-number">200</span>); <span class="code-comment">// 防抖动</span>
+  }
+}</code></pre>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <h4>📌 第四步：测试与调试</h4>
+                        <p>逐个测试各传感器功能，调整超声波传感器的测量精度，确保灯效响应及时。遇到问题：超声波测量不稳定，通过多次测量取平均值解决。</p>
                     </div>
                 </div>
             </div>
 
             <!-- WS2812和HS-S05B 最终成果 -->
-            <div id="ws2812-final" class="sensor-content active">
+            <div id="ws2812-final" class="sensor-content">
                 <div class="content-section">
                     <h3>🎯 WS2812和HS-S05B - 最终成果展示</h3>
 
@@ -240,38 +351,12 @@
                 </div>
             </div>
 
-            <!-- WS2812和HS-S05B 制作过程 -->
-            <div id="ws2812-process" class="sensor-content">
+            <!-- 压力传感器 制作过程 -->
+            <div id="pressure-process" class="sensor-content">
                 <div class="content-section">
-                    <h3> WS2812和HS-S05B - 制作过程记录</h3>
+                    <h3>🔨 压力传感器 - 制作过程记录</h3>
                     <div class="process-step">
-                        <h4>📌 第一步：硬件准备</h4>
-                        <p>采购 Arduino Uno 开发板、WS2812灯环、HS-S05B超声波传感器、面包板及杜邦线若干。</p>
-                    </div>
-                    <div class="process-step">
-                        <h4> 第二步：电路搭建</h4>
-                        <p>按照电路图连接各模块：WS2812灯环的VCC接5V、GND接地、DIN接数字引脚D8；HS-S05B超声波传感器的VCC接5V、GND接地、Trig接D7、Echo接D6。</p>
-                        <div class="image-illustration">
-                            <img src="assets/arduino-connection.png" alt="Arduino连接示意图" onclick="openImageModal(this.src)">
-                            <p>图1：Arduino 与 WS2812、HS-S05B 连接示意图</p>
-                        </div>
-                    </div>
-                    <div class="process-step">
-                        <h4>📌 第三步：代码编写</h4>
-                        <p>编写 Arduino 代码实现：初始化 FastLED 库控制 WS2812 灯环；使用 pulseIn() 函数读取传感器信号；实现拍手开灯和吹气关灯的互动功能。</p>
-                        <p style="color: #ff6b6b; font-weight: bold; margin-top: 10px;">💡 AI 帮助编写代码</p>
-                        <div class="image-illustration">
-                            <img src="assets/code-part1.png" alt="代码第一部分" onclick="openImageModal(this.src)">
-                            <p>图1：Arduino 代码 - 硬件引脚定义和初始化部分</p>
-                        </div>
-                        <div class="image-illustration">
-                            <img src="assets/code-part2.png" alt="代码第二部分" onclick="openImageModal(this.src)">
-                            <p>图2：Arduino 代码 - 拍手检测和吹气检测逻辑</p>
-                        </div>
-                    </div>
-                    <div class="process-step">
-                        <h4> 第四步：测试与调试</h4>
-                        <p>逐个测试各传感器功能，调整超声波传感器的测量精度，确保灯效响应及时。遇到问题：超声波测量不稳定，通过多次测量取平均值解决。</p>
+                        <p style="color: #999; text-align: center; padding: 40px;">内容待补充</p>
                     </div>
                 </div>
             </div>
@@ -302,10 +387,10 @@
                 </div>
             </div>
 
-            <!-- 压力传感器 制作过程 -->
-            <div id="pressure-process" class="sensor-content">
+            <!-- 舵机 制作过程 -->
+            <div id="servo-process" class="sensor-content">
                 <div class="content-section">
-                    <h3>🔨 压力传感器 - 制作过程记录</h3>
+                    <h3>🔨 舵机 - 制作过程记录</h3>
                     <div class="process-step">
                         <p style="color: #999; text-align: center; padding: 40px;">内容待补充</p>
                     </div>
@@ -334,16 +419,6 @@
                             <img src="assets/pressure-sensor.png" alt="压力传感器FSR402" onclick="openImageModal(this.src)">
                             <p>图2：压力传感器FSR402实物图</p>
                         </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 舵机 制作过程 -->
-            <div id="servo-process" class="sensor-content">
-                <div class="content-section">
-                    <h3>🔨 舵机 - 制作过程记录</h3>
-                    <div class="process-step">
-                        <p style="color: #999; text-align: center; padding: 40px;">内容待补充</p>
                     </div>
                 </div>
             </div>
