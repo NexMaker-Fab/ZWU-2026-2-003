@@ -106,7 +106,7 @@
                 </div>
 
                 <div class="team-grid">
-                    <article class="team-card" data-navigate-to="yana">
+                    <article class="team-card">
                         <div class="card-avatar">
                             <span class="avatar-border"></span>
                             <span class="avatar-icon">🌟</span>
@@ -114,7 +114,7 @@
                         <h3 class="member-name">Yana</h3>
                         <p class="member-job">项目统筹 / 设计表达</p>
                     </article>
-                    <article class="team-card" data-navigate-to="niki">
+                    <article class="team-card">
                         <div class="card-avatar">
                             <span class="avatar-border"></span>
                             <span class="avatar-icon">💻</span>
@@ -349,12 +349,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 团队成员点击跳转
-    document.querySelectorAll('.team-card').forEach(card => {
+    document.querySelectorAll('.team-card').forEach((card, index) => {
         card.addEventListener('click', () => {
-            const targetPage = card.dataset.navigateTo;
-            if (targetPage === 'yana') {
+            const memberNames = ['yana', 'niki', 'sophia', 'milky', 'kakei', 'lynn'];
+            const memberName = memberNames[index];
+            if (memberName === 'yana') {
                 window.location.href = 'docs/yana/yana.html';
-            } else if (targetPage === 'niki') {
+            } else if (memberName === 'niki') {
                 window.location.href = 'docs/Niki/Niki_html.html';
             }
         });
