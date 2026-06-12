@@ -1,0 +1,507 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人作品集</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background-color: #f8fafb;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+
+        /* 导航栏 */
+        nav {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(58, 124, 165, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .nav-logo {
+            font-size: 24px;
+            font-weight: 500;
+            color: #3a7ca5;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .lang-switch {
+            padding: 8px 16px;
+            background: transparent;
+            border: 2px solid #3a7ca5;
+            border-radius: 20px;
+            color: #3a7ca5;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .lang-switch:hover {
+            background: #3a7ca5;
+            color: white;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #5a7a8a;
+            font-size: 16px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #3a7ca5;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #3a7ca5;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        /* 主容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* 头部区域 */
+        header {
+            padding: 100px 0 80px;
+            background: linear-gradient(135deg, #e8f4f8 0%, #d4edf5 100%);
+        }
+
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .profile-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 4px solid white;
+            box-shadow: 0 8px 30px rgba(58, 124, 165, 0.15);
+            overflow: hidden;
+        }
+
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .bio {
+            font-size: 16px;
+            color: #6a7a8a;
+            line-height: 1.8;
+            margin-top: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .name {
+            font-size: 48px;
+            font-weight: 300;
+            color: #3a7ca5;
+            margin-bottom: 16px;
+            letter-spacing: 2px;
+        }
+
+        .major {
+            font-size: 20px;
+            color: #5a9bb5;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        /* 关于我区域 */
+        .about-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 300;
+            color: #3a7ca5;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .about-card {
+            padding: 30px;
+            background-color: #f8fafb;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(58, 124, 165, 0.1);
+        }
+
+        .about-icon {
+            font-size: 40px;
+            margin-bottom: 16px;
+        }
+
+        .about-card h3 {
+            font-size: 18px;
+            color: #3a7ca5;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .about-card p {
+            font-size: 14px;
+            color: #7a8a9a;
+            line-height: 1.8;
+        }
+
+        /* 技能区域 */
+        .skills-section {
+            padding: 80px 0;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .skill-item {
+            background: white;
+            padding: 24px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(58, 124, 165, 0.08);
+        }
+
+        .skill-name {
+            font-size: 16px;
+            color: #3a7ca5;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .skill-bar {
+            height: 6px;
+            background-color: #e8f4f8;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #5a9bb5 0%, #3a7ca5 100%);
+            border-radius: 3px;
+        }
+
+        /* 联系方式区域 */
+        .contact-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .contact-item {
+            padding: 30px;
+            background-color: #f8fafb;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background-color: #e8f4f8;
+        }
+
+        .contact-label {
+            font-size: 14px;
+            color: #7a8a9a;
+            margin-bottom: 8px;
+        }
+
+        .contact-value {
+            font-size: 16px;
+            color: #3a7ca5;
+            font-weight: 500;
+        }
+
+        /* 页脚 */
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            background-color: #e8f4f8;
+            color: #5a9bb5;
+            font-size: 14px;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            header {
+                padding: 60px 0 40px;
+            }
+
+            .name {
+                font-size: 36px;
+            }
+
+            .major {
+                font-size: 18px;
+            }
+
+            .section-title {
+                font-size: 28px;
+                margin-bottom: 40px;
+            }
+
+            .nav-container {
+                padding: 0 20px;
+            }
+
+            .nav-menu {
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav>
+        <div class="nav-container">
+            <a href="portfolio.html" class="nav-logo">邱佳慧</a>
+            <ul class="nav-menu">
+                <li><a href="portfolio.html" class="active" data-zh="关于我" data-en="About">关于我</a></li>
+                <li><a href="works.html" data-zh="作品集" data-en="Portfolio">作品集</a></li>
+                <li><a href="contact.html" data-zh="联系方式" data-en="Contact">联系方式</a></li>
+                <li><button class="lang-switch" onclick="toggleLanguage()">EN</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 头部：个人基本信息 -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="profile-photo">
+                    <img src="images/avatar.jpg" alt="邱佳慧">
+                </div>
+                <h1 class="name" data-zh="邱佳慧" data-en="Kakei">邱佳慧</h1>
+                <p class="major" data-zh="艺术与科技" data-en="Art & Technology">艺术与科技</p>
+                <p class="bio" data-zh="热爱艺术与科技的融合，致力于创造具有创新性和美感的数字作品。专注于交互设计、视觉艺术和新媒体创作。" data-en="Passionate about the fusion of art and technology, dedicated to creating innovative and aesthetically pleasing digital works. Focusing on interaction design, visual arts, and new media creation.">热爱艺术与科技的融合，致力于创造具有创新性和美感的数字作品。专注于交互设计、视觉艺术和新媒体创作。</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- 关于我区域 -->
+    <section class="about-section">
+        <div class="container">
+            <h2 class="section-title" data-zh="关于我" data-en="About Me">关于我</h2>
+            
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="about-icon">🎨</div>
+                    <h3 data-zh="设计理念" data-en="Design Philosophy">设计理念</h3>
+                    <p data-zh="将艺术美学与科技创新相结合，探索数字化时代的创意表达方式" data-en="Combining artistic aesthetics with technological innovation to explore creative expression in the digital age">将艺术美学与科技创新相结合，探索数字化时代的创意表达方式</p>
+                </div>
+
+                <div class="about-card">
+                    <div class="about-icon">💡</div>
+                    <h3 data-zh="创意思维" data-en="Creative Thinking">创意思维</h3>
+                    <p data-zh="善于从生活中汲取灵感，用独特的视角看待问题，提出创新的解决方案" data-en="Good at drawing inspiration from life, viewing problems from unique perspectives, and proposing innovative solutions">善于从生活中汲取灵感，用独特的视角看待问题，提出创新的解决方案</p>
+                </div>
+
+                <div class="about-card">
+                    <div class="about-icon">🚀</div>
+                    <h3 data-zh="持续学习" data-en="Continuous Learning">持续学习</h3>
+                    <p data-zh="保持对新技术和新趋势的敏感度，不断学习和提升自己的专业技能" data-en="Maintaining sensitivity to new technologies and trends, continuously learning and improving professional skills">保持对新技术和新趋势的敏感度，不断学习和提升自己的专业技能</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 技能区域 -->
+    <section class="skills-section">
+        <div class="container">
+            <h2 class="section-title" data-zh="专业技能" data-en="Professional Skills">专业技能</h2>
+            
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <div class="skill-name" data-zh="UI/UX 设计" data-en="UI/UX Design">UI/UX 设计</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 90%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-name" data-zh="交互设计" data-en="Interaction Design">交互设计</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-name" data-zh="视觉设计" data-en="Visual Design">视觉设计</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 88%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-name" data-zh="前端开发" data-en="Front-end Development">前端开发</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 75%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-name" data-zh="3D 建模" data-en="3D Modeling">3D 建模</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 70%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-name" data-zh="动效设计" data-en="Motion Design">动效设计</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 80%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系方式区域 -->
+    <section class="contact-section">
+        <div class="container">
+            <h2 class="section-title" data-zh="联系方式" data-en="Contact">联系方式</h2>
+            
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <div class="contact-label" data-zh="邮箱" data-en="Email">邮箱</div>
+                    <div class="contact-value">874154700@qq.com</div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-label" data-zh="电话" data-en="Phone">电话</div>
+                    <div class="contact-value">17858940633</div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-label" data-zh="微信" data-en="WeChat">微信</div>
+                    <div class="contact-value">kakei_ovo</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 <span data-zh="个人作品集" data-en="Portfolio">个人作品集</span>. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 语言切换功能
+        let currentLang = 'zh';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'zh' ? 'en' : 'zh';
+            const langSwitch = document.querySelector('.lang-switch');
+            langSwitch.textContent = currentLang === 'zh' ? 'EN' : '中文';
+
+            // 更新所有带有 data-zh 和 data-en 属性的元素
+            const elements = document.querySelectorAll('[data-zh][data-en]');
+            elements.forEach(el => {
+                el.textContent = currentLang === 'zh' ? el.getAttribute('data-zh') : el.getAttribute('data-en');
+            });
+
+            // 保存语言偏好到 localStorage
+            localStorage.setItem('preferredLang', currentLang);
+        }
+
+        // 页面加载时恢复语言偏好
+        window.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('preferredLang');
+            if (savedLang && savedLang !== 'zh') {
+                currentLang = savedLang;
+                const langSwitch = document.querySelector('.lang-switch');
+                langSwitch.textContent = currentLang === 'zh' ? 'EN' : '中文';
+
+                const elements = document.querySelectorAll('[data-zh][data-en]');
+                elements.forEach(el => {
+                    el.textContent = currentLang === 'zh' ? el.getAttribute('data-zh') : el.getAttribute('data-en');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

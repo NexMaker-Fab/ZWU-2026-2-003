@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>邱佳慧 - Kakei | 个人作品集</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #e8f4f8 0%, #d4e8f0 50%, #c0dce8 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* 背景动画效果 */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.3;
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(58, 124, 165, 0.1);
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .circle:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .circle:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            top: 60%;
+            right: 15%;
+            animation-delay: 5s;
+        }
+
+        .circle:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            bottom: 20%;
+            left: 30%;
+            animation-delay: 10s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+            }
+            50% {
+                transform: translateY(-30px) scale(1.1);
+            }
+        }
+
+        /* 主容器 */
+        .container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 800px;
+            padding: 60px 40px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(58, 124, 165, 0.15);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 头像 */
+        .avatar {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 30px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid white;
+            box-shadow: 0 10px 30px rgba(58, 124, 165, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .avatar:hover {
+            transform: scale(1.05);
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 姓名 */
+        .name {
+            font-size: 48px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .english-name {
+            font-size: 24px;
+            color: #3a7ca5;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        /* 专业 */
+        .major {
+            font-size: 20px;
+            color: #5a6c7d;
+            margin-bottom: 30px;
+            padding: 10px 30px;
+            background: linear-gradient(135deg, #e8f4f8 0%, #d4e8f0 100%);
+            border-radius: 25px;
+            display: inline-block;
+        }
+
+        /* 简介 */
+        .intro {
+            font-size: 16px;
+            color: #6b7c8d;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* 按钮组 */
+        .button-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            min-width: 160px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #3a7ca5 0%, #2d6a8f 100%);
+            color: white;
+            box-shadow: 0 5px 20px rgba(58, 124, 165, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(58, 124, 165, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #3a7ca5;
+            border: 2px solid #3a7ca5;
+        }
+
+        .btn-secondary:hover {
+            background: #3a7ca5;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* 底部装饰 */
+        .footer-text {
+            margin-top: 40px;
+            font-size: 14px;
+            color: #9aa8b5;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 30px;
+                margin: 20px;
+            }
+
+            .name {
+                font-size: 36px;
+            }
+
+            .english-name {
+                font-size: 20px;
+            }
+
+            .button-group {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 280px;
+            }
+        }
+
+        /* 语言切换按钮 */
+        .lang-switch {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 8px 16px;
+            background: transparent;
+            border: 2px solid #3a7ca5;
+            border-radius: 20px;
+            color: #3a7ca5;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .lang-switch:hover {
+            background: #3a7ca5;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- 背景动画 -->
+    <div class="bg-animation">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div>
+
+    <!-- 主容器 -->
+    <div class="container">
+        <!-- 语言切换 -->
+        <button class="lang-switch" onclick="toggleLanguage()">EN</button>
+
+        <!-- 头像 -->
+        <div class="avatar">
+            <img src="images/avatar.jpg" alt="邱佳慧" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 150 150%22%3E%3Crect fill=%22%23e8f4f8%22 width=%22150%22 height=%22150%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2260%22 fill=%22%233a7ca5%22%3EK%3C/text%3E%3C/svg%3E'">
+        </div>
+
+        <!-- 姓名 -->
+        <h1 class="name" data-zh="邱佳慧" data-en="Kakei">邱佳慧</h1>
+        <p class="english-name" data-zh="艺术与科技" data-en="Art & Technology">艺术与科技</p>
+
+        <!-- 专业标签 -->
+        <div class="major" data-zh="数字媒体艺术家" data-en="Digital Media Artist">数字媒体艺术家</div>
+
+        <!-- 简介 -->
+        <p class="intro" data-zh="欢迎来到我的个人作品集网站。这里展示我在艺术与科技领域的学习成果和创意作品，包括计算机应用、数字影像、互动设计等多个方向的探索与实践。" 
+           data-en="Welcome to my personal portfolio website. Here I showcase my learning achievements and creative works in the fields of art and technology, including explorations and practices in computer applications, digital imaging, interactive design, and more.">
+            欢迎来到我的个人作品集网站。这里展示我在艺术与科技领域的学习成果和创意作品，包括计算机应用、数字影像、互动设计等多个方向的探索与实践。
+        </p>
+
+        <!-- 按钮组 -->
+        <div class="button-group">
+            <a href="portfolio.html" class="btn btn-primary" data-zh="查看关于我" data-en="About Me">查看关于我</a>
+            <a href="works.html" class="btn btn-secondary" data-zh="浏览作品集" data-en="View Portfolio">浏览作品集</a>
+            <a href="contact.html" class="btn btn-secondary" data-zh="联系我" data-en="Contact Me">联系我</a>
+        </div>
+
+        <!-- 底部文字 -->
+        <p class="footer-text" data-zh="© 2026 邱佳慧 · All Rights Reserved" data-en="© 2026 Kakei · All Rights Reserved">
+            © 2026 邱佳慧 · All Rights Reserved
+        </p>
+    </div>
+
+    <script>
+        // 语言切换功能
+        let currentLang = 'zh';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'zh' ? 'en' : 'zh';
+            const langSwitch = document.querySelector('.lang-switch');
+            langSwitch.textContent = currentLang === 'zh' ? 'EN' : '中文';
+
+            // 更新所有带有 data-zh 和 data-en 属性的元素
+            const elements = document.querySelectorAll('[data-zh][data-en]');
+            elements.forEach(el => {
+                el.textContent = currentLang === 'zh' ? el.getAttribute('data-zh') : el.getAttribute('data-en');
+            });
+
+            // 保存语言偏好
+            localStorage.setItem('preferredLang', currentLang);
+        }
+
+        // 页面加载时恢复语言偏好
+        window.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('preferredLang');
+            if (savedLang && savedLang !== 'zh') {
+                currentLang = savedLang;
+                const langSwitch = document.querySelector('.lang-switch');
+                langSwitch.textContent = currentLang === 'zh' ? 'EN' : '中文';
+
+                const elements = document.querySelectorAll('[data-zh][data-en]');
+                elements.forEach(el => {
+                    el.textContent = currentLang === 'zh' ? el.getAttribute('data-zh') : el.getAttribute('data-en');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
