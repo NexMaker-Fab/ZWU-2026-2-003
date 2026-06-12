@@ -15,8 +15,8 @@
 
         body {
             font-family: 'Nunito', sans-serif;
-            background: linear-gradient(135deg, #E8ECEF 0%, #D4DDE5 100%);
-            color: #4A5568;
+            background-color: #D5EAE3;
+            color: #775C55;
             overflow-x: hidden;
         }
 
@@ -26,7 +26,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #E8ECEF 0%, #C5D1DC 100%);
+            background-color: #D5EAE3;
             position: relative;
         }
 
@@ -37,7 +37,7 @@
         #typewriter {
             font-size: 3rem;
             font-weight: 700;
-            color: #4A5568;
+            color: #775C55;
             min-height: 80px;
             letter-spacing: 2px;
         }
@@ -47,7 +47,7 @@
             display: inline-block;
             width: 3px;
             height: 1em;
-            background-color: #4A5568;
+            background-color: #775C55;
             margin-left: 5px;
             animation: blink 1s infinite;
         }
@@ -61,6 +61,7 @@
         .info-section {
             padding: 80px 20px;
             min-height: 100vh;
+            background-color: #F8F4E9;
         }
 
         .container {
@@ -71,13 +72,124 @@
             gap: 40px;
         }
 
+        /* Chat Section - 微信聊天风格 */
+        .chat-section {
+            padding: 60px 20px;
+            background-color: #D5EAE3;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chat-container {
+            max-width: 900px;
+            width: 100%;
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+
+        .avatar-wrapper {
+            flex-shrink: 0;
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.6s ease-out;
+        }
+
+        .avatar-wrapper.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #FDD3D5;
+            box-shadow: 0 4px 20px rgba(119, 92, 85, 0.2);
+        }
+
+        /* 点击头像可跳转 */
+        .avatar-link {
+            display: inline-block;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .avatar-link:hover {
+            transform: scale(1.05);
+        }
+
+        .chat-bubble {
+            background-color: #F8F4E9;
+            border-radius: 20px;
+            padding: 25px 30px;
+            max-width: 500px;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(119, 92, 85, 0.1);
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.6s ease-out;
+        }
+
+        .chat-bubble.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .chat-bubble::before {
+            content: '';
+            position: absolute;
+            left: -15px;
+            top: 30px;
+            width: 0;
+            height: 0;
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+            border-right: 15px solid #F8F4E9;
+        }
+
+        .chat-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #775C55;
+        }
+
+        /* Find Me Section */
+        .find-me-section {
+            padding: 80px 20px;
+            background-color: #FDD3D5;
+            text-align: center;
+            min-height: 50vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .find-me-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #775C55;
+            margin-bottom: 30px;
+        }
+
+        .email-display {
+            font-size: 1.5rem;
+            color: #775C55;
+            min-height: 40px;
+            font-weight: 600;
+        }
+
         /* Info Card */
         .info-card {
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(248, 244, 233, 0.9);
             backdrop-filter: blur(10px);
             border-radius: 20px;
             padding: 30px;
-            box-shadow: 0 8px 32px rgba(74, 85, 104, 0.1);
+            box-shadow: 0 8px 32px rgba(119, 92, 85, 0.1);
             transition: all 0.3s ease;
             opacity: 0;
             transform: translateY(50px);
@@ -90,7 +202,7 @@
 
         .info-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(74, 85, 104, 0.15);
+            box-shadow: 0 12px 40px rgba(119, 92, 85, 0.15);
         }
 
         .card-icon {
@@ -100,25 +212,25 @@
 
         .info-card h2 {
             font-size: 1.8rem;
-            color: #4A5568;
+            color: #775C55;
             margin-bottom: 15px;
             font-weight: 700;
         }
 
         .card-content {
             font-size: 1.1rem;
-            color: #718096;
+            color: #775C55;
             line-height: 1.6;
         }
 
         .email-link {
-            color: #A8B5C5;
+            color: #775C55;
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
         .email-link:hover {
-            color: #4A5568;
+            color: #FDD3D5;
         }
 
         /* Hobby Tags */
@@ -129,8 +241,8 @@
         }
 
         .tag {
-            background: linear-gradient(135deg, #A8B5C5 0%, #B8C5D1 100%);
-            color: white;
+            background: linear-gradient(135deg, #FDD3D5 0%, #F8F4E9 100%);
+            color: #775C55;
             padding: 10px 20px;
             border-radius: 25px;
             font-size: 1rem;
@@ -141,7 +253,7 @@
 
         .tag:hover {
             transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(168, 181, 197, 0.4);
+            box-shadow: 0 4px 15px rgba(253, 211, 213, 0.4);
         }
 
         /* Skills Grid */
@@ -166,7 +278,7 @@
         .skill-name {
             display: block;
             font-size: 0.95rem;
-            color: #4A5568;
+            color: #775C55;
             margin-bottom: 8px;
             font-weight: 600;
         }
@@ -174,14 +286,14 @@
         .skill-bar {
             width: 100%;
             height: 8px;
-            background: #D4DDE5;
+            background: #D5EAE3;
             border-radius: 10px;
             overflow: hidden;
         }
 
         .skill-progress {
             height: 100%;
-            background: linear-gradient(90deg, #A8B5C5 0%, #B8C5D1 100%);
+            background: linear-gradient(90deg, #FDD3D5 0%, #F8F4E9 100%);
             border-radius: 10px;
             transition: width 1s ease-out;
         }
@@ -247,22 +359,13 @@
                 <p class="card-content">DT(2+2)24A2, Zhejiang Wanli University</p>
             </div>
 
-            <!-- Contact Card -->
-            <div class="info-card scroll-reveal">
-                <div class="card-icon">📧</div>
-                <h2>Contact</h2>
-                <a href="mailto:2642811355@qq.com" class="card-content email-link">
-                    2642811355@qq.com
-                </a>
-            </div>
-
             <!-- Hobbies Card -->
             <div class="info-card scroll-reveal">
                 <div class="card-icon">✨</div>
                 <h2>Hobbies</h2>
                 <div class="hobby-tags">
                     <span class="tag">🎮 Gaming</span>
-                    <span class="tag">📚 Reading</span>
+                    <span class="tag"> Reading</span>
                     <span class="tag">✈️ Traveling</span>
                 </div>
             </div>
@@ -313,6 +416,28 @@
         </div>
     </section>
 
+    <!-- Chat Section - 微信聊天风格 -->
+    <section class="chat-section">
+        <div class="chat-container">
+            <div class="avatar-wrapper scroll-reveal">
+                <a href="../index.html" class="avatar-link">
+                    <img src="images/niki-avatar.jpg" alt="Niki's Avatar" class="avatar">
+                </a>
+            </div>
+            <div class="chat-bubble scroll-reveal">
+                <p class="chat-text">
+                    Hi, I'm Niki, a sophomore majoring in Art & Technology. I enjoy designing with PS, AI, AE, CapCut, and AI tools, and I also have some knowledge of interaction design. I want to create beautiful and useful products through UI design.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Find Me Section -->
+    <section class="find-me-section">
+        <h2 class="find-me-title">FIND ME</h2>
+        <div class="email-display" id="email-typewriter"></div>
+    </section>
+
     <script>
         // 打字机效果
         const typewriterText = "Hello, I'm Niki JIANG";
@@ -359,6 +484,34 @@
         document.querySelectorAll('.scroll-reveal').forEach((element) => {
             observer.observe(element);
         });
+
+        // 邮箱打字机效果
+        const emailText = "2642811355@qq.com";
+        const emailElement = document.getElementById('email-typewriter');
+        let emailCharIndex = 0;
+
+        function typeEmail() {
+            if (emailCharIndex < emailText.length) {
+                emailElement.textContent += emailText.charAt(emailCharIndex);
+                emailCharIndex++;
+                setTimeout(typeEmail, 100); // 每个字符延迟100ms
+            }
+        }
+
+        // 当滚动到Find Me区域时触发邮箱打字效果
+        const findMeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && emailCharIndex === 0) {
+                    setTimeout(typeEmail, 500); // 延迟500ms开始打字
+                    findMeObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const findMeSection = document.querySelector('.find-me-section');
+        if (findMeSection) {
+            findMeObserver.observe(findMeSection);
+        }
 
         // 平滑滚动效果
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
