@@ -359,6 +359,10 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe 
     box-shadow: 0 12px 24px rgba(148, 163, 184, 0.14);
 }
 
+.team-card[data-navigate-to] {
+    cursor: pointer;
+}
+
 .team-card:hover {
     transform: translateY(-6px);
     border-color: rgba(96, 165, 250, 0.55);
