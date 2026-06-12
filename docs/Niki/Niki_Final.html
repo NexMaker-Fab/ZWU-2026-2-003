@@ -105,21 +105,6 @@
             51%, 100% { opacity: 0; }
         }
 
-        /* Info Section */
-        .info-section {
-            padding: 80px 20px;
-            min-height: 100vh;
-            background: linear-gradient(to bottom, #D5EAE3 0%, #F8F4E9 20%, #F8F4E9 80%, #D5EAE3 100%);
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-        }
-
         /* Chat Section - 微信聊天风格 */
         .chat-section {
             padding: 60px 20px;
@@ -202,30 +187,19 @@
             color: #775C55;
         }
 
-        /* Find Me Section */
-        .find-me-section {
+        /* Info Section */
+        .info-section {
             padding: 80px 20px;
-            background: linear-gradient(to bottom, #FDD3D5 0%, #FDD3D5 20%, #FDD3D5 100%);
-            text-align: center;
-            min-height: 50vh;
+            min-height: 100vh;
+            background: linear-gradient(to bottom, #D5EAE3 0%, #F8F4E9 20%, #F8F4E9 80%, #D5EAE3 100%);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .find-me-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #775C55;
-            margin-bottom: 30px;
-        }
-
-        .email-display {
-            font-size: 1.5rem;
-            color: #775C55;
-            min-height: 40px;
-            font-weight: 600;
+            gap: 40px;
         }
 
         /* Info Card */
@@ -343,6 +317,32 @@
             transition: width 1s ease-out;
         }
 
+        /* Find Me Section */
+        .find-me-section {
+            padding: 80px 20px;
+            background: linear-gradient(to bottom, #D5EAE3 0%, #FDD3D5 20%, #FDD3D5 100%);
+            text-align: center;
+            min-height: 50vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .find-me-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #775C55;
+            margin-bottom: 30px;
+        }
+
+        .email-display {
+            font-size: 1.5rem;
+            color: #775C55;
+            min-height: 40px;
+            font-weight: 600;
+        }
+
         /* 滚动渐显动画 */
         .scroll-reveal {
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
@@ -392,23 +392,23 @@
         <!-- 可爱浮动图标 -->
         <div class="floating-icons">
             <!-- 美食类 -->
-            <div class="floating-icon" style="top: 10%; left: 5%; animation-delay: 0s;">🍦</div>
-            <div class="floating-icon" style="top: 15%; right: 8%; animation-delay: 1s;"></div>
+            <div class="floating-icon" style="top: 10%; left: 5%; animation-delay: 0s;"></div>
+            <div class="floating-icon" style="top: 15%; right: 8%; animation-delay: 1s;">🍩</div>
             <div class="floating-icon" style="top: 70%; left: 10%; animation-delay: 2s;">🍰</div>
-            <div class="floating-icon" style="bottom: 15%; right: 12%; animation-delay: 0.5s;">🧁</div>
+            <div class="floating-icon" style="bottom: 15%; right: 12%; animation-delay: 0.5s;"></div>
             <div class="floating-icon" style="top: 25%; left: 15%; animation-delay: 1.5s;">🍪</div>
-            <div class="floating-icon" style="bottom: 25%; left: 5%; animation-delay: 3s;">🍫</div>
+            <div class="floating-icon" style="bottom: 25%; left: 5%; animation-delay: 3s;"></div>
             
             <!-- 动物类 -->
-            <div class="floating-icon" style="top: 20%; right: 15%; animation-delay: 2.5s;">🐻</div>
-            <div class="floating-icon" style="bottom: 20%; right: 5%; animation-delay: 1.2s;"></div>
+            <div class="floating-icon" style="top: 20%; right: 15%; animation-delay: 2.5s;"></div>
+            <div class="floating-icon" style="bottom: 20%; right: 5%; animation-delay: 1.2s;">🐶</div>
             <div class="floating-icon" style="top: 60%; left: 8%; animation-delay: 0.8s;">🐱</div>
             <div class="floating-icon" style="bottom: 10%; left: 20%; animation-delay: 2.2s;">🐰</div>
             
             <!-- 游戏类 -->
             <div class="floating-icon" style="top: 5%; left: 25%; animation-delay: 1.8s;">🎮</div>
             <div class="floating-icon" style="bottom: 30%; right: 18%; animation-delay: 0.3s;">🕹️</div>
-            <div class="floating-icon" style="top: 40%; right: 5%; animation-delay: 2.8s;">🎯</div>
+            <div class="floating-icon" style="top: 40%; right: 5%; animation-delay: 2.8s;"></div>
             
             <!-- 其他可爱元素 -->
             <div class="floating-icon" style="top: 35%; left: 3%; animation-delay: 1.3s;">⭐</div>
@@ -452,8 +452,8 @@
                 <h2>Hobbies</h2>
                 <div class="hobby-tags">
                     <span class="tag">🎮 Gaming</span>
-                    <span class="tag"> Reading</span>
-                    <span class="tag">✈️ Traveling</span>
+                    <span class="tag">📚 Reading</span>
+                    <span class="tag">️ Traveling</span>
                 </div>
             </div>
 
@@ -499,20 +499,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Chat Section - 微信聊天风格 -->
-    <section class="chat-section" id="intro-section">
-        <div class="chat-container">
-            <div class="avatar-wrapper">
-                <img src="Niki.jpg" alt="Niki's Avatar" class="avatar">
-            </div>
-            <div class="chat-bubble">
-                <p class="chat-text">
-                    Hi, I'm Niki, a sophomore majoring in Art & Technology. I enjoy designing with PS, AI, AE, CapCut, and AI tools, and I also have some knowledge of interaction design. I want to create beautiful and useful products through UI design.
-                </p>
             </div>
         </div>
     </section>
