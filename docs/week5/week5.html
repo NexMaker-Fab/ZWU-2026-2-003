@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 5 - IoT 工业4.0架构</title>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        /* Week 5 专属排版优化 */
+        .content-section {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .content-section h3 {
+            font-size: 28px !important;
+            color: #2c3e50;
+            margin-bottom: 30px !important;
+            margin-top: 50px !important;
+            padding-left: 20px;
+            border-left: 4px solid #f5a623;
+            line-height: 1.6;
+        }
+
+        .content-section h3:first-child {
+            margin-top: 0 !important;
+        }
+
+        .process-step {
+            background: #fffef5;
+            border-radius: 16px;
+            padding: 35px !important;
+            margin-bottom: 40px !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid #fff9e6;
+        }
+
+        .process-step h4 {
+            font-size: 22px !important;
+            color: #5a8fbf;
+            margin-bottom: 25px !important;
+            margin-top: 0;
+            line-height: 1.5;
+        }
+
+        .info-box {
+            background: white;
+            border-radius: 12px;
+            padding: 25px !important;
+            margin-bottom: 25px !important;
+            border-left: 4px solid;
+            line-height: 1.8;
+        }
+
+        .info-box:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-box.objective {
+            border-left-color: #3498db;
+            background: linear-gradient(to right, #f0f8ff 0%, #ffffff 100%);
+        }
+
+        .info-box.subjective {
+            border-left-color: #27ae60;
+            background: linear-gradient(to right, #f0fff0 0%, #ffffff 100%);
+        }
+
+        .info-box strong {
+            display: block;
+            margin-bottom: 15px !important;
+            font-size: 16px;
+            color: #2c3e50;
+        }
+
+        .info-box p {
+            margin: 0;
+            text-align: justify;
+            text-indent: 2em;
+            font-size: 16px !important;
+            color: #4a5568;
+            line-height: 1.8;
+        }
+
+        .info-box ul,
+        .info-box ol {
+            margin: 15px 0 !important;
+            padding-left: 30px;
+        }
+
+        .info-box li {
+            margin-bottom: 12px !important;
+            line-height: 1.8;
+            font-size: 16px !important;
+            color: #4a5568;
+        }
+
+        .info-box li strong {
+            display: inline;
+            margin-bottom: 0;
+            color: #2c3e50;
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .content-section {
+                padding: 20px 15px;
+            }
+
+            .content-section h3 {
+                font-size: 24px !important;
+                margin-bottom: 25px !important;
+                margin-top: 40px !important;
+            }
+
+            .process-step {
+                padding: 25px 20px !important;
+                margin-bottom: 30px !important;
+            }
+
+            .process-step h4 {
+                font-size: 20px !important;
+                margin-bottom: 20px !important;
+            }
+
+            .info-box {
+                padding: 20px !important;
+                margin-bottom: 20px !important;
+            }
+
+            .info-box p,
+            .info-box li {
+                font-size: 15px !important;
+                line-height: 1.7;
+            }
+        }
+
+        /* 制作过程部分专属样式 */
+        #processView .process-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        #processView h3 {
+            font-size: 28px !important;
+            color: #2c3e50;
+            margin-bottom: 40px !important;
+            margin-top: 0;
+            padding-left: 20px;
+            border-left: 4px solid #f5a623;
+            line-height: 1.6;
+        }
+
+        #processView .process-step {
+            background: linear-gradient(135deg, #fffef5 0%, #fff9e6 100%);
+            border-radius: 16px;
+            padding: 35px !important;
+            margin-bottom: 35px !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid #fff5d6;
+            transition: all 0.3s ease;
+        }
+
+        #processView .process-step:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        #processView .process-step h4 {
+            font-size: 22px !important;
+            color: #f5a623;
+            margin-bottom: 25px !important;
+            margin-top: 0;
+            line-height: 1.5;
+            font-weight: 600;
+        }
+
+        #processView .process-step p {
+            font-size: 16px !important;
+            line-height: 1.8;
+            color: #4a5568;
+            margin-bottom: 20px;
+        }
+
+        #processView .process-step p:last-child {
+            margin-bottom: 0;
+        }
+
+        #processView .process-step ul {
+            margin: 20px 0 !important;
+            padding-left: 30px;
+        }
+
+        #processView .process-step li {
+            font-size: 16px !important;
+            line-height: 1.8;
+            color: #4a5568;
+            margin-bottom: 12px !important;
+        }
+
+        #processView .process-step strong {
+            font-size: 16px;
+            color: #2c3e50;
+        }
+
+        /* 步骤编号装饰 */
+        #processView .process-step::before {
+            content: attr(data-step);
+            position: absolute;
+            top: -15px;
+            left: 30px;
+            background: linear-gradient(135deg, #f5a623 0%, #ffd700 100%);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+            box-shadow: 0 4px 10px rgba(245, 166, 35, 0.3);
+        }
+
+        #processView .process-step {
+            position: relative;
+            padding-top: 45px !important;
+        }
+
+        /* 响应式调整 - 制作过程 */
+        @media (max-width: 768px) {
+            #processView .process-content {
+                padding: 20px 15px;
+            }
+
+            #processView h3 {
+                font-size: 24px !important;
+                margin-bottom: 30px !important;
+            }
+
+            #processView .process-step {
+                padding: 25px 20px !important;
+                margin-bottom: 25px !important;
+            }
+
+            #processView .process-step h4 {
+                font-size: 20px !important;
+                margin-bottom: 20px !important;
+            }
+
+            #processView .process-step p,
+            #processView .process-step li {
+                font-size: 15px !important;
+            }
+
+            #processView .process-step::before {
+                width: 35px;
+                height: 35px;
+                font-size: 16px;
+                left: 20px;
+                top: -12px;
+            }
+
+            #processView .process-step {
+                padding-top: 40px !important;
+            }
+        }
+
+        /* 图片容器样式 */
+        .image-container {
+            margin: 25px 0;
+            text-align: center;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .image-container img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .image-caption {
+            margin-top: 12px;
+            font-size: 14px;
+            color: #8b7355;
+            font-style: italic;
+        }
+
+        /* 引言部分图片特殊样式 */
+        .intro-image {
+            margin: 30px 0;
+        }
+
+        .intro-image img {
+            width: 100%;
+            max-width: 900px;
+            border-radius: 16px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+        }
+
+        /* 架构层图片样式 */
+        .layer-image {
+            margin: 20px 0 25px 0;
+        }
+
+        .layer-image img {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        @media (max-width: 768px) {
+            .image-container img,
+            .intro-image img,
+            .layer-image img {
+                border-radius: 8px;
+            }
+
+            .image-caption {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" id="goHome">课程系统</div>
+            <ul class="nav-menu">
+                <li class="nav-item" data-page="home">Home</li>
+                <li class="nav-item has-dropdown active" data-page="homework">
+                    <span>作业</span>
+                    <div class="dropdown">
+                        <div class="dropdown-weeks">
+                            <button class="week-btn" data-week="1">Week 1 - 网络搭建</button>
+                            <button class="week-btn" data-week="2">Week 2 - Arduino硬件</button>
+                            <button class="week-btn" data-week="3">Week 3 - CAD小车</button>
+                            <button class="week-btn" data-week="4">Week 4 - 3D打印</button>
+                            <button class="week-btn active" data-week="5">Week 5 - IoT架构</button>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item" data-page="project">项目</li>
+                <li class="nav-item" data-page="team">团队介绍</li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <section class="page active">
+            <div class="homework-header">
+                <div class="week-badge">Week 5</div>
+                <h1 class="week-title">IoT 工业4.0架构解析</h1>
+                <div class="title-divider"></div>
+            </div>
+
+            <div class="view-toggle">
+                <button class="view-btn active" data-view="final">📄 最终版本</button>
+                <button class="view-btn" data-view="process">🔧 制作过程</button>
+            </div>
+
+            <div id="finalView" class="view-content active">
+                <div class="homework-checklist">
+                    <h3>✅ 作业清单</h3>
+                    <ul class="checklist" id="checklist">
+                        <li class="checklist-item" data-task="1">
+                            <span class="check-icon"></span>
+                            <span class="task-text">理解 IoT 四层架构概念</span>
+                        </li>
+                        <li class="checklist-item" data-task="2">
+                            <span class="check-icon"></span>
+                            <span class="task-text">研究感知层技术与应用</span>
+                        </li>
+                        <li class="checklist-item" data-task="3">
+                            <span class="check-icon"></span>
+                            <span class="task-text">分析网络层通信协议</span>
+                        </li>
+                        <li class="checklist-item" data-task="4">
+                            <span class="check-icon"></span>
+                            <span class="task-text">探索平台层数据处理能力</span>
+                        </li>
+                        <li class="checklist-item" data-task="5">
+                            <span class="check-icon"></span>
+                            <span class="task-text">调研应用层实际案例</span>
+                        </li>
+                        <li class="checklist-item" data-task="6">
+                            <span class="check-icon"></span>
+                            <span class="task-text">撰写原创思考与行业分析</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="content-section">
+                    <h3>📖 引言</h3>
+                                    
+                    <div class="intro-image image-container">
+                        <img src="assets/i0.webp" alt="IoT工业4.0架构概览图" onclick="openImageModal(this.src)">
+                        <p class="image-caption">图1：IoT 工业4.0架构整体示意图</p>
+                    </div>
+                
+                    <div class="info-box objective">
+                        <strong>【客观资料】</strong>
+                        <p>物联网（Internet of Things, IoT）是指通过各种信息传感器、射频识别技术、全球定位系统等装置与技术，实时采集任何需要监控、连接、互动的物体或过程，通过网络接入实现物与物、物与人的泛在连接，实现对物品和过程的智能化感知、识别和管理。工业4.0是以智能制造为主导的第四次工业革命，其核心是通过 IoT 技术实现生产过程的数字化、网络化和智能化。</p>
+                    </div>
+                
+                    <div class="info-box subjective">
+                        <strong>【个人观点】</strong>
+                        <p>在我看来，IoT 不仅是技术的堆砌，更是连接物理世界与数字世界的桥梁。它让原本“沉默”的设备能够“说话”，让数据成为驱动决策的核心力量。在工业4.0时代，IoT 架构的设计质量直接决定了企业数字化转型的成败。</p>
+                    </div>
+
+                    <h3>🏗️ 四层架构逐段解析</h3>
+
+                    <div class="process-step">
+                        <h4>第一层：感知层（Sensors + Controller）</h4>
+                                            
+                        <div class="layer-image image-container">
+                            <img src="assets/i1.jpg" alt="感知层传感器示意图" onclick="openImageModal(this.src)">
+                            <p class="image-caption">图2：感知层 - 各类传感器与控制器设备</p>
+                        </div>
+                    
+                        <div class="info-box objective">
+                            <strong>【客观资料】</strong>
+                            <p>感知层是 IoT 架构的基础，负责采集真实世界的数据。主要包括：</p>
+                            <ul>
+                                <li><strong>传感器类型：</strong>温度传感器、湿度传感器、压力传感器、位置传感器、加速度传感器、光敏传感器等</li>
+                                <li><strong>控制器：</strong>PLC（可编程逻辑控制器）、MCU（微控制单元）、嵌入式系统</li>
+                                <li><strong>数据采集：</strong>实时监测设备状态、环境参数、生产过程数据</li>
+                                <li><strong>边缘计算：</strong>在数据源头进行初步处理和过滤，减少传输负担</li>
+                            </ul>
+                            <p><strong>典型应用：</strong>智能工厂中的温度监控系统、物流追踪中的 GPS 定位、智能家居中的环境监测等。</p>
+                        </div>
+                    
+                        <div class="info-box subjective">
+                            <strong>【个人观点】</strong>
+                            <p>感知层就像是 IoT 系统的“感官器官”。我认为这一层的关键不在于传感器的数量，而在于数据的准确性和可靠性。在实际应用中，我们经常遇到传感器漂移、信号干扰等问题，这些都会影响后续的数据分析质量。因此，传感器的校准和维护同样重要，这往往被忽视。</p>
+                        </div>
+                    </div>
+
+                    <div class="process-step">
+                        <h4>第二层：网络层（Communication Modules）</h4>
+                                            
+                        <div class="layer-image image-container">
+                            <img src="assets/osi七层模型.jpeg" alt="OSI七层模型与网络通信协议" onclick="openImageModal(this.src)">
+                            <p class="image-caption">图3：网络层 - 各类通信技术与协议（OSI七层模型）</p>
+                        </div>
+                    
+                        <div class="info-box objective">
+                            <strong>【客观资料】</strong>
+                            <p>网络层负责将感知层采集的数据传输到云端或数据中心。主要通信技术包括：</p>
+                            <ul>
+                                <li><strong>短距离通信：</strong>Wi-Fi、蓝牙（Bluetooth）、ZigBee、NFC</li>
+                                <li><strong>长距离通信：</strong>4G/5G 移动网络、LoRa（低功耗广域网）、NB-IoT</li>
+                                <li><strong>有线通信：</strong>以太网、RS485、CAN总线</li>
+                                <li><strong>通信协议：</strong>MQTT、CoAP、HTTP/HTTPS、AMQP</li>
+                            </ul>
+                            <p><strong>技术选择依据：</strong>传输距离、功耗要求、带宽需求、成本预算、安全性要求。</p>
+                        </div>
+                    
+                        <div class="info-box subjective">
+                            <strong>【个人观点】</strong>
+                            <p>网络层是 IoT 系统的“神经系统”。我发现不同场景对网络技术的需求差异很大：智能家居适合 Wi-Fi 和蓝牙，因为距离短且带宽要求高；而智慧农业则更适合 LoRa，因为它功耗低、覆盖范围广。选择合适的通信技术需要在性能、成本和功耗之间找到平衡点，这是一个需要深思熟虑的决策过程。</p>
+                        </div>
+                    </div>
+
+                    <div class="process-step">
+                        <h4>第三层：平台层（Cloud + Social Networking）</h4>
+                                            
+                        <div class="layer-image image-container">
+                            <img src="assets/i2.png" alt="平台层云计算架构" onclick="openImageModal(this.src)">
+                            <p class="image-caption">图4：平台层 - 云平台与数据处理中心</p>
+                        </div>
+                    
+                        <div class="info-box objective">
+                            <strong>【客观资料】</strong>
+                            <p>平台层是 IoT 系统的“大脑”，负责数据存储、分析和处理。主要功能包括：</p>
+                            <ul>
+                                <li><strong>数据存储：</strong>云数据库、时序数据库、大数据存储系统</li>
+                                <li><strong>数据处理：</strong>实时流处理、批量数据分析、机器学习算法</li>
+                                <li><strong>设备管理：</strong>设备注册、状态监控、固件升级、远程控制</li>
+                                <li><strong>API 服务：</strong>提供标准化接口，支持第三方应用集成</li>
+                                <li><strong>安全管理：</strong>身份认证、数据加密、访问控制</li>
+                            </ul>
+                            <p><strong>主流平台：</strong>AWS IoT、Azure IoT、阿里云 IoT、华为云 IoT、ThingsBoard 等。</p>
+                        </div>
+                    
+                        <div class="info-box subjective">
+                            <strong>【个人观点】</strong>
+                            <p>平台层是我认为最具挑战性的部分。它不仅需要处理海量数据，还要保证系统的稳定性和可扩展性。我注意到很多企业在选择云平台时过于关注价格，而忽略了平台的生态系统和技术支持。实际上，一个好的 IoT 平台应该能够提供丰富的开发工具、完善的文档和活跃的社区，这样才能降低开发难度，加快产品上市速度。</p>
+                        </div>
+                    </div>
+
+                    <div class="process-step">
+                        <h4>第四层：应用层（Software Applications）</h4>
+
+                        <div class="info-box objective">
+                            <strong>【客观资料】</strong>
+                            <p>应用层面向最终用户，提供具体的业务功能。主要应用场景包括：</p>
+                            <ul>
+                                <li><strong>智能制造：</strong>生产监控、质量控制、预测性维护、供应链优化</li>
+                                <li><strong>智慧城市：</strong>交通管理、环境监测、公共安全、能源管理</li>
+                                <li><strong>智慧医疗：</strong>远程监护、健康管理、医疗设备追踪</li>
+                                <li><strong>智慧农业：</strong>精准灌溉、病虫害预警、产量预测</li>
+                                <li><strong>智能家居：</strong>安防监控、能源管理、家电控制</li>
+                            </ul>
+                            <p><strong>核心价值：</strong>提升效率、降低成本、优化体验、创造新商业模式。</p>
+                        </div>
+
+                        <div class="info-box subjective">
+                            <strong>【个人观点】</strong>
+                            <p>应用层是 IoT 价值的最终体现。我认为最好的应用不是技术最复杂的，而是最能解决用户痛点的。例如，一个简单的水位监测系统可能比复杂的 AI 算法更有价值，如果它能及时提醒农民灌溉的话。应用设计应该以用户为中心，界面简洁直观，功能实用高效。</p>
+                        </div>
+                        
+                        <div class="layer-image image-container">
+                            <img src="assets/i3.png" alt="IoT应用场景展示1" onclick="openImageModal(this.src)">
+                            <p class="image-caption">图5：应用层 - IoT应用场景示例（一）</p>
+                        </div>
+
+                        <div class="layer-image image-container">
+                            <img src="assets/i4.png" alt="IoT应用场景展示2" onclick="openImageModal(this.src)">
+                            <p class="image-caption">图6：应用层 - IoT应用场景示例（二）</p>
+                        </div>
+                    </div>
+
+                    <div class="process-step">
+                        <h4>闭环反馈机制</h4>
+                                            
+                        <div class="layer-image image-container">
+                            <img src="assets/i5.jpg" alt="闭环反馈机制流程图" onclick="openImageModal(this.src)">
+                            <p class="image-caption">图7：闭环反馈 - 数据循环与持续优化流程</p>
+                        </div>
+                    
+                        <div class="info-box objective">
+                            <strong>【客观资料】</strong>
+                            <p>闭环反馈是 IoT 系统的核心特征，形成完整的数据循环：</p>
+                            <ol>
+                                <li><strong>数据采集：</strong>从真实世界采集数据（传感器 → 感知层）</li>
+                                <li><strong>数据传输：</strong>将数据传输到云端（网络层）</li>
+                                <li><strong>数据分析：</strong>在平台层进行处理和分析</li>
+                                <li><strong>决策生成：</strong>基于分析结果生成优化策略</li>
+                                <li><strong>执行反馈：</strong>通过应用层执行决策，反作用于真实世界</li>
+                                <li><strong>持续优化：</strong>根据反馈效果不断调整和优化系统</li>
+                            </ol>
+                            <p><strong>价值体现：</strong>实现从“被动响应”到“主动预测”的转变，形成数据驱动的持续改进循环。</p>
+                        </div>
+                    
+                        <div class="info-box subjective">
+                            <strong>【个人观点】</strong>
+                            <p>闭环反馈是整个 IoT 架构的灵魂所在。没有闭环，IoT 就只是一个数据采集系统，无法产生真正的业务价值。我认为闭环的关键在于“速度”和“准确性”：反馈越快，系统响应越及时；决策越准确，优化效果越明显。这需要各层之间的紧密协作和高效配合。</p>
+                        </div>
+                    </div>
+
+                    <h3>💡 原创思考：行业问题分析</h3>
+                    <div class="info-box subjective">
+                        <strong>【个人观点】</strong>
+                        <p>通过对 IoT 行业的深入研究，我发现当前存在以下几个关键问题：</p>
+                        <ol>
+                            <li><strong>数据孤岛问题：</strong>不同厂商的设备使用不同的通信协议和数据格式，导致系统之间难以互联互通。这就像每个人说着不同的语言，无法有效沟通。</li>
+                            <li><strong>安全隐私担忧：</strong>随着 IoT 设备数量的激增，网络安全威胁也日益严重。黑客可以通过入侵 IoT 设备获取敏感数据，甚至控制关键基础设施。</li>
+                            <li><strong>标准化缺失：</strong>IoT 行业缺乏统一的标准和规范，导致产品兼容性差，增加了系统集成和维护的难度。</li>
+                            <li><strong>人才缺口：</strong>IoT 涉及多个技术领域（硬件、网络、软件、AI），既懂硬件又懂软件的复合型人才非常稀缺。</li>
+                            <li><strong>投资回报不明确：</strong>很多企业对 IoT 项目的 ROI（投资回报率）持怀疑态度，因为前期投入大，见效周期长。</li>
+                        </ol>
+                        <p><strong>我的建议：</strong>行业需要加强合作，推动标准制定；企业应该从小规模试点开始，逐步扩大应用范围；教育机构应该加强跨学科人才培养。</p>
+                    </div>
+
+                    <h3>🎯 IoT 案例 + 个人点评</h3>
+
+                    <div class="process-step">
+                        <h4>案例一：西门子数字化工厂</h4>
+                        <div class="info-box objective">
+                            <strong>【客观资料】</strong>
+                            <p>西门子在其安贝格工厂实施了全面的 IoT 解决方案：</p>
+                            <ul>
+                                <li>部署超过 1000 个传感器监测生产设备状态</li>
+                                <li>使用 5G 网络实现高速数据传输</li>
+                                <li>建立云端数据分析平台，实时监控生产效率</li>
+                                <li>实现预测性维护，设备故障率降低 70%</li>
+                                <li>生产效率提升 8 倍，产品质量达到 99.9988%</li>
+                            </ul>
+                        </div>
+
+                        <div class="info-box subjective">
+                            <strong>【个人观点】</strong>
+                            <p>西门子的案例展示了 IoT 在制造业的巨大潜力。我最欣赏的是他们将 IoT 技术与精益生产理念相结合，不仅提高了效率，还保证了质量。这说明 IoT 不是孤立的技术，而是需要与企业管理理念深度融合才能发挥最大价值。</p>
+                        </div>
+                    </div>
+
+                    <div class="process-step">
+                        <h4>案例二：阿里巴巴菜鸟智慧物流</h4>
+                        <div class="info-box objective">
+                            <strong>【客观资料】</strong>
+                            <p>菜鸟网络构建了智能化的物流 IoT 系统：</p>
+                            <ul>
+                                <li>使用 RFID 标签追踪包裹位置</li>
+                                <li>部署智能仓储机器人自动分拣货物</li>
+                                <li>利用大数据分析优化配送路线</li>
+                                <li>实现"当日达"和"次日达"服务</li>
+                                <li>物流效率提升 50%，成本降低 30%</li>
+                            </ul>
+                        </div>
+
+                        <div class="info-box subjective">
+                            <strong>【个人观点】</strong>
+                            <p>菜鸟的案例让我看到了 IoT 在物流行业的革命性影响。通过 IoT 技术，物流从"黑盒"变成了"透明盒"，消费者可以实时看到包裹的位置和状态。这种透明度不仅提升了用户体验，也倒逼物流企业提高服务质量。我认为这是 IoT 改变商业模式的典型案例。</p>
+                        </div>
+                    </div>
+
+                    <h3>🔮 总结与展望</h3>
+                    <div class="info-box objective">
+                        <strong>【客观资料】</strong>
+                        <p>IoT 工业4.0架构正在深刻改变各行各业：</p>
+                        <ul>
+                            <li>预计到 2030 年，全球 IoT 市场规模将达到 1.5 万亿美元</li>
+                            <li>5G 技术的普及将进一步推动 IoT 应用的发展</li>
+                            <li>AI 与 IoT 的结合（AIoT）将成为新的趋势</li>
+                            <li>边缘计算的兴起将使 IoT 系统更加高效和可靠</li>
+                            <li>区块链技术在 IoT 安全领域的应用前景广阔</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-box subjective">
+                        <strong>【个人观点】</strong>
+                        <p>通过学习 IoT 工业4.0架构，我深刻认识到这是一个充满机遇和挑战的领域。未来，我相信 IoT 将更加普及和智能化，从工业生产到日常生活，从城市管理到环境保护，IoT 都将发挥重要作用。作为学生，我们需要不断学习新技术，培养跨学科思维，为迎接 IoT 时代的到来做好准备。同时，我们也要关注 IoT 带来的伦理和社会问题，如隐私保护、数据安全、就业影响等，确保技术发展造福人类。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="processView" class="view-content">
+                <div class="process-content">
+                    <h3>🔨 制作过程记录</h3>
+                    
+                    <div class="process-step" data-step="1">
+                        <h4>第一步：资料收集与研究</h4>
+                        <p>通过互联网搜索 IoT 工业4.0相关资料，阅读专业文章和技术文档，了解四层架构的基本概念和应用案例。</p>
+                        <p><strong>参考资料来源：</strong></p>
+                        <ul>
+                            <li>物联网技术白皮书</li>
+                            <li>工业4.0相关研究报告</li>
+                            <li>各大 IoT 平台官方文档</li>
+                            <li>行业案例分析文章</li>
+                        </ul>
+                    </div>
+
+                    <div class="process-step" data-step="2">
+                        <h4>第二步：内容整理与分类</h4>
+                        <p>将收集的资料按照四层架构进行分类整理，区分客观资料和主观观点，确保内容的准确性和完整性。</p>
+                    </div>
+
+                    <div class="process-step" data-step="3">
+                        <h4>第三步：网页结构设计</h4>
+                        <p>参考之前 week 作业的排版格式，设计页面结构，包括导航栏、作业清单、内容区域等。</p>
+                    </div>
+
+                    <div class="process-step" data-step="4">
+                        <h4>第四步：内容编写与排版</h4>
+                        <p>使用 HTML 和 CSS 编写网页内容，添加 info-box 样式区分客观资料和主观观点，确保页面美观易读。</p>
+                    </div>
+
+                    <div class="process-step" data-step="5">
+                        <h4>第五步：测试与优化</h4>
+                        <p>检查页面在不同浏览器中的显示效果，修复样式问题，优化用户体验。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal image-modal" id="imageModal">
+        <div class="image-modal-content">
+            <span class="modal-close" id="modalClose">&times;</span>
+            <img src="" alt="放大预览" id="modalImage">
+        </div>
+    </div>
+
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const navItems = document.querySelectorAll('.nav-item');
+    const weekBtns = document.querySelectorAll('.week-btn');
+    const viewBtns = document.querySelectorAll('.view-btn');
+    const finalView = document.getElementById('finalView');
+    const processView = document.getElementById('processView');
+    const checklist = document.querySelectorAll('.checklist-item');
+    const imageModal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalClose = document.getElementById('modalClose');
+    const goHome = document.getElementById('goHome');
+
+    // 视图切换按钮事件
+    viewBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+            const view = btn.dataset.view;
+            viewBtns.forEach((item) => item.classList.remove('active'));
+            btn.classList.add('active');
+
+            if (view === 'final') {
+                finalView.classList.add('active');
+                processView.classList.remove('active');
+            } else {
+                finalView.classList.remove('active');
+                processView.classList.add('active');
+            }
+        });
+    });
+
+    // 作业清单点击事件
+    checklist.forEach((item) => {
+        item.addEventListener('click', () => {
+            item.classList.toggle('completed');
+        });
+    });
+
+    // 图片模态框功能
+    window.openImageModal = function(src) {
+        modalImage.src = src;
+        imageModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    };
+
+    function closeImageModal() {
+        imageModal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    if (modalClose) modalClose.addEventListener('click', closeImageModal);
+    if (imageModal) {
+        imageModal.addEventListener('click', (event) => {
+            if (event.target === imageModal) closeImageModal();
+        });
+    }
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && imageModal.classList.contains('active')) closeImageModal();
+    });
+
+    if (goHome) {
+        goHome.addEventListener('click', () => {
+            window.location.href = '../../index.html';
+        });
+    }
+
+    navItems.forEach((item) => {
+        item.addEventListener('click', () => {
+            const page = item.dataset.page;
+            if (!page || page === 'homework') {
+                return;
+            }
+            if (page === 'project') {
+                window.location.href = '../../docs/project/work.html';
+                return;
+            }
+            if (page === 'team') {
+                window.location.href = '../team/team.html';
+                return;
+            }
+            if (page === 'home') {
+                window.location.href = '../../index.html';
+            }
+        });
+    });
+
+    weekBtns.forEach((btn) => {
+        btn.addEventListener('click', (event) => {
+            event.stopPropagation();
+            const week = Number.parseInt(btn.dataset.week, 10);
+            if (week === 1) {
+                window.location.href = '../week1/week1.html';
+                return;
+            }
+            if (week === 2) {
+                window.location.href = '../week2/week2.html';
+                return;
+            }
+            if (week === 3) {
+                window.location.href = '../week3/week3.html';
+                return;
+            }
+            if (week === 4) {
+                window.location.href = '../week4/week4.html';
+                return;
+            }
+            if (week === 5) {
+                window.location.href = 'week5.html';
+                return;
+            }
+        });
+    });
+});
+    </script>
+</body>
+</html>
