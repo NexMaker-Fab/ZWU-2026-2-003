@@ -170,6 +170,7 @@
                             <button class="week-btn active" data-week="2">Week 2 - Arduino硬件</button>
                             <button class="week-btn" data-week="3">Week 3 - CAD小车</button>
                             <button class="week-btn" data-week="4">Week 4 - 3D打印</button>
+                            <button class="week-btn" data-week="5">Week 5 - IoT架构</button>
                         </div>
                     </div>
                 </li>
@@ -515,10 +516,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
             if (page === 'project') {
-                window.location.href = 'week2.html';
+                window.location.href = '../../docs/project/work.html';
                 return;
             }
-            window.location.href = '../../index.html';
+            if (page === 'team') {
+                window.location.href = '../team/team.html';
+                return;
+            }
+            if (page === 'home') {
+                window.location.href = '../../index.html';
+            }
         });
     });
 
@@ -540,6 +547,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             if (week === 4) {
                 window.location.href = '../week4/week4.html';
+                return;
+            }
+            if (week === 5) {
+                window.location.href = '../week5/week5.html';
                 return;
             }
         });

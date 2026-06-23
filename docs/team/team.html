@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>团队介绍 - 课程系统</title>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" id="goHome">课程系统</div>
+            <ul class="nav-menu">
+                <li class="nav-item" data-page="home">Home</li>
+                <li class="nav-item" data-page="homework">作业</li>
+                <li class="nav-item" data-page="project">项目</li>
+                <li class="nav-item active" data-page="team">团队介绍</li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <section class="page active">
+            <div class="team-container">
+                <div class="team-title-wrap">
+                    <h1 class="page-title">团队介绍</h1>
+                    <p class="page-subtitle">CREATIVE & PROFESSIONAL TEAM</p>
+                    <div class="title-line"></div>
+                </div>
+
+                <div class="team-grid">
+                    <article class="team-card" data-navigate-to="yana">
+                        <div class="card-avatar">
+                            <span class="avatar-border"></span>
+                            <span class="avatar-icon">🌟</span>
+                        </div>
+                        <h3 class="member-name">Yana</h3>
+                        <p class="member-job">项目统筹 / 设计表达</p>
+                    </article>
+                    <article class="team-card" data-navigate-to="niki">
+                        <div class="card-avatar">
+                            <span class="avatar-border"></span>
+                            <span class="avatar-icon">💻</span>
+                        </div>
+                        <h3 class="member-name">Niki</h3>
+                        <p class="member-job">前端开发</p>
+                    </article>
+                    <article class="team-card">
+                        <div class="card-avatar">
+                            <span class="avatar-border"></span>
+                            <span class="avatar-icon">🎨</span>
+                        </div>
+                        <h3 class="member-name">Sophia</h3>
+                        <p class="member-job">UI 设计</p>
+                    </article>
+                    <article class="team-card">
+                        <div class="card-avatar">
+                            <span class="avatar-border"></span>
+                            <span class="avatar-icon">📌</span>
+                        </div>
+                        <h3 class="member-name">Milky</h3>
+                        <p class="member-job">项目管理</p>
+                    </article>
+                    <article class="team-card" data-navigate-to="kakei">
+                        <div class="card-avatar">
+                            <span class="avatar-border"></span>
+                            <span class="avatar-icon">🔧</span>
+                        </div>
+                        <h3 class="member-name">Kakei</h3>
+                        <p class="member-job">硬件工程</p>
+                    </article>
+                    <article class="team-card">
+                        <div class="card-avatar">
+                            <span class="avatar-border"></span>
+                            <span class="avatar-icon">📝</span>
+                        </div>
+                        <h3 class="member-name">Lynn</h3>
+                        <p class="member-job">文档与表达</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const navItems = document.querySelectorAll('.nav-item');
+    const goHome = document.getElementById('goHome');
+
+    if (goHome) {
+        goHome.addEventListener('click', () => {
+            window.location.href = '../../index.html';
+        });
+    }
+
+    // 导航栏点击事件
+    navItems.forEach((item) => {
+        item.addEventListener('click', () => {
+            const page = item.dataset.page;
+            if (page === 'home') {
+                window.location.href = '../../index.html';
+                return;
+            }
+            if (page === 'homework') {
+                window.location.href = '../week1/week1.html';
+                return;
+            }
+            if (page === 'project') {
+                window.location.href = '../project/work.html';
+                return;
+            }
+            if (page === 'team') {
+                // 保持在当前页
+                return;
+            }
+        });
+    });
+
+    // 团队成员卡片点击跳转
+    document.querySelectorAll('.team-card').forEach((card) => {
+        card.addEventListener('click', () => {
+            const navigateTo = card.dataset.navigateTo;
+            if (!navigateTo) return;
+
+            if (navigateTo === 'yana') {
+                window.location.href = '../yana/yana.html';
+            } else if (navigateTo === 'niki') {
+                window.location.href = '../Niki/Niki.html';
+            } else if (navigateTo === 'kakei') {
+                window.location.href = '../kakei/kakei.html';
+            }
+        });
+    });
+});
+    </script>
+</body>
+</html>

@@ -20,6 +20,7 @@
                             <button class="week-btn" data-week="2">Week 2 - Arduino硬件</button>
                             <button class="week-btn" data-week="3">Week 3 - CAD小车</button>
                             <button class="week-btn" data-week="4">Week 4 - 3D打印</button>
+                            <button class="week-btn" data-week="5">Week 5 - IoT架构</button>
                         </div>
                     </div>
                 </li>
@@ -92,68 +93,6 @@
                     <div class="project-image"></div>
                     <h3>点击查看项目内容</h3>
                     <p>本项目内容已迁移至独立页面，点击进入 Week 2 项目展示。</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 团队介绍页 -->
-        <section id="team" class="page">
-            <div class="team-container">
-                <div class="team-title-wrap">
-                    <h1 class="page-title">团队介绍</h1>
-                    <p class="page-subtitle">CREATIVE & PROFESSIONAL TEAM</p>
-                    <div class="title-line"></div>
-                </div>
-
-                <div class="team-grid">
-                    <article class="team-card">
-                        <div class="card-avatar">
-                            <span class="avatar-border"></span>
-                            <span class="avatar-icon">🌟</span>
-                        </div>
-                        <h3 class="member-name">Yana</h3>
-                        <p class="member-job">项目统筹 / 设计表达</p>
-                    </article>
-                    <article class="team-card">
-                        <div class="card-avatar">
-                            <span class="avatar-border"></span>
-                            <span class="avatar-icon">💻</span>
-                        </div>
-                        <h3 class="member-name">Niki</h3>
-                        <p class="member-job">前端开发</p>
-                    </article>
-                    <article class="team-card">
-                        <div class="card-avatar">
-                            <span class="avatar-border"></span>
-                            <span class="avatar-icon">🎨</span>
-                        </div>
-                        <h3 class="member-name">Sophia</h3>
-                        <p class="member-job">UI 设计</p>
-                    </article>
-                    <article class="team-card">
-                        <div class="card-avatar">
-                            <span class="avatar-border"></span>
-                            <span class="avatar-icon">📌</span>
-                        </div>
-                        <h3 class="member-name">Milky</h3>
-                        <p class="member-job">项目管理</p>
-                    </article>
-                    <article class="team-card">
-                        <div class="card-avatar">
-                            <span class="avatar-border"></span>
-                            <span class="avatar-icon">🔧</span>
-                        </div>
-                        <h3 class="member-name">Kakei</h3>
-                        <p class="member-job">硬件工程</p>
-                    </article>
-                    <article class="team-card">
-                        <div class="card-avatar">
-                            <span class="avatar-border"></span>
-                            <span class="avatar-icon">📝</span>
-                        </div>
-                        <h3 class="member-name">Lynn</h3>
-                        <p class="member-job">文档与表达</p>
-                    </article>
                 </div>
             </div>
         </section>
@@ -254,17 +193,23 @@ document.addEventListener('DOMContentLoaded', () => {
         item.addEventListener('click', () => {
             const page = item.dataset.page;
             if (page === 'homework') {
-                window.location.href = 'docs/week1/week1.html';
+                // 在首页点击作业时，不跳转，保持当前页面
                 return;
             }
             if (page === 'project') {
                 window.location.href = 'docs/project/work.html';
                 return;
             }
-            navItems.forEach(i => i.classList.remove('active'));
-            item.classList.add('active');
-            pages.forEach(p => p.classList.remove('active'));
-            document.getElementById(page).classList.add('active');
+            if (page === 'team') {
+                window.location.href = 'docs/team/team.html';
+                return;
+            }
+            if (page === 'home') {
+                navItems.forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+                pages.forEach(p => p.classList.remove('active'));
+                document.getElementById(page).classList.add('active');
+            }
         });
     });
     
@@ -287,6 +232,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             if (week === 4) {
                 window.location.href = 'docs/week4/week4.html';
+                return;
+            }
+            if (week === 5) {
+                window.location.href = 'docs/week5/week5.html';
                 return;
             }
         });
