@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Lynn · Concept Designer</title>
+    <!-- Font Awesome 6 (免费图标库) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- 链接外部样式表 -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 柔和沙色纹理背景 -->
+    <div class="bg-texture"></div>
+
+    <!-- ========================================
+         导航栏（柔和风格）
+         ======================================== -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo">Lynn.</div>
+            <div class="nav-links">
+                <a href="#home" data-i18n-key="nav_home">首页</a>
+                <a href="#about" data-i18n-key="nav_about">简介</a>
+                <a href="#projects" data-i18n-key="nav_projects">项目</a>
+                <a href="#archive" data-i18n-key="nav_archive">过往作品</a>
+                <a href="#contact" data-i18n-key="nav_contact">联系</a>
+                <button class="lang-toggle" id="langToggle">English</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========================================
+         主内容区域
+         ======================================== -->
+    <main class="container">
+        
+        <!-- SECTION 1 — HOME / 首页 -->
+        <section id="home" class="section home-section">
+            <div class="home-content fade-in">
+                <!-- 中文内容 -->
+                <div class="content-zh">
+                    <h1 class="home-name">Lynn</h1>
+                    <p class="home-role">概念设计师</p>
+                    <p class="home-declaration">在艺术、科技与人类感知的交汇处，创造有意义的体验。</p>
+                </div>
+                
+                <!-- 英文内容 -->
+                <div class="content-en" style="display: none;">
+                    <h1 class="home-name">Lynn</h1>
+                    <p class="home-role">Concept Designer</p>
+                    <p class="home-declaration">Crafting meaningful experiences through the intersection of art, technology, and human perception.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2 — ABOUT / 关于我 -->
+        <section id="about" class="section about-section">
+            <div class="about-grid fade-in">
+                <!-- 左侧照片卡片（卡通小猫形象） -->
+                <div class="photo-card">
+                    <div class="cat-photo">
+                        <!-- 卡通小猫 SVG 形象 -->
+                        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="50" r="46" fill="#FCE5C1" stroke="#E8C39E" stroke-width="1.5"/>
+                            <!-- 耳朵 -->
+                            <path d="M24 35 L16 18 L34 28 Z" fill="#F3D2A8" stroke="#DBAF84" stroke-width="1"/>
+                            <path d="M76 35 L84 18 L66 28 Z" fill="#F3D2A8" stroke="#DBAF84" stroke-width="1"/>
+                            <!-- 眼睛 -->
+                            <circle cx="37" cy="47" r="4" fill="#6F4E2E"/>
+                            <circle cx="63" cy="47" r="4" fill="#6F4E2E"/>
+                            <!-- 瞳孔高光 -->
+                            <circle cx="38.5" cy="45.5" r="1.5" fill="white"/>
+                            <circle cx="64.5" cy="45.5" r="1.5" fill="white"/>
+                            <!-- 鼻子 -->
+                            <path d="M47 57 L53 57 L50 62 Z" fill="#E8A87C"/>
+                            <!-- 胡须 -->
+                            <line x1="25" y1="57" x2="10" y2="53" stroke="#C49A6C" stroke-width="1.2"/>
+                            <line x1="25" y1="61" x2="10" y2="62" stroke="#C49A6C" stroke-width="1.2"/>
+                            <line x1="75" y1="57" x2="90" y2="53" stroke="#C49A6C" stroke-width="1.2"/>
+                            <line x1="75" y1="61" x2="90" y2="62" stroke="#C49A6C" stroke-width="1.2"/>
+                            <!-- 脸颊腮红 -->
+                            <circle cx="30" cy="63" r="4" fill="#F7C6A5" fill-opacity="0.6"/>
+                            <circle cx="70" cy="63" r="4" fill="#F7C6A5" fill-opacity="0.6"/>
+                            <!-- 小围巾 -->
+                            <path d="M41 74 L59 74 L54 82 L46 82 Z" fill="#E1B48B"/>
+                        </svg>
+                    </div>
+                    <div class="photo-caption" data-i18n-key="photo_caption">🐱 温暖的陪伴</div>
+                </div>
+                
+                <!-- 右侧文字内容 -->
+                <div class="about-text">
+                    <!-- 中文内容 -->
+                    <div class="content-zh">
+                        <h2 class="about-name">Lynn</h2>
+                        <p class="about-tagline">艺术与科技 · 概念设计实践者</p>
+                        <p class="about-desc">
+                            我是一名专注于艺术与科技领域的概念设计师，致力于将抽象想法转化为结构化的设计方案。我的实践通过概念设计、方案开发和体验导向的方法，探索人、系统与环境之间的关系。
+                        </p>
+                        <p class="about-desc">
+                            设计方向：概念设计 / 方案设计 / 体验设计
+                        </p>
+                    </div>
+                    
+                    <!-- 英文内容 -->
+                    <div class="content-en" style="display: none;">
+                        <h2 class="about-name">Lynn</h2>
+                        <p class="about-tagline">Art & Technology · Concept Design Practitioner</p>
+                        <p class="about-desc">
+                            I am a Concept Designer specializing in Art & Technology, focusing on transforming abstract ideas into structured design solutions. My practice explores the relationship between people, systems, and environments through concept design, solution development, and experience-driven approaches.
+                        </p>
+                        <p class="about-desc">
+                            Design Direction: Concept Design / Solution Design / Experience Design
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3 — PROJECTS / 项目 -->
+        <section id="projects" class="section projects-section">
+            <h2 class="section-title" data-i18n-key="projects_title">重点项目</h2>
+            
+            <div class="works-grid">
+                <!-- 重点项目卡片 -->
+                <article class="work-card featured fade-in" data-project="autism-sandbox">
+                    <div class="soft-img-place">
+                        <i class="fas fa-puzzle-piece"></i>
+                    </div>
+                    <div class="work-info">
+                        <!-- 中文内容 -->
+                        <div class="content-zh">
+                            <h3 class="work-title">自闭症儿童互动沙盘设计</h3>
+                            <span class="work-role">概念设计与方案设计</span>
+                            <p class="work-desc">
+                                一个仍在持续发展的概念设计项目，关注自闭症儿童相关需求，探索包容性与体验导向的设计可能。
+                            </p>
+                            <div class="work-status">
+                                <i class="fas fa-clock"></i>
+                                <span>进行中</span>
+                            </div>
+                        </div>
+                        
+                        <!-- 英文内容 -->
+                        <div class="content-en" style="display: none;">
+                            <h3 class="work-title">Interactive Sandbox Design for Children with Autism</h3>
+                            <span class="work-role">Concept Design & Solution Design</span>
+                            <p class="work-desc">
+                                An ongoing concept project exploring inclusive and experience-oriented design approaches for children with autism.
+                            </p>
+                            <div class="work-status">
+                                <i class="fas fa-clock"></i>
+                                <span>In Progress</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- SECTION 4 — ARCHIVE / 过往作品 -->
+        <section id="archive" class="section archive-section">
+            <h2 class="section-title" data-i18n-key="archive_title">过往作品</h2>
+            
+            <div class="works-grid">
+                <!-- Archive Item 01 - 星球系列 -->
+                <article class="work-card fade-in" data-project="planet" onclick="openProjectModal('planet')">
+                    <div class="soft-img-place">
+                        <img src="images/星球展板终_画板 1.jpg" alt="星球系列" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
+                    </div>
+                    <!-- 中文内容 -->
+                    <div class="content-zh">
+                        <h3 class="work-title">星球系列设计</h3>
+                        <span class="work-role">视觉设计 / 概念艺术</span>
+                    </div>
+                    <!-- 英文内容 -->
+                    <div class="content-en" style="display: none;">
+                        <h3 class="work-title">Planet Series Design</h3>
+                        <span class="work-role">Visual Design / Conceptual Art</span>
+                    </div>
+                </article>
+                
+                <!-- Archive Item 02 - 纸鸢系列 -->
+                <article class="work-card fade-in" data-project="kite" onclick="openProjectModal('kite')">
+                    <div class="soft-img-place">
+                        <img src="images/纸鸢展板1.jpg" alt="纸鸢系列" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
+                    </div>
+                    <!-- 中文内容 -->
+                    <div class="content-zh">
+                        <h3 class="work-title">纸鸢文化传承</h3>
+                        <span class="work-role">文化设计 / 传统创新</span>
+                    </div>
+                    <!-- 英文内容 -->
+                    <div class="content-en" style="display: none;">
+                        <h3 class="work-title">Kite Cultural Heritage</h3>
+                        <span class="work-role">Cultural Design / Traditional Innovation</span>
+                    </div>
+                </article>
+                
+                <!-- Archive Item 03 - 绣竹雕新 -->
+                <article class="work-card fade-in" data-project="bamboo" onclick="openProjectModal('bamboo')">
+                    <div class="soft-img-place">
+                        <img src="images/绣竹雕新展板.png" alt="绣竹雕新" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
+                    </div>
+                    <!-- 中文内容 -->
+                    <div class="content-zh">
+                        <h3 class="work-title">绣竹雕新工艺</h3>
+                        <span class="work-role">工艺设计 / 材料探索</span>
+                    </div>
+                    <!-- 英文内容 -->
+                    <div class="content-en" style="display: none;">
+                        <h3 class="work-title">Embroidered Bamboo Craft</h3>
+                        <span class="work-role">Craft Design / Material Exploration</span>
+                    </div>
+                </article>
+                
+                <!-- Archive Item 04 - 戏曲角色 -->
+                <article class="work-card fade-in" data-project="opera" onclick="openProjectModal('opera')">
+                    <div class="soft-img-place">
+                        <img src="images/旦_画板 1.png" alt="戏曲角色" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
+                    </div>
+                    <!-- 中文内容 -->
+                    <div class="content-zh">
+                        <h3 class="work-title">戏曲角色视觉化</h3>
+                        <span class="work-role">戏曲文化 / 角色设计</span>
+                    </div>
+                    <!-- 英文内容 -->
+                    <div class="content-en" style="display: none;">
+                        <h3 class="work-title">Opera Character Visualization</h3>
+                        <span class="work-role">Opera Culture / Character Design</span>
+                    </div>
+                </article>
+                
+                <!-- Archive Item 05 - 记忆展板 -->
+                <article class="work-card fade-in" data-project="memory" onclick="openProjectModal('memory')">
+                    <div class="soft-img-place">
+                        <img src="images/记忆展板_画板 1_画板 1.jpg" alt="记忆展板" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
+                    </div>
+                    <!-- 中文内容 -->
+                    <div class="content-zh">
+                        <h3 class="work-title">记忆展板设计</h3>
+                        <span class="work-role">视觉叙事 / 情感设计</span>
+                    </div>
+                    <!-- 英文内容 -->
+                    <div class="content-en" style="display: none;">
+                        <h3 class="work-title">Memory Board Design</h3>
+                        <span class="work-role">Visual Narrative / Emotional Design</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- 作品详情弹窗 -->
+        <div class="project-modal" id="projectModal">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeProjectModal()" aria-label="关闭">&times;</button>
+                <div class="modal-body" id="modalBody">
+                    <!-- 动态内容将在这里插入 -->
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 5 — CONTACT / 联系方式 -->
+        <section id="contact" class="section contact-section">
+            <h2 class="section-title" data-i18n-key="contact_title">联系方式</h2>
+            
+            <div class="contact-links fade-in">
+                <!-- 中文内容 -->
+                <div class="content-zh">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:3467948965@qq.com">3467948965@qq.com</a>
+                    </div>
+                    <p class="collaboration-statement">欢迎在概念设计、研究项目和创意合作方面进行交流。</p>
+                </div>
+                
+                <!-- 英文内容 -->
+                <div class="content-en" style="display: none;">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:3467948965@qq.com">3467948965@qq.com</a>
+                    </div>
+                    <p class="collaboration-statement">Open to collaborations in concept design, research projects, and creative partnerships.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ========================================
+         页脚
+         ======================================== -->
+    <footer class="footer">
+        <p data-i18n-key="copyright">&copy; 2026 Lynn. 保留所有权利。</p>
+    </footer>
+
+    <!-- 链接外部 JavaScript 文件 -->
+    <script src="script.js"></script>
+</body>
+</html>

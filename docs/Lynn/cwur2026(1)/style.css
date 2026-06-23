@@ -1,0 +1,627 @@
+/* ========================================
+   全局样式 - 柔和温暖风格（自然人文基调）
+   ======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #fdf8f0;
+    font-family: 'Segoe UI', 'Roboto', 'Noto Sans', 'Helvetica Neue', sans-serif;
+    color: #3e3a35;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+}
+
+/* 柔和沙色纹理背景 */
+.bg-texture {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(#e8d7c4 0.8px, transparent 0.8px);
+    background-size: 22px 22px;
+    opacity: 0.2;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* ========================================
+   导航栏（柔和风格）
+   ======================================== */
+.navbar {
+    background-color: #fffaf2;
+    backdrop-filter: blur(2px);
+    padding: 0.9rem 2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid #f0e2d2;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo {
+    font-family: 'Georgia', serif;
+    font-size: 1.5rem;
+    font-weight: 450;
+    color: #7c5f42;
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.8rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #5f4c38;
+    font-weight: 450;
+    transition: color 0.2s;
+    font-size: 1rem;
+    border-bottom: 1px solid transparent;
+}
+
+.nav-links a:hover {
+    color: #b47c48;
+    border-bottom-color: #e2c7a8;
+}
+
+.lang-toggle {
+    background: #ede0d2;
+    border: none;
+    padding: 0.3rem 1rem;
+    border-radius: 40px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    color: #6e543c;
+    transition: 0.2s;
+    font-weight: 500;
+}
+
+.lang-toggle:hover {
+    background: #e2cfb7;
+}
+
+/* ========================================
+   主内容容器
+   ======================================== */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 2rem 3rem;
+}
+
+/* 各区块通用样式 */
+.section {
+    margin-bottom: 4rem;
+    scroll-margin-top: 80px;
+}
+
+.section-title {
+    font-size: 1.9rem;
+    font-family: 'Georgia', serif;
+    font-weight: 450;
+    color: #6c523c;
+    margin-bottom: 1.8rem;
+    border-left: 5px solid #e2cfb3;
+    padding-left: 1rem;
+}
+
+/* ========================================
+   SECTION 1 — HOME / 首页
+   ======================================== */
+.home-section {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4rem 0;
+}
+
+.home-content {
+    max-width: 700px;
+}
+
+.home-name {
+    font-size: 4rem;
+    font-family: 'Georgia', serif;
+    font-weight: 450;
+    color: #4f3b28;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+}
+
+.home-role {
+    font-size: 1.3rem;
+    color: #b28b6f;
+    margin-bottom: 1.5rem;
+    font-weight: 450;
+}
+
+.home-declaration {
+    font-size: 1.1rem;
+    color: #5a4c3c;
+    line-height: 1.8;
+    font-style: italic;
+}
+
+/* ========================================
+   SECTION 2 — ABOUT / 关于我
+   ======================================== */
+.about-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    align-items: center;
+    background: #fffcf7;
+    border-radius: 48px;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+    border: 1px solid #f1e4d4;
+}
+
+.photo-card {
+    flex: 0 0 180px;
+    text-align: center;
+}
+
+/* 卡通小猫形象（圆形，柔和） */
+.cat-photo {
+    width: 160px;
+    height: 160px;
+    background: #f9e7d4;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+    margin: 0 auto;
+    transition: transform 0.2s;
+    border: 3px solid #fff3e6;
+}
+
+.cat-photo svg {
+    width: 110px;
+    height: 110px;
+}
+
+.cat-photo:hover {
+    transform: scale(1.03);
+}
+
+.photo-caption {
+    margin-top: 0.6rem;
+    font-size: 0.8rem;
+    color: #ac8b68;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-name {
+    font-size: 2rem;
+    font-weight: 470;
+    color: #4f3b28;
+    font-family: Georgia, serif;
+    margin-bottom: 0.5rem;
+}
+
+.about-tagline {
+    color: #b28b6f;
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+}
+
+.about-desc {
+    color: #5a4c3c;
+    line-height: 1.7;
+    margin-top: 0.8rem;
+    font-size: 1rem;
+}
+
+/* ========================================
+   SECTION 3 & 4 — PROJECTS & ARCHIVE / 作品卡片
+   ======================================== */
+.works-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.work-card {
+    flex: 1 1 280px;
+    background: linear-gradient(135deg, #ffffff 0%, #fef6ec 100%);
+    border-radius: 32px;
+    padding: 1.5rem;
+    transition: all 0.25s;
+    border: 1px solid #f0e1cf;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.02);
+}
+
+.work-card:hover {
+    background: #fffdf9;
+    border-color: #e2cdb3;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+.work-card.featured {
+    flex: 1 1 100%;
+    background: linear-gradient(135deg, #fff9f0 0%, #fef3e5 100%);
+    border: 2px solid #e8d4bc;
+}
+
+.soft-img-place {
+    background: #efe1cf;
+    border-radius: 24px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    color: #bfa07e;
+    font-size: 2.5rem;
+}
+
+.work-icon {
+    font-size: 2.2rem;
+    color: #c1a17b;
+    margin-bottom: 0.8rem;
+}
+
+.work-info {
+    margin-top: 0.5rem;
+}
+
+.work-title {
+    font-size: 1.25rem;
+    font-weight: 560;
+    color: #7e5f42;
+    margin-bottom: 0.6rem;
+    line-height: 1.4;
+}
+
+.work-role {
+    font-size: 0.75rem;
+    background: #ede0d0;
+    display: inline-block;
+    padding: 0.25rem 0.8rem;
+    border-radius: 30px;
+    color: #8a6a4a;
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+}
+
+.work-desc {
+    font-size: 0.92rem;
+    color: #5b5044;
+    line-height: 1.6;
+}
+
+.work-status {
+    font-size: 0.75rem;
+    color: #b5916a;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.work-status i {
+    font-size: 0.9rem;
+}
+
+/* ========================================
+   SECTION 5 — CONTACT / 联系方式
+   ======================================== */
+.contact-section {
+    background: #fcf4e9;
+    border-radius: 36px;
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+.contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #7a6248;
+    font-size: 1.05rem;
+}
+
+.contact-item i {
+    font-size: 1.3rem;
+    color: #c2a07b;
+}
+
+.contact-item a {
+    color: #7a6248;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.contact-item a:hover {
+    color: #b47c48;
+}
+
+.collaboration-statement {
+    font-style: italic;
+    color: #9a8268;
+    margin-top: 1rem;
+    font-size: 0.95rem;
+}
+
+/* ========================================
+   页脚
+   ======================================== */
+.footer {
+    text-align: center;
+    border-top: 1px solid #f0e2d2;
+    padding-top: 2rem;
+    margin-top: 3rem;
+    font-size: 0.8rem;
+    color: #bb9f7e;
+}
+
+/* ========================================
+   淡入动画
+   ======================================== */
+.fade-in {
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 语言切换淡入 */
+.content-en,
+.content-zh {
+    transition: opacity 0.4s ease-in-out;
+}
+
+/* ========================================
+   作品详情弹窗样式
+   ======================================== */
+.project-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(62, 58, 53, 0.85);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 2rem;
+}
+
+.project-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: #fffcf7;
+    border-radius: 32px;
+    max-width: 900px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 2.5rem;
+    position: relative;
+    transform: scale(0.9) translateY(20px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    border: 1px solid #f1e4d4;
+}
+
+.project-modal.active .modal-content {
+    transform: scale(1) translateY(0);
+}
+
+.modal-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: #ede0d2;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.8rem;
+    color: #6e543c;
+    cursor: pointer;
+    transition: all 0.2s;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.modal-close:hover {
+    background: #e2cfb7;
+    transform: rotate(90deg);
+    color: #4f3b28;
+}
+
+.modal-body {
+    color: #3e3a35;
+}
+
+.modal-title {
+    font-size: 2rem;
+    font-family: 'Georgia', serif;
+    font-weight: 450;
+    color: #4f3b28;
+    margin-bottom: 1.5rem;
+    letter-spacing: 1px;
+}
+
+.modal-images {
+    display: grid;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.modal-images.single-image {
+    grid-template-columns: 1fr;
+}
+
+.modal-images.multi-image {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.modal-image-wrapper {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border: 1px solid #f0e2d2;
+}
+
+.modal-image-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s;
+}
+
+.modal-image-wrapper:hover img {
+    transform: scale(1.02);
+}
+
+.modal-description {
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: #5a4c3c;
+    margin-top: 1.5rem;
+}
+
+.modal-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 1.5rem;
+}
+
+.modal-tag {
+    background: #efe3d4;
+    color: #5f4a33;
+    padding: 0.5rem 1.2rem;
+    border-radius: 60px;
+    font-size: 0.85rem;
+    font-weight: 450;
+}
+
+/* ========================================
+   响应式设计
+   ======================================== */
+@media (max-width: 750px) {
+    .navbar {
+        padding: 0.8rem 1rem;
+    }
+    
+    .nav-links {
+        gap: 1rem;
+    }
+    
+    .container {
+        padding: 1.5rem;
+    }
+    
+    .section-title {
+        font-size: 1.6rem;
+    }
+    
+    .home-name {
+        font-size: 3rem;
+    }
+    
+    .about-grid {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .photo-card {
+        flex-basis: auto;
+    }
+    
+    .about-name {
+        font-size: 1.6rem;
+    }
+    
+    .work-card.featured {
+        flex: 1 1 100%;
+    }
+    
+    .contact-links {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    /* 弹窗移动端适配 */
+    .project-modal {
+        padding: 1rem;
+    }
+    
+    .modal-content {
+        padding: 1.8rem;
+        max-height: 90vh;
+    }
+    
+    .modal-title {
+        font-size: 1.6rem;
+    }
+    
+    .modal-images.multi-image {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .home-name {
+        font-size: 2.5rem;
+    }
+    
+    .section {
+        margin-bottom: 3rem;
+    }
+    
+    .works-grid {
+        gap: 1.5rem;
+    }
+}
