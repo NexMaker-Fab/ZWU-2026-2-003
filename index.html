@@ -347,18 +347,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 团队成员点击跳转
     document.querySelectorAll('.team-card').forEach((card, index) => {
-        card.addEventListener('click', () => {
+        console.log('绑定点击事件到卡片', index, card.querySelector('.member-name')?.textContent);
+        card.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('卡片被点击', index);
             const memberNames = ['yana', 'niki', 'sophia', 'milky', 'kakei', 'lynn'];
             const memberName = memberNames[index];
+            console.log('成员名称:', memberName);
             if (memberName === 'yana') {
+                console.log('跳转到Yana');
                 window.location.href = 'docs/yana/yana.html';
             } else if (memberName === 'niki') {
+                console.log('跳转到Niki');
                 window.location.href = 'docs/Niki/Niki.html';
             } else if (memberName === 'sophia') {
+                console.log('跳转到Sophia');
                 window.location.href = 'docs/Sophia/cwur2026/sophia_portfolio.html';
             } else if (memberName === 'milky') {
+                console.log('跳转到Milky');
                 window.location.href = 'docs/Milky2026/index.html';
             } else if (memberName === 'kakei') {
+                console.log('跳转到Kakei');
                 window.location.href = 'docs/kakei/kakei.html';
             }
         });
