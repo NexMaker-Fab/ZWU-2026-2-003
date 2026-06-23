@@ -147,7 +147,7 @@
                         <h3 class="member-name">Kakei</h3>
                         <p class="member-job">硬件工程</p>
                     </article>
-                    <article class="team-card" onclick="window.location.href='docs/Lynn/cwur2026(1)/index.html'">
+                    <article class="team-card" data-member="lynn">
                         <div class="card-avatar">
                             <span class="avatar-border"></span>
                             <span class="avatar-icon">📝</span>
@@ -370,6 +370,9 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (memberName === 'kakei') {
                 console.log('跳转到Kakei');
                 window.location.href = 'docs/kakei/kakei.html';
+            } else if (memberName === 'lynn') {
+                console.log('跳转到Lynn');
+                window.location.href = encodeURI('docs/Lynn/cwur2026(1)/index.html');
             }
         });
     });
