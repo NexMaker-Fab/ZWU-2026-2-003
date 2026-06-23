@@ -263,7 +263,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
             if (page === 'team') {
-                window.location.href = 'docs/team/team.html';
+                navItems.forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+                pages.forEach(p => p.classList.remove('active'));
+                document.getElementById(page).classList.add('active');
                 return;
             }
             if (page === 'home') {
