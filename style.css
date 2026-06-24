@@ -211,6 +211,43 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe 
     flex: 1;
 }
 
+/* 使用软件说明样式 */
+.software-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+.software-item {
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 16px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    border: 1px solid rgba(168, 210, 255, 0.3);
+    transition: all 0.3s ease;
+}
+.software-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(168, 210, 255, 0.2);
+    background: rgba(255, 255, 255, 0.9);
+}
+.software-icon {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+}
+.software-info h4 {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    color: #333;
+}
+.software-info p {
+    font-size: 0.9rem;
+    color: rgba(0, 0, 0, 0.7);
+    line-height: 1.6;
+}
+
 /* 制作过程内容样式 */
 .process-content {
     background: rgba(255, 255, 255, 0.6);
