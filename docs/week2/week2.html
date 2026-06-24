@@ -217,126 +217,239 @@
             <!-- 传感器导航栏 -->
             <div class="sensor-nav-container">
                 <div class="sensor-dropdown">
-                    <button class="sensor-btn active" data-sensor="ws2812">WS2812和HS-S05B</button>
+                    <button class="sensor-btn active" data-sensor="ws2812">HC-SR04、WS2812、HS-S05B</button>
                     <div class="sensor-submenu">
                         <button class="submenu-btn active" data-view="ws2812-process">制作过程</button>
                         <button class="submenu-btn" data-view="ws2812-final">最终成果</button>
                     </div>
                 </div>
-                <div class="sensor-dropdown">
-                    <button class="sensor-btn" data-sensor="pressure">压力传感器</button>
-                    <div class="sensor-submenu">
-                        <button class="submenu-btn" data-view="pressure-process">制作过程</button>
-                        <button class="submenu-btn" data-view="pressure-final">最终成果</button>
-                    </div>
-                </div>
-                <div class="sensor-dropdown">
-                    <button class="sensor-btn" data-sensor="servo">舵机</button>
-                    <div class="sensor-submenu">
-                        <button class="submenu-btn" data-view="servo-process">制作过程</button>
-                        <button class="submenu-btn" data-view="servo-final">最终成果</button>
-                    </div>
-                </div>
             </div>
 
-            <!-- WS2812和HS-S05B 制作过程 -->
+            <!-- HC-SR04、WS2812、HS-S05B 制作过程 -->
             <div id="ws2812-process" class="sensor-content active">
                 <div class="content-section">
-                    <h3>🔨 WS2812和HS-S05B - 制作过程记录</h3>
+                    <h3>🔨 HC-SR04、WS2812、HS-S05B - 制作过程记录</h3>
                     <div class="process-step">
                         <h4>📌 第一步：硬件准备</h4>
-                        <p>采购 Arduino Uno R4 WIFI开发板、WS2812灯环、HS-S05B超声波传感器、面包板及杜邦线若干。</p>
+                        <p>采购 Arduino Uno R4 WIFI开发板、HC-SR04超声波传感器、WS2812灯环、HS-S05B声音传感器、面包板及杜邦线若干。</p>
                     </div>
                     <div class="process-step">
                         <h4>📌 第二步：电路搭建</h4>
-                        <p>按照电路图连接各模块：WS2812灯环的VCC接5V、GND接地、DIN接数字引脚D8；HS-S05B超声波传感器的VCC接5V、GND接地、Trig接D7、Echo接D6。</p>
+                        <p>按照电路图连接各模块：HC-SR04的VCC接5V、GND接地、TRIG接D9、ECHO接D10；WS2812灯环的VCC接5V、GND接地、DI接数字引脚D6；HS-S05B声音传感器的VCC接5V、GND接地、A接模拟引脚A0。</p>
                         <div class="image-illustration">
-                            <img src="assets/arduino-connection.png" alt="Arduino连接示意图" onclick="openImageModal(this.src)">
-                            <p>图1：Arduino 与 WS2812、HS-S05B 连接示意图</p>
+                            <img src="assets/newconnect.png" alt="Arduino连接示意图" onclick="openImageModal(this.src)">
+                            <p>图1：Arduino 与 HC-SR04、WS2812、HS-S05B 连接示意图</p>
                         </div>
                     </div>
                     <div class="process-step">
                         <h4>📌 第三步：代码编写</h4>
-                        <p>编写 Arduino 代码实现：初始化 FastLED 库控制 WS2812 灯环；使用 pulseIn() 函数读取传感器信号；实现拍手开灯和吹气关灯的互动功能。</p>
+                        <p>编写 Arduino 代码实现：初始化 FastLED 库控制 WS2812 灯环；使用超声波传感器测量距离并控制灯光数量；通过声音传感器检测吹气触发旋转模式。</p>
                         <p style="color: #ff6b6b; font-weight: bold; margin-top: 10px;">💡 AI 帮助编写代码</p>
                         <p style="margin-top: 10px;">FastLED 库链接：<a href="https://github.com/dmadison/FastLED_NeoPixel" target="_blank" style="color: #5B7C99; text-decoration: underline;">https://github.com/dmadison/FastLED_NeoPixel</a></p>
                         
                         <div class="code-block">
                             <pre><code><span class="code-preprocessor">#include</span> &lt;<a href="https://github.com/dmadison/FastLED_NeoPixel" target="_blank" class="code-link">FastLED.h</a>&gt;
-<span class="code-comment">// 硬件引脚定义（声音传感器接D7，灯环接D8）</span>
 
-<span class="code-preprocessor">#define</span> <span class="code-type">LED_PIN</span>     <span class="code-number">8</span>       <span class="code-comment">// WS2812灯环数据引脚</span>
-<span class="code-preprocessor">#define</span> <span class="code-type">SOUND_PIN</span>   <span class="code-number">7</span>       <span class="code-comment">// HS-S05B声音传感器信号引脚</span>
-<span class="code-preprocessor">#define</span> <span class="code-type">NUM_LEDS</span>    <span class="code-number">12</span>      <span class="code-comment">// 灯环LED数量</span>
-
-<span class="code-comment">// 脉冲时间阈值（单位：微秒，需根据实际调试）</span>
-<span class="code-preprocessor">#define</span> <span class="code-type">CLAP_PULSE_MIN</span> <span class="code-number">100</span>  <span class="code-comment">// 拍手脉冲最小时间</span>
-<span class="code-preprocessor">#define</span> <span class="code-type">CLAP_PULSE_MAX</span> <span class="code-number">500</span>  <span class="code-comment">// 拍手脉冲最大时间</span>
-<span class="code-preprocessor">#define</span> <span class="code-type">BLOW_PULSE_MIN</span> <span class="code-number">600</span>  <span class="code-comment">// 吹气脉冲最小时间</span>
-<span class="code-preprocessor">#define</span> <span class="code-type">BLOW_PULSE_MAX</span> <span class="code-number">2000</span> <span class="code-comment">// 吹气脉冲最大时间</span>
-
+<span class="code-comment">// 灯环配置</span>
+<span class="code-preprocessor">#define</span> <span class="code-type">NUM_LEDS</span> <span class="code-number">12</span>
+<span class="code-preprocessor">#define</span> <span class="code-type">DATA_PIN</span> <span class="code-number">6</span>
 <span class="code-type">CRGB</span> leds[<span class="code-type">NUM_LEDS</span>];
-<span class="code-type">bool</span> isLightOn = <span class="code-keyword">false</span>;     <span class="code-comment">// 灯的状态，初始为灭</span>
+
+<span class="code-comment">// 超声波传感器引脚</span>
+<span class="code-preprocessor">#define</span> <span class="code-type">TRIG_PIN</span> <span class="code-number">9</span>
+<span class="code-preprocessor">#define</span> <span class="code-type">ECHO_PIN</span> <span class="code-number">10</span>
+
+<span class="code-comment">// 声音传感器引脚</span>
+<span class="code-preprocessor">#define</span> <span class="code-type">SOUND_SENSOR</span> <span class="code-type">A0</span>
+
+<span class="code-comment">// 模式变量</span>
+<span class="code-keyword">enum</span> <span class="code-type">Mode</span> { <span class="code-type">PROXIMITY</span>, <span class="code-type">BLOWING</span> };
+<span class="code-type">Mode</span> currentMode = <span class="code-type">PROXIMITY</span>;
+
+<span class="code-comment">// 超声波相关变量</span>
+<span class="code-type">long</span> duration;
+<span class="code-type">int</span> distance;
+<span class="code-keyword">const int</span> <span class="code-type">MAX_DISTANCE</span> = <span class="code-number">50</span>; <span class="code-comment">// 最大检测距离50cm</span>
+<span class="code-keyword">const int</span> <span class="code-type">MIN_DISTANCE</span> = <span class="code-number">5</span>;  <span class="code-comment">// 最小检测距离5cm</span>
+
+<span class="code-comment">// 颜色状态</span>
+<span class="code-type">int</span> colorState = <span class="code-number">0</span>; <span class="code-comment">// 0:蓝色, 1:红色, 2:绿色</span>
+<span class="code-type">bool</span> colorChanged = <span class="code-keyword">false</span>;
+
+<span class="code-comment">// 吹气模式变量</span>
+<span class="code-type">unsigned long</span> lastRotationTime = <span class="code-number">0</span>;
+<span class="code-keyword">const int</span> <span class="code-type">ROTATION_DELAY</span> = <span class="code-number">200</span>; <span class="code-comment">// 旋转延迟(毫秒)</span>
+<span class="code-type">int</span> rotationOffset = <span class="code-number">0</span>;
+
+<span class="code-comment">// 声音检测</span>
+<span class="code-keyword">const int</span> <span class="code-type">SOUND_THRESHOLD</span> = <span class="code-number">500</span>; <span class="code-comment">// 声音阈值，需要根据实际情况调整</span>
+<span class="code-type">unsigned long</span> lastBlowTime = <span class="code-number">0</span>;
+<span class="code-keyword">const unsigned long</span> <span class="code-type">BLOW_MODE_DURATION</span> = <span class="code-number">5000</span>; <span class="code-comment">// 吹气模式持续时间5秒</span>
 
 <span class="code-type">void</span> <span class="code-function">setup</span>() {
-  <span class="code-function">pinMode</span>(<span class="code-type">SOUND_PIN</span>, <span class="code-type">INPUT</span>); <span class="code-comment">// 设置声音传感器引脚为输入模式</span>
-  <span class="code-type">FastLED</span>.<span class="code-function">addLeds</span>&lt;<span class="code-type">WS2812</span>, <span class="code-type">LED_PIN</span>, <span class="code-type">GRB</span>&gt;(leds, <span class="code-type">NUM_LEDS</span>);
-  <span class="code-type">FastLED</span>.<span class="code-function">setBrightness</span>(<span class="code-number">100</span>); <span class="code-comment">// 设置亮度</span>
-  <span class="code-type">Serial</span>.<span class="code-function">begin</span>(<span class="code-number">9600</span>); <span class="code-comment">// 打开串口用于调试</span>
-  <span class="code-type">Serial</span>.<span class="code-function">println</span>(<span class="code-string">"系统启动，等待拍手或吹气触发..."</span>);
+  <span class="code-comment">// 初始化串口通信</span>
+  <span class="code-type">Serial</span>.<span class="code-function">begin</span>(<span class="code-number">9600</span>);
+  
+  <span class="code-comment">// 初始化超声波引脚</span>
+  <span class="code-function">pinMode</span>(<span class="code-type">TRIG_PIN</span>, <span class="code-type">OUTPUT</span>);
+  <span class="code-function">pinMode</span>(<span class="code-type">ECHO_PIN</span>, <span class="code-type">INPUT</span>);
+  
+  <span class="code-comment">// 初始化声音传感器引脚</span>
+  <span class="code-function">pinMode</span>(<span class="code-type">SOUND_SENSOR</span>, <span class="code-type">INPUT</span>);
+  
+  <span class="code-comment">// 初始化LED灯环</span>
+  <span class="code-type">FastLED</span>.<span class="code-function">addLeds</span>&lt;<span class="code-type">WS2812</span>, <span class="code-type">DATA_PIN</span>, <span class="code-type">GRB</span>&gt;(leds, <span class="code-type">NUM_LEDS</span>);
+  <span class="code-type">FastLED</span>.<span class="code-function">setBrightness</span>(<span class="code-number">100</span>);
+  
+  <span class="code-comment">// 初始全部熄灭</span>
+  <span class="code-function">clearLEDs</span>();
+  <span class="code-type">FastLED</span>.<span class="code-function">show</span>();
 }
 
 <span class="code-type">void</span> <span class="code-function">loop</span>() {
-  <span class="code-comment">// 读取高电平脉冲时间（检测拍手或吹气的脉冲）</span>
-  <span class="code-type">unsigned long</span> pulseTime = <span class="code-function">pulseIn</span>(<span class="code-type">SOUND_PIN</span>, <span class="code-type">HIGH</span>);
+  <span class="code-comment">// 检测声音</span>
+  <span class="code-function">checkSound</span>();
   
-  <span class="code-type">Serial</span>.<span class="code-function">print</span>(<span class="code-string">"脉冲时间: "</span>);
-  <span class="code-type">Serial</span>.<span class="code-function">println</span>(pulseTime);
-
-  <span class="code-comment">// 拍手检测：脉冲时间在拍手阈值范围内，且灯当前是灭的</span>
-  <span class="code-keyword">if</span> (pulseTime >= <span class="code-type">CLAP_PULSE_MIN</span> && pulseTime <= <span class="code-type">CLAP_PULSE_MAX</span> && !isLightOn) {
-    isLightOn = <span class="code-keyword">true</span>; <span class="code-comment">// 开灯</span>
-    <span class="code-function">fill_solid</span>(leds, <span class="code-type">NUM_LEDS</span>, <span class="code-type">CRGB</span>::Red); <span class="code-comment">// 设置为红色，可自定义颜色</span>
-    <span class="code-type">FastLED</span>.<span class="code-function">show</span>();
-    <span class="code-type">Serial</span>.<span class="code-function">println</span>(<span class="code-string">"检测到拍手，开灯"</span>);
-    <span class="code-function">delay</span>(<span class="code-number">200</span>); <span class="code-comment">// 防抖动</span>
+  <span class="code-comment">// 模式切换逻辑</span>
+  <span class="code-keyword">if</span> (currentMode == <span class="code-type">BLOWING</span> && <span class="code-function">millis</span>() - lastBlowTime > <span class="code-type">BLOW_MODE_DURATION</span>) {
+    currentMode = <span class="code-type">PROXIMITY</span>;
+    <span class="code-function">clearLEDs</span>();
   }
-  <span class="code-comment">// 吹气检测：脉冲时间在吹气阈值范围内，且灯当前是亮的</span>
-  <span class="code-keyword">else if</span> (pulseTime >= <span class="code-type">BLOW_PULSE_MIN</span> && pulseTime <= <span class="code-type">BLOW_PULSE_MAX</span> && isLightOn) {
-    isLightOn = <span class="code-keyword">false</span>; <span class="code-comment">// 关灯</span>
-    <span class="code-function">fill_solid</span>(leds, <span class="code-type">NUM_LEDS</span>, <span class="code-type">CRGB</span>::Black); <span class="code-comment">// 熄灭</span>
-    <span class="code-type">FastLED</span>.<span class="code-function">show</span>();
-    <span class="code-type">Serial</span>.<span class="code-function">println</span>(<span class="code-string">"检测到吹气，关灯"</span>);
-    <span class="code-function">delay</span>(<span class="code-number">200</span>); <span class="code-comment">// 防抖动</span>
+  
+  <span class="code-comment">// 根据当前模式执行相应的灯光效果</span>
+  <span class="code-keyword">if</span> (currentMode == <span class="code-type">PROXIMITY</span>) {
+    <span class="code-function">proximityMode</span>();
+  } <span class="code-keyword">else</span> {
+    <span class="code-function">blowingMode</span>();
+  }
+  
+  <span class="code-type">FastLED</span>.<span class="code-function">show</span>();
+  <span class="code-function">delay</span>(<span class="code-number">50</span>);
+}
+
+<span class="code-type">void</span> <span class="code-function">checkSound</span>() {
+  <span class="code-type">int</span> soundValue = <span class="code-function">analogRead</span>(<span class="code-type">SOUND_SENSOR</span>);
+  
+  <span class="code-keyword">if</span> (soundValue > <span class="code-type">SOUND_THRESHOLD</span>) {
+    currentMode = <span class="code-type">BLOWING</span>;
+    lastBlowTime = <span class="code-function">millis</span>();
+    rotationOffset = <span class="code-number">0</span>;
+  }
+}
+
+<span class="code-type">void</span> <span class="code-function">proximityMode</span>() {
+  <span class="code-comment">// 读取超声波距离</span>
+  <span class="code-function">digitalWrite</span>(<span class="code-type">TRIG_PIN</span>, <span class="code-type">LOW</span>);
+  <span class="code-function">delayMicroseconds</span>(<span class="code-number">2</span>);
+  <span class="code-function">digitalWrite</span>(<span class="code-type">TRIG_PIN</span>, <span class="code-type">HIGH</span>);
+  <span class="code-function">delayMicroseconds</span>(<span class="code-number">10</span>);
+  <span class="code-function">digitalWrite</span>(<span class="code-type">TRIG_PIN</span>, <span class="code-type">LOW</span>);
+  
+  duration = <span class="code-function">pulseIn</span>(<span class="code-type">ECHO_PIN</span>, <span class="code-type">HIGH</span>);
+  distance = duration * <span class="code-number">0.034</span> / <span class="code-number">2</span>;
+  
+  <span class="code-comment">// 限制距离范围</span>
+  distance = <span class="code-function">constrain</span>(distance, <span class="code-type">MIN_DISTANCE</span>, <span class="code-type">MAX_DISTANCE</span>);
+  
+  <span class="code-comment">// 计算要点亮的LED数量</span>
+  <span class="code-type">int</span> ledsToLight = <span class="code-function">map</span>(distance, <span class="code-type">MIN_DISTANCE</span>, <span class="code-type">MAX_DISTANCE</span>, <span class="code-type">NUM_LEDS</span>, <span class="code-number">1</span>);
+  ledsToLight = <span class="code-function">constrain</span>(ledsToLight, <span class="code-number">1</span>, <span class="code-type">NUM_LEDS</span>);
+  
+  <span class="code-comment">// 当所有LED都点亮时，准备切换颜色</span>
+  <span class="code-keyword">if</span> (ledsToLight == <span class="code-type">NUM_LEDS</span> && !colorChanged) {
+    colorState = (colorState + <span class="code-number">1</span>) % <span class="code-number">3</span>;
+    colorChanged = <span class="code-keyword">true</span>;
+  }
+  
+  <span class="code-comment">// 当LED数量减少时，重置颜色切换标志</span>
+  <span class="code-keyword">if</span> (ledsToLight < <span class="code-type">NUM_LEDS</span>) {
+    colorChanged = <span class="code-keyword">false</span>;
+  }
+  
+  <span class="code-comment">// 根据颜色状态设置颜色</span>
+  <span class="code-type">CRGB</span> currentColor;
+  <span class="code-keyword">switch</span> (colorState) {
+    <span class="code-keyword">case</span> <span class="code-number">0</span>: currentColor = <span class="code-type">CRGB</span>::Blue; <span class="code-keyword">break</span>;
+    <span class="code-keyword">case</span> <span class="code-number">1</span>: currentColor = <span class="code-type">CRGB</span>::Red; <span class="code-keyword">break</span>;
+    <span class="code-keyword">case</span> <span class="code-number">2</span>: currentColor = <span class="code-type">CRGB</span>::Green; <span class="code-keyword">break</span>;
+  }
+  
+  <span class="code-comment">// 清除所有LED</span>
+  <span class="code-function">clearLEDs</span>();
+  
+  <span class="code-comment">// 点亮相应数量的LED</span>
+  <span class="code-keyword">for</span> (<span class="code-type">int</span> i = <span class="code-number">0</span>; i < ledsToLight; i++) {
+    leds[i] = currentColor;
+  }
+  
+  <span class="code-comment">// 串口输出调试信息</span>
+  <span class="code-type">Serial</span>.<span class="code-function">print</span>(<span class="code-string">"Distance: "</span>);
+  <span class="code-type">Serial</span>.<span class="code-function">print</span>(distance);
+  <span class="code-type">Serial</span>.<span class="code-function">print</span>(<span class="code-string">"cm, LEDs: "</span>);
+  <span class="code-type">Serial</span>.<span class="code-function">print</span>(ledsToLight);
+  <span class="code-type">Serial</span>.<span class="code-function">print</span>(<span class="code-string">", Color: "</span>);
+  <span class="code-type">Serial</span>.<span class="code-function">println</span>(colorState);
+}
+
+<span class="code-type">void</span> <span class="code-function">blowingMode</span>() {
+  <span class="code-keyword">if</span> (<span class="code-function">millis</span>() - lastRotationTime > <span class="code-type">ROTATION_DELAY</span>) {
+    <span class="code-comment">// 清除所有LED</span>
+    <span class="code-function">clearLEDs</span>();
+    
+    <span class="code-comment">// 设置三个色块，每个色块4个LED</span>
+    <span class="code-keyword">for</span> (<span class="code-type">int</span> i = <span class="code-number">0</span>; i < <span class="code-type">NUM_LEDS</span>; i++) {
+      <span class="code-type">int</span> pos = (i + rotationOffset) % <span class="code-type">NUM_LEDS</span>;
+      
+      <span class="code-keyword">if</span> (pos < <span class="code-number">4</span>) {
+        leds[i] = <span class="code-type">CRGB</span>::Blue;    <span class="code-comment">// 蓝色块</span>
+      } <span class="code-keyword">else if</span> (pos < <span class="code-number">8</span>) {
+        leds[i] = <span class="code-type">CRGB</span>::Red;     <span class="code-comment">// 红色块</span>
+      } <span class="code-keyword">else</span> {
+        leds[i] = <span class="code-type">CRGB</span>::Green;   <span class="code-comment">// 绿色块</span>
+      }
+    }
+    
+    <span class="code-comment">// 更新旋转偏移量</span>
+    rotationOffset = (rotationOffset + <span class="code-number">1</span>) % <span class="code-type">NUM_LEDS</span>;
+    lastRotationTime = <span class="code-function">millis</span>();
+  }
+}
+
+<span class="code-type">void</span> <span class="code-function">clearLEDs</span>() {
+  <span class="code-keyword">for</span> (<span class="code-type">int</span> i = <span class="code-number">0</span>; i < <span class="code-type">NUM_LEDS</span>; i++) {
+    leds[i] = <span class="code-type">CRGB</span>::Black;
   }
 }</code></pre>
                         </div>
                     </div>
                     <div class="process-step">
                         <h4>📌 第四步：测试与调试</h4>
-                        <p>逐个测试各传感器功能，调整超声波传感器的测量精度，确保灯效响应及时。遇到问题：超声波测量不稳定，通过多次测量取平均值解决。</p>
+                        <p>逐个测试各传感器功能：调整超声波传感器的测量精度，确保距离数据准确；调节声音传感器的阈值，避免环境噪音误触发；优化灯环颜色和亮度，使视觉效果更流畅。遇到问题：超声波测量偶尔不稳定，通过多次测量取平均值解决；声音传感器过于敏感，通过提高阈值和添加延时防抖解决。</p>
                     </div>
                 </div>
             </div>
 
-            <!-- WS2812和HS-S05B 最终成果 -->
+            <!-- HC-SR04、WS2812、HS-S05B 最终成果 -->
             <div id="ws2812-final" class="sensor-content">
                 <div class="content-section">
-                    <h3>🎯 WS2812和HS-S05B - 最终成果展示</h3>
+                    <h3> HC-SR04、WS2812、HS-S05B - 最终成果展示</h3>
 
                     <div class="hardware-section">
                         <h4>🔧 运用到的 Arduino 硬件分析</h4>
 
-                        <h5>1. WS2812灯环</h5>
-                        <p>WS2812灯环是将多颗可寻址LED集成于一体的环形RGB灯板，每颗灯珠内置驱动芯片，仅需一根信号线即可独立控制每颗灯珠的任意颜色和亮度。使用时将VCC接5V、GND接地、DIN接Arduino的数字引脚，配合NeoPixel库即可轻松实现跑马灯、呼吸灯等炫彩效果。常用于指示灯、氛围灯、创意装饰及互动灯光项目中。</p>
+                        <h5>1. HC-SR04超声波传感器</h5>
+                        <p>HC-SR04是一款常用的超声波测距模块，通过发射40kHz超声波并接收回波来测量物体距离。其工作原理是：Trig引脚发送一个10μs的高电平触发信号，模块自动发射8个40kHz的方波，Echo引脚输出高电平，高电平的持续时间即为超声波往返时间。通过公式“距离 = (高电平时间 × 声速) / 2”可计算出距离（声速约为340m/s）。HC-SR04的测量范围为2cm至400cm，精度可达3mm，广泛应用于避障机器人、智能小车、液位检测及距离感应等场景。</p>
 
-                        <h5>2. HS-S05B超声波传感器</h5>
-                        <p>HS-S05B超声波传感器通过发射40kHz超声波并检测回波来测量物体距离，非接触、精度高、成本低。使用时Trig引脚发送一个10μs高电平触发测量，Echo引脚输出高电平宽度对应距离值，通过Arduino的pulseIn()函数即可计算出距离（单位厘米）。常用于避障机器人、智能车位检测、倒车雷达及液位测量等场景。</p>
+                        <h5>2. WS2812灯环</h5>
+                        <p>WS2812灯环是将多颗可寻址LED集成于一体的环形RGB灯板，每颗灯珠内置驱动芯片，仅需一根信号线即可独立控制每颗灯珠的任意颜色和亮度。使用时将VCC接5V、GND接地、DI接Arduino的数字引脚，配合FastLED库即可轻松实现跑马灯、呼吸灯等炫彩效果。常用于指示灯、氛围灯、创意装饰及互动灯光项目中。</p>
+
+                        <h5>3. HS-S05B声音传感器</h5>
+                        <p>HS-S05B声音传感器是一种高灵敏度的声音检测模块，能够识别环境中的声音信号，如拍手声、吹气声等。使用时将VCC接5V、GND接地、A接Arduino的模拟输入引脚，通过analogRead()函数读取声音强度值，可根据阈值判断是否检测到声音。常用于声控开关、互动装置、音乐节奏检测及语音控制等场景。</p>
                     </div>
 
                     <div class="hardware-section">
                         <h4> 应用场景展示</h4>
-                        <p>通过WS2812灯环实现炫彩灯光效果，配合超声波传感器测量距离实现互动灯光控制。装置可用于创意装饰、智能感应灯、互动展示等场景，根据距离变化动态调整灯光颜色和亮度。</p>
+                        <p>通过HC-SR04超声波传感器测量距离，根据距离远近动态控制WS2812灯环点亮的LED数量和颜色；同时通过HS-S05B声音传感器检测吹气声音，触发灯环旋转模式。装置可用于创意装饰、智能感应灯、互动展示等场景，实现距离感应和声控互动的双重功能。</p>
 
                         <div class="image-illustration">
                             <img src="assets/arduino1.gif" alt="WS2812和HS-S05B应用场景展示" onclick="openImageModal(this.src)">
@@ -346,77 +459,6 @@
                 </div>
             </div>
 
-            <!-- 压力传感器 制作过程 -->
-            <div id="pressure-process" class="sensor-content">
-                <div class="content-section">
-                    <h3>🔨 压力传感器 - 制作过程记录</h3>
-                    <div class="process-step">
-                        <p style="color: #999; text-align: center; padding: 40px;">内容待补充</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 压力传感器 最终成果 -->
-            <div id="pressure-final" class="sensor-content">
-                <div class="content-section">
-                    <h3>🎯 压力传感器 - 最终成果展示</h3>
-                    <div class="hardware-section">
-                        <h4>🔧 运用到的 Arduino 硬件分析</h4>
-
-                        <h5>3. SG90舵机</h5>
-                        <p>SG90是一款微型9g舵机，内部集成直流电机、减速齿轮组与位置反馈电路，通过接收PWM（脉冲宽度调制）信号来精确控制输出轴的角度位置。其旋转角度范围为0至180度，工作电压为3.5V至6V，通常推荐5V供电，最大输出扭矩约为1.2至1.6KG/cm。连线方法为：棕色（或黑色）线接GND、红色线接5V VCC、橙色（或黄色）信号线接Arduino的数字PWM引脚。在Arduino中只需引入Servo库，使用`attach()`函数绑定引脚，再用`write(angle)`函数即可让舵机旋转到0到180度之间的指定角度。SG90常用于机器人关节、云台摇头、简易机械臂及模型控制等需要精确定位的场景。</p>
-
-                        <div class="image-illustration">
-                            <img src="assets/servo-motor.png" alt="SG90舵机" onclick="openImageModal(this.src)">
-                            <p>图1：SG90舵机实物图</p>
-                        </div>
-
-                        <h5>4. 压力传感器FSR402</h5>
-                        <p>FSR402是一种圆形力敏电阻（Force Sensing Resistor），以超薄高分子薄膜作为敏感材料，当传感器表面受到压力时，内部电路导通面积增加，导致其电阻值随压力增大而减小。FSR402的有效感应直径为18.28mm，厚度仅约0.45mm，可检测约100g至10kg的压力范围，具有成本低、易安装、响应快（小于3ms）等优点。使用中需将FSR402和一个固定电阻（通常为10kΩ）串联构成分压电路，一端接5V，另一端接Arduino模拟输入引脚（如A0），Arduino通过读取模拟电压值来判断压力大小。该传感器适用于触摸检测、压力感知开关、交互装置及人体存在感应等无需精密标定的压力识别任务。</p>
-
-                        <div class="image-illustration">
-                            <img src="assets/pressure-sensor.png" alt="压力传感器FSR402" onclick="openImageModal(this.src)">
-                            <p>图2：压力传感器FSR402实物图</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 舵机 制作过程 -->
-            <div id="servo-process" class="sensor-content">
-                <div class="content-section">
-                    <h3>🔨 舵机 - 制作过程记录</h3>
-                    <div class="process-step">
-                        <p style="color: #999; text-align: center; padding: 40px;">内容待补充</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 舵机 最终成果 -->
-            <div id="servo-final" class="sensor-content">
-                <div class="content-section">
-                    <h3>🎯 舵机 - 最终成果展示</h3>
-                    <div class="hardware-section">
-                        <h4>🔧 运用到的 Arduino 硬件分析</h4>
-
-                        <h5>3. SG90舵机</h5>
-                        <p>SG90是一款微型9g舵机，内部集成直流电机、减速齿轮组与位置反馈电路，通过接收PWM（脉冲宽度调制）信号来精确控制输出轴的角度位置。其旋转角度范围为0至180度，工作电压为3.5V至6V，通常推荐5V供电，最大输出扭矩约为1.2至1.6KG/cm。连线方法为：棕色（或黑色）线接GND、红色线接5V VCC、橙色（或黄色）信号线接Arduino的数字PWM引脚。在Arduino中只需引入Servo库，使用`attach()`函数绑定引脚，再用`write(angle)`函数即可让舵机旋转到0到180度之间的指定角度。SG90常用于机器人关节、云台摇头、简易机械臂及模型控制等需要精确定位的场景。</p>
-
-                        <div class="image-illustration">
-                            <img src="assets/servo-motor.png" alt="SG90舵机" onclick="openImageModal(this.src)">
-                            <p>图1：SG90舵机实物图</p>
-                        </div>
-
-                        <h5>4. 压力传感器FSR402</h5>
-                        <p>FSR402是一种圆形力敏电阻（Force Sensing Resistor），以超薄高分子薄膜作为敏感材料，当传感器表面受到压力时，内部电路导通面积增加，导致其电阻值随压力增大而减小。FSR402的有效感应直径为18.28mm，厚度仅约0.45mm，可检测约100g至10kg的压力范围，具有成本低、易安装、响应快（小于3ms）等优点。使用中需将FSR402和一个固定电阻（通常为10kΩ）串联构成分压电路，一端接5V，另一端接Arduino模拟输入引脚（如A0），Arduino通过读取模拟电压值来判断压力大小。该传感器适用于触摸检测、压力感知开关、交互装置及人体存在感应等无需精密标定的压力识别任务。</p>
-
-                        <div class="image-illustration">
-                            <img src="assets/pressure-sensor.png" alt="压力传感器FSR402" onclick="openImageModal(this.src)">
-                            <p>图2：压力传感器FSR402实物图</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </section>
     </main>
 
