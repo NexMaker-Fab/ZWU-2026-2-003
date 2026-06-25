@@ -203,51 +203,181 @@
                         <div class="code-section">
                             <h4>📄 网页代码示例</h4>
                             <div class="code-scroll-container">
-                                <pre class="code-highlight"><code>&lt;!DOCTYPE html&gt;
-&lt;html lang="zh-CN"&gt;
-&lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;我的个人网站&lt;/title&gt;
-    &lt;link rel="stylesheet" href="style.css"&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;nav class="navbar"&gt;
-        &lt;div class="nav-container"&gt;
-            &lt;div class="logo"&gt;我的网站&lt;/div&gt;
-            &lt;ul class="nav-menu"&gt;
-                &lt;li class="nav-item active"&gt;首页&lt;/li&gt;
-                &lt;li class="nav-item"&gt;关于&lt;/li&gt;
-                &lt;li class="nav-item"&gt;作品&lt;/li&gt;
-                &lt;li class="nav-item"&gt;联系&lt;/li&gt;
-            &lt;/ul&gt;
-        &lt;/div&gt;
-    &lt;/nav&gt;
+                                <pre class="code-highlight"><code><span class="tag">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html</span> <span class="attr">lang=</span><span class="value">"zh-CN"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;head&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attr">charset=</span><span class="value">"UTF-8"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attr">name=</span><span class="value">"viewport"</span> <span class="attr">content=</span><span class="value">"width=device-width, initial-scale=1.0"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;title&gt;</span>课程作业系统 - 最终版本<span class="tag">&lt;/title&gt;</span>
+    <span class="tag">&lt;link</span> <span class="attr">rel=</span><span class="value">"stylesheet"</span> <span class="attr">href=</span><span class="value">"style.css"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/head&gt;</span>
+<span class="tag">&lt;body&gt;</span>
+    <span class="tag">&lt;nav</span> <span class="attr">class=</span><span class="value">"navbar"</span><span class="tag">&gt;</span>
+        <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"nav-container"</span><span class="tag">&gt;</span>
+            <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"logo"</span><span class="tag">&gt;</span>课程系统<span class="tag">&lt;/div&gt;</span>
+            <span class="tag">&lt;ul</span> <span class="attr">class=</span><span class="value">"nav-menu"</span><span class="tag">&gt;</span>
+                <span class="tag">&lt;li</span> <span class="attr">class=</span><span class="value">"nav-item active"</span> <span class="attr">data-page=</span><span class="value">"home"</span><span class="tag">&gt;</span>Home<span class="tag">&lt;/li&gt;</span>
+                <span class="tag">&lt;li</span> <span class="attr">class=</span><span class="value">"nav-item has-dropdown"</span> <span class="attr">data-page=</span><span class="value">"homework"</span><span class="tag">&gt;</span>
+                    <span class="tag">&lt;span&gt;</span>作业<span class="tag">&lt;/span&gt;</span>
+                    <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"dropdown"</span><span class="tag">&gt;</span>
+                        <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"dropdown-weeks"</span><span class="tag">&gt;</span>
+                            <span class="tag">&lt;button</span> <span class="attr">class=</span><span class="value">"week-btn active"</span> <span class="attr">data-week=</span><span class="value">"1"</span><span class="tag">&gt;</span>Week 1 - 网络搭建<span class="tag">&lt;/button&gt;</span>
+                            <span class="tag">&lt;button</span> <span class="attr">class=</span><span class="value">"week-btn"</span> <span class="attr">data-week=</span><span class="value">"2"</span><span class="tag">&gt;</span>Week 2 - Arduino硬件<span class="tag">&lt;/button&gt;</span>
+                            <span class="tag">&lt;button</span> <span class="attr">class=</span><span class="value">"week-btn"</span> <span class="attr">data-week=</span><span class="value">"3"</span><span class="tag">&gt;</span>Week 3 - CAD小车<span class="tag">&lt;/button&gt;</span>
+                            <span class="tag">&lt;button</span> <span class="attr">class=</span><span class="value">"week-btn"</span> <span class="attr">data-week=</span><span class="value">"4"</span><span class="tag">&gt;</span>Week 4 - 3D打印<span class="tag">&lt;/button&gt;</span>
+                            <span class="tag">&lt;button</span> <span class="attr">class=</span><span class="value">"week-btn"</span> <span class="attr">data-week=</span><span class="value">"5"</span><span class="tag">&gt;</span>Week 5 - IoT架构<span class="tag">&lt;/button&gt;</span>
+                        <span class="tag">&lt;/div&gt;</span>
+                    <span class="tag">&lt;/div&gt;</span>
+                <span class="tag">&lt;/li&gt;</span>
+                <span class="tag">&lt;li</span> <span class="attr">class=</span><span class="value">"nav-item"</span> <span class="attr">data-page=</span><span class="value">"project"</span><span class="tag">&gt;</span>项目<span class="tag">&lt;/li&gt;</span>
+                <span class="tag">&lt;li</span> <span class="attr">class=</span><span class="value">"nav-item"</span> <span class="attr">data-page=</span><span class="value">"team"</span><span class="tag">&gt;</span>团队介绍<span class="tag">&lt;/li&gt;</span>
+            <span class="tag">&lt;/ul&gt;</span>
+        <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;/nav&gt;</span>
 
-    &lt;main class="main-content"&gt;
-        &lt;section class="hero-section"&gt;
-            &lt;h1&gt;欢迎来到我的个人网站&lt;/h1&gt;
-            &lt;p&gt;这里展示我的作品和创意&lt;/p&gt;
-        &lt;/section&gt;
+    <span class="tag">&lt;main</span> <span class="attr">class=</span><span class="value">"main-content"</span><span class="tag">&gt;</span>
+        <span class="comment">&lt;!-- 首页 --&gt;</span>
+        <span class="tag">&lt;section</span> <span class="attr">id=</span><span class="value">"home"</span> <span class="attr">class=</span><span class="value">"page active"</span><span class="tag">&gt;</span>
+            <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"home-header"</span><span class="tag">&gt;</span>
+                <span class="tag">&lt;h1</span> <span class="attr">class=</span><span class="value">"page-title"</span><span class="tag">&gt;</span>欢迎使用课程作业系统<span class="tag">&lt;/h1&gt;</span>
+                <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"title-divider"</span><span class="tag">&gt;&lt;/div&gt;</span>
+            <span class="tag">&lt;/div&gt;</span>
+            <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"progress-section"</span><span class="tag">&gt;</span>
+                <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"progress-card"</span><span class="tag">&gt;</span>
+                    <span class="tag">&lt;span</span> <span class="attr">class=</span><span class="value">"progress-label"</span><span class="tag">&gt;</span>课程进度<span class="tag">&lt;/span&gt;</span>
+                    <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"progress-bar-container"</span><span class="tag">&gt;</span>
+                        <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"progress-bar"</span><span class="tag">&gt;&lt;/div&gt;</span>
+                    <span class="tag">&lt;/div&gt;</span>
+                    <span class="tag">&lt;span</span> <span class="attr">class=</span><span class="value">"progress-text"</span><span class="tag">&gt;</span>已完成<span class="tag">&lt;span</span> <span class="attr">id=</span><span class="value">"completedWeeks"</span><span class="tag">&gt;</span>8<span class="tag">&lt;/span&gt;</span>/18 周<span class="tag">&lt;/span&gt;</span>
+                <span class="tag">&lt;/div&gt;</span>
+            <span class="tag">&lt;/div&gt;</span>
+            <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"cards-section"</span><span class="tag">&gt;</span>
+                <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"feature-card"</span> <span class="attr">data-navigate-to=</span><span class="value">"homework"</span><span class="tag">&gt;</span>
+                    <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"card-icon"</span><span class="tag">&gt;</span>📚<span class="tag">&lt;/div&gt;</span>
+                    <span class="tag">&lt;h3&gt;</span>最新作业<span class="tag">&lt;/h3&gt;</span>
+                    <span class="tag">&lt;p&gt;</span>查看本周发布的作业任务和截止日期<span class="tag">&lt;/p&gt;</span>
+                <span class="tag">&lt;/div&gt;</span>
+                <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"feature-card"</span> <span class="attr">data-navigate-to=</span><span class="value">"project"</span><span class="tag">&gt;</span>
+                    <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"card-icon"</span><span class="tag">&gt;</span>🎨<span class="tag">&lt;/div&gt;</span>
+                    <span class="tag">&lt;h3&gt;</span>进行中的项目<span class="tag">&lt;/h3&gt;</span>
+                    <span class="tag">&lt;p&gt;</span>跟踪您的项目进展和里程碑<span class="tag">&lt;/p&gt;</span>
+                <span class="tag">&lt;/div&gt;</span>
+                <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"feature-card"</span> <span class="attr">data-navigate-to=</span><span class="value">"team"</span><span class="tag">&gt;</span>
+                    <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"card-icon"</span><span class="tag">&gt;</span>✨<span class="tag">&lt;/div&gt;</span>
+                    <span class="tag">&lt;h3&gt;</span>团队新动态<span class="tag">&lt;/h3&gt;</span>
+                    <span class="tag">&lt;p&gt;</span>了解团队成员的最新更新和分享<span class="tag">&lt;/p&gt;</span>
+                <span class="tag">&lt;/div&gt;</span>
+            <span class="tag">&lt;/div&gt;</span>
+        <span class="tag">&lt;/section&gt;</span>
 
-        &lt;section class="portfolio-section"&gt;
-            &lt;h2&gt;作品集&lt;/h2&gt;
-            &lt;div class="portfolio-grid"&gt;
-                &lt;div class="portfolio-item"&gt;
-                    &lt;img src="assets/work1.jpg" alt="作品1"&gt;
-                    &lt;h3&gt;作品标题&lt;/h3&gt;
-                    &lt;p&gt;作品描述&lt;/p&gt;
-                &lt;/div&gt;
-                &lt;!-- 更多作品项 --&gt;
-            &lt;/div&gt;
-        &lt;/section&gt;
-    &lt;/main&gt;
+        <span class="comment">&lt;!-- 作业页 --&gt;</span>
+        <span class="tag">&lt;section</span> <span class="attr">id=</span><span class="value">"homework"</span> <span class="attr">class=</span><span class="value">"page"</span><span class="tag">&gt;</span>
+            <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"homework-header"</span><span class="tag">&gt;</span>
+                <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"week-badge"</span> <span class="attr">id=</span><span class="value">"currentWeekBadge"</span><span class="tag">&gt;</span>Week 2<span class="tag">&lt;/div&gt;</span>
+                <span class="tag">&lt;h2</span> <span class="attr">class=</span><span class="value">"week-title"</span> <span class="attr">id=</span><span class="value">"weekTitle"</span><span class="tag">&gt;</span>ASD 多感官互动沙盘系统<span class="tag">&lt;/h2&gt;</span>
+                <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"title-divider"</span><span class="tag">&gt;&lt;/div&gt;</span>
+            <span class="tag">&lt;/div&gt;</span>
 
-    &lt;footer class="footer"&gt;
-        &lt;p&gt;&amp;copy; 2026 我的个人网站. All rights reserved.&lt;/p&gt;
-    &lt;/footer&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
+            <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"final-version-content"</span><span class="tag">&gt;</span>
+                <span class="tag">&lt;p&gt;</span>Week 1 已独立为单独页面，请点击上方 Week 1 按钮跳转到详情页。<span class="tag">&lt;/p&gt;</span>
+            <span class="tag">&lt;/div&gt;</span>
+
+            <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"final-version-content"</span><span class="tag">&gt;</span>
+                <span class="tag">&lt;p&gt;</span>Week 2 已独立为单独页面，请点击上方 Week 2 按钮跳转到详情页。<span class="tag">&lt;/p&gt;</span>
+            <span class="tag">&lt;/div&gt;</span>
+        <span class="tag">&lt;/section&gt;</span>
+
+        <span class="comment">&lt;!-- 项目页 --&gt;</span>
+        <span class="tag">&lt;section</span> <span class="attr">id=</span><span class="value">"project"</span> <span class="attr">class=</span><span class="value">"page"</span><span class="tag">&gt;</span>
+            <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"project-header"</span><span class="tag">&gt;</span>
+                <span class="tag">&lt;h1</span> <span class="attr">class=</span><span class="value">"page-title"</span><span class="tag">&gt;</span>最终项目展示<span class="tag">&lt;/h1&gt;</span>
+                <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"title-divider"</span><span class="tag">&gt;&lt;/div&gt;</span>
+            <span class="tag">&lt;/div&gt;</span>
+            <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"project-grid"</span><span class="tag">&gt;</span>
+                <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"project-card"</span> <span class="attr">data-navigate-to=</span><span class="value">"project"</span><span class="tag">&gt;</span>
+                    <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"project-image"</span><span class="tag">&gt;&lt;/div&gt;</span>
+                    <span class="tag">&lt;h3&gt;</span>点击查看项目内容<span class="tag">&lt;/h3&gt;</span>
+                    <span class="tag">&lt;p&gt;</span>本项目内容已迁移至独立页面，点击进入 Week 2 项目展示。<span class="tag">&lt;/p&gt;</span>
+                <span class="tag">&lt;/div&gt;</span>
+            <span class="tag">&lt;/div&gt;</span>
+        <span class="tag">&lt;/section&gt;</span>
+
+        <span class="comment">&lt;!-- 团队介绍页 --&gt;</span>
+        <span class="tag">&lt;section</span> <span class="attr">id=</span><span class="value">"team"</span> <span class="attr">class=</span><span class="value">"page"</span><span class="tag">&gt;</span>
+            <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"team-container"</span><span class="tag">&gt;</span>
+                <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"team-title-wrap"</span><span class="tag">&gt;</span>
+                    <span class="tag">&lt;h1</span> <span class="attr">class=</span><span class="value">"page-title"</span><span class="tag">&gt;</span>团队介绍<span class="tag">&lt;/h1&gt;</span>
+                    <span class="tag">&lt;p</span> <span class="attr">class=</span><span class="value">"page-subtitle"</span><span class="tag">&gt;</span>CREATIVE &amp; PROFESSIONAL TEAM<span class="tag">&lt;/p&gt;</span>
+                    <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"title-line"</span><span class="tag">&gt;&lt;/div&gt;</span>
+                <span class="tag">&lt;/div&gt;</span>
+
+                <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"team-grid"</span><span class="tag">&gt;</span>
+                    <span class="tag">&lt;article</span> <span class="attr">class=</span><span class="value">"team-card"</span><span class="tag">&gt;</span>
+                        <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"card-avatar"</span><span class="tag">&gt;</span>
+                            <span class="tag">&lt;span</span> <span class="attr">class=</span><span class="value">"avatar-border"</span><span class="tag">&gt;&lt;/span&gt;</span>
+                            <span class="tag">&lt;span</span> <span class="attr">class=</span><span class="value">"avatar-icon"</span><span class="tag">&gt;</span>🌟<span class="tag">&lt;/span&gt;</span>
+                        <span class="tag">&lt;/div&gt;</span>
+                        <span class="tag">&lt;h3</span> <span class="attr">class=</span><span class="value">"member-name"</span><span class="tag">&gt;</span>Yana<span class="tag">&lt;/h3&gt;</span>
+                        <span class="tag">&lt;p</span> <span class="attr">class=</span><span class="value">"member-job"</span><span class="tag">&gt;</span>项目统筹 / 设计表达<span class="tag">&lt;/p&gt;</span>
+                    <span class="tag">&lt;/article&gt;</span>
+                    <span class="tag">&lt;article</span> <span class="attr">class=</span><span class="value">"team-card"</span><span class="tag">&gt;</span>
+                        <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"card-avatar"</span><span class="tag">&gt;</span>
+                            <span class="tag">&lt;span</span> <span class="attr">class=</span><span class="value">"avatar-border"</span><span class="tag">&gt;&lt;/span&gt;</span>
+                            <span class="tag">&lt;span</span> <span class="attr">class=</span><span class="value">"avatar-icon"</span><span class="tag">&gt;</span>💻<span class="tag">&lt;/span&gt;</span>
+                        <span class="tag">&lt;/div&gt;</span>
+                        <span class="tag">&lt;h3</span> <span class="attr">class=</span><span class="value">"member-name"</span><span class="tag">&gt;</span>Niki<span class="tag">&lt;/h3&gt;</span>
+                        <span class="tag">&lt;p</span> <span class="attr">class=</span><span class="value">"member-job"</span><span class="tag">&gt;</span>前端开发<span class="tag">&lt;/p&gt;</span>
+                    <span class="tag">&lt;/article&gt;</span>
+                    <span class="tag">&lt;article</span> <span class="attr">class=</span><span class="value">"team-card"</span> <span class="attr">data-navigate-to=</span><span class="value">"sophia"</span> <span class="attr">onclick=</span><span class="value">"window.location.href='docs/Sophia/cwur2026/sophia_portfolio.html'"</span><span class="tag">&gt;</span>
+                        <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"card-avatar"</span><span class="tag">&gt;</span>
+                            <span class="tag">&lt;span</span> <span class="attr">class=</span><span class="value">"avatar-border"</span><span class="tag">&gt;&lt;/span&gt;</span>
+                            <span class="tag">&lt;span</span> <span class="attr">class=</span><span class="value">"avatar-icon"</span><span class="tag">&gt;</span>🎨<span class="tag">&lt;/span&gt;</span>
+                        <span class="tag">&lt;/div&gt;</span>
+                        <span class="tag">&lt;h3</span> <span class="attr">class=</span><span class="value">"member-name"</span><span class="tag">&gt;</span>Sophia<span class="tag">&lt;/h3&gt;</span>
+                        <span class="tag">&lt;p</span> <span class="attr">class=</span><span class="value">"member-job"</span><span class="tag">&gt;</span>UI 设计<span class="tag">&lt;/p&gt;</span>
+                    <span class="tag">&lt;/article&gt;</span>
+                    <span class="tag">&lt;article</span> <span class="attr">class=</span><span class="value">"team-card"</span> <span class="attr">data-navigate-to=</span><span class="value">"milky"</span> <span class="attr">onclick=</span><span class="value">"window.location.href='docs/Milky2026/index.html'"</span><span class="tag">&gt;</span>
+                        <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"card-avatar"</span><span class="tag">&gt;</span>
+                            <span class="tag">&lt;span</span> <span class="attr">class=</span><span class="value">"avatar-border"</span><span class="tag">&gt;&lt;/span&gt;</span>
+                            <span class="tag">&lt;span</span> <span class="attr">class=</span><span class="value">"avatar-icon"</span><span class="tag">&gt;</span>📌<span class="tag">&lt;/span&gt;</span>
+                        <span class="tag">&lt;/div&gt;</span>
+                        <span class="tag">&lt;h3</span> <span class="attr">class=</span><span class="value">"member-name"</span><span class="tag">&gt;</span>Milky<span class="tag">&lt;/h3&gt;</span>
+                        <span class="tag">&lt;p</span> <span class="attr">class=</span><span class="value">"member-job"</span><span class="tag">&gt;</span>项目管理<span class="tag">&lt;/p&gt;</span>
+                    <span class="tag">&lt;/article&gt;</span>
+                    <span class="tag">&lt;article</span> <span class="attr">class=</span><span class="value">"team-card"</span><span class="tag">&gt;</span>
+                        <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"card-avatar"</span><span class="tag">&gt;</span>
+                            <span class="tag">&lt;span</span> <span class="attr">class=</span><span class="value">"avatar-border"</span><span class="tag">&gt;&lt;/span&gt;</span>
+                            <span class="tag">&lt;span</span> <span class="attr">class=</span><span class="value">"avatar-icon"</span><span class="tag">&gt;</span>🔧<span class="tag">&lt;/span&gt;</span>
+                        <span class="tag">&lt;/div&gt;</span>
+                        <span class="tag">&lt;h3</span> <span class="attr">class=</span><span class="value">"member-name"</span><span class="tag">&gt;</span>Kakei<span class="tag">&lt;/h3&gt;</span>
+                        <span class="tag">&lt;p</span> <span class="attr">class=</span><span class="value">"member-job"</span><span class="tag">&gt;</span>硬件工程<span class="tag">&lt;/p&gt;</span>
+                    <span class="tag">&lt;/article&gt;</span>
+                    <span class="tag">&lt;article</span> <span class="attr">class=</span><span class="value">"team-card"</span> <span class="attr">data-member=</span><span class="value">"lynn"</span><span class="tag">&gt;</span>
+                        <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"card-avatar"</span><span class="tag">&gt;</span>
+                            <span class="tag">&lt;span</span> <span class="attr">class=</span><span class="value">"avatar-border"</span><span class="tag">&gt;&lt;/span&gt;</span>
+                            <span class="tag">&lt;span</span> <span class="attr">class=</span><span class="value">"avatar-icon"</span><span class="tag">&gt;</span>📝<span class="tag">&lt;/span&gt;</span>
+                        <span class="tag">&lt;/div&gt;</span>
+                        <span class="tag">&lt;h3</span> <span class="attr">class=</span><span class="value">"member-name"</span><span class="tag">&gt;</span>Lynn<span class="tag">&lt;/h3&gt;</span>
+                        <span class="tag">&lt;p</span> <span class="attr">class=</span><span class="value">"member-job"</span><span class="tag">&gt;</span>文档与表达<span class="tag">&lt;/p&gt;</span>
+                    <span class="tag">&lt;/article&gt;</span>
+                <span class="tag">&lt;/div&gt;</span>
+            <span class="tag">&lt;/div&gt;</span>
+        <span class="tag">&lt;/section&gt;</span>
+    <span class="tag">&lt;/main&gt;</span>
+
+    <span class="comment">&lt;!-- 图片放大模态框 --&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"modal image-modal"</span> <span class="attr">id=</span><span class="value">"imageModal"</span><span class="tag">&gt;</span>
+        <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"image-modal-content"</span><span class="tag">&gt;</span>
+            <span class="tag">&lt;span</span> <span class="attr">class=</span><span class="value">"modal-close"</span> <span class="attr">id=</span><span class="value">"modalClose"</span><span class="tag">&gt;</span>&amp;times;<span class="tag">&lt;/span&gt;</span>
+            <span class="tag">&lt;img</span> <span class="attr">src=</span><span class="value">""</span> <span class="attr">alt=</span><span class="value">"放大预览"</span> <span class="attr">id=</span><span class="value">"modalImage"</span><span class="tag">&gt;</span>
+        <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+
+    <span class="tag">&lt;script&gt;</span>
+<span class="comment">// JavaScript 代码...</span>
+    <span class="tag">&lt;/script&gt;</span>
+<span class="tag">&lt;/body&gt;</span>
+<span class="tag">&lt;/html&gt;</span></code></pre>
                             </div>
                         </div>
 
@@ -299,6 +429,21 @@
                             <div class="image-illustration">
                                 <img src="assets/图17.png" alt="资源管理器" onclick="openImageModal(this.src)">
                                 <p>图17：Lingma资源管理器视图</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="process-step">
+                        <h4>🚀 将修改的代码及内容上传到GitHub仓库过程</h4>
+                        <p>先命名修改内容，再点击commit，之后再push origin，就可以看到修改好的内容了。</p>
+                        <div class="image-grid">
+                            <div class="image-illustration">
+                                <img src="assets/图18.png" alt="Commit修改" onclick="openImageModal(this.src)">
+                                <p>图18：提交修改内容</p>
+                            </div>
+                            <div class="image-illustration">
+                                <img src="assets/图19.png" alt="Push到远程仓库" onclick="openImageModal(this.src)">
+                                <p>图19：推送到GitHub远程仓库</p>
                             </div>
                         </div>
                     </div>
