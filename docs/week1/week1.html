@@ -71,81 +71,380 @@
                 </div>
 
                 <div class="content-section">
-                    <h3>🌐 搭建网页过程及内容</h3>
+                    <h3>🛠️ 使用软件说明</h3>
+                    <div class="software-list">
+                        <div class="software-item">
+                            <span class="software-icon">📦</span>
+                            <div class="software-info">
+                                <h4>GitHub</h4>
+                                <p>版本控制和协作平台，用于托管项目代码和网站文件</p>
+                            </div>
+                        </div>
+                        <div class="software-item">
+                            <span class="software-icon">🖥️</span>
+                            <div class="software-info">
+                                <h4>GitHub Desktop</h4>
+                                <p>图形化 Git 客户端，简化仓库管理和代码同步操作</p>
+                            </div>
+                        </div>
+                        <div class="software-item">
+                            <span class="software-icon">🤖</span>
+                            <div class="software-info">
+                                <h4>Lingma (灵码)</h4>
+                                <p>AI 编程助手，帮助快速生成和优化网页代码</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h3>🌐 搭建网页过程及内容 - 第一部分：GitHub 仓库搭建</h3>
                     
                     <div class="process-step">
-                        <h4> 第一步：收集网页参考示例</h4>
-                        <p>浏览优秀的网页设计案例，分析其布局、配色、交互等设计元素，为后续网页制作提供参考灵感。</p>
-                        <p><strong>Apple 官网分析：</strong>布局简洁，配色清爽，交互流畅，突出产品展示与用户体验。</p>
+                        <h4>📝 第一步：在 GitHub 里创建一个新仓库来托管我们的项目网站</h4>
+                        <p>登录 GitHub 账号，点击右上角的 "New repository" 按钮，开始创建一个新的代码仓库，用于托管我们的项目网站。</p>
+                        <div class="image-illustration">
+                            <img src="assets/图1.png" alt="创建新仓库" onclick="openImageModal(this.src)">
+                            <p>图1：在 GitHub 中创建新仓库</p>
+                        </div>
+                    </div>
+
+                    <div class="process-step">
+                        <h4>⚙️ 第二步：取仓库名称，设置公开 / 私有，顺带添加项目说明文件，点击创建仓库</h4>
+                        <p>为仓库命名（如 ZWU-2026-2-003），选择仓库可见性（公开或私有），勾选 "Add a README file" 选项添加项目说明文件，然后点击 "Create repository" 按钮完成创建。</p>
+                        <div class="image-illustration">
+                            <img src="assets/图2.png" alt="配置仓库信息" onclick="openImageModal(this.src)">
+                            <p>图2：配置仓库基本信息</p>
+                        </div>
+                    </div>
+
+                    <div class="process-step">
+                        <h4>🔧 第三步：清空页面内容，进入仓库设置，左侧选择 Pages</h4>
+                        <p>仓库创建完成后，进入仓库的 Settings（设置）页面，在左侧菜单中找到并点击 "Pages" 选项。在 Branch（分支）下拉菜单中选择 "main"，Directory（目录）选择根目录 "root"，然后点击 "Save" 保存设置。页面上方会显示访问链接。</p>
+                        <div class="image-illustration">
+                            <img src="assets/图3.png" alt="配置 GitHub Pages" onclick="openImageModal(this.src)">
+                            <p>图3：配置 GitHub Pages 设置</p>
+                        </div>
+                    </div>
+
+                    <div class="process-step">
+                        <h4>⏳ 第四步：等待 GitHub 检索并生成页面</h4>
+                        <p>保存设置后，GitHub 会自动检索仓库内容并生成静态网页。等待几分钟，当页面顶部显示绿色对勾和访问链接时，说明网站基础搭建已完成。任何后续的更新和改动都可以实时看到。</p>
+                        <div class="image-illustration">
+                            <img src="assets/图4.png" alt="GitHub Pages 部署成功" onclick="openImageModal(this.src)">
+                            <p>图4：GitHub Pages 部署成功</p>
+                        </div>
+                    </div>
+
+                    <div class="process-step">
+                        <h4>👥 第五步：将小组成员加入 GitHub</h4>
+                        <p>在仓库的 Settings → Collaborators 中，通过邮箱邀请团队成员加入仓库。给每位成员的邮箱发送邀请信息，她们接受后即可协同进行项目管理。</p>
+                        <div class="image-illustration">
+                            <img src="assets/图5.jpeg" alt="邀请团队成员" onclick="openImageModal(this.src)">
+                            <p>图5：邀请团队成员加入仓库</p>
+                        </div>
+                    </div>
+
+                    <div class="process-step">
+                        <h4>💾 第六步：将仓库克隆到 GitHub Desktop</h4>
+                        <p>打开 GitHub Desktop，选择 "Clone a repository from the Internet"，找到刚才创建的仓库，选择本地保存路径，点击 "Clone" 按钮将仓库克隆到本地电脑。</p>
                         <div class="image-grid">
                             <div class="image-illustration">
-                                <img src="assets/p1.png" alt="Apple 官网首页" onclick="openImageModal(this.src)">
-                                <p>图1：Apple 官网首页展示</p>
+                                <img src="assets/图6.png" alt="GitHub Desktop 克隆仓库" onclick="openImageModal(this.src)">
+                                <p>图6：在 GitHub Desktop 中选择仓库</p>
                             </div>
                             <div class="image-illustration">
-                                <img src="assets/p2.png" alt="Apple 官网支持页" onclick="openImageModal(this.src)">
-                                <p>图2：Apple 官网技术支持页面</p>
+                                <img src="assets/图7.png" alt="克隆完成" onclick="openImageModal(this.src)">
+                                <p>图7：仓库克隆完成</p>
                             </div>
                         </div>
                     </div>
+                </div>
 
+                <!-- 第二部分：创建个人网站 -->
+                <div class="content-section">
+                    <h3>🌐 搭建网页过程及内容 - 第二部分：创建个人网站</h3>
+                    
                     <div class="process-step">
-                        <h4>📁 第二步：创建项目文件夹</h4>
-                        <p>在灵码中创建 zwu2026 文件夹，建立清晰的目录结构，用于存放HTML、CSS、JavaScript及图片等资源文件。</p>
+                        <h4>📁 第一步：建立文件夹并命名</h4>
+                        <p>在项目根目录下创建用于存放个人网站的文件夹，并合理命名以便管理。</p>
                         <div class="image-illustration">
-                            <img src="assets/p3.png" alt="项目文件夹结构" onclick="openImageModal(this.src)">
-                            <p>图3：项目文件夹结构</p>
+                            <img src="assets/图8.png" alt="建立文件夹" onclick="openImageModal(this.src)">
+                            <p>图8：创建个人网站文件夹</p>
                         </div>
                     </div>
 
                     <div class="process-step">
-                        <h4>🏗️ 第三步：设计网页基本结构</h4>
-                        <p>规划网页的整体架构，包括顶部导航栏、主页内容区域、各个子页面（如作业页、项目页、团队介绍页等），确保页面之间能够顺畅跳转。</p>
+                        <h4>🎨 第二步：学习并参考网站风格及内容</h4>
+                        <p>浏览优秀的网站设计案例，学习配色、布局和交互方式，为个人网站设计提供参考。</p>
                         <div class="image-grid">
                             <div class="image-illustration">
-                                <img src="assets/p4.png" alt="网页结构设计说明1" onclick="openImageModal(this.src)">
-                                <p>图4：网页整体布局设计</p>
+                                <img src="assets/图9.png" alt="参考网站示例1" onclick="openImageModal(this.src)">
+                                <p>图9：网站风格参考1</p>
                             </div>
                             <div class="image-illustration">
-                                <img src="assets/p5.png" alt="网页结构设计说明2" onclick="openImageModal(this.src)">
-                                <p>图5：页面组件设计规范</p>
+                                <img src="assets/图10.png" alt="参考网站示例2" onclick="openImageModal(this.src)">
+                                <p>图10：网站风格参考2</p>
+                            </div>
+                        </div>
+                        <div class="reference-link">
+                            <p>参考网站：<a href="https://dribbble.com/search/pastel+gradient+boutique+shopify+dawn" target="_blank" rel="noopener noreferrer">https://dribbble.com/search/pastel+gradient+boutique+shopify+dawn</a></p>
+                        </div>
+                    </div>
+
+                    <div class="process-step">
+                        <h4>🤖 第三步：与Lingma AI智能体沟通，共同搭建网页</h4>
+                        <p>使用Lingma AI助手生成网页基础代码，通过对话式交互快速构建网站框架。</p>
+                        <div class="image-illustration">
+                            <img src="assets/图11.png" alt="与AI沟通" onclick="openImageModal(this.src)">
+                            <p>图11：使用Lingma AI助手</p>
+                        </div>
+                        
+                        <div class="code-section">
+                            <h4>📄 网页代码示例</h4>
+                            <div class="code-scroll-container">
+                                <pre class="code-highlight"><code><span class="tag">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html</span> <span class="attr">lang=</span><span class="value">"zh-CN"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;head&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attr">charset=</span><span class="value">"UTF-8"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attr">name=</span><span class="value">"viewport"</span> <span class="attr">content=</span><span class="value">"width=device-width, initial-scale=1.0"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;title&gt;</span>课程作业系统 - 最终版本<span class="tag">&lt;/title&gt;</span>
+    <span class="tag">&lt;link</span> <span class="attr">rel=</span><span class="value">"stylesheet"</span> <span class="attr">href=</span><span class="value">"style.css"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/head&gt;</span>
+<span class="tag">&lt;body&gt;</span>
+    <span class="tag">&lt;nav</span> <span class="attr">class=</span><span class="value">"navbar"</span><span class="tag">&gt;</span>
+        <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"nav-container"</span><span class="tag">&gt;</span>
+            <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"logo"</span><span class="tag">&gt;</span>课程系统<span class="tag">&lt;/div&gt;</span>
+            <span class="tag">&lt;ul</span> <span class="attr">class=</span><span class="value">"nav-menu"</span><span class="tag">&gt;</span>
+                <span class="tag">&lt;li</span> <span class="attr">class=</span><span class="value">"nav-item active"</span> <span class="attr">data-page=</span><span class="value">"home"</span><span class="tag">&gt;</span>Home<span class="tag">&lt;/li&gt;</span>
+                <span class="tag">&lt;li</span> <span class="attr">class=</span><span class="value">"nav-item has-dropdown"</span> <span class="attr">data-page=</span><span class="value">"homework"</span><span class="tag">&gt;</span>
+                    <span class="tag">&lt;span&gt;</span>作业<span class="tag">&lt;/span&gt;</span>
+                    <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"dropdown"</span><span class="tag">&gt;</span>
+                        <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"dropdown-weeks"</span><span class="tag">&gt;</span>
+                            <span class="tag">&lt;button</span> <span class="attr">class=</span><span class="value">"week-btn active"</span> <span class="attr">data-week=</span><span class="value">"1"</span><span class="tag">&gt;</span>Week 1 - 网络搭建<span class="tag">&lt;/button&gt;</span>
+                            <span class="tag">&lt;button</span> <span class="attr">class=</span><span class="value">"week-btn"</span> <span class="attr">data-week=</span><span class="value">"2"</span><span class="tag">&gt;</span>Week 2 - Arduino硬件<span class="tag">&lt;/button&gt;</span>
+                            <span class="tag">&lt;button</span> <span class="attr">class=</span><span class="value">"week-btn"</span> <span class="attr">data-week=</span><span class="value">"3"</span><span class="tag">&gt;</span>Week 3 - CAD小车<span class="tag">&lt;/button&gt;</span>
+                            <span class="tag">&lt;button</span> <span class="attr">class=</span><span class="value">"week-btn"</span> <span class="attr">data-week=</span><span class="value">"4"</span><span class="tag">&gt;</span>Week 4 - 3D打印<span class="tag">&lt;/button&gt;</span>
+                            <span class="tag">&lt;button</span> <span class="attr">class=</span><span class="value">"week-btn"</span> <span class="attr">data-week=</span><span class="value">"5"</span><span class="tag">&gt;</span>Week 5 - IoT架构<span class="tag">&lt;/button&gt;</span>
+                        <span class="tag">&lt;/div&gt;</span>
+                    <span class="tag">&lt;/div&gt;</span>
+                <span class="tag">&lt;/li&gt;</span>
+                <span class="tag">&lt;li</span> <span class="attr">class=</span><span class="value">"nav-item"</span> <span class="attr">data-page=</span><span class="value">"project"</span><span class="tag">&gt;</span>项目<span class="tag">&lt;/li&gt;</span>
+                <span class="tag">&lt;li</span> <span class="attr">class=</span><span class="value">"nav-item"</span> <span class="attr">data-page=</span><span class="value">"team"</span><span class="tag">&gt;</span>团队介绍<span class="tag">&lt;/li&gt;</span>
+            <span class="tag">&lt;/ul&gt;</span>
+        <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;/nav&gt;</span>
+
+    <span class="tag">&lt;main</span> <span class="attr">class=</span><span class="value">"main-content"</span><span class="tag">&gt;</span>
+        <span class="comment">&lt;!-- 首页 --&gt;</span>
+        <span class="tag">&lt;section</span> <span class="attr">id=</span><span class="value">"home"</span> <span class="attr">class=</span><span class="value">"page active"</span><span class="tag">&gt;</span>
+            <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"home-header"</span><span class="tag">&gt;</span>
+                <span class="tag">&lt;h1</span> <span class="attr">class=</span><span class="value">"page-title"</span><span class="tag">&gt;</span>欢迎使用课程作业系统<span class="tag">&lt;/h1&gt;</span>
+                <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"title-divider"</span><span class="tag">&gt;&lt;/div&gt;</span>
+            <span class="tag">&lt;/div&gt;</span>
+            <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"progress-section"</span><span class="tag">&gt;</span>
+                <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"progress-card"</span><span class="tag">&gt;</span>
+                    <span class="tag">&lt;span</span> <span class="attr">class=</span><span class="value">"progress-label"</span><span class="tag">&gt;</span>课程进度<span class="tag">&lt;/span&gt;</span>
+                    <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"progress-bar-container"</span><span class="tag">&gt;</span>
+                        <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"progress-bar"</span><span class="tag">&gt;&lt;/div&gt;</span>
+                    <span class="tag">&lt;/div&gt;</span>
+                    <span class="tag">&lt;span</span> <span class="attr">class=</span><span class="value">"progress-text"</span><span class="tag">&gt;</span>已完成<span class="tag">&lt;span</span> <span class="attr">id=</span><span class="value">"completedWeeks"</span><span class="tag">&gt;</span>8<span class="tag">&lt;/span&gt;</span>/18 周<span class="tag">&lt;/span&gt;</span>
+                <span class="tag">&lt;/div&gt;</span>
+            <span class="tag">&lt;/div&gt;</span>
+            <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"cards-section"</span><span class="tag">&gt;</span>
+                <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"feature-card"</span> <span class="attr">data-navigate-to=</span><span class="value">"homework"</span><span class="tag">&gt;</span>
+                    <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"card-icon"</span><span class="tag">&gt;</span>📚<span class="tag">&lt;/div&gt;</span>
+                    <span class="tag">&lt;h3&gt;</span>最新作业<span class="tag">&lt;/h3&gt;</span>
+                    <span class="tag">&lt;p&gt;</span>查看本周发布的作业任务和截止日期<span class="tag">&lt;/p&gt;</span>
+                <span class="tag">&lt;/div&gt;</span>
+                <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"feature-card"</span> <span class="attr">data-navigate-to=</span><span class="value">"project"</span><span class="tag">&gt;</span>
+                    <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"card-icon"</span><span class="tag">&gt;</span>🎨<span class="tag">&lt;/div&gt;</span>
+                    <span class="tag">&lt;h3&gt;</span>进行中的项目<span class="tag">&lt;/h3&gt;</span>
+                    <span class="tag">&lt;p&gt;</span>跟踪您的项目进展和里程碑<span class="tag">&lt;/p&gt;</span>
+                <span class="tag">&lt;/div&gt;</span>
+                <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"feature-card"</span> <span class="attr">data-navigate-to=</span><span class="value">"team"</span><span class="tag">&gt;</span>
+                    <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"card-icon"</span><span class="tag">&gt;</span>✨<span class="tag">&lt;/div&gt;</span>
+                    <span class="tag">&lt;h3&gt;</span>团队新动态<span class="tag">&lt;/h3&gt;</span>
+                    <span class="tag">&lt;p&gt;</span>了解团队成员的最新更新和分享<span class="tag">&lt;/p&gt;</span>
+                <span class="tag">&lt;/div&gt;</span>
+            <span class="tag">&lt;/div&gt;</span>
+        <span class="tag">&lt;/section&gt;</span>
+
+        <span class="comment">&lt;!-- 作业页 --&gt;</span>
+        <span class="tag">&lt;section</span> <span class="attr">id=</span><span class="value">"homework"</span> <span class="attr">class=</span><span class="value">"page"</span><span class="tag">&gt;</span>
+            <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"homework-header"</span><span class="tag">&gt;</span>
+                <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"week-badge"</span> <span class="attr">id=</span><span class="value">"currentWeekBadge"</span><span class="tag">&gt;</span>Week 2<span class="tag">&lt;/div&gt;</span>
+                <span class="tag">&lt;h2</span> <span class="attr">class=</span><span class="value">"week-title"</span> <span class="attr">id=</span><span class="value">"weekTitle"</span><span class="tag">&gt;</span>ASD 多感官互动沙盘系统<span class="tag">&lt;/h2&gt;</span>
+                <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"title-divider"</span><span class="tag">&gt;&lt;/div&gt;</span>
+            <span class="tag">&lt;/div&gt;</span>
+
+            <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"final-version-content"</span><span class="tag">&gt;</span>
+                <span class="tag">&lt;p&gt;</span>Week 1 已独立为单独页面，请点击上方 Week 1 按钮跳转到详情页。<span class="tag">&lt;/p&gt;</span>
+            <span class="tag">&lt;/div&gt;</span>
+
+            <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"final-version-content"</span><span class="tag">&gt;</span>
+                <span class="tag">&lt;p&gt;</span>Week 2 已独立为单独页面，请点击上方 Week 2 按钮跳转到详情页。<span class="tag">&lt;/p&gt;</span>
+            <span class="tag">&lt;/div&gt;</span>
+        <span class="tag">&lt;/section&gt;</span>
+
+        <span class="comment">&lt;!-- 项目页 --&gt;</span>
+        <span class="tag">&lt;section</span> <span class="attr">id=</span><span class="value">"project"</span> <span class="attr">class=</span><span class="value">"page"</span><span class="tag">&gt;</span>
+            <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"project-header"</span><span class="tag">&gt;</span>
+                <span class="tag">&lt;h1</span> <span class="attr">class=</span><span class="value">"page-title"</span><span class="tag">&gt;</span>最终项目展示<span class="tag">&lt;/h1&gt;</span>
+                <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"title-divider"</span><span class="tag">&gt;&lt;/div&gt;</span>
+            <span class="tag">&lt;/div&gt;</span>
+            <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"project-grid"</span><span class="tag">&gt;</span>
+                <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"project-card"</span> <span class="attr">data-navigate-to=</span><span class="value">"project"</span><span class="tag">&gt;</span>
+                    <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"project-image"</span><span class="tag">&gt;&lt;/div&gt;</span>
+                    <span class="tag">&lt;h3&gt;</span>点击查看项目内容<span class="tag">&lt;/h3&gt;</span>
+                    <span class="tag">&lt;p&gt;</span>本项目内容已迁移至独立页面，点击进入 Week 2 项目展示。<span class="tag">&lt;/p&gt;</span>
+                <span class="tag">&lt;/div&gt;</span>
+            <span class="tag">&lt;/div&gt;</span>
+        <span class="tag">&lt;/section&gt;</span>
+
+        <span class="comment">&lt;!-- 团队介绍页 --&gt;</span>
+        <span class="tag">&lt;section</span> <span class="attr">id=</span><span class="value">"team"</span> <span class="attr">class=</span><span class="value">"page"</span><span class="tag">&gt;</span>
+            <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"team-container"</span><span class="tag">&gt;</span>
+                <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"team-title-wrap"</span><span class="tag">&gt;</span>
+                    <span class="tag">&lt;h1</span> <span class="attr">class=</span><span class="value">"page-title"</span><span class="tag">&gt;</span>团队介绍<span class="tag">&lt;/h1&gt;</span>
+                    <span class="tag">&lt;p</span> <span class="attr">class=</span><span class="value">"page-subtitle"</span><span class="tag">&gt;</span>CREATIVE &amp; PROFESSIONAL TEAM<span class="tag">&lt;/p&gt;</span>
+                    <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"title-line"</span><span class="tag">&gt;&lt;/div&gt;</span>
+                <span class="tag">&lt;/div&gt;</span>
+
+                <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"team-grid"</span><span class="tag">&gt;</span>
+                    <span class="tag">&lt;article</span> <span class="attr">class=</span><span class="value">"team-card"</span><span class="tag">&gt;</span>
+                        <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"card-avatar"</span><span class="tag">&gt;</span>
+                            <span class="tag">&lt;span</span> <span class="attr">class=</span><span class="value">"avatar-border"</span><span class="tag">&gt;&lt;/span&gt;</span>
+                            <span class="tag">&lt;span</span> <span class="attr">class=</span><span class="value">"avatar-icon"</span><span class="tag">&gt;</span>🌟<span class="tag">&lt;/span&gt;</span>
+                        <span class="tag">&lt;/div&gt;</span>
+                        <span class="tag">&lt;h3</span> <span class="attr">class=</span><span class="value">"member-name"</span><span class="tag">&gt;</span>Yana<span class="tag">&lt;/h3&gt;</span>
+                        <span class="tag">&lt;p</span> <span class="attr">class=</span><span class="value">"member-job"</span><span class="tag">&gt;</span>项目统筹 / 设计表达<span class="tag">&lt;/p&gt;</span>
+                    <span class="tag">&lt;/article&gt;</span>
+                    <span class="tag">&lt;article</span> <span class="attr">class=</span><span class="value">"team-card"</span><span class="tag">&gt;</span>
+                        <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"card-avatar"</span><span class="tag">&gt;</span>
+                            <span class="tag">&lt;span</span> <span class="attr">class=</span><span class="value">"avatar-border"</span><span class="tag">&gt;&lt;/span&gt;</span>
+                            <span class="tag">&lt;span</span> <span class="attr">class=</span><span class="value">"avatar-icon"</span><span class="tag">&gt;</span>💻<span class="tag">&lt;/span&gt;</span>
+                        <span class="tag">&lt;/div&gt;</span>
+                        <span class="tag">&lt;h3</span> <span class="attr">class=</span><span class="value">"member-name"</span><span class="tag">&gt;</span>Niki<span class="tag">&lt;/h3&gt;</span>
+                        <span class="tag">&lt;p</span> <span class="attr">class=</span><span class="value">"member-job"</span><span class="tag">&gt;</span>前端开发<span class="tag">&lt;/p&gt;</span>
+                    <span class="tag">&lt;/article&gt;</span>
+                    <span class="tag">&lt;article</span> <span class="attr">class=</span><span class="value">"team-card"</span> <span class="attr">data-navigate-to=</span><span class="value">"sophia"</span> <span class="attr">onclick=</span><span class="value">"window.location.href='docs/Sophia/cwur2026/sophia_portfolio.html'"</span><span class="tag">&gt;</span>
+                        <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"card-avatar"</span><span class="tag">&gt;</span>
+                            <span class="tag">&lt;span</span> <span class="attr">class=</span><span class="value">"avatar-border"</span><span class="tag">&gt;&lt;/span&gt;</span>
+                            <span class="tag">&lt;span</span> <span class="attr">class=</span><span class="value">"avatar-icon"</span><span class="tag">&gt;</span>🎨<span class="tag">&lt;/span&gt;</span>
+                        <span class="tag">&lt;/div&gt;</span>
+                        <span class="tag">&lt;h3</span> <span class="attr">class=</span><span class="value">"member-name"</span><span class="tag">&gt;</span>Sophia<span class="tag">&lt;/h3&gt;</span>
+                        <span class="tag">&lt;p</span> <span class="attr">class=</span><span class="value">"member-job"</span><span class="tag">&gt;</span>UI 设计<span class="tag">&lt;/p&gt;</span>
+                    <span class="tag">&lt;/article&gt;</span>
+                    <span class="tag">&lt;article</span> <span class="attr">class=</span><span class="value">"team-card"</span> <span class="attr">data-navigate-to=</span><span class="value">"milky"</span> <span class="attr">onclick=</span><span class="value">"window.location.href='docs/Milky2026/index.html'"</span><span class="tag">&gt;</span>
+                        <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"card-avatar"</span><span class="tag">&gt;</span>
+                            <span class="tag">&lt;span</span> <span class="attr">class=</span><span class="value">"avatar-border"</span><span class="tag">&gt;&lt;/span&gt;</span>
+                            <span class="tag">&lt;span</span> <span class="attr">class=</span><span class="value">"avatar-icon"</span><span class="tag">&gt;</span>📌<span class="tag">&lt;/span&gt;</span>
+                        <span class="tag">&lt;/div&gt;</span>
+                        <span class="tag">&lt;h3</span> <span class="attr">class=</span><span class="value">"member-name"</span><span class="tag">&gt;</span>Milky<span class="tag">&lt;/h3&gt;</span>
+                        <span class="tag">&lt;p</span> <span class="attr">class=</span><span class="value">"member-job"</span><span class="tag">&gt;</span>项目管理<span class="tag">&lt;/p&gt;</span>
+                    <span class="tag">&lt;/article&gt;</span>
+                    <span class="tag">&lt;article</span> <span class="attr">class=</span><span class="value">"team-card"</span><span class="tag">&gt;</span>
+                        <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"card-avatar"</span><span class="tag">&gt;</span>
+                            <span class="tag">&lt;span</span> <span class="attr">class=</span><span class="value">"avatar-border"</span><span class="tag">&gt;&lt;/span&gt;</span>
+                            <span class="tag">&lt;span</span> <span class="attr">class=</span><span class="value">"avatar-icon"</span><span class="tag">&gt;</span>🔧<span class="tag">&lt;/span&gt;</span>
+                        <span class="tag">&lt;/div&gt;</span>
+                        <span class="tag">&lt;h3</span> <span class="attr">class=</span><span class="value">"member-name"</span><span class="tag">&gt;</span>Kakei<span class="tag">&lt;/h3&gt;</span>
+                        <span class="tag">&lt;p</span> <span class="attr">class=</span><span class="value">"member-job"</span><span class="tag">&gt;</span>硬件工程<span class="tag">&lt;/p&gt;</span>
+                    <span class="tag">&lt;/article&gt;</span>
+                    <span class="tag">&lt;article</span> <span class="attr">class=</span><span class="value">"team-card"</span> <span class="attr">data-member=</span><span class="value">"lynn"</span><span class="tag">&gt;</span>
+                        <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"card-avatar"</span><span class="tag">&gt;</span>
+                            <span class="tag">&lt;span</span> <span class="attr">class=</span><span class="value">"avatar-border"</span><span class="tag">&gt;&lt;/span&gt;</span>
+                            <span class="tag">&lt;span</span> <span class="attr">class=</span><span class="value">"avatar-icon"</span><span class="tag">&gt;</span>📝<span class="tag">&lt;/span&gt;</span>
+                        <span class="tag">&lt;/div&gt;</span>
+                        <span class="tag">&lt;h3</span> <span class="attr">class=</span><span class="value">"member-name"</span><span class="tag">&gt;</span>Lynn<span class="tag">&lt;/h3&gt;</span>
+                        <span class="tag">&lt;p</span> <span class="attr">class=</span><span class="value">"member-job"</span><span class="tag">&gt;</span>文档与表达<span class="tag">&lt;/p&gt;</span>
+                    <span class="tag">&lt;/article&gt;</span>
+                <span class="tag">&lt;/div&gt;</span>
+            <span class="tag">&lt;/div&gt;</span>
+        <span class="tag">&lt;/section&gt;</span>
+    <span class="tag">&lt;/main&gt;</span>
+
+    <span class="comment">&lt;!-- 图片放大模态框 --&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"modal image-modal"</span> <span class="attr">id=</span><span class="value">"imageModal"</span><span class="tag">&gt;</span>
+        <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"image-modal-content"</span><span class="tag">&gt;</span>
+            <span class="tag">&lt;span</span> <span class="attr">class=</span><span class="value">"modal-close"</span> <span class="attr">id=</span><span class="value">"modalClose"</span><span class="tag">&gt;</span>&amp;times;<span class="tag">&lt;/span&gt;</span>
+            <span class="tag">&lt;img</span> <span class="attr">src=</span><span class="value">""</span> <span class="attr">alt=</span><span class="value">"放大预览"</span> <span class="attr">id=</span><span class="value">"modalImage"</span><span class="tag">&gt;</span>
+        <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+
+    <span class="tag">&lt;script&gt;</span>
+<span class="comment">// JavaScript 代码...</span>
+    <span class="tag">&lt;/script&gt;</span>
+<span class="tag">&lt;/body&gt;</span>
+<span class="tag">&lt;/html&gt;</span></code></pre>
+                            </div>
+                        </div>
+
+                        <div class="image-illustration">
+                            <img src="assets/图12.png" alt="代码实现效果" onclick="openImageModal(this.src)">
+                            <p>图12：代码实现效果展示</p>
+                        </div>
+                    </div>
+
+                    <div class="process-step">
+                        <h4>✨ 第四步：细节修改与优化</h4>
+                        <p>对网站进行细节调整，包括样式优化、内容完善和功能测试。</p>
+                        
+                        <div class="sub-step">
+                            <h5>🎨 细节修改</h5>
+                            <div class="image-illustration">
+                                <img src="assets/图13.png" alt="细节修改" onclick="openImageModal(this.src)">
+                                <p>图13：网站细节调整</p>
+                            </div>
+                        </div>
+
+                        <div class="sub-step">
+                            <h5>💬 提示词指令</h5>
+                            <div class="image-grid">
+                                <div class="image-illustration">
+                                    <img src="assets/图14.png" alt="提示词指令1" onclick="openImageModal(this.src)">
+                                    <p>图14：AI提示词示例1</p>
+                                </div>
+                                <div class="image-illustration">
+                                    <img src="assets/图15.png" alt="提示词指令2" onclick="openImageModal(this.src)">
+                                    <p>图15：AI提示词示例2</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sub-step">
+                            <h5>📁 文件夹内容管理</h5>
+                            <div class="image-illustration">
+                                <img src="assets/图16.png" alt="文件夹内容" onclick="openImageModal(this.src)">
+                                <p>图16：项目文件夹结构</p>
+                            </div>
+                            <div class="info-box">
+                                <p>💡 <strong>提示：</strong>若需要添加图片，将图片拖拽到 <code>docs/assets</code> 文件夹中，重新命名。</p>
+                            </div>
+                        </div>
+
+                        <div class="sub-step">
+                            <h5>🔍 Lingma资源管理器查看</h5>
+                            <div class="image-illustration">
+                                <img src="assets/图17.png" alt="资源管理器" onclick="openImageModal(this.src)">
+                                <p>图17：Lingma资源管理器视图</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="process-step">
-                        <h4>💻 第四步：使用灵码 AI 生成代码</h4>
-                        <p>利用灵码 AI 助手编写网页代码，通过自然语言指令快速生成HTML结构、CSS样式和JavaScript交互功能，并根据需求进行调整和优化。</p>
-                        <p><strong>部分展示过程：</strong></p>
+                        <h4>🚀 将修改的代码及内容上传到GitHub仓库过程</h4>
+                        <p>先命名修改内容，再点击commit，之后再push origin，就可以看到修改好的内容了。</p>
                         <div class="image-grid">
                             <div class="image-illustration">
-                                <img src="assets/p6.png" alt="灵码 AI 对话界面1" onclick="openImageModal(this.src)">
-                                <p>图6：使用灵码 AI 生成代码过程</p>
+                                <img src="assets/图18.png" alt="Commit修改" onclick="openImageModal(this.src)">
+                                <p>图18：提交修改内容</p>
                             </div>
                             <div class="image-illustration">
-                                <img src="assets/p7.png" alt="灵码 AI 对话界面2" onclick="openImageModal(this.src)">
-                                <p>图7：AI 辅助调整网页样式</p>
+                                <img src="assets/图19.png" alt="Push到远程仓库" onclick="openImageModal(this.src)">
+                                <p>图19：推送到GitHub远程仓库</p>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="process-step">
-                        <h4>🚀 第五步：保存与部署</h4>
-                        <p>完成网页开发，保存文件并检查功能与样式，创建 GitHub 仓库以便团队协作上传。</p>
-                        <p>将团队成员添加到仓库中，以便协同进行项目管理。</p>
-                        <div class="image-illustration">
-                            <img src="assets/p8.png" alt="GitHub 仓库协作设置" onclick="openImageModal(this.src)">
-                            <p>图8：添加团队成员到 GitHub 仓库</p>
-                        </div>
-                        <p>安装完成后，登录 GitHub 账号，并拉取对应的仓库。</p>
-                        <div class="image-illustration">
-                            <img src="assets/p9.png" alt="GitHub Desktop 拉取仓库" onclick="openImageModal(this.src)">
-                            <p>图9：使用 GitHub Desktop 拉取仓库</p>
-                        </div>
-                        <p>在 VS Code 中编辑仓库文件，保存修改后将更新内容推送回仓库。</p>
-                        <div class="image-illustration">
-                            <img src="assets/p10.png" alt="VS Code 编辑并推送" onclick="openImageModal(this.src)">
-                            <p>图10：在 VS Code 中编辑并推送到 GitHub</p>
                         </div>
                     </div>
                 </div>
@@ -156,78 +455,62 @@
                     <h3>🔨 制作过程记录</h3>
                     
                     <div class="process-step">
-                        <h4>📌 第一步：收集网页参考示例</h4>
-                        <p>浏览优秀的网页设计案例，分析其布局、配色、交互等设计元素，为后续网页制作提供参考灵感。</p>
-                        <p><strong>Apple 官网分析：</strong>布局简洁，配色清爽，交互流畅，突出产品展示与用户体验。</p>
+                        <h4>📝 第一步：在 GitHub 里创建一个新仓库来托管我们的项目网站</h4>
+                        <p>登录 GitHub 账号，点击右上角的 "New repository" 按钮，开始创建一个新的代码仓库，用于托管我们的项目网站。</p>
+                        <div class="image-illustration">
+                            <img src="assets/图1.png" alt="创建新仓库" onclick="openImageModal(this.src)">
+                            <p>图1：在 GitHub 中创建新仓库</p>
+                        </div>
+                    </div>
+
+                    <div class="process-step">
+                        <h4>⚙️ 第二步：取仓库名称，设置公开 / 私有，顺带添加项目说明文件，点击创建仓库</h4>
+                        <p>为仓库命名（如 ZWU-2026-2-003），选择仓库可见性（公开或私有），勾选 "Add a README file" 选项添加项目说明文件，然后点击 "Create repository" 按钮完成创建。</p>
+                        <div class="image-illustration">
+                            <img src="assets/图2.png" alt="配置仓库信息" onclick="openImageModal(this.src)">
+                            <p>图2：配置仓库基本信息</p>
+                        </div>
+                    </div>
+
+                    <div class="process-step">
+                        <h4>🔧 第三步：清空页面内容，进入仓库设置，左侧选择 Pages</h4>
+                        <p>仓库创建完成后，进入仓库的 Settings（设置）页面，在左侧菜单中找到并点击 "Pages" 选项。在 Branch（分支）下拉菜单中选择 "main"，Directory（目录）选择根目录 "root"，然后点击 "Save" 保存设置。页面上方会显示访问链接。</p>
+                        <div class="image-illustration">
+                            <img src="assets/图3.png" alt="配置 GitHub Pages" onclick="openImageModal(this.src)">
+                            <p>图3：配置 GitHub Pages 设置</p>
+                        </div>
+                    </div>
+
+                    <div class="process-step">
+                        <h4>⏳ 第四步：等待 GitHub 检索并生成页面</h4>
+                        <p>保存设置后，GitHub 会自动检索仓库内容并生成静态网页。等待几分钟，当页面顶部显示绿色对勾和访问链接时，说明网站基础搭建已完成。任何后续的更新和改动都可以实时看到。</p>
+                        <div class="image-illustration">
+                            <img src="assets/图4.png" alt="GitHub Pages 部署成功" onclick="openImageModal(this.src)">
+                            <p>图4：GitHub Pages 部署成功</p>
+                        </div>
+                    </div>
+
+                    <div class="process-step">
+                        <h4>👥 第五步：将小组成员加入 GitHub</h4>
+                        <p>在仓库的 Settings → Collaborators 中，通过邮箱邀请团队成员加入仓库。给每位成员的邮箱发送邀请信息，她们接受后即可协同进行项目管理。</p>
+                        <div class="image-illustration">
+                            <img src="assets/图5.jpeg" alt="邀请团队成员" onclick="openImageModal(this.src)">
+                            <p>图5：邀请团队成员加入仓库</p>
+                        </div>
+                    </div>
+
+                    <div class="process-step">
+                        <h4>💾 第六步：将仓库克隆到 GitHub Desktop</h4>
+                        <p>打开 GitHub Desktop，选择 "Clone a repository from the Internet"，找到刚才创建的仓库，选择本地保存路径，点击 "Clone" 按钮将仓库克隆到本地电脑。</p>
                         <div class="image-grid">
                             <div class="image-illustration">
-                                <img src="assets/p1.png" alt="Apple 官网首页" onclick="openImageModal(this.src)">
-                                <p>图1：Apple 官网首页展示</p>
+                                <img src="assets/图6.png" alt="GitHub Desktop 克隆仓库" onclick="openImageModal(this.src)">
+                                <p>图6：在 GitHub Desktop 中选择仓库</p>
                             </div>
                             <div class="image-illustration">
-                                <img src="assets/p2.png" alt="Apple 官网支持页" onclick="openImageModal(this.src)">
-                                <p>图2：Apple 官网技术支持页面</p>
+                                <img src="assets/图7.png" alt="克隆完成" onclick="openImageModal(this.src)">
+                                <p>图7：仓库克隆完成</p>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="process-step">
-                        <h4>📁 第二步：创建项目文件夹</h4>
-                        <p>在灵码中创建 zwu2026 文件夹，建立清晰的目录结构，用于存放HTML、CSS、JavaScript及图片等资源文件。</p>
-                        <div class="image-illustration">
-                            <img src="assets/p3.png" alt="项目文件夹结构" onclick="openImageModal(this.src)">
-                            <p>图3：项目文件夹结构</p>
-                        </div>
-                    </div>
-
-                    <div class="process-step">
-                        <h4>🏗️ 第三步：设计网页基本结构</h4>
-                        <p>规划网页的整体架构，包括顶部导航栏、主页内容区域、各个子页面（如作业页、项目页、团队介绍页等），确保页面之间能够顺畅跳转。</p>
-                        <div class="image-grid">
-                            <div class="image-illustration">
-                                <img src="assets/p4.png" alt="网页结构设计说明1" onclick="openImageModal(this.src)">
-                                <p>图4：网页整体布局设计</p>
-                            </div>
-                            <div class="image-illustration">
-                                <img src="assets/p5.png" alt="网页结构设计说明2" onclick="openImageModal(this.src)">
-                                <p>图5：页面组件设计规范</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="process-step">
-                        <h4>💻 第四步：使用灵码 AI 生成代码</h4>
-                        <p>利用灵码 AI 助手编写网页代码，通过自然语言指令快速生成HTML结构、CSS样式和JavaScript交互功能，并根据需求进行调整和优化。</p>
-                        <p><strong>部分展示过程：</strong></p>
-                        <div class="image-grid">
-                            <div class="image-illustration">
-                                <img src="assets/p6.png" alt="灵码 AI 对话界面1" onclick="openImageModal(this.src)">
-                                <p>图6：使用灵码 AI 生成代码过程</p>
-                            </div>
-                            <div class="image-illustration">
-                                <img src="assets/p7.png" alt="灵码 AI 对话界面2" onclick="openImageModal(this.src)">
-                                <p>图7：AI 辅助调整网页样式</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="process-step">
-                        <h4>🚀 第五步：保存与部署</h4>
-                        <p>完成网页开发，保存文件并检查功能与样式，创建 GitHub 仓库以便团队协作上传。</p>
-                        <p>将团队成员添加到仓库中，以便协同进行项目管理。</p>
-                        <div class="image-illustration">
-                            <img src="assets/p8.png" alt="GitHub 仓库协作设置" onclick="openImageModal(this.src)">
-                            <p>图8：添加团队成员到 GitHub 仓库</p>
-                        </div>
-                        <p>安装完成后，登录 GitHub 账号，并拉取对应的仓库。</p>
-                        <div class="image-illustration">
-                            <img src="assets/p9.png" alt="GitHub Desktop 拉取仓库" onclick="openImageModal(this.src)">
-                            <p>图9：使用 GitHub Desktop 拉取仓库</p>
-                        </div>
-                        <p>在 VS Code 中编辑仓库文件，保存修改后将更新内容推送回仓库。</p>
-                        <div class="image-illustration">
-                            <img src="assets/p10.png" alt="VS Code 编辑并推送" onclick="openImageModal(this.src)">
-                            <p>图10：在 VS Code 中编辑并推送到 GitHub</p>
                         </div>
                     </div>
                 </div>
