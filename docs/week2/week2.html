@@ -214,6 +214,54 @@
                 </ul>
             </div>
 
+            <!-- Arduino IDE 基础操作介绍 -->
+            <div class="content-section" style="margin-top: 40px;">
+                <h3>💻 Arduino IDE 基础操作介绍</h3>
+                <p style="color: #666; margin-bottom: 20px;">在开始编写代码之前，首先需要了解 Arduino IDE 的基本界面和操作。Arduino IDE 是官方提供的集成开发环境，用于编写、编译和上传代码到 Arduino 开发板。</p>
+
+                <div class="process-step">
+                    <h4>📌 第一步：认识 Arduino IDE 界面</h4>
+                    <p>打开 Arduino IDE 后，可以看到主界面包含以下几个重要区域：</p>
+                    <ul style="margin-left: 20px; line-height: 1.8;">
+                        <li><strong>菜单栏</strong>：位于顶部，包含文件、编辑、项目、工具等选项</li>
+                        <li><strong>工具栏</strong>：包含常用功能按钮，如验证（✓）、上传（→）、新建、打开、保存等</li>
+                        <li><strong>代码编辑区</strong>：中间最大的区域，用于编写和编辑 Arduino 代码</li>
+                        <li><strong>消息输出区</strong>：底部显示编译信息、错误提示和串口通信数据</li>
+                    </ul>
+                    
+                    <div class="image-illustration">
+                        <img src="assets/First step.png" alt="Arduino IDE 界面介绍" onclick="openImageModal(this.src)">
+                        <p>图1：Arduino IDE 主界面及操作区域说明</p>
+                    </div>
+                </div>
+
+                <div class="process-step">
+                    <h4>📌 第二步：选择正确的开发板和端口</h4>
+                    <p>在上传代码之前，必须确保选择了正确的开发板型号和通信端口：</p>
+                    <ol style="margin-left: 20px; line-height: 1.8;">
+                        <li>点击菜单栏的 <strong>工具（Tools）</strong></li>
+                        <li>选择 <strong>开发板（Board）</strong> → 找到并选择 <strong>Arduino Uno R4 WiFi</strong>（或其他你使用的型号）</li>
+                        <li>选择 <strong>端口（Port）</strong> → 选择已连接的 COM 端口（Windows）或 /dev/ttyUSB*（Linux/Mac）</li>
+                    </ol>
+                    <p style="color: #ff6b6b; font-weight: bold; margin-top: 10px;">⚠️ 注意：如果找不到对应的端口，请检查 USB 线是否连接好，并确保安装了相应的驱动程序。</p>
+                    
+                    <div class="image-illustration">
+                        <img src="assets/Second step.png" alt="选择开发板和端口" onclick="openImageModal(this.src)">
+                        <p>图2：在 Arduino IDE 中选择开发板型号和通信端口</p>
+                    </div>
+                </div>
+
+                <div class="process-step">
+                    <h4>📌 第三步：基本操作流程</h4>
+                    <ul style="margin-left: 20px; line-height: 1.8;">
+                        <li><strong>编写代码</strong>：在代码编辑区输入或粘贴 Arduino 代码</li>
+                        <li><strong>验证代码</strong>：点击工具栏的 ✓ 按钮或按 Ctrl+R，检查代码是否有语法错误</li>
+                        <li><strong>上传代码</strong>：点击工具栏的 → 按钮或按 Ctrl+U，将编译后的代码上传到开发板</li>
+                        <li><strong>查看结果</strong>：通过串口监视器（Ctrl+Shift+M）查看程序运行输出</li>
+                    </ul>
+                </div>
+            </div>
+
             <!-- 传感器导航栏 -->
             <div class="sensor-nav-container">
                 <div class="sensor-dropdown">
