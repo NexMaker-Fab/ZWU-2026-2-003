@@ -43,16 +43,20 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe 
 .feature-card p { color: rgba(0, 0, 0, 0.7); font-size: 0.95rem; line-height: 1.6; }
 
 /*/*/* 位置图片样式 */
-.homework-header { text-align: center; margin-bottom: 2rem; }
+.homework-header { text-align: center !important; margin-bottom: 2rem; }
 .week-badge { display: inline-block; background: linear-gradient(120deg, #A8D2FF, #C0E0FF); color: #000000; padding: 0.5rem 2rem; border-radius: 20px; font-weight: 600; margin-bottom: 1rem; }
-.week-title { font-size: 2rem; font-weight: 600; margin-bottom: 1rem; }
+.week-title { font-size: 2rem; font-weight: 600; margin-bottom: 1rem; text-align: center !important; }
 
 /*/*/* 位置图片样式 */
 .view-toggle {
     display: flex;
     gap: 1rem;
-    justify-content: center;
+    justify-content: center !important;
+    align-items: center;
     margin-bottom: 2rem;
+    width: calc(100% + 4rem);
+    margin-left: -2rem;
+    text-align: center !important;
 }
 .view-btn {
     padding: 0.8rem 2rem;
@@ -91,6 +95,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe 
     margin-bottom: 1rem;
     font-size: 1.3rem;
     color: #333;
+    text-align: center !important;
 }
 .final-version-content p {
     line-height: 1.8;
@@ -158,6 +163,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe 
 .homework-checklist h3 {
     margin-bottom: 1rem;
     font-size: 1.3rem;
+    text-align: left !important;
 }
 .checklist {
     list-style: none;
@@ -258,6 +264,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe 
 .process-content h3 {
     margin-bottom: 1rem;
     font-size: 1.3rem;
+    text-align: center !important;
 }
 .process-content p {
     line-height: 1.8;
