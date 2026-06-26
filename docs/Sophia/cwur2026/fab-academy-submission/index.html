@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fab Academy Submission - 创新学习平台</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo" data-page="home">
+                <div class="logo-mark">
+                    <span class="logo-shape"></span>
+                    <span class="logo-shape"></span>
+                    <span class="logo-shape"></span>
+                </div>
+                <span class="logo-text">Fab Academy</span>
+            </a>
+            
+            <button class="nav-toggle" id="navToggle" aria-label="切换导航菜单">
+                <span class="hamburger"></span>
+            </button>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active" data-page="home">Home</a>
+                </li>
+                <li class="nav-item has-dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">作业 ▾</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" data-page="week1">Week 1 - Principles & Practices</a></li>
+                        <li><a href="#" data-page="week2">Week 2 - Computer-Aided Design</a></li>
+                        <li><a href="#" data-page="week3">Week 3 - Computer-Controlled Cutting</a></li>
+                        <li><a href="#" data-page="week4">Week 4 - Electronics Production</a></li>
+                        <li><a href="#" data-page="week5">Week 5 - Embedded Programming</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-page="projects">项目</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-page="checkin">打卡</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-page="ddl">DDL</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-page="guestbook">留言</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-page="team">团队</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 主内容区 -->
+    <main class="main-content">
+        <!-- Home 页面 -->
+        <section id="home" class="page active home-page">
+            <!-- 英雄区域 -->
+            <div class="hero-modern">
+                <div class="hero-bg-decoration">
+                    <div class="bg-circle circle-1"></div>
+                    <div class="bg-circle circle-2"></div>
+                    <div class="bg-circle circle-3"></div>
+                </div>
+                <div class="hero-content-wrapper">
+                    <div class="hero-badge">
+                        <span class="badge-dot"></span>
+                        <span>Fab Academy 2026</span>
+                    </div>
+                    <h1 class="hero-title-modern">
+                        <span class="title-line">Create.</span>
+                        <span class="title-line highlight">Innovate.</span>
+                        <span class="title-line">Inspire.</span>
+                    </h1>
+                    <p class="hero-subtitle-modern">探索数字制造的无限可能，记录你的创新之旅</p>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">5+</span>
+                            <span class="stat-label">周次作业</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">∞</span>
+                            <span class="stat-label">创意可能</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 功能卡片网格 -->
+            <div class="features-modern">
+                <div class="section-header">
+                    <h2 class="section-title">功能导航</h2>
+                    <p class="section-subtitle">快速访问你需要的功能</p>
+                </div>
+                
+                <div class="feature-grid-modern">
+                    <!-- 可点击的功能卡片 -->
+                    <a href="#" class="feature-card-modern" data-page="week1">
+                        <div class="card-gradient gradient-1"></div>
+                        <div class="card-content">
+                            <div class="card-icon-wrapper icon-1">
+                                <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="card-title">每周作业</h3>
+                            <p class="card-desc">查看和提交每周的作业任务</p>
+                            <div class="card-arrow">→</div>
+                        </div>
+                    </a>
+
+                    <a href="#" class="feature-card-modern" data-page="projects">
+                        <div class="card-gradient gradient-2"></div>
+                        <div class="card-content">
+                            <div class="card-icon-wrapper icon-2">
+                                <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                                    <polyline points="2 17 12 22 22 17"></polyline>
+                                    <polyline points="2 12 12 17 22 12"></polyline>
+                                </svg>
+                            </div>
+                            <h3 class="card-title">项目展示</h3>
+                            <p class="card-desc">展示你的创意作品和期末项目</p>
+                            <div class="card-arrow">→</div>
+                        </div>
+                    </a>
+
+                    <a href="#" class="feature-card-modern" data-page="checkin">
+                        <div class="card-gradient gradient-3"></div>
+                        <div class="card-content">
+                            <div class="card-icon-wrapper icon-3">
+                                <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                </svg>
+                            </div>
+                            <h3 class="card-title">项目打卡</h3>
+                            <p class="card-desc">记录每日进展，保持学习节奏</p>
+                            <div class="card-arrow">→</div>
+                        </div>
+                    </a>
+
+                    <a href="#" class="feature-card-modern" data-page="ddl">
+                        <div class="card-gradient gradient-4"></div>
+                        <div class="card-content">
+                            <div class="card-icon-wrapper icon-4">
+                                <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                </svg>
+                            </div>
+                            <h3 class="card-title">DDL 记录</h3>
+                            <p class="card-desc">追踪截止日期，不再错过任何节点</p>
+                            <div class="card-arrow">→</div>
+                        </div>
+                    </a>
+
+                    <a href="#" class="feature-card-modern" data-page="guestbook">
+                        <div class="card-gradient gradient-5"></div>
+                        <div class="card-content">
+                            <div class="card-icon-wrapper icon-5">
+                                <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="card-title">留言板</h3>
+                            <p class="card-desc">与团队成员交流互动</p>
+                            <div class="card-arrow">→</div>
+                        </div>
+                    </a>
+
+                    <a href="#" class="feature-card-modern" data-page="team">
+                        <div class="card-gradient gradient-6"></div>
+                        <div class="card-content">
+                            <div class="card-icon-wrapper icon-6">
+                                <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="9" cy="7" r="4"></circle>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                </svg>
+                            </div>
+                            <h3 class="card-title">团队介绍</h3>
+                            <p class="card-desc">认识导师和优秀的同学们</p>
+                            <div class="card-arrow">→</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 进度概览 -->
+            <div class="overview-section">
+                <div class="section-header">
+                    <h2 class="section-title">学习进度概览</h2>
+                    <p class="section-subtitle">实时追踪你的学习状态</p>
+                </div>
+                <div class="progress-overview-grid">
+                    <div class="progress-overview-card">
+                        <div class="progress-circle" data-progress="40">
+                            <svg viewBox="0 0 36 36" class="circular-chart">
+                                <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                <path class="circle" stroke-dasharray="40, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                <text x="18" y="20.35" class="percentage">40%</text>
+                            </svg>
+                        </div>
+                        <h4>总体进度</h4>
+                        <p>2/5 周次完成</p>
+                    </div>
+                    <div class="progress-overview-card">
+                        <div class="stats-large">
+                            <span class="stats-number">12</span>
+                            <span class="stats-label">已完成任务</span>
+                        </div>
+                        <h4>任务完成</h4>
+                        <p>继续保持！</p>
+                    </div>
+                    <div class="progress-overview-card">
+                        <div class="stats-large">
+                            <span class="stats-number">3</span>
+                            <span class="stats-label">待完成项目</span>
+                        </div>
+                        <h4>即将到期</h4>
+                        <p>注意时间安排</p>
+                    </div>
+                    <div class="progress-overview-card highlight-card">
+                        <div class="streak-fire">🔥</div>
+                        <div class="stats-large">
+                            <span class="stats-number">7</span>
+                            <span class="stats-label">天连续打卡</span>
+                        </div>
+                        <h4>打卡 streak</h4>
+                        <p>新的记录！</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Week 页面模板 (Week1-Week5) -->
+        <section id="week1" class="page">
+            <div class="page-header-modern">
+                <div class="header-decoration"></div>
+                <h1>Week 1 - Principles & Practices</h1>
+                <p>学习与实践原则</p>
+            </div>
+            <div class="assignment-content">
+                <div class="content-card-modern">
+                    <div class="card-header">
+                        <span class="card-number">01</span>
+                        <h2>📝 作业要求</h2>
+                    </div>
+                    <ul class="task-list">
+                        <li class="task-item">
+                            <label class="checkbox-wrapper">
+                                <input type="checkbox" class="custom-checkbox">
+                                <span class="checkmark"></span>
+                                <span class="task-text">阅读 Fab Academy 的理念和历史</span>
+                            </label>
+                        </li>
+                        <li class="task-item">
+                            <label class="checkbox-wrapper">
+                                <input type="checkbox" class="custom-checkbox">
+                                <span class="checkmark"></span>
+                                <span class="task-text">了解快速原型制作的基本原理</span>
+                            </label>
+                        </li>
+                        <li class="task-item">
+                            <label class="checkbox-wrapper">
+                                <input type="checkbox" class="custom-checkbox">
+                                <span class="checkmark"></span>
+                                <span class="task-text">熟悉实验室安全规范</span>
+                            </label>
+                        </li>
+                        <li class="task-item">
+                            <label class="checkbox-wrapper">
+                                <input type="checkbox" class="custom-checkbox">
+                                <span class="checkmark"></span>
+                                <span class="task-text">创建个人学习文档</span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+                <div class="content-card-modern">
+                    <div class="card-header">
+                        <span class="card-number">02</span>
+                        <h2>📎 提交内容</h2>
+                    </div>
+                    <div class="upload-area-modern">
+                        <div class="upload-icon">📁</div>
+                        <p class="upload-text">拖拽文件到此处或点击上传</p>
+                        <p class="upload-hint">支持 PDF, PNG, JPG, MP4 等格式</p>
+                        <input type="file" multiple class="file-input">
+                    </div>
+                </div>
+                <div class="content-card-modern">
+                    <div class="card-header">
+                        <span class="card-number">03</span>
+                        <h2>✅ 完成状态</h2>
+                    </div>
+                    <div class="progress-modern">
+                        <div class="progress-info">
+                            <span class="progress-label">完成度</span>
+                            <span class="progress-value">0%</span>
+                        </div>
+                        <div class="progress-bar-modern">
+                            <div class="progress-fill-modern" style="width: 0%"></div>
+                        </div>
+                        <p class="progress-text">0/4 任务完成</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="week2" class="page">
+            <div class="page-header-modern">
+                <div class="header-decoration"></div>
+                <h1>Week 2 - Computer-Aided Design</h1>
+                <p>计算机辅助设计</p>
+            </div>
+            <div class="assignment-content">
+                <div class="content-card-modern">
+                    <div class="card-header">
+                        <span class="card-number">01</span>
+                        <h2>📝 作业要求</h2>
+                    </div>
+                    <ul class="task-list">
+                        <li class="task-item">
+                            <label class="checkbox-wrapper">
+                                <input type="checkbox" class="custom-checkbox">
+                                <span class="checkmark"></span>
+                                <span class="task-text">学习 2D 和 3D CAD 软件</span>
+                            </label>
+                        </li>
+                        <li class="task-item">
+                            <label class="checkbox-wrapper">
+                                <input type="checkbox" class="custom-checkbox">
+                                <span class="checkmark"></span>
+                                <span class="task-text">设计一个可以加工的物品</span>
+                            </label>
+                        </li>
+                        <li class="task-item">
+                            <label class="checkbox-wrapper">
+                                <input type="checkbox" class="custom-checkbox">
+                                <span class="checkmark"></span>
+                                <span class="task-text">导出多种格式的文件</span>
+                            </label>
+                        </li>
+                        <li class="task-item">
+                            <label class="checkbox-wrapper">
+                                <input type="checkbox" class="custom-checkbox">
+                                <span class="checkmark"></span>
+                                <span class="task-text">记录设计过程</span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+                <div class="content-card-modern">
+                    <div class="card-header">
+                        <span class="card-number">02</span>
+                        <h2>📎 提交内容</h2>
+                    </div>
+                    <div class="upload-area-modern">
+                        <div class="upload-icon">📁</div>
+                        <p class="upload-text">拖拽文件到此处或点击上传</p>
+                        <p class="upload-hint">支持 PDF, PNG, JPG, MP4 等格式</p>
+                        <input type="file" multiple class="file-input">
+                    </div>
+                </div>
+                <div class="content-card-modern">
+                    <div class="card-header">
+                        <span class="card-number">03</span>
+                        <h2>✅ 完成状态</h2>
+                    </div>
+                    <div class="progress-modern">
+                        <div class="progress-info">
+                            <span class="progress-label">完成度</span>
+                            <span class="progress-value">0%</span>
+                        </div>
+                        <div class="progress-bar-modern">
+                            <div class="progress-fill-modern" style="width: 0%"></div>
+                        </div>
+                        <p class="progress-text">0/4 任务完成</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="week3" class="page">
+            <div class="page-header-modern">
+                <div class="header-decoration"></div>
+                <h1>Week 3 - Computer-Controlled Cutting</h1>
+                <p>计算机控制切割</p>
+            </div>
+            <div class="assignment-content">
+                <div class="content-card-modern">
+                    <div class="card-header">
+                        <span class="card-number">01</span>
+                        <h2>📝 作业要求</h2>
+                    </div>
+                    <ul class="task-list">
+                        <li class="task-item">
+                            <label class="checkbox-wrapper">
+                                <input type="checkbox" class="custom-checkbox">
+                                <span class="checkmark"></span>
+                                <span class="task-text">学习激光切割机操作</span>
+                            </label>
+                        </li>
+                        <li class="task-item">
+                            <label class="checkbox-wrapper">
+                                <input type="checkbox" class="custom-checkbox">
+                                <span class="checkmark"></span>
+                                <span class="task-text">设计并切割一个压配合结构</span>
+                            </label>
+                        </li>
+                        <li class="task-item">
+                            <label class="checkbox-wrapper">
+                                <input type="checkbox" class="custom-checkbox">
+                                <span class="checkmark"></span>
+                                <span class="task-text">创建参数化设计</span>
+                            </label>
+                        </li>
+                        <li class="task-item">
+                            <label class="checkbox-wrapper">
+                                <input type="checkbox" class="custom-checkbox">
+                                <span class="checkmark"></span>
+                                <span class="task-text">记录切割参数和结果</span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+                <div class="content-card-modern">
+                    <div class="card-header">
+                        <span class="card-number">02</span>
+                        <h2>📎 提交内容</h2>
+                    </div>
+                    <div class="upload-area-modern">
+                        <div class="upload-icon">📁</div>
+                        <p class="upload-text">拖拽文件到此处或点击上传</p>
+                        <p class="upload-hint">支持 PDF, PNG, JPG, MP4 等格式</p>
+                        <input type="file" multiple class="file-input">
+                    </div>
+                </div>
+                <div class="content-card-modern">
+                    <div class="card-header">
+                        <span class="card-number">03</span>
+                        <h2>✅ 完成状态</h2>
+                    </div>
+                    <div class="progress-modern">
+                        <div class="progress-info">
+                            <span class="progress-label">完成度</span>
+                            <span class="progress-value">0%</span>
+                        </div>
+                        <div class="progress-bar-modern">
+                            <div class="progress-fill-modern" style="width: 0%"></div>
+                        </div>
+                        <p class="progress-text">0/4 任务完成</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="week4" class="page">
+            <div class="page-header-modern">
+                <div class="header-decoration"></div>
+                <h1>Week 4 - Electronics Production</h1>
+                <p>电子产品生产</p>
+            </div>
+            <div class="assignment-content">
+                <div class="content-card-modern">
+                    <div class="card-header">
+                        <span class="card-number">01</span>
+                        <h2>📝 作业要求</h2>
+                    </div>
+                    <ul class="task-list">
+                        <li class="task-item">
+                            <label class="checkbox-wrapper">
+                                <input type="checkbox" class="custom-checkbox">
+                                <span class="checkmark"></span>
+                                <span class="task-text">学习 PCB 设计和制作</span>
+                            </label>
+                        </li>
+                        <li class="task-item">
+                            <label class="checkbox-wrapper">
+                                <input type="checkbox" class="custom-checkbox">
+                                <span class="checkmark"></span>
+                                <span class="task-text">焊接微控制器板</span>
+                            </label>
+                        </li>
+                        <li class="task-item">
+                            <label class="checkbox-wrapper">
+                                <input type="checkbox" class="custom-checkbox">
+                                <span class="checkmark"></span>
+                                <span class="task-text">测试电路板功能</span>
+                            </label>
+                        </li>
+                        <li class="task-item">
+                            <label class="checkbox-wrapper">
+                                <input type="checkbox" class="custom-checkbox">
+                                <span class="checkmark"></span>
+                                <span class="task-text">记录生产过程</span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+                <div class="content-card-modern">
+                    <div class="card-header">
+                        <span class="card-number">02</span>
+                        <h2>📎 提交内容</h2>
+                    </div>
+                    <div class="upload-area-modern">
+                        <div class="upload-icon">📁</div>
+                        <p class="upload-text">拖拽文件到此处或点击上传</p>
+                        <p class="upload-hint">支持 PDF, PNG, JPG, MP4 等格式</p>
+                        <input type="file" multiple class="file-input">
+                    </div>
+                </div>
+                <div class="content-card-modern">
+                    <div class="card-header">
+                        <span class="card-number">03</span>
+                        <h2>✅ 完成状态</h2>
+                    </div>
+                    <div class="progress-modern">
+                        <div class="progress-info">
+                            <span class="progress-label">完成度</span>
+                            <span class="progress-value">0%</span>
+                        </div>
+                        <div class="progress-bar-modern">
+                            <div class="progress-fill-modern" style="width: 0%"></div>
+                        </div>
+                        <p class="progress-text">0/4 任务完成</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="week5" class="page">
+            <div class="page-header-modern">
+                <div class="header-decoration"></div>
+                <h1>Week 5 - Embedded Programming</h1>
+                <p>嵌入式编程</p>
+            </div>
+            <div class="assignment-content">
+                <div class="content-card-modern">
+                    <div class="card-header">
+                        <span class="card-number">01</span>
+                        <h2>📝 作业要求</h2>
+                    </div>
+                    <ul class="task-list">
+                        <li class="task-item">
+                            <label class="checkbox-wrapper">
+                                <input type="checkbox" class="custom-checkbox">
+                                <span class="checkmark"></span>
+                                <span class="task-text">学习微控制器编程</span>
+                            </label>
+                        </li>
+                        <li class="task-item">
+                            <label class="checkbox-wrapper">
+                                <input type="checkbox" class="custom-checkbox">
+                                <span class="checkmark"></span>
+                                <span class="task-text">编写 blink 程序</span>
+                            </label>
+                        </li>
+                        <li class="task-item">
+                            <label class="checkbox-wrapper">
+                                <input type="checkbox" class="custom-checkbox">
+                                <span class="checkmark"></span>
+                                <span class="task-text">实现输入输出功能</span>
+                            </label>
+                        </li>
+                        <li class="task-item">
+                            <label class="checkbox-wrapper">
+                                <input type="checkbox" class="custom-checkbox">
+                                <span class="checkmark"></span>
+                                <span class="task-text">记录编程过程</span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+                <div class="content-card-modern">
+                    <div class="card-header">
+                        <span class="card-number">02</span>
+                        <h2>📎 提交内容</h2>
+                    </div>
+                    <div class="upload-area-modern">
+                        <div class="upload-icon">📁</div>
+                        <p class="upload-text">拖拽文件到此处或点击上传</p>
+                        <p class="upload-hint">支持 PDF, PNG, JPG, MP4 等格式</p>
+                        <input type="file" multiple class="file-input">
+                    </div>
+                </div>
+                <div class="content-card-modern">
+                    <div class="card-header">
+                        <span class="card-number">03</span>
+                        <h2>✅ 完成状态</h2>
+                    </div>
+                    <div class="progress-modern">
+                        <div class="progress-info">
+                            <span class="progress-label">完成度</span>
+                            <span class="progress-value">0%</span>
+                        </div>
+                        <div class="progress-bar-modern">
+                            <div class="progress-fill-modern" style="width: 0%"></div>
+                        </div>
+                        <p class="progress-text">0/4 任务完成</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 项目页面 -->
+        <section id="projects" class="page">
+            <div class="page-header-modern">
+                <div class="header-decoration"></div>
+                <h1>项目展示</h1>
+                <p>展示你的创意作品和期末项目</p>
+            </div>
+            <div class="projects-grid-modern">
+                <div class="project-card-modern featured">
+                    <div class="project-badge">Featured</div>
+                    <div class="project-image-modern gradient-1">🚀</div>
+                    <div class="project-info-modern">
+                        <div class="project-meta">
+                            <span class="project-status status-active">进行中</span>
+                            <span class="project-date">截止：2026.05.15</span>
+                        </div>
+                        <h3>我的期末项目</h3>
+                        <p>描述你的最终项目概念和功能</p>
+                        <div class="project-tags">
+                            <span class="tag">IoT</span>
+                            <span class="tag">Embedded</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card-modern">
+                    <div class="project-image-modern gradient-2">💡</div>
+                    <div class="project-info-modern">
+                        <div class="project-meta">
+                            <span class="project-status status-done">已完成</span>
+                            <span class="project-date">完成：2026.03.10</span>
+                        </div>
+                        <h3>创新设计</h3>
+                        <p>展示你的创意设计作品</p>
+                        <div class="project-tags">
+                            <span class="tag">Design</span>
+                            <span class="tag">3D Print</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card-modern">
+                    <div class="project-image-modern gradient-3">🤖</div>
+                    <div class="project-info-modern">
+                        <div class="project-meta">
+                            <span class="project-status status-planned">规划中</span>
+                            <span class="project-date">开始：2026.04.01</span>
+                        </div>
+                        <h3>智能设备</h3>
+                        <p>物联网或机器人项目</p>
+                        <div class="project-tags">
+                            <span class="tag">Robotics</span>
+                            <span class="tag">AI</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-primary add-project-btn">+ 添加新项目</button>
+        </section>
+
+        <!-- 打卡页面 -->
+        <section id="checkin" class="page">
+            <div class="page-header-modern">
+                <div class="header-decoration"></div>
+                <h1>项目打卡</h1>
+                <p>记录每日进展，保持学习节奏</p>
+            </div>
+            <div class="checkin-container">
+                <div class="checkin-calendar">
+                    <div class="calendar-header">
+                        <button class="calendar-nav prev">←</button>
+                        <h3>2026 年 3 月</h3>
+                        <button class="calendar-nav next">→</button>
+                    </div>
+                    <div class="calendar-grid">
+                        <div class="calendar-weekday">日</div>
+                        <div class="calendar-weekday">一</div>
+                        <div class="calendar-weekday">二</div>
+                        <div class="calendar-weekday">三</div>
+                        <div class="calendar-weekday">四</div>
+                        <div class="calendar-weekday">五</div>
+                        <div class="calendar-weekday">六</div>
+                    </div>
+                    <div class="calendar-stats">
+                        <div class="stat">
+                            <span class="stat-num">7</span>
+                            <span class="stat-text">连续打卡</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-num">18</span>
+                            <span class="stat-text">本月打卡</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="checkin-form">
+                    <div class="form-card">
+                        <h3>今日打卡</h3>
+                        <textarea class="checkin-input" placeholder="今天完成了什么？有什么收获？..."></textarea>
+                        <div class="checkin-actions">
+                            <div class="mood-selector">
+                                <span class="mood-label">心情：</span>
+                                <button class="mood-btn active">😊</button>
+                                <button class="mood-btn">😐</button>
+                                <button class="mood-btn">😫</button>
+                                <button class="mood-btn">🤩</button>
+                            </div>
+                            <button class="btn btn-primary checkin-submit">发布打卡</button>
+                        </div>
+                    </div>
+                    <div class="checkin-history">
+                        <h3>最近打卡记录</h3>
+                        <div class="history-list">
+                            <div class="history-item">
+                                <div class="history-date">
+                                    <span class="day">24</span>
+                                    <span class="month">Mar</span>
+                                </div>
+                                <div class="history-content">
+                                    <p>完成了 Week 3 的激光切割设计，参数还需要调整...</p>
+                                    <span class="history-mood">😊</span>
+                                </div>
+                            </div>
+                            <div class="history-item">
+                                <div class="history-date">
+                                    <span class="day">23</span>
+                                    <span class="month">Mar</span>
+                                </div>
+                                <div class="history-content">
+                                    <p>学习了 Fusion 360 的基础操作，创建了第一个 3D 模型</p>
+                                    <span class="history-mood">🤩</span>
+                                </div>
+                            </div>
+                            <div class="history-item">
+                                <div class="history-date">
+                                    <span class="day">22</span>
+                                    <span class="month">Mar</span>
+                                </div>
+                                <div class="history-content">
+                                    <p>开始 Week 2 的作业，CAD 软件真的很有趣</p>
+                                    <span class="history-mood">😊</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DDL 记录页面 -->
+        <section id="ddl" class="page">
+            <div class="page-header-modern">
+                <div class="header-decoration"></div>
+                <h1>DDL 记录</h1>
+                <p>追踪截止日期，不再错过任何节点</p>
+            </div>
+            <div class="ddl-container">
+                <div class="ddl-add-section">
+                    <button class="btn btn-primary" id="addDdlBtn">+ 添加新截止日期</button>
+                </div>
+                <div class="ddl-timeline">
+                    <div class="ddl-item urgent">
+                        <div class="ddl-marker"></div>
+                        <div class="ddl-content">
+                            <div class="ddl-header">
+                                <h3>Week 3 作业提交</h3>
+                                <span class="ddl-tag urgent">紧急</span>
+                            </div>
+                            <div class="ddl-details">
+                                <div class="ddl-date">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                                    </svg>
+                                    <span>2026.03.28 23:59</span>
+                                </div>
+                                <div class="ddl-progress">
+                                    <span>剩余 3 天</span>
+                                    <div class="mini-progress">
+                                        <div class="mini-progress-bar" style="width: 70%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="ddl-desc">提交激光切割作业，包括参数化设计和实物照片</p>
+                        </div>
+                    </div>
+                    <div class="ddl-item upcoming">
+                        <div class="ddl-marker"></div>
+                        <div class="ddl-content">
+                            <div class="ddl-header">
+                                <h3>Week 4 作业提交</h3>
+                                <span class="ddl-tag upcoming">即将到期</span>
+                            </div>
+                            <div class="ddl-details">
+                                <div class="ddl-date">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                                    </svg>
+                                    <span>2026.04.04 23:59</span>
+                                </div>
+                                <div class="ddl-progress">
+                                    <span>剩余 10 天</span>
+                                    <div class="mini-progress">
+                                        <div class="mini-progress-bar" style="width: 40%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="ddl-desc">完成 PCB 设计和焊接，提交电路板照片和测试视频</p>
+                        </div>
+                    </div>
+                    <div class="ddl-item normal">
+                        <div class="ddl-marker"></div>
+                        <div class="ddl-content">
+                            <div class="ddl-header">
+                                <h3>期中评审</h3>
+                                <span class="ddl-tag normal">正常</span>
+                            </div>
+                            <div class="ddl-details">
+                                <div class="ddl-date">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                                    </svg>
+                                    <span>2026.04.15 14:00</span>
+                                </div>
+                                <div class="ddl-progress">
+                                    <span>剩余 21 天</span>
+                                    <div class="mini-progress">
+                                        <div class="mini-progress-bar" style="width: 20%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="ddl-desc">准备期中项目展示和文档</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 留言板页面 -->
+        <section id="guestbook" class="page">
+            <div class="page-header-modern">
+                <div class="header-decoration"></div>
+                <h1>留言板</h1>
+                <p>与团队成员交流互动</p>
+            </div>
+            <div class="guestbook-container">
+                <div class="leave-message">
+                    <div class="form-card large">
+                        <h3>留下你的想法</h3>
+                        <textarea class="message-input" placeholder="分享你的想法、问题或建议..."></textarea>
+                        <div class="message-actions">
+                            <div class="author-input">
+                                <input type="text" placeholder="你的昵称" class="nickname-input">
+                            </div>
+                            <button class="btn btn-primary message-submit">发布留言</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="messages-list">
+                    <div class="message-card">
+                        <div class="message-avatar">👨‍🎓</div>
+                        <div class="message-content">
+                            <div class="message-header">
+                                <div class="message-author">
+                                    <h4>同学 A</h4>
+                                    <span class="message-time">2 小时前</span>
+                                </div>
+                                <div class="message-actions-btn">
+                                    <button class="like-btn">
+                                        <span>👍</span>
+                                        <span class="like-count">12</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <p class="message-text">有人想一起组队做期末项目吗？我对 IoT 和嵌入式系统很感兴趣！</p>
+                            <div class="message-replies">
+                                <div class="reply-item">
+                                    <div class="reply-avatar">👩‍🎓</div>
+                                    <div class="reply-content">
+                                        <div class="reply-author">
+                                            <strong>同学 B</strong>
+                                            <span class="reply-time">1 小时前</span>
+                                        </div>
+                                        <p>我也对 IoT 感兴趣！可以聊聊</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="message-card">
+                        <div class="message-avatar">👨‍🏫</div>
+                        <div class="message-content">
+                            <div class="message-header">
+                                <div class="message-author">
+                                    <h4>导师</h4>
+                                    <span class="message-time">昨天 15:30</span>
+                                </div>
+                                <div class="message-actions-btn">
+                                    <button class="like-btn">
+                                        <span>👍</span>
+                                        <span class="like-count">28</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <p class="message-text">提醒：Week 3 的作业截止时间是本周六，请大家抓紧时间完成。有问题随时在群里提问！</p>
+                        </div>
+                    </div>
+                    <div class="message-card">
+                        <div class="message-avatar">👩‍🎓</div>
+                        <div class="message-content">
+                            <div class="message-header">
+                                <div class="message-author">
+                                    <h4>同学 C</h4>
+                                    <span class="message-time">昨天 10:15</span>
+                                </div>
+                                <div class="message-actions-btn">
+                                    <button class="like-btn">
+                                        <span>👍</span>
+                                        <span class="like-count">8</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <p class="message-text">分享一个有用的资源：Fusion 360 官方教程网站，对初学者很有帮助 https://autodesk.com/fusion360</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 团队介绍页面 -->
+        <section id="team" class="page">
+            <div class="page-header-modern">
+                <div class="header-decoration"></div>
+                <h1>团队介绍</h1>
+                <p>认识我们的导师和同学们</p>
+            </div>
+            <div class="team-grid-modern">
+                <div class="team-card-modern mentor">
+                    <div class="team-badge">导师</div>
+                    <div class="team-avatar-modern">👨‍🏫</div>
+                    <h3>导师姓名</h3>
+                    <p class="team-role">课程导师</p>
+                    <p class="team-bio">负责指导课程内容和项目评审</p>
+                    <div class="team-social">
+                        <a href="#" class="social-link">✉️</a>
+                        <a href="#" class="social-link">🔗</a>
+                    </div>
+                </div>
+                <div class="team-card-modern">
+                    <div class="team-avatar-modern">👩‍🎓</div>
+                    <h3>同学 A</h3>
+                    <p class="team-role">学员</p>
+                    <p class="team-bio">专注于数字制造和 3D 打印</p>
+                    <div class="team-tags">
+                        <span class="team-tag">3D Printing</span>
+                        <span class="team-tag">CAD</span>
+                    </div>
+                </div>
+                <div class="team-card-modern">
+                    <div class="team-avatar-modern">👨‍🎓</div>
+                    <h3>同学 B</h3>
+                    <p class="team-role">学员</p>
+                    <p class="team-bio">热爱电子设计和嵌入式系统</p>
+                    <div class="team-tags">
+                        <span class="team-tag">Electronics</span>
+                        <span class="team-tag">Embedded</span>
+                    </div>
+                </div>
+                <div class="team-card-modern">
+                    <div class="team-avatar-modern">👩‍🎓</div>
+                    <h3>同学 C</h3>
+                    <p class="team-role">学员</p>
+                    <p class="team-bio">擅长编程和人机交互</p>
+                    <div class="team-tags">
+                        <span class="team-tag">Programming</span>
+                        <span class="team-tag">UI/UX</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer-modern">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <div class="logo-mark small">
+                        <span class="logo-shape"></span>
+                        <span class="logo-shape"></span>
+                        <span class="logo-shape"></span>
+                    </div>
+                    <span>Fab Academy</span>
+                </div>
+                <p>探索数字制造的无限可能</p>
+            </div>
+            <div class="footer-section">
+                <h4>快速链接</h4>
+                <ul>
+                    <li><a href="#" data-page="home">Home</a></li>
+                    <li><a href="#" data-page="week1">作业</a></li>
+                    <li><a href="#" data-page="projects">项目</a></li>
+                    <li><a href="#" data-page="team">团队</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>功能</h4>
+                <ul>
+                    <li><a href="#" data-page="checkin">打卡</a></li>
+                    <li><a href="#" data-page="ddl">DDL</a></li>
+                    <li><a href="#" data-page="guestbook">留言</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>联系方式</h4>
+                <p>📧 contact@fabacademy.org</p>
+                <p>🌐 www.fabacademy.org</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Fab Academy Submission System. Made with ❤️ for innovation.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>动态影像作品 - Sophia Zhou</title>
+  <style>
+    :root {
+      --primary-pink: #F4A6C9;
+      --secondary-blue: #A8D8EA;
+      --accent-purple: #C9B1FF;
+      --soft-pink: #FFF0F5;
+      --soft-blue: #F0F8FF;
+      --text-dark: #4A4A4A;
+      --text-light: #7A7A7A;
+      --warm-white: #FFFAFA;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+      background: var(--warm-white);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 250, 250, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #FFE4E9;
+      z-index: 1000;
+      padding: 1rem 2rem;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: linear-gradient(135deg, var(--primary-pink), var(--accent-purple));
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+
+    .back-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(244, 166, 201, 0.3);
+    }
+
+    .project-detail {
+      padding: 8rem 2rem 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .project-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .project-title {
+      font-size: 42px;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      color: var(--text-dark);
+    }
+
+    .project-subtitle {
+      font-size: 18px;
+      color: var(--text-light);
+      margin-bottom: 2rem;
+    }
+
+    .tags {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      padding: 0.5rem 1.5rem;
+      background: rgba(201, 177, 255, 0.2);
+      color: var(--accent-purple);
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .main-image {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto 4rem;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    }
+
+    .main-image img {
+      width: 100%;
+      height: auto;
+      max-height: 600px;
+      object-fit: contain;
+      display: block;
+      background: #f9fafb;
+    }
+
+    .video-section {
+      background: white;
+      padding: 3rem;
+      border-radius: 12px;
+      border: 1px solid #FFE4E9;
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    .video-container {
+      max-width: 800px;
+      margin: 2rem auto 0;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .video-container video {
+      width: 100%;
+      display: block;
+    }
+
+    .project-description {
+      background: white;
+      padding: 3rem;
+      border-radius: 12px;
+      border: 1px solid #FFE4E9;
+      margin-bottom: 3rem;
+    }
+
+    .description-title {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--accent-purple);
+    }
+
+    .description-text {
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--text-dark);
+      margin-bottom: 1.5rem;
+    }
+
+    .gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-top: 3rem;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .gallery-item {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s;
+      background: white;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 40px rgba(201, 177, 255, 0.2);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      background: #f9fafb;
+    }
+
+    .footer {
+      background: linear-gradient(135deg, var(--primary-pink), var(--secondary-blue));
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+      margin-top: 4rem;
+    }
+
+    @media (max-width: 768px) {
+      .project-title {
+        font-size: 32px;
+      }
+
+      .project-description,
+      .video-section {
+        padding: 2rem;
+      }
+
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="sophia_portfolio.html#projects" class="back-btn">← 返回作品集</a>
+      <div style="font-size: 20px; font-weight: 700; color: var(--accent-purple);">SOPHIA</div>
+    </div>
+  </nav>
+
+  <section class="project-detail">
+    <div class="project-header">
+      <h1 class="project-title">动态影像作品</h1>
+      <p class="project-subtitle">结合视觉特效与动态图形的创意影像创作</p>
+      <div class="tags">
+        <span class="tag">After Effects</span>
+        <span class="tag">动态图形</span>
+        <span class="tag">视频制作</span>
+        <span class="tag">视觉特效</span>
+      </div>
+    </div>
+
+    <div class="main-image">
+      <img src="动态影像作品.png" alt="动态影像作品主图">
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>© 2026 Sophia Zhou. All rights reserved. | Art & Technology</p>
+  </footer>
+</body>
+</html>

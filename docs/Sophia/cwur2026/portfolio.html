@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>设计师作品集 | Creative Portfolio</title>
+    <link rel="stylesheet" href="portfolio.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="logo-text">PORTFOLIO</span>
+                <span class="logo-dot">.</span>
+            </a>
+            
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">首页</a></li>
+                <li><a href="#works" class="nav-link">作品</a></li>
+                <li><a href="#about" class="nav-link">关于</a></li>
+                <li><a href="#contact" class="nav-link">联系</a></li>
+            </ul>
+            
+            <button class="nav-toggle" aria-label="切换菜单">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- 主内容 -->
+    <main>
+        <!-- Hero区域 -->
+        <section id="home" class="hero-section">
+            <div class="hero-bg-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+            </div>
+            
+            <div class="hero-content">
+                <div class="hero-tag">
+                    <span class="tag-line"></span>
+                    <span>创意设计师 & 视觉艺术家</span>
+                </div>
+                
+                <h1 class="hero-title">
+                    <span class="title-word" data-word="创造">创造</span>
+                    <span class="title-word highlight" data-word="无限">无限</span>
+                    <span class="title-word" data-word="可能">可能</span>
+                </h1>
+                
+                <p class="hero-subtitle">
+                    用设计连接艺术与科技，打造独特的视觉体验
+                </p>
+                
+                <div class="hero-cta">
+                    <a href="#works" class="btn btn-primary">浏览作品</a>
+                    <a href="#contact" class="btn btn-outline">联系我</a>
+                </div>
+                
+                <div class="hero-scroll">
+                    <span>向下滚动</span>
+                    <div class="scroll-indicator">
+                        <div class="scroll-dot"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 作品展示区 -->
+        <section id="works" class="works-section">
+            <div class="section-header">
+                <h2 class="section-title">精选作品</h2>
+                <p class="section-subtitle">探索创意与设计的完美融合</p>
+            </div>
+            
+            <div class="works-filter">
+                <button class="filter-btn active" data-filter="all">全部</button>
+                <button class="filter-btn" data-filter="branding">品牌设计</button>
+                <button class="filter-btn" data-filter="ui">UI/UX</button>
+                <button class="filter-btn" data-filter="illustration">插画</button>
+                <button class="filter-btn" data-filter="motion">动效</button>
+            </div>
+            
+            <div class="works-grid">
+                <!-- 作品卡片1 -->
+                <div class="work-card" data-category="branding">
+                    <div class="work-image-wrapper">
+                        <div class="work-image gradient-coral">
+                            <div class="work-overlay">
+                                <div class="work-info">
+                                    <h3>品牌重塑项目</h3>
+                                    <p>Brand Identity Design</p>
+                                </div>
+                                <div class="work-tags">
+                                    <span class="tag">Branding</span>
+                                    <span class="tag">Identity</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 作品卡片2 -->
+                <div class="work-card large" data-category="ui">
+                    <div class="work-image-wrapper">
+                        <div class="work-image gradient-blue">
+                            <div class="work-overlay">
+                                <div class="work-info">
+                                    <h3>移动应用界面</h3>
+                                    <p>Mobile App UI/UX</p>
+                                </div>
+                                <div class="work-tags">
+                                    <span class="tag">UI/UX</span>
+                                    <span class="tag">Mobile</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 作品卡片3 -->
+                <div class="work-card" data-category="illustration">
+                    <div class="work-image-wrapper">
+                        <div class="work-image gradient-purple">
+                            <div class="work-overlay">
+                                <div class="work-info">
+                                    <h3>数字插画系列</h3>
+                                    <p>Digital Illustration</p>
+                                </div>
+                                <div class="work-tags">
+                                    <span class="tag">Illustration</span>
+                                    <span class="tag">Art</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 作品卡片4 -->
+                <div class="work-card" data-category="motion">
+                    <div class="work-image-wrapper">
+                        <div class="work-image gradient-orange">
+                            <div class="work-overlay">
+                                <div class="work-info">
+                                    <h3>动态图形设计</h3>
+                                    <p>Motion Graphics</p>
+                                </div>
+                                <div class="work-tags">
+                                    <span class="tag">Motion</span>
+                                    <span class="tag">Animation</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 作品卡片5 -->
+                <div class="work-card large" data-category="ui">
+                    <div class="work-image-wrapper">
+                        <div class="work-image gradient-green">
+                            <div class="work-overlay">
+                                <div class="work-info">
+                                    <h3>网页设计系统</h3>
+                                    <p>Web Design System</p>
+                                </div>
+                                <div class="work-tags">
+                                    <span class="tag">Web</span>
+                                    <span class="tag">Design System</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 作品卡片6 -->
+                <div class="work-card" data-category="branding">
+                    <div class="work-image-wrapper">
+                        <div class="work-image gradient-pink">
+                            <div class="work-overlay">
+                                <div class="work-info">
+                                    <h3>包装设计</h3>
+                                    <p>Package Design</p>
+                                </div>
+                                <div class="work-tags">
+                                    <span class="tag">Packaging</span>
+                                    <span class="tag">Print</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="works-cta">
+                <button class="btn btn-secondary">查看更多作品</button>
+            </div>
+        </section>
+
+        <!-- 关于区域 -->
+        <section id="about" class="about-section">
+            <div class="about-container">
+                <div class="about-image">
+                    <div class="image-frame gradient-mesh">
+                        <div class="frame-content">
+                            <span class="emoji-large">🎨</span>
+                        </div>
+                    </div>
+                    <div class="floating-badge badge-1">5+ 年经验</div>
+                    <div class="floating-badge badge-2">100+ 项目</div>
+                </div>
+                
+                <div class="about-content">
+                    <div class="content-tag">
+                        <span class="tag-line"></span>
+                        <span>关于我</span>
+                    </div>
+                    
+                    <h2 class="about-title">
+                        用设计讲述<br>
+                        <span class="highlight">独特故事</span>
+                    </h2>
+                    
+                    <p class="about-text">
+                        作为一名充满热情的创意设计师，我专注于将抽象概念转化为引人入胜的视觉体验。我相信设计不仅仅是美学，更是解决问题的艺术。
+                    </p>
+                    
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <div class="skill-icon">✦</div>
+                            <div class="skill-info">
+                                <h4>品牌设计</h4>
+                                <p>Logo / VI / 品牌策略</p>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">◈</div>
+                            <div class="skill-info">
+                                <h4>UI/UX设计</h4>
+                                <p>网页 / 移动端 / 交互</p>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">◎</div>
+                            <div class="skill-info">
+                                <h4>视觉艺术</h4>
+                                <p>插画 / 排版 / 摄影</p>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">◇</div>
+                            <div class="skill-info">
+                                <h4>动效设计</h4>
+                                <p>动画 / 视频 / 3D</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="about-stats">
+                        <div class="stat-box">
+                            <span class="stat-number" data-count="100">0</span>
+                            <span class="stat-label">完成项目</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-number" data-count="50">0</span>
+                            <span class="stat-label">满意客户</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-number" data-count="15">0</span>
+                            <span class="stat-label">设计奖项</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 联系区域 -->
+        <section id="contact" class="contact-section">
+            <div class="contact-container">
+                <div class="contact-header">
+                    <h2 class="section-title">开始合作</h2>
+                    <p class="section-subtitle">让我们一起创造精彩</p>
+                </div>
+                
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <div class="info-card">
+                            <div class="info-icon">✉</div>
+                            <div class="info-content">
+                                <h4>邮箱</h4>
+                                <p>hello@designer.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-card">
+                            <div class="info-icon">☎</div>
+                            <div class="info-content">
+                                <h4>电话</h4>
+                                <p>+86 138 0000 0000</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-card">
+                            <div class="info-icon">◉</div>
+                            <div class="info-content">
+                                <h4>地址</h4>
+                                <p>上海市静安区创意园区</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <input type="text" placeholder="您的姓名" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="您的邮箱" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="项目描述..." rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">发送消息</button>
+                    </form>
+                </div>
+                
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="Behance">Be</a>
+                    <a href="#" class="social-link" aria-label="Dribbble">Dr</a>
+                    <a href="#" class="social-link" aria-label="Instagram">Ig</a>
+                    <a href="#" class="social-link" aria-label="LinkedIn">Li</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Designer Portfolio. All rights reserved.</p>
+            <p>用 ❤️ 和创造力打造</p>
+        </div>
+    </footer>
+
+    <script src="portfolio.js"></script>
+</body>
+</html>

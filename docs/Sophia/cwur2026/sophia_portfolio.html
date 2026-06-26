@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sophia Zhou - 个人作品集</title>
+  <style>
+    :root {
+      --primary-pink: #F4A6C9;
+      --secondary-blue: #A8D8EA;
+      --accent-purple: #C9B1FF;
+      --soft-pink: #FFF0F5;
+      --soft-blue: #F0F8FF;
+      --text-dark: #4A4A4A;
+      --text-light: #7A7A7A;
+      --warm-white: #FFFAFA;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+      background: var(--warm-white);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    /* Welcome Screen */
+    .welcome-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: linear-gradient(135deg, var(--primary-pink), var(--secondary-blue));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
+    }
+
+    .welcome-screen.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .welcome-content {
+      text-align: center;
+      color: white;
+      animation: fadeInUp 1s ease;
+    }
+
+    .welcome-title {
+      font-size: 64px;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      animation: slideInDown 1s ease;
+      letter-spacing: 3px;
+    }
+
+    .welcome-subtitle {
+      font-size: 24px;
+      margin-bottom: 2rem;
+      opacity: 0.95;
+      animation: slideInUp 1s ease 0.3s both;
+    }
+
+    .welcome-message {
+      font-size: 18px;
+      margin-bottom: 3rem;
+      opacity: 0.9;
+      animation: fadeIn 1s ease 0.6s both;
+    }
+
+    .welcome-btn {
+      padding: 1rem 3rem;
+      background: white;
+      color: var(--primary-pink);
+      border: none;
+      border-radius: 50px;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      animation: bounceIn 1s ease 0.9s both;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .welcome-btn:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .floating-shapes {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .shape {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .shape:nth-child(1) {
+      width: 80px;
+      height: 80px;
+      top: 20%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+
+    .shape:nth-child(2) {
+      width: 120px;
+      height: 120px;
+      top: 60%;
+      right: 15%;
+      animation-delay: 2s;
+    }
+
+    .shape:nth-child(3) {
+      width: 60px;
+      height: 60px;
+      bottom: 30%;
+      left: 20%;
+      animation-delay: 4s;
+    }
+
+    .shape:nth-child(4) {
+      width: 100px;
+      height: 100px;
+      top: 40%;
+      right: 25%;
+      animation-delay: 1s;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 0.9; }
+    }
+
+    @keyframes bounceIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.3);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.05);
+      }
+      70% {
+        transform: scale(0.9);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(180deg); }
+    }
+
+    /* Navigation */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 250, 250, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #FFE4E9;
+      z-index: 1000;
+      padding: 1rem 2rem;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-size: 24px;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary-pink), var(--secondary-blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: 2px;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-menu a {
+      color: var(--text-dark);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-menu a:hover {
+      color: var(--primary-pink);
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6rem 2rem 4rem;
+      background: linear-gradient(135deg, rgba(244, 166, 201, 0.08), rgba(168, 216, 234, 0.08));
+    }
+
+    .hero-container {
+      max-width: 1200px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-content h1 {
+      font-size: 48px;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+      color: var(--text-dark);
+    }
+
+    .hero-content h1 span {
+      background: linear-gradient(135deg, var(--primary-pink), var(--secondary-blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: 20px;
+      color: var(--text-light);
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+
+    .hero-class {
+      font-size: 16px;
+      color: var(--primary-pink);
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+
+    .hero-description {
+      font-size: 16px;
+      color: var(--text-light);
+      margin-bottom: 2rem;
+      line-height: 1.8;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 0.875rem 2rem;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      border: none;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary-pink), var(--accent-purple));
+      color: white;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(244, 166, 201, 0.35);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text-dark);
+      border: 2px solid #FFE4E9;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--primary-pink);
+      color: var(--primary-pink);
+    }
+
+    .hero-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .profile-card {
+      width: 350px;
+      height: 350px;
+      background: white;
+      border-radius: 20px;
+      border: 2px solid #FFE4E9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(244, 166, 201, 0.1);
+    }
+
+    .profile-avatar {
+      width: 200px;
+      height: 200px;
+      background: linear-gradient(135deg, var(--primary-pink), var(--secondary-blue));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 80px;
+      color: white;
+    }
+
+    .profile-badge {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      background: linear-gradient(135deg, var(--primary-pink), var(--accent-purple));
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    /* About Section */
+    .about-section {
+      padding: 5rem 2rem;
+      background: white;
+    }
+
+    .section-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 3rem;
+      text-align: center;
+      color: var(--text-dark);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .info-card {
+      background: var(--soft-pink);
+      padding: 2rem;
+      border-radius: 12px;
+      border: 1px solid #FFE4E9;
+      transition: all 0.3s;
+    }
+
+    .info-card:hover {
+      border-color: var(--primary-pink);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(244, 166, 201, 0.15);
+    }
+
+    .info-icon {
+      font-size: 32px;
+      margin-bottom: 1rem;
+    }
+
+    .info-label {
+      font-size: 12px;
+      color: var(--text-light);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .info-value {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    /* Hobbies Section */
+    .hobbies-section {
+      padding: 5rem 2rem;
+      background: linear-gradient(135deg, var(--soft-pink), var(--soft-blue));
+    }
+
+    .hobbies-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+    }
+
+    .hobby-card {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 12px;
+      border: 1px solid #FFE4E9;
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .hobby-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 15px 35px rgba(244, 166, 201, 0.2);
+    }
+
+    .hobby-icon {
+      font-size: 48px;
+      margin-bottom: 1rem;
+    }
+
+    .hobby-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--text-dark);
+    }
+
+    .hobby-desc {
+      font-size: 14px;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    /* Skills Section */
+    .skills-section {
+      padding: 5rem 2rem;
+      background: white;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .skill-category {
+      background: var(--soft-blue);
+      padding: 2rem;
+      border-radius: 12px;
+      border: 1px solid #E0F0FF;
+    }
+
+    .skill-category h3 {
+      font-size: 20px;
+      margin-bottom: 1.5rem;
+      color: var(--secondary-blue);
+      font-weight: 600;
+    }
+
+    .skill-item {
+      margin-bottom: 1.5rem;
+    }
+
+    .skill-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      font-size: 14px;
+      color: var(--text-dark);
+    }
+
+    .skill-bar {
+      height: 8px;
+      background: #E0F0FF;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .skill-progress {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary-pink), var(--secondary-blue));
+      border-radius: 4px;
+      transition: width 1s ease;
+    }
+
+    /* Projects Section */
+    .projects-section {
+      padding: 5rem 2rem;
+      background: linear-gradient(135deg, var(--soft-pink), var(--soft-blue));
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #FFE4E9;
+      transition: all 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(244, 166, 201, 0.2);
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 280px;
+      object-fit: contain;
+      background: #f9fafb;
+      display: block;
+    }
+
+    .project-info {
+      padding: 1.5rem;
+    }
+
+    .project-tags {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      padding: 4px 12px;
+      background: rgba(244, 166, 201, 0.15);
+      color: var(--primary-pink);
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .project-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--text-dark);
+    }
+
+    .project-desc {
+      font-size: 14px;
+      color: var(--text-light);
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .project-link {
+      color: var(--primary-pink);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .project-link:hover {
+      color: #E895B8;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      padding: 5rem 2rem;
+      background: white;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .contact-info h3 {
+      font-size: 24px;
+      margin-bottom: 1rem;
+      color: var(--text-dark);
+    }
+
+    .contact-info p {
+      color: var(--text-light);
+      margin-bottom: 2rem;
+      line-height: 1.8;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      background: rgba(244, 166, 201, 0.15);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+
+    .contact-details h4 {
+      font-size: 14px;
+      margin-bottom: 0.25rem;
+      color: var(--text-dark);
+    }
+
+    .contact-details p {
+      font-size: 14px;
+      color: var(--text-light);
+      margin: 0;
+    }
+
+    .contact-form {
+      background: var(--soft-pink);
+      padding: 2rem;
+      border-radius: 12px;
+      border: 1px solid #FFE4E9;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      color: var(--text-dark);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: white;
+      border: 1px solid #FFE4E9;
+      border-radius: 8px;
+      color: var(--text-dark);
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--primary-pink);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    /* Footer */
+    .footer {
+      background: linear-gradient(135deg, var(--primary-pink), var(--secondary-blue));
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .social-link {
+      width: 45px;
+      height: 45px;
+      background: rgba(255, 255, 255, 0.25);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      font-size: 20px;
+      transition: all 0.3s;
+    }
+
+    .social-link:hover {
+      background: white;
+      color: var(--primary-pink);
+      transform: translateY(-4px);
+    }
+
+    .footer-text {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.95);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .welcome-title {
+        font-size: 42px;
+      }
+
+      .welcome-subtitle {
+        font-size: 18px;
+      }
+
+      .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero-content h1 {
+        font-size: 36px;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-menu {
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Welcome Screen -->
+  <div class="welcome-screen" id="welcomeScreen">
+    <div class="floating-shapes">
+      <div class="shape"></div>
+      <div class="shape"></div>
+      <div class="shape"></div>
+      <div class="shape"></div>
+    </div>
+    <div class="welcome-content">
+      <h1 class="welcome-title">Welcome</h1>
+      <p class="welcome-subtitle">欢迎来到 Sophia 的个人世界</p>
+      <p class="welcome-message">艺术与科技 · 创意无限可能</p>
+      <button class="welcome-btn" onclick="enterWebsite()">进入网站 →</button>
+    </div>
+  </div>
+
+  <div class="personal-website">
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">SOPHIA</div>
+        <ul class="nav-menu">
+          <li><a href="#home">首页</a></li>
+          <li><a href="#about">关于</a></li>
+          <li><a href="#hobbies">爱好</a></li>
+          <li><a href="#skills">技能</a></li>
+          <li><a href="#projects">作品</a></li>
+          <li><a href="#contact">联系</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="hero-container">
+        <div class="hero-content">
+          <h1>你好，我是<br/><span>Sophia</span></h1>
+          <p class="hero-subtitle">周思涵</p>
+          <p class="hero-class">艺术与科技 242班</p>
+          <p class="hero-description">
+            热爱艺术与科技的融合，探索创意无限可能。
+            专注于数字艺术、交互设计与视觉创作。
+          </p>
+          <div class="hero-buttons">
+            <button class="btn btn-primary">查看作品</button>
+            <button class="btn btn-outline">联系我</button>
+          </div>
+        </div>
+        <div class="hero-image">
+          <div class="profile-card">
+            <img src="个人照片.jpg" alt="Sophia" style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%;">
+            <div class="profile-badge">Creative</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+      <div class="section-container">
+        <h2 class="section-title">关于我</h2>
+        <div class="about-grid">
+          <div class="info-card">
+            <div class="info-icon">👤</div>
+            <div class="info-label">姓名</div>
+            <div class="info-value">周思涵 (Sophia)</div>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">🎓</div>
+            <div class="info-label">班级</div>
+            <div class="info-value">艺术与科技 242</div>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">📧</div>
+            <div class="info-label">邮箱</div>
+            <div class="info-value">2655377991@qq.com</div>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">🎨</div>
+            <div class="info-label">专业方向</div>
+            <div class="info-value">艺术与科技</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hobbies Section -->
+    <section class="hobbies-section" id="hobbies">
+      <div class="section-container">
+        <h2 class="section-title">兴趣爱好</h2>
+        <div class="hobbies-grid">
+          <div class="hobby-card">
+            <div class="hobby-icon">📷</div>
+            <h3 class="hobby-title">摄影</h3>
+            <p class="hobby-desc">用镜头捕捉生活中的美好瞬间，记录光影与情感的交织</p>
+          </div>
+          <div class="hobby-card">
+            <div class="hobby-icon">🎵</div>
+            <h3 class="hobby-title">听歌</h3>
+            <p class="hobby-desc">在音乐中寻找灵感，感受旋律带来的情感共鸣</p>
+          </div>
+          <div class="hobby-card">
+            <div class="hobby-icon">📺</div>
+            <h3 class="hobby-title">追剧</h3>
+            <p class="hobby-desc">沉浸在精彩的故事中，体验不同的人生与世界</p>
+          </div>
+          <div class="hobby-card">
+            <div class="hobby-icon">✈️</div>
+            <h3 class="hobby-title">旅游</h3>
+            <p class="hobby-desc">探索世界各地的风景与文化，在旅途中寻找创作灵感</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills-section" id="skills">
+      <div class="section-container">
+        <h2 class="section-title">专业技能</h2>
+        <div class="skills-grid">
+          <div class="skill-category">
+            <h3>设计软件</h3>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span>Adobe Illustrator (AI)</span>
+                <span>90%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 90%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span>Adobe Photoshop (PS)</span>
+                <span>88%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 88%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span>After Effects (AE)</span>
+                <span>85%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 85%"></div>
+              </div>
+            </div>
+          </div>
+          <div class="skill-category">
+            <h3>交互技术</h3>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span>TouchDesigner</span>
+                <span>82%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 82%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span>Arduino</span>
+                <span>78%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 78%"></div>
+              </div>
+            </div>
+          </div>
+          <div class="skill-category">
+            <h3>综合能力</h3>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span>视觉设计</span>
+                <span>92%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 92%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span>交互装置</span>
+                <span>80%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 80%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span>动态图形</span>
+                <span>85%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 85%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects-section" id="projects">
+      <div class="section-container">
+        <h2 class="section-title">精选作品</h2>
+        <div class="projects-grid">
+          <div class="project-card">
+            <img src="视觉设计.jpg" alt="品牌视觉设计">
+            <div class="project-info">
+              <div class="project-tags">
+                <span class="tag">AI</span>
+                <span class="tag">PS</span>
+                <span class="tag">视觉设计</span>
+              </div>
+              <h3 class="project-title">品牌视觉设计</h3>
+              <p class="project-desc">完整的品牌形象设计与视觉识别系统创作</p>
+              <div class="project-links">
+                <a href="project-branding.html" class="project-link">查看详情 →</a>
+              </div>
+            </div>
+          </div>
+          <div class="project-card">
+            <img src="装置.jpeg" alt="交互艺术装置">
+            <div class="project-info">
+              <div class="project-tags">
+                <span class="tag">TouchDesigner</span>
+                <span class="tag">交互</span>
+                <span class="tag">实时渲染</span>
+              </div>
+              <h3 class="project-title">交互艺术装置</h3>
+              <p class="project-desc">基于TouchDesigner的沉浸式交互体验设计</p>
+              <div class="project-links">
+                <a href="project-installation.html" class="project-link">查看详情 →</a>
+              </div>
+            </div>
+          </div>
+          <div class="project-card">
+            <img src="动态影像作品.png" alt="动态影像作品">
+            <div class="project-info">
+              <div class="project-tags">
+                <span class="tag">AE</span>
+                <span class="tag">动态图形</span>
+                <span class="tag">视频</span>
+              </div>
+              <h3 class="project-title">动态影像作品</h3>
+              <p class="project-desc">结合视觉特效与动态图形的创意影像创作</p>
+              <div class="project-links">
+                <a href="project-motion.html" class="project-link">查看详情 →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+      <div class="section-container">
+        <h2 class="section-title">联系我</h2>
+        <div class="contact-grid">
+          <div class="contact-info">
+            <h3>期待与您交流</h3>
+            <p>
+              无论是艺术创作、项目合作还是学术交流，都欢迎随时联系我。
+              让我们一起探索艺术与科技的无限可能！
+            </p>
+            <div class="contact-item">
+              <div class="contact-icon">📧</div>
+              <div class="contact-details">
+                <h4>邮箱</h4>
+                <p>2655377991@qq.com</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">🎓</div>
+              <div class="contact-details">
+                <h4>班级</h4>
+                <p>艺术与科技 242</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">👤</div>
+              <div class="contact-details">
+                <h4>姓名</h4>
+                <p>周思涵 (Sophia)</p>
+              </div>
+            </div>
+          </div>
+          <form class="contact-form" onsubmit="event.preventDefault(); alert('消息已发送！');">
+            <div class="form-group">
+              <label>姓名</label>
+              <input type="text" placeholder="您的姓名" required>
+            </div>
+            <div class="form-group">
+              <label>邮箱</label>
+              <input type="email" placeholder="your@email.com" required>
+            </div>
+            <div class="form-group">
+              <label>消息</label>
+              <textarea placeholder="告诉我您的想法..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">发送消息</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="social-links">
+        <a href="#" class="social-link">📧</a>
+        <a href="#" class="social-link">📷</a>
+        <a href="#" class="social-link">🎨</a>
+        <a href="#" class="social-link">✨</a>
+      </div>
+      <p class="footer-text">© 2026 Sophia Zhou. All rights reserved. | Art & Technology</p>
+    </footer>
+  </div>
+
+  <script>
+    // Enter website function
+    function enterWebsite() {
+      const welcomeScreen = document.getElementById('welcomeScreen');
+      welcomeScreen.classList.add('hidden');
+      setTimeout(() => {
+        welcomeScreen.style.display = 'none';
+      }, 800);
+    }
+
+    // Smooth scroll for navigation
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Scroll to projects section if URL has hash
+    window.addEventListener('DOMContentLoaded', function() {
+      if (window.location.hash === '#projects') {
+        // Immediately scroll to projects section
+        const projectsSection = document.getElementById('projects');
+        if (projectsSection) {
+          // Use instant scroll for better UX
+          projectsSection.scrollIntoView({ behavior: 'auto' });
+        }
+      }
+    });
+
+    // Animate skill bars on scroll
+    const observerOptions = {
+      threshold: 0.5,
+      rootMargin: '0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const progressBars = entry.target.querySelectorAll('.skill-progress');
+          progressBars.forEach(bar => {
+            const width = bar.style.width;
+            bar.style.width = '0';
+            setTimeout(() => {
+              bar.style.width = width;
+            }, 100);
+          });
+        }
+      });
+    }, observerOptions);
+
+    const skillsSection = document.querySelector('.skills-section');
+    if (skillsSection) {
+      observer.observe(skillsSection);
+    }
+  </script>
+</body>
+</html>
