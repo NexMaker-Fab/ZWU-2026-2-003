@@ -214,6 +214,40 @@
                 </ul>
             </div>
 
+            <!-- Arduino Uno R4 WiFi 开发板介绍 -->
+            <div class="content-section" style="margin-top: 40px;">
+                <h3>🔧 Arduino Uno R4 WiFi 开发板介绍</h3>
+                <p style="color: #666; margin-bottom: 20px;">Arduino Uno R4 WiFi 是 Arduino 官方推出的最新一代 Uno 系列开发板，基于 Renesas RA4M1 微控制器，集成了 WiFi 和蓝牙功能，性能更强、功能更丰富。</p>
+
+                <div class="process-step">
+                    <h4> 主要特性</h4>
+                    <ul style="margin-left: 20px; line-height: 1.8;">
+                        <li><strong>处理器</strong>：Renesas RA4M1 (ARM Cortex-M4)，48MHz 主频</li>
+                        <li><strong>内存</strong>：32KB SRAM + 256KB Flash</li>
+                        <li><strong>无线连接</strong>：集成 ESP32-S3 模块，支持 WiFi 和 Bluetooth Low Energy (BLE)</li>
+                        <li><strong>I/O 引脚</strong>：14个数字I/O（其中6个PWM），6个模拟输入</li>
+                        <li><strong>通信接口</strong>：UART、I2C、SPI、USB-C</li>
+                        <li><strong>供电</strong>：通过 USB-C 或 VIN 引脚供电（7-24V）</li>
+                        <li><strong>尺寸</strong>：与经典 Uno 兼容，可直接使用现有 Shield</li>
+                    </ul>
+                </div>
+
+                <div class="process-step">
+                    <h4>📌 应用场景</h4>
+                    <p>Arduino Uno R4 WiFi 适用于物联网项目、智能家居控制、远程数据采集、无线传感器网络等需要网络连接的场景。相比传统 Uno，它无需额外的 WiFi 模块即可实现联网功能。</p>
+                </div>
+
+                <div class="image-illustration">
+                    <img src="assets/Arduino Uno R4 WIFI.webp" alt="Arduino Uno R4 WiFi 开发板" onclick="openImageModal(this.src)">
+                    <p>图：Arduino Uno R4 WiFi 开发板实物图</p>
+                </div>
+
+                <div class="process-step" style="margin-top: 20px;">
+                    <p style="color: #5B7C99; font-weight: bold;">🔗 了解更多：</p>
+                    <p>访问 Arduino 官方商店查看详细信息和技术规格：<a href="https://store.arduino.cc/products/uno-r4-wifi" target="_blank" style="color: #ff6b6b; text-decoration: underline;">https://store.arduino.cc/products/uno-r4-wifi</a></p>
+                </div>
+            </div>
+
             <!-- Arduino IDE 基础操作介绍 -->
             <div class="content-section" style="margin-top: 40px;">
                 <h3>💻 Arduino IDE 基础操作介绍</h3>
@@ -294,13 +328,11 @@
             </div>
 
             <!-- 传感器导航栏 -->
-            <div class="sensor-nav-container">
-                <div class="sensor-dropdown">
-                    <button class="sensor-btn active" data-sensor="ws2812">HC-SR04、WS2812、HS-S05B</button>
-                    <div class="sensor-submenu">
-                        <button class="submenu-btn active" data-view="ws2812-process">制作过程</button>
-                        <button class="submenu-btn" data-view="ws2812-final">最终成果</button>
-                    </div>
+            <div class="sensor-nav-container" style="flex-direction: column; align-items: center;">
+                <button class="sensor-btn active" data-sensor="ws2812" style="margin-bottom: 15px;">HC-SR04、WS2812、HS-S05B</button>
+                <div style="display: flex; gap: 15px;">
+                    <button class="submenu-btn active" data-view="ws2812-process">制作过程</button>
+                    <button class="submenu-btn" data-view="ws2812-final">最终成果</button>
                 </div>
             </div>
 
