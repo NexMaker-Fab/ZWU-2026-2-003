@@ -5,6 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Week 6 - 材料介绍</title>
     <link rel="stylesheet" href="../../style.css">
+    <style>
+        .image-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 15px;
+        }
+        .image-box {
+            flex: 1 1 300px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(168, 210, 255, 0.3);
+            border-radius: 16px;
+            padding: 12px;
+            text-align: center;
+        }
+        .image-box img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.25s ease;
+        }
+        .image-box img:hover {
+            transform: scale(1.03);
+        }
+        .image-box p {
+            margin-top: 10px;
+            color: #5B7C99;
+            font-size: 0.95rem;
+        }
+        @media (max-width: 900px) {
+            .image-row {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -59,12 +95,18 @@
                             <strong>后处理工艺：</strong>通常采用阳极氧化处理来增强耐腐蚀性和装饰性，产生各种颜色（如银色、黑色、土豪金等）。
                         </div>
                     </div>
-                    <div class="image-illustration" style="margin-top: 15px;">
-                        <img src="assets/铝合金.webp" alt="6063铝合金材料" onclick="openImageModal(this.src)">
-                        <p>图：6063铝合金材料示例</p>
-                        <p style="font-size: 12px; color: #888; margin-top: 8px;">
-                            <a href="https://page.quark.cn/baike?id=b6d86ac3ff014986b9a16597c6898d8e" target="_blank" style="color: #5B7C99; text-decoration: underline;">图片来源</a>
-                        </p>
+                    <div class="image-row">
+                        <div class="image-box">
+                            <img src="assets/铝合金.webp" alt="6063铝合金材料" onclick="openImageModal(this.src)">
+                            <p>材料图</p>
+                        </div>
+                        <div class="image-box">
+                            <img src="assets/铝合金应用图.webp" alt="铝合金实际应用图" onclick="openImageModal(this.src)">
+                            <p>实际应用图</p>
+                            <p style="font-size: 12px; color: #888; margin-top: 8px;">
+                                <a href="https://page.quark.cn/baike?id=b6d86ac3ff014986b9a16597c6898d8e" target="_blank" style="color: #5B7C99; text-decoration: underline;">图片来源</a>
+                            </p>
+                        </div>
                     </div>
                 </div>
 
@@ -84,12 +126,18 @@
                             <strong>环保性能：</strong>聚丙烯可完全回收利用，是最环保的通用塑料之一，标号为"5"或"PP"。
                         </div>
                     </div>
-                    <div class="image-illustration" style="margin-top: 15px;">
-                        <img src="assets/聚乙烯.webp" alt="聚丙烯（PP）材料" onclick="openImageModal(this.src)">
-                        <p>图：聚丙烯（PP）塑料材料示例</p>
-                        <p style="font-size: 12px; color: #888; margin-top: 8px;">
-                            <a href="https://www.51pla.com/html/sellinfo/397/39783348.htm" target="_blank" style="color: #5B7C99; text-decoration: underline;">图片来源</a>
-                        </p>
+                    <div class="image-row">
+                        <div class="image-box">
+                            <img src="assets/聚乙烯.webp" alt="聚丙烯（PP）材料" onclick="openImageModal(this.src)">
+                            <p>材料图</p>
+                        </div>
+                        <div class="image-box">
+                            <img src="assets/聚丙烯实际应用.png" alt="聚丙烯实际应用图" onclick="openImageModal(this.src)">
+                            <p>实际应用图</p>
+                            <p style="font-size: 12px; color: #888; margin-top: 8px;">
+                                <a href="https://www.51pla.com/html/sellinfo/397/39783348.htm" target="_blank" style="color: #5B7C99; text-decoration: underline;">图片来源</a>
+                            </p>
+                        </div>
                     </div>
                 </div>
 
@@ -109,12 +157,18 @@
                             <strong>优缺点：</strong>优点是成本低、便于成型、易于维修；缺点是长期日晒容易老化，需要定期维护。
                         </div>
                     </div>
-                    <div class="image-illustration" style="margin-top: 15px;">
-                        <img src="assets/玻璃纤维增强塑料.webp" alt="玻璃纤维增强塑料（GFRP）材料" onclick="openImageModal(this.src)">
-                        <p>图：玻璃纤维增强塑料（GFRP）材料示例</p>
-                        <p style="font-size: 12px; color: #888; margin-top: 8px;">
-                            <a href="https://chinese.alibaba.com/g/frp-rebars.html" target="_blank" style="color: #5B7C99; text-decoration: underline;">图片来源</a>
-                        </p>
+                    <div class="image-row">
+                        <div class="image-box">
+                            <img src="assets/玻璃纤维增强塑料.webp" alt="玻璃纤维增强塑料（GFRP）材料" onclick="openImageModal(this.src)">
+                            <p>材料图</p>
+                        </div>
+                        <div class="image-box">
+                            <img src="assets/玻璃纤维增强塑料.webp" alt="玻璃纤维增强塑料实际应用图" onclick="openImageModal(this.src)">
+                            <p>实际应用图</p>
+                            <p style="font-size: 12px; color: #888; margin-top: 8px;">
+                                <a href="https://chinese.alibaba.com/g/frp-rebars.html" target="_blank" style="color: #5B7C99; text-decoration: underline;">图片来源</a>
+                            </p>
+                        </div>
                     </div>
                 </div>
 
@@ -134,12 +188,18 @@
                             <strong>缺点与改进：</strong>脆性大，受到撞击时容易崩口或碎裂。为改善断裂韧性，可以添加少量的氧化锆（ZrO₂）制成复合陶瓷，显著提高抗冲击能力。
                         </div>
                     </div>
-                    <div class="image-illustration" style="margin-top: 15px;">
-                        <img src="assets/氧化铝陶瓷.webp" alt="氧化铝陶瓷（Al₂O₃）材料" onclick="openImageModal(this.src)">
-                        <p>图：氧化铝陶瓷（Al₂O₃）材料示例</p>
-                        <p style="font-size: 12px; color: #888; margin-top: 8px;">
-                            <a href="http://www.fmd99.com.cn/products/yhltcz.html" target="_blank" style="color: #5B7C99; text-decoration: underline;">图片来源</a>
-                        </p>
+                    <div class="image-row">
+                        <div class="image-box">
+                            <img src="assets/氧化铝陶瓷.webp" alt="氧化铝陶瓷（Al₂O₃）材料" onclick="openImageModal(this.src)">
+                            <p>材料图</p>
+                        </div>
+                        <div class="image-box">
+                            <img src="assets/陶瓷应用.png" alt="氧化铝陶瓷实际应用图" onclick="openImageModal(this.src)">
+                            <p>实际应用图</p>
+                            <p style="font-size: 12px; color: #888; margin-top: 8px;">
+                                <a href="http://www.fmd99.com.cn/products/yhltcz.html" target="_blank" style="color: #5B7C99; text-decoration: underline;">图片来源</a>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -167,12 +227,18 @@
                             <strong>当前瓶颈：</strong>大规模制备技术和成本仍然是主要难题，目前主要采用机械剥离法、化学气相沉积法（CVD）和化学还原法。
                         </div>
                     </div>
-                    <div class="image-illustration" style="margin-top: 15px;">
-                        <img src="assets/石墨烯.jpeg" alt="石墨烯材料" onclick="openImageModal(this.src)">
-                        <p>图：石墨烯材料结构示意图</p>
-                        <p style="font-size: 12px; color: #888; margin-top: 8px;">
-                            <a href="https://page.quark.cn/baike?id=ab0e2dd9615242fdab62511cd7d4b1b0" target="_blank" style="color: #5B7C99; text-decoration: underline;">图片来源</a>
-                        </p>
+                    <div class="image-row">
+                        <div class="image-box">
+                            <img src="assets/石墨烯.jpeg" alt="石墨烯材料" onclick="openImageModal(this.src)">
+                            <p>材料图</p>
+                        </div>
+                        <div class="image-box">
+                            <img src="assets/石墨烯应用.png" alt="石墨烯实际应用图" onclick="openImageModal(this.src)">
+                            <p>实际应用图</p>
+                            <p style="font-size: 12px; color: #888; margin-top: 8px;">
+                                <a href="https://page.quark.cn/baike?id=ab0e2dd9615242fdab62511cd7d4b1b0" target="_blank" style="color: #5B7C99; text-decoration: underline;">图片来源</a>
+                            </p>
+                        </div>
                     </div>
                 </div>
 
@@ -195,12 +261,18 @@
                             <strong>潜在应用：</strong>未来正逐步应用于建筑节能外墙涂料、高性能冬季防寒服装面料、冬季鞋类内衬、油气管道保温和工业窑炉隔热。
                         </div>
                     </div>
-                    <div class="image-illustration" style="margin-top: 15px;">
-                        <img src="assets/气凝胶.webp" alt="二氧化硅气凝胶材料" onclick="openImageModal(this.src)">
-                        <p>图：二氧化硅气凝胶材料示例</p>
-                        <p style="font-size: 12px; color: #888; margin-top: 8px;">
-                            <a href="https://www.bilibili.com/video/BV1FoC1YyEAx/?vd_source=5a4832b8424d6f126d58c97354c1abd3" target="_blank" style="color: #5B7C99; text-decoration: underline;">图片来源</a>
-                        </p>
+                    <div class="image-row">
+                        <div class="image-box">
+                            <img src="assets/气凝胶.webp" alt="二氧化硅气凝胶材料" onclick="openImageModal(this.src)">
+                            <p>材料图</p>
+                        </div>
+                        <div class="image-box">
+                            <img src="assets/气凝胶.webp" alt="气凝胶实际应用图" onclick="openImageModal(this.src)">
+                            <p>实际应用图</p>
+                            <p style="font-size: 12px; color: #888; margin-top: 8px;">
+                                <a href="https://www.bilibili.com/video/BV1FoC1YyEAx/?vd_source=5a4832b8424d6f126d58c97354c1abd3" target="_blank" style="color: #5B7C99; text-decoration: underline;">图片来源</a>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
