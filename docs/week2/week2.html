@@ -214,6 +214,80 @@
                 </ul>
             </div>
 
+            <!-- Arduino IDE 基础操作介绍 -->
+            <div class="content-section" style="margin-top: 40px;">
+                <h3>💻 Arduino IDE 基础操作介绍</h3>
+                <p style="color: #666; margin-bottom: 20px;">在开始编写代码之前，首先需要了解 Arduino IDE 的基本界面和操作。Arduino IDE 是官方提供的集成开发环境，用于编写、编译和上传代码到 Arduino 开发板。</p>
+
+                <div class="process-step">
+                    <h4>📌 第一步：认识 Arduino IDE 界面</h4>
+                    <p>打开 Arduino IDE 后，可以看到主界面包含以下几个重要区域：</p>
+                    <ul style="margin-left: 20px; line-height: 1.8;">
+                        <li><strong>菜单栏</strong>：位于顶部，包含文件、编辑、项目、工具等选项</li>
+                        <li><strong>工具栏</strong>：包含常用功能按钮，如验证（✓）、上传（→）、新建、打开、保存等</li>
+                        <li><strong>代码编辑区</strong>：中间最大的区域，用于编写和编辑 Arduino 代码</li>
+                        <li><strong>消息输出区</strong>：底部显示编译信息、错误提示和串口通信数据</li>
+                    </ul>
+                    
+                    <div class="image-illustration">
+                        <img src="assets/First step.png" alt="Arduino IDE 界面介绍" onclick="openImageModal(this.src)">
+                        <p>图1：Arduino IDE 主界面及操作区域说明</p>
+                    </div>
+                </div>
+
+                <div class="process-step">
+                    <h4>📌 第二步：选择正确的开发板和端口</h4>
+                    <p>在上传代码之前，必须确保选择了正确的开发板型号和通信端口：</p>
+                    <ol style="margin-left: 20px; line-height: 1.8;">
+                        <li>点击菜单栏的 <strong>工具（Tools）</strong></li>
+                        <li>选择 <strong>开发板（Board）</strong> → 找到并选择 <strong>Arduino Uno R4 WiFi</strong>（或其他你使用的型号）</li>
+                        <li>选择 <strong>端口（Port）</strong> → 选择已连接的 COM 端口（Windows）或 /dev/ttyUSB*（Linux/Mac）</li>
+                    </ol>
+                    <p style="color: #ff6b6b; font-weight: bold; margin-top: 10px;">⚠️ 注意：如果找不到对应的端口，请检查 USB 线是否连接好，并确保安装了相应的驱动程序。</p>
+                    
+                    <div class="image-illustration">
+                        <img src="assets/Second step.png" alt="选择开发板和端口" onclick="openImageModal(this.src)">
+                        <p>图2：在 Arduino IDE 中选择开发板型号和通信端口</p>
+                    </div>
+                </div>
+
+                <div class="process-step">
+                    <h4>📌 第三步：理解 setup() 和 loop() 函数</h4>
+                    <p>每个 Arduino 程序都必须包含两个核心函数：<strong>setup()</strong> 和 <strong>loop()</strong>。它们是程序的入口点和运行主体。</p>
+                    
+                    <h5 style="margin-top: 15px; color: #5B7C99;">setup() 函数</h5>
+                    <p><strong>作用</strong>：只在程序开始时运行一次，用于初始化设置。</p>
+                    <p><strong>常见用途</strong>：设置引脚模式、初始化串口通信、配置传感器等。</p>
+                    <p><strong>示例</strong>：</p>
+                    <ul style="margin-left: 20px; line-height: 1.6;">
+                        <li><code>pinMode(LED_BUILTIN, OUTPUT)</code> - 设置LED引脚为输出模式</li>
+                        <li><code>Serial.begin(9600)</code> - 启动串口通信</li>
+                    </ul>
+                    
+                    <h5 style="margin-top: 15px; color: #5B7C99;">loop() 函数</h5>
+                    <p><strong>作用</strong>：在 setup() 执行完后，会无限循环运行，是程序的主要逻辑部分。</p>
+                    <p><strong>常见用途</strong>：读取传感器数据、控制输出设备、执行判断逻辑等。</p>
+                    <p><strong>示例</strong>：</p>
+                    <ul style="margin-left: 20px; line-height: 1.6;">
+                        <li><code>digitalWrite(LED_BUILTIN, HIGH)</code> - 点亮LED</li>
+                        <li><code>delay(1000)</code> - 延时1秒</li>
+                        <li><code>analogRead(A0)</code> - 读取模拟引脚数据</li>
+                    </ul>
+                    
+                    <div class="code-block" style="margin-top: 20px;">
+                        <pre><code><span class="code-type">void</span> <span class="code-function">setup</span>() {
+    <span class="code-comment">// Runs only once here</span>
+}
+
+<span class="code-type">void</span> <span class="code-function">loop</span>() {
+    <span class="code-comment">// Loops repeatedly here</span>
+}</code></pre>
+                    </div>
+                    
+                    <p style="margin-top: 15px; color: #666;"><strong>简单例子</strong>：如果你想让板载LED闪烁，可以在 setup() 中设置引脚模式，在 loop() 中反复开关LED并延时。</p>
+                </div>
+            </div>
+
             <!-- 传感器导航栏 -->
             <div class="sensor-nav-container">
                 <div class="sensor-dropdown">
