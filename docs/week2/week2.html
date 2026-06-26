@@ -468,20 +468,27 @@
 
             <!-- 传感器导航栏 -->
             <div class="sensor-nav-container" style="flex-direction: column; align-items: center;">
-                <button class="sensor-btn active" data-sensor="ws2812" style="margin-bottom: 15px;">HC-SR04、WS2812、HS-S05B</button>
-                <div style="display: flex; gap: 15px;">
-                    <button class="submenu-btn active" data-view="ws2812-process">制作过程</button>
-                    <button class="submenu-btn" data-view="ws2812-final">最终成果</button>
-                </div>
+                <button class="sensor-btn active" data-sensor="ws2812">HC-SR04、WS2812、HS-S05B</button>
             </div>
 
-            <!-- HC-SR04、WS2812、HS-S05B 制作过程 -->
-            <div id="ws2812-process" class="sensor-content active">
+            <!-- HC-SR04、WS2812、HS-S05B 制作过程与最终成果 -->
+            <div id="ws2812-content" class="sensor-content active">
                 <div class="content-section">
                     <h3>🔨 HC-SR04、WS2812、HS-S05B - 制作过程记录</h3>
                     <div class="process-step">
                         <h4>📌 第一步：硬件准备</h4>
                         <p>采购 Arduino Uno R4 WIFI开发板、HC-SR04超声波传感器、WS2812灯环、HS-S05B声音传感器、面包板及杜邦线若干。</p>
+                        
+                        <h5 style="margin-top: 20px; color: #5B7C99;">运用到的 Arduino 硬件分析</h5>
+                        
+                        <h6>1. HC-SR04超声波传感器</h6>
+                        <p>HC-SR04是一款常用的超声波测距模块，通过发射40kHz超声波并接收回波来测量物体距离。其工作原理是：Trig引脚发送一个10μs的高电平触发信号，模块自动发射8个40kHz的方波，Echo引脚输出高电平，高电平的持续时间即为超声波往返时间。通过公式"距离 = (高电平时间 × 声速) / 2"可计算出距离（声速约为340m/s）。HC-SR04的测量范围为2cm至400cm，精度可达3mm，广泛应用于避障机器人、智能小车、液位检测及距离感应等场景。</p>
+                        
+                        <h6>2. WS2812灯环</h6>
+                        <p>WS2812灯环是将多颗可寻址LED集成于一体的环形RGB灯板，每颗灯珠内置驱动芯片，仅需一根信号线即可独立控制每颗灯珠的任意颜色和亮度。使用时将VCC接5V、GND接地、DI接Arduino的数字引脚，配合FastLED库即可轻松实现跑马灯、呼吸灯等炫彩效果。常用于指示灯、氛围灯、创意装饰及互动灯光项目中。</p>
+                        
+                        <h6>3. HS-S05B声音传感器</h6>
+                        <p>HS-S05B声音传感器是一种高灵敏度的声音检测模块，能够识别环境中的声音信号，如拍手声、吹气声等。使用时将VCC接5V、GND接地、A接Arduino的模拟输入引脚，通过analogRead()函数读取声音强度值，可根据阈值判断是否检测到声音。常用于声控开关、互动装置、音乐节奏检测及语音控制等场景。</p>
                     </div>
                     <div class="process-step">
                         <h4>📌 第二步：电路搭建</h4>
@@ -676,34 +683,19 @@
                         <h4>📌 第四步：测试与调试</h4>
                         <p>逐个测试各传感器功能：调整超声波传感器的测量精度，确保距离数据准确；调节声音传感器的阈值，避免环境噪音误触发；优化灯环颜色和亮度，使视觉效果更流畅。遇到问题：超声波测量偶尔不稳定，通过多次测量取平均值解决；声音传感器过于敏感，通过提高阈值和添加延时防抖解决。</p>
                     </div>
-                </div>
-            </div>
-
-            <!-- HC-SR04、WS2812、HS-S05B 最终成果 -->
-            <div id="ws2812-final" class="sensor-content">
-                <div class="content-section">
-                    <h3> HC-SR04、WS2812、HS-S05B - 最终成果展示</h3>
-
-                    <div class="hardware-section">
-                        <h4>🔧 运用到的 Arduino 硬件分析</h4>
-
-                        <h5>1. HC-SR04超声波传感器</h5>
-                        <p>HC-SR04是一款常用的超声波测距模块，通过发射40kHz超声波并接收回波来测量物体距离。其工作原理是：Trig引脚发送一个10μs的高电平触发信号，模块自动发射8个40kHz的方波，Echo引脚输出高电平，高电平的持续时间即为超声波往返时间。通过公式“距离 = (高电平时间 × 声速) / 2”可计算出距离（声速约为340m/s）。HC-SR04的测量范围为2cm至400cm，精度可达3mm，广泛应用于避障机器人、智能小车、液位检测及距离感应等场景。</p>
-
-                        <h5>2. WS2812灯环</h5>
-                        <p>WS2812灯环是将多颗可寻址LED集成于一体的环形RGB灯板，每颗灯珠内置驱动芯片，仅需一根信号线即可独立控制每颗灯珠的任意颜色和亮度。使用时将VCC接5V、GND接地、DI接Arduino的数字引脚，配合FastLED库即可轻松实现跑马灯、呼吸灯等炫彩效果。常用于指示灯、氛围灯、创意装饰及互动灯光项目中。</p>
-
-                        <h5>3. HS-S05B声音传感器</h5>
-                        <p>HS-S05B声音传感器是一种高灵敏度的声音检测模块，能够识别环境中的声音信号，如拍手声、吹气声等。使用时将VCC接5V、GND接地、A接Arduino的模拟输入引脚，通过analogRead()函数读取声音强度值，可根据阈值判断是否检测到声音。常用于声控开关、互动装置、音乐节奏检测及语音控制等场景。</p>
-                    </div>
-
-                    <div class="hardware-section">
-                        <h4> 应用场景展示</h4>
-                        <p>通过HC-SR04超声波传感器测量距离，根据距离远近动态控制WS2812灯环点亮的LED数量和颜色；同时通过HS-S05B声音传感器检测吹气声音，触发灯环旋转模式。装置可用于创意装饰、智能感应灯、互动展示等场景，实现距离感应和声控互动的双重功能。</p>
-
-                        <div class="image-illustration">
-                            <img src="assets/arduino1.gif" alt="WS2812和HS-S05B应用场景展示" onclick="openImageModal(this.src)">
-                            <p>图1：WS2812和HS-S05B 应用场景展示</p>
+            
+                    <!-- 最终成果展示 -->
+                    <div class="hardware-section" style="margin-top: 40px; border-top: 2px solid #5B7C99; padding-top: 30px;">
+                        <h3>✅ HC-SR04、WS2812、HS-S05B - 最终成果展示</h3>
+            
+                        <div class="hardware-section">
+                            <h4>🎯 应用场景展示</h4>
+                            <p>通过HC-SR04超声波传感器测量距离，根据距离远近动态控制WS2812灯环点亮的LED数量和颜色；同时通过HS-S05B声音传感器检测吹气声音，触发灯环旋转模式。装置可用于创意装饰、智能感应灯、互动展示等场景，实现距离感应和声控互动的双重功能。</p>
+            
+                            <div class="image-illustration">
+                                <img src="assets/arduino1.gif" alt="WS2812和HS-S05B应用场景展示" onclick="openImageModal(this.src)">
+                                <p>图1：WS2812和HS-S05B 应用场景展示</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -729,7 +721,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalClose = document.getElementById('modalClose');
     const goHome = document.getElementById('goHome');
     const sensorBtns = document.querySelectorAll('.sensor-btn');
-    const submenuBtns = document.querySelectorAll('.submenu-btn');
+
     const sensorContents = document.querySelectorAll('.sensor-content');
 
     // 传感器按钮点击事件
@@ -739,27 +731,6 @@ document.addEventListener('DOMContentLoaded', () => {
             sensorBtns.forEach(b => b.classList.remove('active'));
             // 添加active类到当前按钮
             btn.classList.add('active');
-        });
-    });
-
-    // 子菜单按钮点击事件
-    submenuBtns.forEach((btn) => {
-        btn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const viewId = btn.dataset.view;
-            
-            // 移除所有submenu-btn的active类
-            submenuBtns.forEach(b => b.classList.remove('active'));
-            // 添加active类到当前按钮
-            btn.classList.add('active');
-            
-            // 隐藏所有内容
-            sensorContents.forEach(content => content.classList.remove('active'));
-            // 显示对应内容
-            const targetContent = document.getElementById(viewId);
-            if (targetContent) {
-                targetContent.classList.add('active');
-            }
         });
     });
 

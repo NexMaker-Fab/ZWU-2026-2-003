@@ -99,16 +99,58 @@
 
                 <div class="final-version-content">
                     <h3>🎯 最终成果展示</h3>
-                    <p class="editable-note">本次 CAD 小车建模重点分为四个阶段：座椅结构建模、车窗草图与拉伸、车身刻字装饰，以及最终整车展示。每一阶段都先完成草图，再进行实体化与细节优化，最终形成一套完整、连贯的建模流程。</p>
+                    <p class="editable-note">本次 CAD 小车建模重点分为七个阶段：下载开源小车模型、座椅结构建模、车窗草图与拉伸、新增方向盘部件、车身刻字装饰、小车装配过程，以及最终整车展示。每一阶段都先完成草图，再进行实体化与细节优化，最终形成一套完整、连贯的建模流程。</p>
                     <div class="hardware-section">
                         <h4>🚗 项目介绍</h4>
                         <p contenteditable="true">本周我们继续使用 Fusion 360 完成 CAD 建模练习，重点在于补充座椅、车窗和车身细节，使模型从基础结构逐步走向完整的外观展示。</p>
 
                         <h4>🧩 建模工具与任务</h4>
-                        <p contenteditable="true">工具：Fusion 360。任务：完成座位草图与成品、车窗草图与拉伸、车身刻字设计，以及最终整车呈现，并整理各阶段说明。</p>
+                        <p contenteditable="true">工具：Fusion 360。任务：从 Sophicar 官网下载开源教育小车模型，完成座位草图与成品、车窗草图与拉伸、方向盘部件添加、车身刻字设计、零部件装配，以及最终整车呈现，并整理各阶段说明。</p>
 
                         <div class="version-block">
-                            <h5>阶段一：座位结构设计</h5>
+                            <h5>阶段一：下载开源小车模型</h5>
+                            <p contenteditable="true">本阶段从 Sophicar 官网下载参数化建模开源教育小车模型，作为后续建模练习的基础。通过选择合适的小车模型并导出文件，为后续的座椅、车窗等部件建模提供完整的底盘和车身框架。</p>
+                            <div class="stage-note">
+                                <span class="stage-chip">设计重点</span>
+                                <ul>
+                                    <li>访问 Sophicar 官网获取开源教育模型资源</li>
+                                    <li>选择合适的参数化小车模型进行下载</li>
+                                    <li>正确命名并导出文件到 Fusion 360 中</li>
+                                    <li>确保模型格式兼容，便于后续编辑</li>
+                                </ul>
+                            </div>
+                            <div class="reference-link">
+                                <p><strong> 下载链接：</strong><a href="http://www.sophicar.com/parametric-modeling" target="_blank">http://www.sophicar.com/parametric-modeling</a></p>
+                                <p style="margin-top: 0.5rem; font-size: 0.85rem;">Sophicar 提供了丰富的参数化建模教育资源，包括各类开源小车模型，适合学习和实践使用。</p>
+                            </div>
+                            <div class="version-layout">
+                                <div class="version-column">
+                                    <h6>选择模型阶段</h6>
+                                    <div class="image-grid">
+                                        <div class="image-illustration">
+                                            <p class="image-description">步骤1：选择开源教育小车模型。在 Sophicar 官网上浏览可用的参数化小车模型，根据学习需求选择合适的车型进行下载。</p>
+                                            <img src="assets/c20.png" alt="选择小车模型" onclick="openImageModal(this.src)">
+                                            <p>选择开源教育小车模型</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="version-layout" style="margin-top: 20px;">
+                                <div class="version-column">
+                                    <h6>导出文件阶段</h6>
+                                    <div class="image-grid">
+                                        <div class="image-illustration">
+                                            <p class="image-description">步骤2：命名并导出文件。为下载的模型文件设置清晰的命名规则，并将其导出为 Fusion 360 支持的格式，方便后续导入和编辑。</p>
+                                            <img src="assets/c21.jpg" alt="导出文件" onclick="openImageModal(this.src)">
+                                            <p>命名并导出文件</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="version-block">
+                            <h5>阶段二：座位结构设计</h5>
                             <p contenteditable="true">这一阶段从座椅的轮廓与支撑关系入手，先确定整体比例，再通过草图转实体完成座椅的基础形态与稳定性布局。它是后续车身细节融合的基础。</p>
                             <div class="stage-note">
                                 <span class="stage-chip">设计重点</span>
@@ -123,12 +165,17 @@
                                     <h6>座位草图阶段</h6>
                                     <div class="image-grid">
                                         <div class="image-illustration">
-                                            <p class="image-description">步骤1：创建草图。在 Fusion 360 中选择合适的工作平面，使用线条工具绘制座椅的基础轮廓，确定整体形状和比例关系。</p>
+                                            <p class="image-description">步骤1：导入小车模型。将之前下载的开源教育小车模型文件导入到 Fusion 360 中，作为座椅建模的基础参考框架。</p>
+                                            <img src="assets/c32.png" alt="导入小车模型" onclick="openImageModal(this.src)">
+                                            <p>导入小车模型</p>
+                                        </div>
+                                        <div class="image-illustration">
+                                            <p class="image-description">步骤2：创建草图。在 Fusion 360 中选择合适的工作平面，使用线条工具绘制座椅的基础轮廓，确定整体形状和比例关系。</p>
                                             <img src="assets/c5.jpg" alt="座位草图 1" onclick="openImageModal(this.src)">
                                             <p>座位草图 1</p>
                                         </div>
                                         <div class="image-illustration">
-                                            <p class="image-description">步骤2：创建图形并标注尺寸。为草图中的关键部位添加尺寸约束，确保座椅的宽度、深度和高度符合设计要求，建立精确的尺寸体系。</p>
+                                            <p class="image-description">步骤3：创建图形并标注尺寸。为草图中的关键部位添加尺寸约束，确保座椅的宽度、深度和高度符合设计要求，建立精确的尺寸体系。</p>
                                             <img src="assets/c6.png" alt="座位草图 2" onclick="openImageModal(this.src)">
                                             <p>座位草图 2</p>
                                         </div>
@@ -138,17 +185,17 @@
                                     <h6>座位成品阶段</h6>
                                     <div class="image-grid">
                                         <div class="image-illustration">
-                                            <p class="image-description">步骤3：拉伸成型。将二维草图沿垂直方向进行拉伸操作，生成三维实体结构，形成座椅的基本形态和厚度。</p>
+                                            <p class="image-description">步骤4：拉伸成型。将二维草图沿垂直方向进行拉伸操作，生成三维实体结构，形成座椅的基本形态和厚度。</p>
                                             <img src="assets/c7.png" alt="座位草图 3" onclick="openImageModal(this.src)">
                                             <p>座位草图 3</p>
                                         </div>
                                         <div class="image-illustration">
-                                            <p class="image-description">步骤4：约束后的草图优化。对草图添加几何约束（如平行、垂直、相切等），确保各部分之间的位置关系准确，提高模型的稳定性和可编辑性。</p>
+                                            <p class="image-description">步骤5：约束后的草图优化。对草图添加几何约束（如平行、垂直、相切等），确保各部分之间的位置关系准确，提高模型的稳定性和可编辑性。</p>
                                             <img src="assets/c8.png" alt="座位草图 4" onclick="openImageModal(this.src)">
                                             <p>座位草图 4</p>
                                         </div>
                                         <div class="image-illustration">
-                                            <p class="image-description">步骤5：座位草图成品。完成所有约束和优化后，座椅的三维模型呈现最终效果，包括完整的轮廓、精确的尺寸和稳定的结构，可以进入下一阶段的车窗建模。</p>
+                                            <p class="image-description">步骤6：座位草图成品。完成所有约束和优化后，座椅的三维模型呈现最终效果，包括完整的轮廓、精确的尺寸和稳定的结构，可以进入下一阶段的车窗建模。</p>
                                             <img src="assets/c9.png" alt="座位成品" onclick="openImageModal(this.src)">
                                             <p>完成后的座位成品</p>
                                         </div>
@@ -158,7 +205,7 @@
                         </div>
 
                         <div class="version-block">
-                            <h5>阶段二：车窗草图与拉伸</h5>
+                            <h5>阶段三：车窗草图与拉伸</h5>
                             <p contenteditable="true">这一阶段重点处理车窗的轮廓与立体化表现。先用草图定义窗体形状，再通过拉伸和边缘修整把平面的轮廓转换成具有厚度感的车窗结构，使其与车身表面过渡得更自然。</p>
                             <div class="stage-note">
                                 <span class="stage-chip">设计重点</span>
@@ -187,7 +234,73 @@
                         </div>
 
                         <div class="version-block">
-                            <h5>阶段三：车身刻字与尾翼设计</h5>
+                            <h5>阶段四：新增方向盘部件</h5>
+                            <p contenteditable="true">本阶段从 Autodesk 社区下载开源方向盘模型，作为小车驾驶舱的重要组成部分。通过选择合适的方向盘模型、导入并调整到项目中，为小车增加更真实的驾驶体验和细节表现。</p>
+                            <div class="stage-note">
+                                <span class="stage-chip">设计重点</span>
+                                <ul>
+                                    <li>访问 Autodesk 社区获取开源方向盘模型资源</li>
+                                    <li>选择适合本项目比例的方向盘模型进行下载</li>
+                                    <li>正确重命名并另存到当前项目文件中</li>
+                                    <li>确保方向盘与座椅、仪表盘等部件协调配合</li>
+                                </ul>
+                            </div>
+                            <div class="reference-link">
+                                <p><strong> 下载链接：</strong><a href="https://www.autodesk.com/community/gallery/project/24696/steering-wheel-5" target="_blank">https://www.autodesk.com/community/gallery/project/24696/steering-wheel-5</a></p>
+                                <p style="margin-top: 0.5rem; font-size: 0.85rem;">Autodesk 社区提供了丰富的 3D 模型资源，包括各类汽车零部件模型，适合学习和实践使用。</p>
+                            </div>
+                            <div class="version-layout">
+                                <div class="version-column">
+                                    <h6>下载模型阶段</h6>
+                                    <div class="image-grid">
+                                        <div class="image-illustration">
+                                            <p class="image-description">步骤1：下载方向盘模型。在 Autodesk 社区浏览可用的方向盘模型，根据学习需求选择合适的车型进行下载。</p>
+                                            <img src="assets/c22.png" alt="下载方向盘模型" onclick="openImageModal(this.src)">
+                                            <p>下载方向盘模型</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="version-layout" style="margin-top: 20px;">
+                                <div class="version-column">
+                                    <h6>选中模型阶段</h6>
+                                    <div class="image-grid">
+                                        <div class="image-illustration">
+                                            <p class="image-description">步骤2：选中本项目模型。在 Fusion 360 中打开已下载的模型文件，确认模型内容并准备进行后续编辑。</p>
+                                            <img src="assets/c23.png" alt="选中项目模型" onclick="openImageModal(this.src)">
+                                            <p>选中本项目模型</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="version-layout" style="margin-top: 20px;">
+                                <div class="version-column">
+                                    <h6>重命名另存阶段</h6>
+                                    <div class="image-grid">
+                                        <div class="image-illustration">
+                                            <p class="image-description">步骤3：重命名并另存。为方向盘模型设置清晰的命名规则，并将其另存到当前项目文件中，方便后续整合和编辑。</p>
+                                            <img src="assets/c24.png" alt="重命名另存" onclick="openImageModal(this.src)">
+                                            <p>重命名并另存</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="version-layout" style="margin-top: 20px;">
+                                <div class="version-column">
+                                    <h6>最终效果阶段</h6>
+                                    <div class="image-grid">
+                                        <div class="image-illustration">
+                                            <p class="image-description">步骤4：方向盘最终效果图。完成所有调整后，方向盘模型呈现最终效果，包括完整的造型、精确的尺寸和与车身其他部件的协调配合。</p>
+                                            <img src="assets/c25.png" alt="方向盘最终效果" onclick="openImageModal(this.src)">
+                                            <p>方向盘最终效果图</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="version-block">
+                            <h5>阶段五：车身刻字与尾翼设计</h5>
                             <p contenteditable="true">这一阶段包含两个重要部分：车身刻字用于提升品牌感与个性化表达，尾翼设计则增强车辆的运动感和空气动力学特性。通过文字轮廓的布置、局部凸显和比例控制，以及尾翼的造型设计，车身细节由纯结构感逐步过渡到更具辨识度的设计语言。</p>
                             <div class="stage-note">
                                 <span class="stage-chip">设计重点</span>
@@ -204,7 +317,31 @@
                                     <div class="image-grid">
                                         <div class="image-illustration">
                                             <p class="image-description">步骤：尾翼刻字设计对话过程，和ai智能体沟通需求。</p>
-                                            <img src="assets/c19.jpg" alt="尾翼设计" onclick="openImageModal(this.src)">
+                                            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 10px; font-size: 14px; line-height: 1.8; color: #333; text-align: left;">
+                                                <p style="margin-bottom: 10px;">在当前选中的两个后轮保护盖上，安装一个小型赛车尾翼，严格按以下要求生成：</p>
+                                                <ol style="padding-left: 20px; margin-bottom: 10px;">
+                                                    <li><strong>安装方式：</strong>
+                                                        <ul style="padding-left: 20px; margin-top: 5px;">
+                                                            <li>尾翼的两根支撑柱，底部必须固定在保护盖的安装孔位置，与保护盖一体化连接，不能悬空</li>
+                                                            <li>支撑柱底部与保护盖的上表面完全贴合，不与车轮、悬挂发生任何接触或干涉</li>
+                                                        </ul>
+                                                    </li>
+                                                    <li><strong>尺寸约束：</strong>
+                                                        <ul style="padding-left: 20px; margin-top: 5px;">
+                                                            <li>翼片宽度300mm（与车宽一致），翼片厚度3mm，整体高度60mm（从保护盖上表面算起）</li>
+                                                            <li>支撑柱截面为10×10mm，高度从保护盖顶部延伸到翼片底部，翼片向后倾斜15°</li>
+                                                        </ul>
+                                                    </li>
+                                                    <li><strong>结构要求：</strong>
+                                                        <ul style="padding-left: 20px; margin-top: 5px;">
+                                                            <li>翼片与两根支撑柱为一体化结构，边缘全部做圆角处理</li>
+                                                            <li>不修改、不移动任何现有的保护盖、车轮、悬挂和底盘零件</li>
+                                                            <li>轻量化设计，整体不超出车身轮廓，不影响小车重心</li>
+                                                        </ul>
+                                                    </li>
+                                                </ol>
+                                                <p style="margin-top: 10px; color: #666;">我先清除之前的失败尝试，然后用正确的坐标映射重新构建完整尾翼。</p>
+                                            </div>
                                             <p>尾翼prompt</p>
                                         </div>
                                     </div>
@@ -229,7 +366,57 @@
                         </div>
 
                         <div class="version-block">
-                            <h5>阶段四：最终整车展示</h5>
+                            <h5>阶段六：小车装配过程</h5>
+                            <p contenteditable="true">本阶段通过 Fusion 360 的装配功能，将之前创建的各个零部件（座椅、车窗、方向盘等）组装到小车主框架上。使用快速联接工具进行精确的零部件定位和固定，确保各部件之间的配合关系准确无误。</p>
+                            <div class="stage-note">
+                                <span class="stage-chip">设计重点</span>
+                                <ul>
+                                    <li>使用快速联接工具简化装配流程</li>
+                                    <li>正确选中需要装配的零部件</li>
+                                    <li>选择合适的底面作为装配基准</li>
+                                    <li>确保各部件之间的配合精度和稳定性</li>
+                                </ul>
+                            </div>
+                            <div class="version-layout">
+                                <div class="version-column">
+                                    <h6>点击快速联接阶段</h6>
+                                    <div class="image-grid">
+                                        <div class="image-illustration">
+                                            <p class="image-description">步骤1：点击装配中的快速联接。在 Fusion 360 的装配环境中，选择快速联接工具，准备开始零部件的装配操作。</p>
+                                            <img src="assets/c29.png" alt="点击快速联接" onclick="openImageModal(this.src)">
+                                            <p>点击快速联接</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="version-layout" style="margin-top: 20px;">
+                                <div class="version-column">
+                                    <h6>选中零部件阶段</h6>
+                                    <div class="image-grid">
+                                        <div class="image-illustration">
+                                            <p class="image-description">步骤2：选中零部件。在装配环境中选择需要装配的目标零部件，确认要添加到主框架上的组件。</p>
+                                            <img src="assets/c27.png" alt="选中零部件" onclick="openImageModal(this.src)">
+                                            <p>选中零部件</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="version-layout" style="margin-top: 20px;">
+                                <div class="version-column">
+                                    <h6>选择底面并装配阶段</h6>
+                                    <div class="image-grid">
+                                        <div class="image-illustration">
+                                            <p class="image-description">步骤3：选择底面并装配。选择零部件的安装底面作为装配基准，完成零部件在小车框架上的精确定位和固定。</p>
+                                            <img src="assets/c31.png" alt="选择底面并装配" onclick="openImageModal(this.src)">
+                                            <p>选择底面并装配</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="version-block">
+                            <h5>阶段七：最终整车展示</h5>
                             <p contenteditable="true">最后将座椅、车窗、刻字和整体车身结构进行整合，形成一台完整的 CAD 小车成品展示。这个阶段不仅是结果展示，也能直观看出每个细节模块如何共同支撑最终效果。</p>
                             <div class="stage-note">
                                 <span class="stage-chip">设计重点</span>
