@@ -596,10 +596,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe 
 }
 
 .version-layout {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1rem;
-    align-items: start;
+    display: block;
+    width: 100%;
 }
 
 .version-column {
@@ -1046,6 +1044,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe 
     }
 }
 
+<<<<<<< HEAD
 /*/*/* 位置图片样式 */
 .software-item-link {
     text-decoration: none;
@@ -1286,3 +1285,63 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe 
     color: #718096;
     font-size: 0.9rem;
 }
+=======
+/* Week 6 材料介绍样式 */
+.material-category {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(168, 210, 255, 0.3);
+    box-shadow: 0 4px 16px rgba(168, 210, 255, 0.15);
+    transition: all 0.3s ease;
+}
+
+.material-category:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(168, 210, 255, 0.25);
+}
+
+.material-category.highlight {
+    background: linear-gradient(135deg, rgba(168, 210, 255, 0.1), rgba(255, 255, 255, 0.8));
+    border-left: 4px solid #A8D2FF;
+}
+
+.material-category h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid rgba(168, 210, 255, 0.3);
+}
+
+.material-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.info-item {
+    line-height: 1.8;
+    color: #333333;
+    font-size: 0.95rem;
+}
+
+.info-item strong {
+    color: #5B7C99;
+    font-weight: 600;
+}
+
+.info-item ul {
+    margin-top: 0.5rem;
+    padding-left: 1.5rem;
+}
+
+.info-item li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+>>>>>>> 96f63d9aec4cc34b51d0df3fb99a41533d409a8a

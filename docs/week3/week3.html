@@ -47,6 +47,7 @@
                             <button class="week-btn active" data-week="3">Week 3 - CAD</button>
                             <button class="week-btn" data-week="4">Week 4 - 3D打印</button>
                             <button class="week-btn" data-week="5">Week 5 - IoT架构</button>
+                            <button class="week-btn" data-week="6">Week 6 - 材料介绍</button>
                         </div>
                     </div>
                 </li>
@@ -199,27 +200,29 @@
                             </div>
                             <div class="version-layout">
                                 <div class="version-column">
-                                    <h6>刻字草图阶段</h6>
+                                    <h6>尾翼设计阶段</h6>
                                     <div class="image-grid">
-                                        <div class="image-illustration"><img src="assets/c14.png" alt="车身刻字 1" onclick="openImageModal(this.src)"><p>刻字草图 1</p></div>
-                                    </div>
-                                </div>
-                                <div class="version-column">
-                                    <h6>刻字完成阶段</h6>
-                                    <div class="image-grid">
-                                        <div class="image-illustration"><img src="assets/c15.png" alt="车身刻字 2" onclick="openImageModal(this.src)"><p>刻字成品展示</p></div>
+                                        <div class="image-illustration">
+                                            <p class="image-description">步骤：尾翼刻字设计对话过程，和ai智能体沟通需求。</p>
+                                            <img src="assets/c19.jpg" alt="尾翼设计" onclick="openImageModal(this.src)">
+                                            <p>尾翼prompt</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="version-layout" style="margin-top: 20px;">
                                 <div class="version-column">
-                                    <h6>尾翼设计阶段</h6>
+                                    <h6>刻字草图阶段</h6>
                                     <div class="image-grid">
-                                        <div class="image-illustration">
-                                            <p class="image-description">步骤：尾翼建模。根据车身比例设计尾翼的形状和尺寸，使用草图工具绘制尾翼轮廓，然后通过拉伸和倒角操作生成三维实体结构，确保尾翼与车身的连接稳固且美观。</p>
-                                            <img src="assets/c19.jpg" alt="尾翼设计" onclick="openImageModal(this.src)">
-                                            <p>尾翼设计成品</p>
-                                        </div>
+                                        <div class="image-illustration"><img src="assets/c14.png" alt="车身刻字 1" onclick="openImageModal(this.src)"><p>刻字草图 1</p></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="version-layout" style="margin-top: 20px;">
+                                <div class="version-column">
+                                    <h6>刻字完成阶段</h6>
+                                    <div class="image-grid">
+                                        <div class="image-illustration"><img src="assets/c15.png" alt="车身刻字 2" onclick="openImageModal(this.src)"><p>刻字成品展示</p></div>
                                     </div>
                                 </div>
                             </div>
@@ -438,6 +441,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             if (week === 5) {
                 window.location.href = '../week5/week5.html';
+                return;
+            }
+            if (week === 6) {
+                window.location.href = '../week6/week6.html';
                 return;
             }
         });

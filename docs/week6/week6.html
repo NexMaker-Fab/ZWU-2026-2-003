@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 6 - 材料介绍</title>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" id="goHome">课程系统</div>
+            <ul class="nav-menu">
+                <li class="nav-item" data-page="home">Home</li>
+                <li class="nav-item has-dropdown active" data-page="homework">
+                    <span>作业</span>
+                    <div class="dropdown">
+                        <div class="dropdown-weeks">
+                            <button class="week-btn" data-week="1">Week 1 - 网络搭建</button>
+                            <button class="week-btn" data-week="2">Week 2 - Arduino硬件</button>
+                            <button class="week-btn" data-week="3">Week 3 - CAD小车</button>
+                            <button class="week-btn" data-week="4">Week 4 - 3D打印</button>
+                            <button class="week-btn" data-week="5">Week 5 - IoT架构</button>
+                            <button class="week-btn active" data-week="6">Week 6 - 材料介绍</button>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item" data-page="project">项目</li>
+                <li class="nav-item" data-page="team">团队介绍</li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <section class="page active">
+            <div class="homework-header">
+                <div class="week-badge">Week 6</div>
+                <h1 class="week-title">材料介绍</h1>
+                <div class="title-divider"></div>
+            </div>
+
+            <!-- 日常生活中的常见材料 -->
+            <div class="content-section">
+                <h2>🏠 一、日常生活中的常见材料</h2>
+                
+                <div class="material-category">
+                    <h3>1. 金属材料：铝合金（以6063铝合金为例）</h3>
+                    <div class="material-info">
+                        <div class="info-item">
+                            <strong>日常应用：</strong>广泛用于家中的门窗框架、阳台推拉门以及智能手机的金属中框。
+                        </div>
+                        <div class="info-item">
+                            <strong>特性：</strong>质轻（密度约为钢的1/3）、强度较高、导电导热性好，且在大气环境下具有不错的耐腐蚀性。
+                        </div>
+                    </div>
+                    <div class="image-illustration" style="margin-top: 15px;">
+                        <img src="assets/铝合金.webp" alt="6063铝合金材料" onclick="openImageModal(this.src)">
+                        <p>图：6063铝合金材料示例</p>
+                    </div>
+                </div>
+
+                <div class="material-category">
+                    <h3>2. 塑料材料：聚丙烯（PP）</h3>
+                    <div class="material-info">
+                        <div class="info-item">
+                            <strong>日常应用：</strong>最常见的用途是微波炉专用饭盒、保鲜盒以及部分饮水机的水桶盖。
+                        </div>
+                        <div class="info-item">
+                            <strong>特性：</strong>无毒无味、密度小，具有极好的耐化学性和耐高温性（热变形温度约100-120℃），是唯一可以放进微波炉加热的常见塑料材质。
+                        </div>
+                    </div>
+                    <div class="image-illustration" style="margin-top: 15px;">
+                        <img src="assets/聚乙烯.webp" alt="聚丙烯（PP）材料" onclick="openImageModal(this.src)">
+                        <p>图：聚丙烯（PP）塑料材料示例</p>
+                    </div>
+                </div>
+
+                <div class="material-category">
+                    <h3>3. 复合材料：玻璃纤维增强塑料（GFRP，俗称"玻璃钢"）</h3>
+                    <div class="material-info">
+                        <div class="info-item">
+                            <strong>日常应用：</strong>常见于户外公园的垃圾桶、景观雕塑，以及一些简易的玻璃钢瓦楞板（雨棚）。
+                        </div>
+                        <div class="info-item">
+                            <strong>特性：</strong>由玻璃纤维（增强体）和合成树脂（基体）复合而成，既保留了塑料的耐腐蚀性，又大幅提高了强度和刚性，且重量比钢材轻很多。
+                        </div>
+                    </div>
+                    <div class="image-illustration" style="margin-top: 15px;">
+                        <img src="assets/玻璃纤维增强塑料.webp" alt="玻璃纤维增强塑料（GFRP）材料" onclick="openImageModal(this.src)">
+                        <p>图：玻璃纤维增强塑料（GFRP）材料示例</p>
+                    </div>
+                </div>
+
+                <div class="material-category">
+                    <h3>4. 陶瓷材料：氧化铝陶瓷（Al₂O₃）</h3>
+                    <div class="material-info">
+                        <div class="info-item">
+                            <strong>日常应用：</strong>家中的陶瓷水龙头阀芯、高档耐磨地砖，以及厨用陶瓷刀。
+                        </div>
+                        <div class="info-item">
+                            <strong>特性：</strong>硬度极高（仅次于金刚石）、耐磨损、化学性质极其稳定（耐酸碱腐蚀），且具有优异的电绝缘性和耐高温性（可耐受1000℃以上）。但缺点是脆性大，受到撞击时容易崩口或碎裂。
+                        </div>
+                    </div>
+                    <div class="image-illustration" style="margin-top: 15px;">
+                        <img src="assets/氧化铝陶瓷.webp" alt="氧化铝陶瓷（Al₂O₃）材料" onclick="openImageModal(this.src)">
+                        <p>图：氧化铝陶瓷（Al₂O）材料示例</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 新型材料 -->
+            <div class="content-section">
+                <h2> 二、2种新型材料（前沿科技材料）</h2>
+                
+                <div class="material-category highlight">
+                    <h3>1. 石墨烯</h3>
+                    <div class="material-info">
+                        <div class="info-item">
+                            <strong>简介：</strong>一种由碳原子以蜂窝状结构排列而成的二维纳米材料，厚度仅为一个原子层。
+                        </div>
+                        <div class="info-item">
+                            <strong>突破性性能：</strong>目前已知强度最高的材料（比钢强200倍），同时拥有极佳的导电性和导热性，且几乎是完全透明的。
+                        </div>
+                        <div class="info-item">
+                            <strong>潜在应用：</strong>未来可用于制造超薄柔性可折叠手机屏幕、超高容量电池（大幅缩短充电时间）以及海水淡化过滤膜。
+                        </div>
+                    </div>
+                    <div class="image-illustration" style="margin-top: 15px;">
+                        <img src="assets/石墨烯.jpeg" alt="石墨烯材料" onclick="openImageModal(this.src)">
+                        <p>图：石墨烯材料结构示意图</p>
+                    </div>
+                </div>
+
+                <div class="material-category highlight">
+                    <h3>2. 气凝胶（以二氧化硅气凝胶为例）</h3>
+                    <div class="material-info">
+                        <div class="info-item">
+                            <strong>简介：</strong>被称为"凝固的烟"或"蓝烟"，是世界上密度最小的固体之一，内部拥有极高的孔隙率（可达99.8%）。
+                        </div>
+                        <div class="info-item">
+                            <strong>突破性性能：</strong>拥有极低的导热系数，隔热性能是传统玻璃棉的2-3倍，同时具有极强的疏水性和巨大的比表面积。
+                        </div>
+                        <div class="info-item">
+                            <strong>潜在应用：</strong>目前主要用于航天航空领域的隔热防护（如火星车），未来正逐步应用于建筑节能外墙涂料和高性能冬季防寒服装面料。
+                        </div>
+                    </div>
+                    <div class="image-illustration" style="margin-top: 15px;">
+                        <img src="assets/气凝胶.webp" alt="二氧化硅气凝胶材料" onclick="openImageModal(this.src)">
+                        <p>图：二氧化硅气凝胶材料示例</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 材料后处理方法 -->
+            <div class="content-section">
+                <h2> 三、三种材料的后处理方法（金属、塑料、木材）</h2>
+                
+                <div class="material-category">
+                    <h3>1. 金属（铝合金）的后处理方法：阳极氧化处理</h3>
+                    <div class="material-info">
+                        <div class="info-item">
+                            <strong>工艺原理：</strong>将铝合金工件作为阳极，放入酸性电解液（如硫酸）中，通过电解作用，在铝合金表面人为生成一层厚且致密的氧化铝（Al₂O₃）薄膜。
+                        </div>
+                        <div class="info-item">
+                            <strong>主要目的：</strong>
+                            <ul style="margin-left: 20px; margin-top: 10px;">
+                                <li><strong>提高硬度与耐磨性：</strong>生成的氧化膜硬度远高于原铝材，减少表面划伤。</li>
+                                <li><strong>增强耐腐蚀性：</strong>有效隔绝空气和水分，防止铝基体继续氧化。</li>
+                                <li><strong>赋予颜色与装饰性：</strong>氧化膜具有多孔性，可以轻易吸附染料，从而制成各种鲜艳颜色的手机外壳或建筑门窗（如土豪金、太空灰）。</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="image-illustration" style="margin-top: 15px;">
+                        <img src="assets/阳极氧化.jpeg" alt="阳极氧化处理原理图" onclick="openImageModal(this.src)">
+                        <p>图：阳极氧化处理工艺原理示意图</p>
+                    </div>
+                </div>
+
+                <div class="material-category">
+                    <h3>2. 塑料（聚丙烯PP）的后处理方法：退火热处理（去应力退火）</h3>
+                    <div class="material-info">
+                        <div class="info-item">
+                            <strong>工艺原理：</strong>将注塑成型后的PP制件（如饭盒盖），置于低于其热变形温度（通常为80~100℃）的热风循环烘箱中，保温一定时间（约1-2小时），随后缓慢冷却至室温。
+                        </div>
+                        <div class="info-item">
+                            <strong>主要目的：</strong>
+                            <ul style="margin-left: 20px; margin-top: 10px;">
+                                <li><strong>消除内应力：</strong>PP在注塑成型时，因冷却速度不均会产生分子取向内应力，退火能使分子链松弛，有效防止制件在使用中发生翘曲变形或应力开裂。</li>
+                                <li><strong>稳定尺寸精度：</strong>使结晶度更加均匀，提高产品后续装配尺寸的稳定性。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="material-category">
+                    <h3>3. 木材的后处理方法：表面涂饰（封闭底漆+打磨）</h3>
+                    <div class="material-info">
+                        <div class="info-item">
+                            <strong>工艺原理：</strong>在实木家具或木制品表面，先涂刷一层稀释过的封闭底漆（或木蜡油），渗透进木材导管（毛孔）中，待干透后再用细砂纸（如400目以上）进行精细打磨，去除表面毛刺，最后再涂刷面漆。
+                        </div>
+                        <div class="info-item">
+                            <strong>主要目的：</strong>
+                            <ul style="margin-left: 20px; margin-top: 10px;">
+                                <li><strong>封闭毛孔与防潮：</strong>堵塞木材内部的微孔，有效隔绝外界水汽，防止木制品因吸湿而发霉、膨胀变形。</li>
+                                <li><strong>提升光滑度与手感：</strong>通过"打底-打磨"的循环，将木材表面的木筋和毛刺彻底磨平，为后续面漆提供平整的基底，使家具表面呈现温润的镜面光泽。</li>
+                                <li><strong>增强附着力：</strong>底漆能够牢牢抓住木材纤维，防止后续面漆因木材热胀冷缩而剥落。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="../../index.js"></script>
+</body>
+</html>
