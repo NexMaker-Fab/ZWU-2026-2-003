@@ -3,8 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Week 3 - CAD 小车建模练习</title>
+    <title>Week 3 - CAD</title>
     <link rel="stylesheet" href="../../style.css">
+    <style>
+        /* Week 3 专属样式 */
+        .image-description {
+            background: linear-gradient(135deg, #fff9e6 0%, #fffef5 100%);
+            border-left: 4px solid #f5a623;
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #5a4a3a;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 2px 8px rgba(245, 166, 35, 0.1);
+        }
+
+        .image-description::before {
+            content: "💡 ";
+            font-size: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .image-description {
+                font-size: 13px;
+                padding: 10px 12px;
+            }
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -18,7 +44,7 @@
                         <div class="dropdown-weeks">
                             <button class="week-btn" data-week="1">Week 1 - 网络搭建</button>
                             <button class="week-btn" data-week="2">Week 2 - Arduino硬件</button>
-                            <button class="week-btn active" data-week="3">Week 3 - CAD小车</button>
+                            <button class="week-btn active" data-week="3">Week 3 - CAD</button>
                             <button class="week-btn" data-week="4">Week 4 - 3D打印</button>
                             <button class="week-btn" data-week="5">Week 5 - IoT架构</button>
                         </div>
@@ -34,7 +60,7 @@
         <section class="page active">
             <div class="homework-header">
                 <div class="week-badge">Week 3</div>
-                <h1 class="week-title">CAD 小车建模练习</h1>
+                <h1 class="week-title">CAD</h1>
                 <div class="title-divider"></div>
             </div>
 
@@ -75,7 +101,7 @@
                     <p class="editable-note">本次 CAD 小车建模重点分为四个阶段：座椅结构建模、车窗草图与拉伸、车身刻字装饰，以及最终整车展示。每一阶段都先完成草图，再进行实体化与细节优化，最终形成一套完整、连贯的建模流程。</p>
                     <div class="hardware-section">
                         <h4>🚗 项目介绍</h4>
-                        <p contenteditable="true">本周我们继续使用 Fusion 360 完成 CAD 小车建模练习，重点在于补充座椅、车窗和车身细节，使模型从基础结构逐步走向完整的外观展示。</p>
+                        <p contenteditable="true">本周我们继续使用 Fusion 360 完成 CAD 建模练习，重点在于补充座椅、车窗和车身细节，使模型从基础结构逐步走向完整的外观展示。</p>
 
                         <h4>🧩 建模工具与任务</h4>
                         <p contenteditable="true">工具：Fusion 360。任务：完成座位草图与成品、车窗草图与拉伸、车身刻字设计，以及最终整车呈现，并整理各阶段说明。</p>
@@ -95,16 +121,36 @@
                                 <div class="version-column">
                                     <h6>座位草图阶段</h6>
                                     <div class="image-grid">
-                                        <div class="image-illustration"><img src="assets/c5.png" alt="座位草图 1" onclick="openImageModal(this.src)"><p>座位草图 1</p></div>
-                                        <div class="image-illustration"><img src="assets/c6.png" alt="座位草图 2" onclick="openImageModal(this.src)"><p>座位草图 2</p></div>
+                                        <div class="image-illustration">
+                                            <p class="image-description">步骤1：创建草图。在 Fusion 360 中选择合适的工作平面，使用线条工具绘制座椅的基础轮廓，确定整体形状和比例关系。</p>
+                                            <img src="assets/c5.jpg" alt="座位草图 1" onclick="openImageModal(this.src)">
+                                            <p>座位草图 1</p>
+                                        </div>
+                                        <div class="image-illustration">
+                                            <p class="image-description">步骤2：创建图形并标注尺寸。为草图中的关键部位添加尺寸约束，确保座椅的宽度、深度和高度符合设计要求，建立精确的尺寸体系。</p>
+                                            <img src="assets/c6.png" alt="座位草图 2" onclick="openImageModal(this.src)">
+                                            <p>座位草图 2</p>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="version-column">
                                     <h6>座位成品阶段</h6>
                                     <div class="image-grid">
-                                        <div class="image-illustration"><img src="assets/c7.png" alt="座位草图 3" onclick="openImageModal(this.src)"><p>座位草图 3</p></div>
-                                        <div class="image-illustration"><img src="assets/c8.png" alt="座位草图 4" onclick="openImageModal(this.src)"><p>座位草图 4</p></div>
-                                        <div class="image-illustration"><img src="assets/c9.png" alt="座位成品" onclick="openImageModal(this.src)"><p>完成后的座位成品</p></div>
+                                        <div class="image-illustration">
+                                            <p class="image-description">步骤3：拉伸成型。将二维草图沿垂直方向进行拉伸操作，生成三维实体结构，形成座椅的基本形态和厚度。</p>
+                                            <img src="assets/c7.png" alt="座位草图 3" onclick="openImageModal(this.src)">
+                                            <p>座位草图 3</p>
+                                        </div>
+                                        <div class="image-illustration">
+                                            <p class="image-description">步骤4：约束后的草图优化。对草图添加几何约束（如平行、垂直、相切等），确保各部分之间的位置关系准确，提高模型的稳定性和可编辑性。</p>
+                                            <img src="assets/c8.png" alt="座位草图 4" onclick="openImageModal(this.src)">
+                                            <p>座位草图 4</p>
+                                        </div>
+                                        <div class="image-illustration">
+                                            <p class="image-description">步骤5：座位草图成品。完成所有约束和优化后，座椅的三维模型呈现最终效果，包括完整的轮廓、精确的尺寸和稳定的结构，可以进入下一阶段的车窗建模。</p>
+                                            <img src="assets/c9.png" alt="座位成品" onclick="openImageModal(this.src)">
+                                            <p>完成后的座位成品</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -140,13 +186,14 @@
                         </div>
 
                         <div class="version-block">
-                            <h5>阶段三：车身刻字与装饰表达</h5>
-                            <p contenteditable="true">刻字部分用于提升车身的品牌感与个性化表达。通过文字轮廓的布置、局部凸显和比例控制，车身细节由纯结构感逐步过渡到更具辨识度的设计语言。</p>
+                            <h5>阶段三：车身刻字与尾翼设计</h5>
+                            <p contenteditable="true">这一阶段包含两个重要部分：车身刻字用于提升品牌感与个性化表达，尾翼设计则增强车辆的运动感和空气动力学特性。通过文字轮廓的布置、局部凸显和比例控制，以及尾翼的造型设计，车身细节由纯结构感逐步过渡到更具辨识度的设计语言。</p>
                             <div class="stage-note">
                                 <span class="stage-chip">设计重点</span>
                                 <ul>
                                     <li>用简单文字轮廓增强车身识别度</li>
                                     <li>控制刻字位置，避免影响整体比例</li>
+                                    <li>尾翼造型需符合空气动力学原理</li>
                                     <li>让装饰元素与车身线条保持统一</li>
                                 </ul>
                             </div>
@@ -160,7 +207,19 @@
                                 <div class="version-column">
                                     <h6>刻字完成阶段</h6>
                                     <div class="image-grid">
-                                        <div class="image-illustration"><img src="assets/c15.png" alt="车身刻字 2" onclick="openImageModal(this.src)"><p>刻字草图 2</p></div>
+                                        <div class="image-illustration"><img src="assets/c15.png" alt="车身刻字 2" onclick="openImageModal(this.src)"><p>刻字成品展示</p></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="version-layout" style="margin-top: 20px;">
+                                <div class="version-column">
+                                    <h6>尾翼设计阶段</h6>
+                                    <div class="image-grid">
+                                        <div class="image-illustration">
+                                            <p class="image-description">步骤：尾翼建模。根据车身比例设计尾翼的形状和尺寸，使用草图工具绘制尾翼轮廓，然后通过拉伸和倒角操作生成三维实体结构，确保尾翼与车身的连接稳固且美观。</p>
+                                            <img src="assets/c19.jpg" alt="尾翼设计" onclick="openImageModal(this.src)">
+                                            <p>尾翼设计成品</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -200,11 +259,35 @@
                 <div class="process-content">
                     <h3>🔨 制作过程记录</h3>
                     <p class="editable-note">该页面用于展示详细步骤，用户可以直接在页面中修改文字内容以记录每个版本的制作过程与最终效果。</p>
+                    
+                    <div class="process-step">
+                        <h4>📌 座位建模基础步骤</h4>
+                        <p contenteditable="true">座椅建模是整个小车设计的基础，需要按照规范的流程逐步完成，确保每一步都准确无误。</p>
+                        
+                        <div class="image-illustration">
+                            <p class="image-description">步骤1：创建草图。在 Fusion 360 中选择合适的工作平面，使用线条工具绘制座椅的基础轮廓，确定整体形状和比例关系。</p>
+                            <img src="assets/c5.jpg" alt="座位草图阶段" onclick="openImageModal(this.src)">
+                            <p>座位草图 1</p>
+                        </div>
+                        
+                        <div class="image-illustration">
+                            <p class="image-description">步骤2：创建图形并标注尺寸。为草图中的关键部位添加尺寸约束，确保座椅的宽度、深度和高度符合设计要求，建立精确的尺寸体系。</p>
+                            <img src="assets/c6.png" alt="标注尺寸阶段" onclick="openImageModal(this.src)">
+                            <p>座位草图 2</p>
+                        </div>
+                        
+                        <div class="image-illustration">
+                            <p class="image-description">步骤3：拉伸成型。将二维草图沿垂直方向进行拉伸操作，生成三维实体结构，形成座椅的基本形态和厚度。</p>
+                            <img src="assets/c7.png" alt="拉伸成型阶段" onclick="openImageModal(this.src)">
+                            <p>座位草图 3</p>
+                        </div>
+                    </div>
+                    
                     <div class="process-step">
                         <h4>📌 第一步：座位草图与结构搭建</h4>
                         <p contenteditable="true">先完成座椅轮廓与支撑结构草图，确保座位的比例、角度和安装关系与车身整体协调一致。</p>
                         <div class="image-illustration">
-                            <img src="assets/c5.png" alt="座位草图阶段" onclick="openImageModal(this.src)">
+                            <img src="assets/c5.jpg" alt="座位草图阶段" onclick="openImageModal(this.src)">
                         </div>
                     </div>
                     <div class="process-step">
