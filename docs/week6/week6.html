@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 6 - 材料介绍</title>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        .image-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 15px;
+        }
+        .image-box {
+            flex: 1 1 300px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(168, 210, 255, 0.3);
+            border-radius: 16px;
+            padding: 12px;
+            text-align: center;
+        }
+        .image-box img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.25s ease;
+        }
+        .image-box img:hover {
+            transform: scale(1.03);
+        }
+        .image-box p {
+            margin-top: 10px;
+            color: #5B7C99;
+            font-size: 0.95rem;
+        }
+        @media (max-width: 900px) {
+            .image-row {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" id="goHome">课程系统</div>
+            <ul class="nav-menu">
+                <li class="nav-item" data-page="home">Home</li>
+                <li class="nav-item has-dropdown active" data-page="homework">
+                    <span>作业</span>
+                    <div class="dropdown">
+                        <div class="dropdown-weeks">
+                            <button class="week-btn" data-week="1">Week 1 - 网络搭建</button>
+                            <button class="week-btn" data-week="2">Week 2 - Arduino硬件</button>
+                            <button class="week-btn" data-week="3">Week 3 - CAD小车</button>
+                            <button class="week-btn" data-week="4">Week 4 - 3D打印</button>
+                            <button class="week-btn" data-week="5">Week 5 - IoT架构</button>
+                            <button class="week-btn active" data-week="6">Week 6 - 材料介绍</button>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item" data-page="project">项目</li>
+                <li class="nav-item" data-page="team">团队介绍</li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <section class="page active">
+            <div class="homework-header">
+                <div class="week-badge">Week 6</div>
+                <h1 class="week-title">材料介绍</h1>
+                <div class="title-divider"></div>
+            </div>
+
+            <!-- 日常生活中的常见材料 -->
+            <div class="content-section">
+                <h2>🏠 一、日常生活中的常见材料</h2>
+                
+                <div class="material-category">
+                    <h3>1. 金属材料：铝合金（以6063铝合金为例）</h3>
+                    <div class="material-info">
+                        <div class="info-item">
+                            <strong>日常应用：</strong>广泛用于家中的门窗框架、阳台推拉门以及智能手机的金属中框。此外还用于飞机机身、船舶、精密仪器外壳等需要轻质且高强度的应用领域。
+                        </div>
+                        <div class="info-item">
+                            <strong>主要成分与分类：</strong>6063铝合金属于Al-Mg-Si系铝合金，其中主要合金元素为镁（Mg，约0.7%）和硅（Si，约0.4%），这种配比使其具有优异的挤出性能和焊接性能。
+                        </div>
+                        <div class="info-item">
+                            <strong>特性：</strong>质轻（密度约为钢的1/3，仅2.7g/cm³）、强度较高（抗拉强度约185-205MPa）、导电导热性好，且在大气环境下具有不错的耐腐蚀性。同时具有良好的加工性能，易于切割、钻孔和焊接。
+                        </div>
+                        <div class="info-item">
+                            <strong>后处理工艺：</strong>通常采用阳极氧化处理来增强耐腐蚀性和装饰性，产生各种颜色（如银色、黑色、土豪金等）。
+                        </div>
+                    </div>
+                    <div class="image-row">
+                        <div class="image-box">
+                            <img src="assets/铝合金.webp" alt="6063铝合金材料" onclick="openImageModal(this.src)">
+                            <p>材料图</p>
+                        </div>
+                        <div class="image-box">
+                            <img src="assets/铝合金应用图.webp" alt="铝合金实际应用图" onclick="openImageModal(this.src)">
+                            <p>实际应用图</p>
+                            <p style="font-size: 12px; color: #888; margin-top: 8px;">
+                                <a href="https://page.quark.cn/baike?id=b6d86ac3ff014986b9a16597c6898d8e" target="_blank" style="color: #5B7C99; text-decoration: underline;">图片来源</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="material-category">
+                    <h3>2. 塑料材料：聚丙烯（PP）</h3>
+                    <div class="material-info">
+                        <div class="info-item">
+                            <strong>日常应用：</strong>最常见的用途是微波炉专用饭盒、保鲜盒以及部分饮水机的水桶盖。还广泛用于食品包装、医疗器械、汽车内饰件和管道等领域。
+                        </div>
+                        <div class="info-item">
+                            <strong>化学性质：</strong>无毒无味、密度小（仅0.9g/cm³，比水还轻），具有极好的耐化学性（对大多数酸、碱、溶剂都有良好的抗性），聚丙烯分子主要由碳和氢组成。
+                        </div>
+                        <div class="info-item">
+                            <strong>特性：</strong>具有极好的耐高温性（热变形温度约100-120℃），是唯一可以放进微波炉加热的常见塑料材质。同时具有良好的柔韧性和弯曲恢复能力（弯曲模量约4000-5600MPa）。
+                        </div>
+                        <div class="info-item">
+                            <strong>环保性能：</strong>聚丙烯可完全回收利用，是最环保的通用塑料之一，标号为"5"或"PP"。
+                        </div>
+                    </div>
+                    <div class="image-row">
+                        <div class="image-box">
+                            <img src="assets/聚乙烯.webp" alt="聚丙烯（PP）材料" onclick="openImageModal(this.src)">
+                            <p>材料图</p>
+                        </div>
+                        <div class="image-box">
+                            <img src="assets/聚丙烯实际应用.png" alt="聚丙烯实际应用图" onclick="openImageModal(this.src)">
+                            <p>实际应用图</p>
+                            <p style="font-size: 12px; color: #888; margin-top: 8px;">
+                                <a href="https://www.51pla.com/html/sellinfo/397/39783348.htm" target="_blank" style="color: #5B7C99; text-decoration: underline;">图片来源</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="material-category">
+                    <h3>3. 复合材料：玻璃纤维增强塑料（GFRP，俗称"玻璃钢"）</h3>
+                    <div class="material-info">
+                        <div class="info-item">
+                            <strong>日常应用：</strong>常见于户外公园的垃圾桶、景观雕塑，以及一些简易的玻璃钢瓦楞板（雨棚）。此外还广泛应用于船舶外壳、风力发电机叶片、汽车零部件、储罐和管道等领域。
+                        </div>
+                        <div class="info-item">
+                            <strong>材料组成：</strong>由玻璃纤维（增强体）和合成树脂（基体）复合而成。玻璃纤维提供强度和刚性，而树脂（通常为不饱和聚酯树脂或环氧树脂）作为粘结剂，将纤维束聚合在一起。
+                        </div>
+                        <div class="info-item">
+                            <strong>特性：</strong>既保留了塑料的耐腐蚀性，又大幅提高了强度和刚性。密度仅为钢的1/5（约1.8-2.1g/cm³），而强度与同厚度的钢相当。同时具有优异的绝缘性能和热稳定性（可长期工作温度达120-150℃）。
+                        </div>
+                        <div class="info-item">
+                            <strong>优缺点：</strong>优点是成本低、便于成型、易于维修；缺点是长期日晒容易老化，需要定期维护。
+                        </div>
+                    </div>
+                    <div class="image-row">
+                        <div class="image-box">
+                            <img src="assets/玻璃纤维增强塑料.webp" alt="玻璃纤维增强塑料（GFRP）材料" onclick="openImageModal(this.src)">
+                            <p>材料图</p>
+                        </div>
+                        <div class="image-box">
+                            <img src="assets/玻璃纤维增强塑料.webp" alt="玻璃纤维增强塑料实际应用图" onclick="openImageModal(this.src)">
+                            <p>实际应用图</p>
+                            <p style="font-size: 12px; color: #888; margin-top: 8px;">
+                                <a href="https://chinese.alibaba.com/g/frp-rebars.html" target="_blank" style="color: #5B7C99; text-decoration: underline;">图片来源</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="material-category">
+                    <h3>4. 陶瓷材料：氧化铝陶瓷（Al₂O₃）</h3>
+                    <div class="material-info">
+                        <div class="info-item">
+                            <strong>日常应用：</strong>家中的陶瓷水龙头阀芯、高档耐磨地砖，以及厨用陶瓷刀。还广泛用于集成电路基板、电子陶瓷元器件、磨料、耐火材料和生物医学植入物（如人工骨和牙冠）。
+                        </div>
+                        <div class="info-item">
+                            <strong>材料特征：</strong>高纯度氧化铝（Al₂O₃）陶瓷通常含铝量≥95%，白色粉末状或块状晶体。可通过烧结（高温焙烧）将细粉粒压制成各种形状的制品。
+                        </div>
+                        <div class="info-item">
+                            <strong>特性：</strong>硬度极高（维氏硬度约2000-3000HV，仅次于金刚石和碳化硼）、耐磨损能力强。化学性质极其稳定，对酸、碱、盐具有很好的抗腐蚀能力；具有优异的电绝缘性（体积电阻率>10¹⁴Ω·cm）和耐高温性（可耐受1000℃以上，熔点约2050℃）。
+                        </div>
+                        <div class="info-item">
+                            <strong>缺点与改进：</strong>脆性大，受到撞击时容易崩口或碎裂。为改善断裂韧性，可以添加少量的氧化锆（ZrO₂）制成复合陶瓷，显著提高抗冲击能力。
+                        </div>
+                    </div>
+                    <div class="image-row">
+                        <div class="image-box">
+                            <img src="assets/氧化铝陶瓷.webp" alt="氧化铝陶瓷（Al₂O₃）材料" onclick="openImageModal(this.src)">
+                            <p>材料图</p>
+                        </div>
+                        <div class="image-box">
+                            <img src="assets/陶瓷应用.png" alt="氧化铝陶瓷实际应用图" onclick="openImageModal(this.src)">
+                            <p>实际应用图</p>
+                            <p style="font-size: 12px; color: #888; margin-top: 8px;">
+                                <a href="http://www.fmd99.com.cn/products/yhltcz.html" target="_blank" style="color: #5B7C99; text-decoration: underline;">图片来源</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 新型材料 -->
+            <div class="content-section">
+                <h2> 二、2种新型材料（前沿科技材料）</h2>
+                
+                <div class="material-category highlight">
+                    <h3>1. 石墨烯</h3>
+                    <div class="material-info">
+                        <div class="info-item">
+                            <strong>简介：</strong>一种由碳原子以蜂窝状结构排列而成的二维纳米材料，厚度仅为一个原子层（0.335nm）。由英国曼彻斯特大学的Andre Geim和Konstantin Novoselov在2004年发现，并因此获得2010年诺贝尔物理学奖。
+                        </div>
+                        <div class="info-item">
+                            <strong>突破性性能：</strong>目前已知强度最高的材料（比钢强200倍，杨氏模量约1TPa），同时拥有极佳的导电性（导电率高于铜）和导热性（导热系数约5300W/m·K）。几乎完全透明（仅吸收2.3%的光），且具有超高的比表面积（约2600m²/g）。
+                        </div>
+                        <div class="info-item">
+                            <strong>现有应用：</strong>已开始用于复合材料加强、超级电容器、集成电路和传感器等领域。
+                        </div>
+                        <div class="info-item">
+                            <strong>潜在应用：</strong>未来可用于制造超薄柔性可折叠手机屏幕、超高容量电池（能量密度可达1000Wh/kg，充电时间仅需几分钟）、海水淡化高效过滤膜、透明导电薄膜和可穿戴电子设备。
+                        </div>
+                        <div class="info-item">
+                            <strong>当前瓶颈：</strong>大规模制备技术和成本仍然是主要难题，目前主要采用机械剥离法、化学气相沉积法（CVD）和化学还原法。
+                        </div>
+                    </div>
+                    <div class="image-row">
+                        <div class="image-box">
+                            <img src="assets/石墨烯.jpeg" alt="石墨烯材料" onclick="openImageModal(this.src)">
+                            <p>材料图</p>
+                        </div>
+                        <div class="image-box">
+                            <img src="assets/石墨烯应用.png" alt="石墨烯实际应用图" onclick="openImageModal(this.src)">
+                            <p>实际应用图</p>
+                            <p style="font-size: 12px; color: #888; margin-top: 8px;">
+                                <a href="https://page.quark.cn/baike?id=ab0e2dd9615242fdab62511cd7d4b1b0" target="_blank" style="color: #5B7C99; text-decoration: underline;">图片来源</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="material-category highlight">
+                    <h3>2. 气凝胶（以二氧化硅气凝胶为例）</h3>
+                    <div class="material-info">
+                        <div class="info-item">
+                            <strong>简介：</strong>被称为"凝固的烟"或"蓝烟"，是世界上密度最小的固体之一（密度仅为0.003-0.03g/cm³，几乎比空气还轻），内部拥有极高的孔隙率（可达99.8%，即99.8%的体积是空气）。
+                        </div>
+                        <div class="info-item">
+                            <strong>制备原理：</strong>通过溶胶-凝胶工艺（Sol-Gel）制备：先将二氧化硅（SiO₂）溶胶通过聚合反应形成凝胶，然后用超临界二氧化碳代替凝胶中的液体，最后通过超临界干燥（临界点干燥）去除液体而保持固体骨架不坍塌。
+                        </div>
+                        <div class="info-item">
+                            <strong>突破性性能：</strong>拥有极低的导热系数（仅约0.013W/m·K，比空气的导热系数0.026W/m·K还低），隔热性能是传统玻璃棉的2-3倍。同时具有极强的疏水性（接触角>150°）和巨大的比表面积（约800-1200m²/g），具有99%的光透明度。
+                        </div>
+                        <div class="info-item">
+                            <strong>现有应用：</strong>目前主要用于航天航空领域的隔热防护（如火星车Curiosity的隔热罩）、深海潜水器的保温，以及高级建筑隔热涂料。
+                        </div>
+                        <div class="info-item">
+                            <strong>潜在应用：</strong>未来正逐步应用于建筑节能外墙涂料、高性能冬季防寒服装面料、冬季鞋类内衬、油气管道保温和工业窑炉隔热。
+                        </div>
+                    </div>
+                    <div class="image-row">
+                        <div class="image-box">
+                            <img src="assets/气凝胶.webp" alt="二氧化硅气凝胶材料" onclick="openImageModal(this.src)">
+                            <p>材料图</p>
+                        </div>
+                        <div class="image-box">
+                            <img src="assets/气凝胶实物.png" alt="气凝胶实物图" onclick="openImageModal(this.src)">
+                            <p>实际应用图</p>
+                            <p style="font-size: 12px; color: #888; margin-top: 8px;">
+                                <a href="https://www.bilibili.com/video/BV1FoC1YyEAx/?vd_source=5a4832b8424d6f126d58c97354c1abd3" target="_blank" style="color: #5B7C99; text-decoration: underline;">图片来源</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 材料后处理方法 -->
+            <div class="content-section">
+                <h2> 三、三种材料的后处理方法（金属、塑料、木材）</h2>
+                
+                <div class="material-category">
+                    <h3>1. 金属（铝合金）的后处理方法：阳极氧化处理</h3>
+                    <div class="material-info">
+                        <div class="info-item">
+                            <strong>工艺原理：</strong>将铝合金工件作为阳极，放入酸性电解液（如硫酸）中，通过电解作用，在铝合金表面人为生成一层厚且致密的氧化铝（Al₂O₃）薄膜。
+                        </div>
+                        <div class="info-item">
+                            <strong>主要目的：</strong>
+                            <ul style="margin-left: 20px; margin-top: 10px;">
+                                <li><strong>提高硬度与耐磨性：</strong>生成的氧化膜硬度远高于原铝材，减少表面划伤。</li>
+                                <li><strong>增强耐腐蚀性：</strong>有效隔绝空气和水分，防止铝基体继续氧化。</li>
+                                <li><strong>赋予颜色与装饰性：</strong>氧化膜具有多孔性，可以轻易吸附染料，从而制成各种鲜艳颜色的手机外壳或建筑门窗（如土豪金、太空灰）。</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="image-illustration" style="margin-top: 15px;">
+                        <img src="assets/阳极氧化.jpeg" alt="阳极氧化处理原理图" onclick="openImageModal(this.src)">
+                        <p>图：阳极氧化处理工艺原理示意图</p>
+                        <p style="font-size: 12px; color: #888; margin-top: 8px;">
+                            <a href="https://page.quark.cn/baike?id=d1e4b3d34044467c8ecb59bcba719c68" target="_blank" style="color: #5B7C99; text-decoration: underline;">图片来源</a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="material-category">
+                    <h3>2. 塑料（聚丙烯PP）的后处理方法：退火热处理（去应力退火）</h3>
+                    <div class="material-info">
+                        <div class="info-item">
+                            <strong>工艺原理：</strong>将注塑成型后的PP制件（如饭盒盖），置于低于其热变形温度（通常为80~100℃）的热风循环烘箱中，保温一定时间（约1-2小时），随后缓慢冷却至室温。
+                        </div>
+                        <div class="info-item">
+                            <strong>主要目的：</strong>
+                            <ul style="margin-left: 20px; margin-top: 10px;">
+                                <li><strong>消除内应力：</strong>PP在注塑成型时，因冷却速度不均会产生分子取向内应力，退火能使分子链松弛，有效防止制件在使用中发生翘曲变形或应力开裂。</li>
+                                <li><strong>稳定尺寸精度：</strong>使结晶度更加均匀，提高产品后续装配尺寸的稳定性。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="material-category">
+                    <h3>3. 木材的后处理方法：表面涂饰（封闭底漆+打磨）</h3>
+                    <div class="material-info">
+                        <div class="info-item">
+                            <strong>工艺原理：</strong>在实木家具或木制品表面，先涂刷一层稀释过的封闭底漆（或木蜡油），渗透进木材导管（毛孔）中，待干透后再用细砂纸（如400目以上）进行精细打磨，去除表面毛刺，最后再涂刷面漆。
+                        </div>
+                        <div class="info-item">
+                            <strong>主要目的：</strong>
+                            <ul style="margin-left: 20px; margin-top: 10px;">
+                                <li><strong>封闭毛孔与防潮：</strong>堵塞木材内部的微孔，有效隔绝外界水汽，防止木制品因吸湿而发霉、膨胀变形。</li>
+                                <li><strong>提升光滑度与手感：</strong>通过"打底-打磨"的循环，将木材表面的木筋和毛刺彻底磨平，为后续面漆提供平整的基底，使家具表面呈现温润的镜面光泽。</li>
+                                <li><strong>增强附着力：</strong>底漆能够牢牢抓住木材纤维，防止后续面漆因木材热胀冷缩而剥落。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2> 四、ABS塑料：最终作业材料应用介绍</h2>
+                <div class="material-category">
+                    <h3>ABS塑料概述</h3>
+                    <div class="material-info">
+                        <div class="info-item">
+                            <strong>定义：</strong>ABS塑料，全称丙烯腈-丁二烯-苯乙烯共聚物，是一种由丙烯腈（A）、丁二烯（B）、苯乙烯（S）三种单体通过共聚反应生成的热塑性塑料。
+                        </div>
+                        <div class="info-item">
+                            <strong>特点：</strong>它并非简单的混合物，而是将三种单体的优良特性有机结合，形成了一种兼具韧、硬、刚均衡特性的通用型工程塑料，被广泛应用于汽车、电子电器、建材等各个领域。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="material-category">
+                    <h3>组成与结构</h3>
+                    <div class="material-info">
+                        <div class="info-item">
+                            <strong>ABS三组分贡献：</strong>
+                            <ul style="margin-left: 20px; margin-top: 10px;">
+                                <li><strong>A 丙烯腈：</strong>增加硬度、强度、耐热性和耐化学腐蚀性。</li>
+                                <li><strong>B 丁二烯：</strong>提供抗冲击性、韧性和耐低温性能。</li>
+                                <li><strong>S 苯乙烯：</strong>赋予表面高光泽、易着色和易加工性。</li>
+                            </ul>
+                        </div>
+                        <div class="info-item">
+                            <strong>结构特点：</strong>ABS的微观结构是一种"海岛结构"，即苯乙烯-丙烯腈共聚物（SAN）为连续相（"海"），聚丁二烯橡胶为分散相（"岛"）。这种两相结构是其兼具刚性和韧性的关键所在。
+                        </div>
+                        <div class="info-item">
+                            <strong>性能调整：</strong>通过调整这三种单体的比例，可以生产出不同性能的ABS品种，例如高抗冲击级、耐热级、高光泽级等，以满足特定需求。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="material-category">
+                    <h3>主要特性</h3>
+                    <div class="material-info">
+                        <div class="info-item">
+                            <strong>外观与密度：</strong>ABS为无毒、无味的象牙色或浅黄色不透明颗粒，密度约为1.05-1.18 g/cm³。
+                        </div>
+                        <div class="info-item">
+                            <strong>强度与韧性：</strong>具有优异的抗冲击强度，即使在-40℃低温下也能保持一定韧性。其力学强度比一般通用塑料高3-5倍，耐久性好。
+                        </div>
+                        <div class="info-item">
+                            <strong>尺寸稳定性：</strong>ABS收缩率低（0.4%-0.9%），尺寸稳定性好，不易变形，适合精密注塑件和长尺寸构件。
+                        </div>
+                        <div class="info-item">
+                            <strong>耐磨性：</strong>耐磨性优良，可用于制作中等载荷的轴承、齿轮、滑轮等机械零件。
+                        </div>
+                        <div class="info-item">
+                            <strong>使用温度：</strong>可在-40℃至100℃的温度范围内长期使用，热变形温度在93-118℃之间。
+                        </div>
+                        <div class="info-item">
+                            <strong>热性能：</strong>熔融温度在217-237℃，热分解温度大于250℃。
+                        </div>
+                        <div class="info-item">
+                            <strong>电性能：</strong>具有良好的电绝缘性，且性能受温度和湿度影响较小，适用于电子电器外壳和绝缘件。
+                        </div>
+                        <div class="info-item">
+                            <strong>耐化学性：</strong>耐水、无机盐、碱和多种酸类，但不耐硫酸，遇硫酸会破裂。可溶于酮类、醛类及氯代烃等有机溶剂。
+                        </div>
+                        <div class="info-item">
+                            <strong>耐候性：</strong>耐候性较差，长期紫外线照射下易降解老化，因此户外使用时常需添加抗紫外线剂或涂层保护。
+                        </div>
+                        <div class="info-item">
+                            <strong>阻燃性：</strong>ABS属于易燃材料，燃烧时火焰呈黄色，有黑烟并伴有特殊气味。常需添加阻燃剂以满足安全要求。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="material-category">
+                    <h3>主要应用领域</h3>
+                    <div class="material-info">
+                        <div class="info-item">
+                            <strong>汽车工业：</strong>用于制造仪表板、车身外板、方向盘、保险杠、通风管等内外饰件，因其良好的冲击韧性和表面装饰性。
+                        </div>
+                        <div class="info-item">
+                            <strong>电子电器：</strong>广泛用于电视机、洗衣机、空调、冰箱等家电的外壳和内部零件，因其耐热、耐冲击和电绝缘特性。
+                        </div>
+                        <div class="info-item">
+                            <strong>建材领域：</strong>可制成管材、卫生洁具、装饰板等，具有良好的加工成型性和表面装饰效果。
+                        </div>
+                        <div class="info-item">
+                            <strong>日常消费品：</strong>是乐高积木等玩具、各种箱包、文具、乐器等的主要材料，因其易成型、易上色、耐冲击。
+                        </div>
+                        <div class="info-item">
+                            <strong>新兴领域：</strong>是3D打印领域最重要的耗材之一，尤其是FDM/FFF打印机常用的ABS线材，具备良好的强度、耐热性和表面光洁度。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="material-category">
+                    <h3>项目材料应用具体内容</h3>
+                    <div class="material-info">
+                        <div class="info-item">
+                            本次项目选用PLA材料进行3D打印制作，该材料尺寸精度稳定，打印难度低，同时具备绝缘防护效果，可以有效保护内部电路结构，成品也便于后期美化加工。
+                        </div>
+                        <div class="info-item">
+                            除了作品主体外壳之外，还利用该材料制作了场景配套的玩具小车、花朵造型刷卡卡片以及各类装饰摆件，完善整个车站模型的场景效果。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="../../index.js"></script>
+</body>
+</html>
