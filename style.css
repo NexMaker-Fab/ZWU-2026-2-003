@@ -1,4 +1,4 @@
-* { margin: 0; padding: 0; box-sizing: border-box; }
+﻿* { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif; color: #000000; background: linear-gradient(120deg, #DFFAF5, #E0F0FF); min-height: 100vh; overflow-x: hidden; }
 .navbar { position: fixed; top: 0; width: 100%; background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(168, 210, 255, 0.3); z-index: 1000; transition: all 0.3s ease; }
 .nav-container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; height: 60px; }
@@ -42,12 +42,12 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe 
 .feature-card h3 { font-size: 1.3rem; margin-bottom: 0.5rem; font-weight: 600; }
 .feature-card p { color: rgba(0, 0, 0, 0.7); font-size: 0.95rem; line-height: 1.6; }
 
-/* 作业页样式 */
+/*/*/* 位置图片样式 */
 .homework-header { text-align: center; margin-bottom: 2rem; }
 .week-badge { display: inline-block; background: linear-gradient(120deg, #A8D2FF, #C0E0FF); color: #000000; padding: 0.5rem 2rem; border-radius: 20px; font-weight: 600; margin-bottom: 1rem; }
 .week-title { font-size: 2rem; font-weight: 600; margin-bottom: 1rem; }
 
-/* 视图切换按钮样式 */
+/*/*/* 位置图片样式 */
 .view-toggle {
     display: flex;
     gap: 1rem;
@@ -80,7 +80,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe 
     animation: fadeIn 0.3s ease;
 }
 
-/* 最终版本内容样式 */
+/*/*/* 位置图片样式 */
 .final-version-content {
     background: rgba(255, 255, 255, 0.6);
     border-radius: 20px;
@@ -112,7 +112,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe 
     color: #5a6b7a;
 }
 
-/* 图片辅助说明样式 */
+/*/*/* 位置图片样式 */
 .image-illustration {
     margin: 1rem auto;
     padding: 1.1rem;
@@ -151,7 +151,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe 
     align-items: start;
 }
 
-/* 作业清单样式 */
+/*/*/* 位置图片样式 */
 .homework-checklist {
     margin-bottom: 2rem;
 }
@@ -211,7 +211,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe 
     flex: 1;
 }
 
-/* 使用软件说明样式 */
+/*/*/* 位置图片样式 */
 .software-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -248,7 +248,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe 
     line-height: 1.6;
 }
 
-/* 制作过程内容样式 */
+/*/*/* 位置图片样式 */
 .process-content {
     background: rgba(255, 255, 255, 0.6);
     border-radius: 20px;
@@ -504,7 +504,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe 
 	    .stage-summary { grid-template-columns: 1fr; }
 }
 
-/* ===== 沙盘系统项目展示样式 ===== */
+/*/*/* 位置图片样式 */
 .sandbox-project { max-width: 1100px; margin: 0 auto; }
 .sandbox-hero { text-align: center; padding: 3rem 2rem; background: rgba(255,255,255,0.5); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-radius: 24px; border: 1px solid rgba(168,210,255,0.3); margin-bottom: 2rem; }
 .sandbox-hero h1 { font-size: 2.4rem; font-weight: 700; margin-bottom: 0.5rem; background: linear-gradient(135deg, #6B9FD4, #4A7FB5); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
@@ -538,7 +538,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe 
 .layer-card .layer-icon { font-size: 2rem; margin-bottom: 0.5rem; }
 .layer-card h4 { font-weight: 700; margin-bottom: 0.5rem; font-size: 1rem; }
 
-/* ===== Week 3: CAD 小车建模样式 ===== */
+/*/*/* 位置图片样式 */
 .editable-note {
     margin: 0 0 1rem 0;
     padding: 0.8rem 1rem;
@@ -666,7 +666,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe 
 .stage-summary ul { list-style: none; font-size: 0.85rem; line-height: 2; color: rgba(0,0,0,0.7); }
 .stage-summary ul li::before { content: '• '; color: #A8D2FF; font-weight: 700; }
 
-/* ===== 第二部分：创建个人网站教程样式 ===== */
+/*/*/* 位置图片样式 */
 .reference-link {
     margin: 1.5rem 0;
     padding: 1.2rem;
@@ -693,7 +693,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe 
     text-decoration: underline;
 }
 
-/* 代码高亮区域样式 */
+/*/*/* 位置图片样式 */
 .code-section {
     margin: 2rem 0;
     padding: 1.5rem;
@@ -752,7 +752,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe 
     display: block;
 }
 
-/* 子步骤样式 */
+/*/*/* 位置图片样式 */
 .sub-step {
     margin: 1.5rem 0;
     padding: 1.2rem;
@@ -791,7 +791,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe 
     color: #4A7FB5;
 }
 
-/* ===== 第二部分：创建个人网站教程页面样式 ===== */
+/*/*/* 位置图片样式 */
 .tutorial-container {
     max-width: 1100px;
     margin: 0 auto;
@@ -905,7 +905,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe 
     text-decoration: underline;
 }
 
-/* 代码高亮区域样式 */
+/*/*/* 位置图片样式 */
 .code-section {
     margin: 2rem 0;
     padding: 1.5rem;
@@ -964,7 +964,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe 
     display: block;
 }
 
-/* HTML标签颜色 */
+/*/*/* 位置图片样式 */
 .code-highlight .tag {
     color: #569cd6;
 }
@@ -981,7 +981,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe 
     color: #6a9955;
 }
 
-/* 第四步子步骤样式 */
+/*/*/* 位置图片样式 */
 .sub-steps {
     display: flex;
     flex-direction: column;
@@ -1044,4 +1044,245 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe 
     .code-scroll-container {
         max-height: 300px;
     }
+}
+
+/*/*/* 位置图片样式 */
+.software-item-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.software-item-link:hover {
+    transform: translateY(-3px);
+}
+
+.software-item-link:hover .software-item {
+    box-shadow: 0 8px 20px rgba(168, 210, 255, 0.4);
+    background: rgba(255, 255, 255, 0.95);
+}
+
+/*/*/* 位置图片样式 */
+.ai-chat-section {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 16px;
+    border: 1px solid rgba(168, 210, 255, 0.3);
+}
+
+.ai-chat-section h5 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #2b3650;
+}
+
+.chat-scroll-container {
+    max-height: 500px;
+    overflow-y: auto;
+    border-radius: 12px;
+    background: rgba(245, 247, 250, 0.5);
+    padding: 1.5rem;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.chat-scroll-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chat-scroll-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 4px;
+}
+
+.chat-scroll-container::-webkit-scrollbar-thumb {
+    background: rgba(168, 210, 255, 0.5);
+    border-radius: 4px;
+}
+
+.chat-scroll-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(168, 210, 255, 0.7);
+}
+
+.chat-messages {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.chat-message {
+    display: flex;
+    gap: 1rem;
+    animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.message-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.user-message .message-avatar {
+    background: linear-gradient(135deg, #A8D2FF 0%, #7FB5E8 100%);
+    box-shadow: 0 4px 12px rgba(168, 210, 255, 0.3);
+}
+
+.ai-message .message-avatar {
+    background: linear-gradient(135deg, #FFE4B5 0%, #FFD4A3 100%);
+    box-shadow: 0 4px 12px rgba(255, 228, 181, 0.3);
+}
+
+.message-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.message-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.sender-name {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #2b3650;
+}
+
+.message-time {
+    font-size: 0.8rem;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.message-text {
+    background: white;
+    padding: 1rem 1.2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    line-height: 1.8;
+    color: rgba(0, 0, 0, 0.85);
+}
+
+.user-message .message-text {
+    border-left: 4px solid #A8D2FF;
+}
+
+.ai-message .message-text {
+    border-left: 4px solid #FFD4A3;
+}
+
+.message-text p {
+    margin: 0.8rem 0;
+}
+
+.message-text ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+}
+
+.message-text li {
+    margin: 0.5rem 0;
+    line-height: 1.6;
+}
+
+.message-text code {
+    background: rgba(168, 210, 255, 0.15);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 0.85rem;
+    color: #4A7FB5;
+}
+
+.message-text h6 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 1.2rem 0 0.8rem 0;
+    color: #2b3650;
+}
+
+.inline-code {
+    background: #1e1e1e;
+    padding: 1rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 1rem 0;
+}
+
+.inline-code code {
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: #d4d4d4;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+/*/*/* 位置图片样式 */
+.file-location {
+    margin: 1rem 0;
+    padding: 1rem;
+    background: rgba(168, 210, 255, 0.1);
+    border-radius: 8px;
+    border-left: 4px solid #A8D2FF;
+}
+
+.file-location p {
+    margin: 0 0 0.5rem 0;
+    color: #2d3748;
+    font-weight: 600;
+}
+
+.file-location code {
+    display: block;
+    background: #f5f7fa;
+    padding: 0.8rem;
+    border-radius: 6px;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 0.85rem;
+    color: #4a5568;
+    word-break: break-all;
+}
+
+/*/*/* 位置图片样式 */
+.location-image {
+    margin: 1.5rem 0;
+}
+
+.location-image img {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.location-image img:hover {
+    transform: scale(1.02);
+}
+
+.location-image p {
+    text-align: center;
+    margin-top: 0.8rem;
+    color: #718096;
+    font-size: 0.9rem;
 }
