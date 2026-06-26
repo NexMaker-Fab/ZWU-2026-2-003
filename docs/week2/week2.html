@@ -252,13 +252,39 @@
                 </div>
 
                 <div class="process-step">
-                    <h4>📌 第三步：基本操作流程</h4>
-                    <ul style="margin-left: 20px; line-height: 1.8;">
-                        <li><strong>编写代码</strong>：在代码编辑区输入或粘贴 Arduino 代码</li>
-                        <li><strong>验证代码</strong>：点击工具栏的 ✓ 按钮或按 Ctrl+R，检查代码是否有语法错误</li>
-                        <li><strong>上传代码</strong>：点击工具栏的 → 按钮或按 Ctrl+U，将编译后的代码上传到开发板</li>
-                        <li><strong>查看结果</strong>：通过串口监视器（Ctrl+Shift+M）查看程序运行输出</li>
+                    <h4>📌 第三步：理解 setup() 和 loop() 函数</h4>
+                    <p>每个 Arduino 程序都必须包含两个核心函数：<strong>setup()</strong> 和 <strong>loop()</strong>。它们是程序的入口点和运行主体。</p>
+                    
+                    <h5 style="margin-top: 15px; color: #5B7C99;">setup() 函数</h5>
+                    <p><strong>作用</strong>：只在程序开始时运行一次，用于初始化设置。</p>
+                    <p><strong>常见用途</strong>：设置引脚模式、初始化串口通信、配置传感器等。</p>
+                    <p><strong>示例</strong>：</p>
+                    <ul style="margin-left: 20px; line-height: 1.6;">
+                        <li><code>pinMode(LED_BUILTIN, OUTPUT)</code> - 设置LED引脚为输出模式</li>
+                        <li><code>Serial.begin(9600)</code> - 启动串口通信</li>
                     </ul>
+                    
+                    <h5 style="margin-top: 15px; color: #5B7C99;">loop() 函数</h5>
+                    <p><strong>作用</strong>：在 setup() 执行完后，会无限循环运行，是程序的主要逻辑部分。</p>
+                    <p><strong>常见用途</strong>：读取传感器数据、控制输出设备、执行判断逻辑等。</p>
+                    <p><strong>示例</strong>：</p>
+                    <ul style="margin-left: 20px; line-height: 1.6;">
+                        <li><code>digitalWrite(LED_BUILTIN, HIGH)</code> - 点亮LED</li>
+                        <li><code>delay(1000)</code> - 延时1秒</li>
+                        <li><code>analogRead(A0)</code> - 读取模拟引脚数据</li>
+                    </ul>
+                    
+                    <div class="code-block" style="margin-top: 20px;">
+                        <pre><code><span class="code-type">void</span> <span class="code-function">setup</span>() {
+    <span class="code-comment">// Runs only once here</span>
+}
+
+<span class="code-type">void</span> <span class="code-function">loop</span>() {
+    <span class="code-comment">// Loops repeatedly here</span>
+}</code></pre>
+                    </div>
+                    
+                    <p style="margin-top: 15px; color: #666;"><strong>简单例子</strong>：如果你想让板载LED闪烁，可以在 setup() 中设置引脚模式，在 loop() 中反复开关LED并延时。</p>
                 </div>
             </div>
 
