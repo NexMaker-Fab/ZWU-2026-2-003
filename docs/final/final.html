@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>最终成果展示</title>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        /* Final 专属排版优化 */
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .content-section h3 {
+            font-size: 28px !important;
+            color: #2c3e50;
+            margin-bottom: 30px !important;
+            margin-top: 50px !important;
+            text-align: center !important;
+            line-height: 1.6;
+        }
+
+        .content-section h3:first-child {
+            margin-top: 0 !important;
+        }
+
+        .section-block {
+            background: linear-gradient(135deg, #fffef5 0%, #fff9e6 100%);
+            border-radius: 16px;
+            padding: 40px !important;
+            margin-bottom: 40px !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid #fff5d6;
+            transition: all 0.3s ease;
+        }
+
+        .section-block:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .section-block h4 {
+            font-size: 24px !important;
+            color: #f5a623;
+            margin-bottom: 25px !important;
+            margin-top: 0;
+            line-height: 1.5;
+            font-weight: 600;
+            text-align: left;
+        }
+
+        .section-block p {
+            font-size: 16px !important;
+            line-height: 1.8;
+            color: #4a5568;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .section-block ul,
+        .section-block ol {
+            margin: 20px 0 !important;
+            padding-left: 30px;
+        }
+
+        .section-block li {
+            font-size: 16px !important;
+            line-height: 1.8;
+            color: #4a5568;
+            margin-bottom: 12px;
+        }
+
+        /* 视频容器样式 */
+        .video-container {
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding-bottom: 56.25%; /* 16:9 比例 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 16px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+            background: #000;
+        }
+
+        .video-wrapper video,
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-caption {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #8b7355;
+            font-style: italic;
+        }
+
+        /* 海报展板样式 */
+        .poster-container {
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .poster-wrapper {
+            display: inline-block;
+            max-width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .poster-wrapper:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+        }
+
+        .poster-wrapper img {
+            width: 100%;
+            max-width: 1200px;
+            height: auto;
+            display: block;
+        }
+
+        .poster-caption {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #8b7355;
+            font-style: italic;
+        }
+
+        /* 项目概念部分特殊样式 */
+        .concept-highlight {
+            background: white;
+            border-radius: 12px;
+            padding: 25px !important;
+            margin: 20px 0;
+            border-left: 4px solid #3498db;
+            line-height: 1.8;
+        }
+
+        .concept-highlight strong {
+            display: block;
+            margin-bottom: 15px !important;
+            font-size: 18px;
+            color: #2c3e50;
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .content-section {
+                padding: 20px 15px;
+            }
+
+            .content-section h3 {
+                font-size: 24px !important;
+                margin-bottom: 25px !important;
+                margin-top: 40px !important;
+            }
+
+            .section-block {
+                padding: 25px 20px !important;
+                margin-bottom: 30px !important;
+            }
+
+            .section-block h4 {
+                font-size: 20px !important;
+                margin-bottom: 20px !important;
+            }
+
+            .section-block p,
+            .section-block li {
+                font-size: 15px !important;
+                line-height: 1.7;
+            }
+
+            .video-wrapper {
+                border-radius: 12px;
+            }
+
+            .poster-wrapper {
+                border-radius: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" id="goHome">课程系统</div>
+            <ul class="nav-menu">
+                <li class="nav-item" data-page="home">Home</li>
+                <li class="nav-item has-dropdown active" data-page="homework">
+                    <span>作业</span>
+                    <div class="dropdown">
+                        <div class="dropdown-weeks">
+                            <button class="week-btn" data-week="1">Week 1 - 网络搭建</button>
+                            <button class="week-btn" data-week="2">Week 2 - Arduino硬件</button>
+                            <button class="week-btn" data-week="3">Week 3 - CAD小车</button>
+                            <button class="week-btn" data-week="4">Week 4 - 3D打印</button>
+                            <button class="week-btn" data-week="5">Week 5 - IoT架构</button>
+                            <button class="week-btn" data-week="6">Week 6 - 材料介绍</button>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item" data-page="project">项目</li>
+                <li class="nav-item" data-page="team">团队介绍</li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <section class="page active">
+            <div class="homework-header">
+                <div class="week-badge">Final Project</div>
+                <h1 class="week-title">最终成果展示</h1>
+                <div class="title-divider"></div>
+            </div>
+
+            <div class="content-section">
+                <!-- 项目概念说明 -->
+                <h3>📖 项目概念说明</h3>
+                
+                <div class="section-block">
+                    <h4>🎯 项目概述</h4>
+                    <p contenteditable="true">本项目是一个综合性的智能小车设计与实现项目，涵盖了从网页开发、硬件电路、CAD建模、3D打印到IoT物联网架构的完整技术栈。通过六个周次的学习与实践，我们逐步构建了一个功能完善的智能教育小车系统。</p>
+                    
+                    <div class="concept-highlight">
+                        <strong>💡 核心目标</strong>
+                        <ul>
+                            <li>掌握现代Web开发技术与团队协作流程</li>
+                            <li>理解Arduino硬件控制与传感器应用</li>
+                            <li>熟练运用Fusion 360进行参数化建模设计</li>
+                            <li>实践3D打印技术在原型制作中的应用</li>
+                            <li>构建工业4.0级别的IoT物联网架构</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section-block">
+                    <h4>🔧 技术栈与工具</h4>
+                    <p contenteditable="true">项目采用了多元化的技术工具和平台，确保每个环节都能得到专业级的支持：</p>
+                    <ul>
+                        <li><strong>Web开发：</strong>HTML5、CSS3、JavaScript、GitHub版本控制</li>
+                        <li><strong>硬件平台：</strong>Arduino Uno R4 WiFi、各类传感器（压力、触摸、伺服电机等）</li>
+                        <li><strong>CAD设计：</strong>Fusion 360 参数化建模软件</li>
+                        <li><strong>3D打印：</strong>FDM熔融沉积成型技术、切片软件</li>
+                        <li><strong>IoT架构：</strong>MQTT协议、云平台、边缘计算节点</li>
+                    </ul>
+                </div>
+
+                <div class="section-block">
+                    <h4>🚀 创新亮点</h4>
+                    <ol>
+                        <li><strong>模块化设计：</strong>采用可拆卸的模块化结构，便于后期维护和升级</li>
+                        <li><strong>智能化控制：</strong>集成多种传感器，实现自动避障、路径规划等功能</li>
+                        <li><strong>云端互联：</strong>通过IoT架构实现远程监控与数据可视化</li>
+                        <li><strong>开源协作：</strong>基于Sophicar和Autodesk社区的开源资源进行二次开发</li>
+                        <li><strong>完整文档：</strong>提供详尽的技术文档和使用说明，便于知识传承</li>
+                    </ol>
+                </div>
+
+                <!-- 成品视频展示 -->
+                <h3> 成品视频展示</h3>
+                
+                <div class="section-block">
+                    <h4>📹 项目演示视频</h4>
+                    <p contenteditable="true">以下视频展示了智能小车的完整运行过程，包括启动、行驶、传感器检测、云端数据传输等核心功能。</p>
+                    
+                    <div class="video-container">
+                        <div class="video-wrapper">
+                            <!-- 这里可以替换为实际的本地视频文件 -->
+                            <video controls poster="assets/final-poster.jpg">
+                                <source src="assets/final-demo.mp4" type="video/mp4">
+                                您的浏览器不支持视频播放。
+                            </video>
+                            <!-- 如果使用YouTube/Bilibili等在线视频，可以使用iframe：
+                            <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
+                            -->
+                        </div>
+                        <p class="video-caption">图：智能小车完整运行演示视频</p>
+                    </div>
+                </div>
+
+                <div class="section-block">
+                    <h4>🎥 制作过程回顾</h4>
+                    <p contenteditable="true">这段视频记录了从概念设计到最终成品的完整制作过程，包括各个阶段的关键节点和技术挑战。</p>
+                    
+                    <div class="video-container">
+                        <div class="video-wrapper">
+                            <video controls poster="assets/process-poster.jpg">
+                                <source src="assets/process-video.mp4" type="video/mp4">
+                                您的浏览器不支持视频播放。
+                            </video>
+                        </div>
+                        <p class="video-caption">图：项目制作过程回顾视频</p>
+                    </div>
+                </div>
+
+                <!-- 横板海报展板 -->
+                <h3>️ 横板海报展板</h3>
+                
+                <div class="section-block">
+                    <h4>📊 项目总览海报</h4>
+                    <p contenteditable="true">这张横板海报全面展示了项目的整体架构、技术路线和最终成果，适合用于展览和汇报展示。</p>
+                    
+                    <div class="poster-container">
+                        <div class="poster-wrapper">
+                            <img src="assets/final-poster-landscape.jpg" alt="项目总览横板海报" onclick="openImageModal(this.src)">
+                        </div>
+                        <p class="poster-caption">图：项目总览横板海报（建议尺寸：1920×1080px）</p>
+                    </div>
+                </div>
+
+                <div class="section-block">
+                    <h4>🏆 成果展示展板</h4>
+                    <p contenteditable="true">展板详细呈现了六个周次的学习成果，从网页搭建到IoT架构，形成完整的项目发展脉络。</p>
+                    
+                    <div class="poster-container">
+                        <div class="poster-wrapper">
+                            <img src="assets/results-poster.jpg" alt="成果展示横板展板" onclick="openImageModal(this.src)">
+                        </div>
+                        <p class="poster-caption">图：成果展示横板展板（建议尺寸：1920×1080px）</p>
+                    </div>
+                </div>
+
+                <div class="section-block">
+                    <h4>📐 技术细节展板</h4>
+                    <p contenteditable="true">展板聚焦于项目的核心技术细节，包括电路原理图、CAD模型爆炸图、3D打印层纹分析等专业内容。</p>
+                    
+                    <div class="poster-container">
+                        <div class="poster-wrapper">
+                            <img src="assets/technical-poster.jpg" alt="技术细节横板展板" onclick="openImageModal(this.src)">
+                        </div>
+                        <p class="poster-caption">图：技术细节横板展板（建议尺寸：1920×1080px）</p>
+                    </div>
+                </div>
+
+                <!-- 总结与展望 -->
+                <h3>✨ 总结与展望</h3>
+                
+                <div class="section-block">
+                    <h4>🎓 项目收获</h4>
+                    <p contenteditable="true">通过本项目的实施，我们在多个维度获得了宝贵的实践经验：</p>
+                    <ul>
+                        <li><strong>技术能力：</strong>掌握了从前端开发到硬件控制的完整技能链</li>
+                        <li><strong>工程思维：</strong>学会了系统化思考和问题分解的方法论</li>
+                        <li><strong>团队协作：</strong>体验了Git版本控制和敏捷开发的协作模式</li>
+                        <li><strong>创新意识：</strong>培养了将理论知识转化为实际产品的创新能力</li>
+                    </ul>
+                </div>
+
+                <div class="section-block">
+                    <h4>🔮 未来展望</h4>
+                    <p contenteditable="true">基于当前成果，我们计划在未来继续深化和完善：</p>
+                    <ol>
+                        <li>增加AI视觉识别功能，实现更智能的环境感知</li>
+                        <li>优化IoT架构，引入边缘计算提升响应速度</li>
+                        <li>开发移动端App，实现更便捷的远程控制</li>
+                        <li>扩展传感器类型，支持更多应用场景</li>
+                        <li>完善文档体系，打造开源教育资源库</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 图片放大模态框 -->
+    <div class="modal image-modal" id="imageModal">
+        <div class="image-modal-content">
+            <span class="modal-close" id="modalClose">&times;</span>
+            <img src="" alt="放大预览" id="modalImage">
+        </div>
+    </div>
+
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const navItems = document.querySelectorAll('.nav-item');
+    const weekBtns = document.querySelectorAll('.week-btn');
+    const imageModal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalClose = document.getElementById('modalClose');
+    const goHome = document.getElementById('goHome');
+
+    // 图片放大功能
+    window.openImageModal = function(src) {
+        modalImage.src = src;
+        imageModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    };
+
+    function closeImageModal() {
+        imageModal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    if (modalClose) modalClose.addEventListener('click', closeImageModal);
+    if (imageModal) {
+        imageModal.addEventListener('click', (event) => {
+            if (event.target === imageModal) {
+                closeImageModal();
+            }
+        });
+    }
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && imageModal.classList.contains('active')) {
+            closeImageModal();
+        }
+    });
+
+    // 返回首页
+    if (goHome) {
+        goHome.addEventListener('click', () => {
+            window.location.href = '../../index.html';
+        });
+    }
+
+    // 导航菜单点击事件
+    navItems.forEach((item) => {
+        item.addEventListener('click', () => {
+            const page = item.dataset.page;
+            if (!page || page === 'homework') {
+                return;
+            }
+            if (page === 'project') {
+                window.location.href = '../../docs/project/work.html';
+                return;
+            }
+            if (page === 'team') {
+                window.location.href = '../team/team.html';
+                return;
+            }
+            if (page === 'home') {
+                window.location.href = '../../index.html';
+            }
+        });
+    });
+
+    // Week切换按钮点击事件
+    weekBtns.forEach((btn) => {
+        btn.addEventListener('click', (event) => {
+            event.stopPropagation();
+            const week = Number.parseInt(btn.dataset.week, 10);
+            if (week === 1) {
+                window.location.href = '../week1/week1.html';
+                return;
+            }
+            if (week === 2) {
+                window.location.href = '../week2/week2.html';
+                return;
+            }
+            if (week === 3) {
+                window.location.href = '../week3/week3.html';
+                return;
+            }
+            if (week === 4) {
+                window.location.href = '../week4/week4.html';
+                return;
+            }
+            if (week === 5) {
+                window.location.href = '../week5/week5.html';
+                return;
+            }
+            if (week === 6) {
+                window.location.href = '../week6/week6.html';
+                return;
+            }
+        });
+    });
+});
+    </script>
+</body>
+</html>
