@@ -176,6 +176,7 @@
                     </div>
                 </li>
                 <li class="nav-item" data-page="project">项目</li>
+                <li class="nav-item" data-page="final">成果</li>
                 <li class="nav-item" data-page="team">团队介绍</li>
             </ul>
         </div>
@@ -780,6 +781,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             if (page === 'project') {
                 window.location.href = '../../docs/project/work.html';
+                return;
+            }
+            if (page === 'final') {
+                window.location.href = '../final/final.html';
                 return;
             }
             if (page === 'team') {

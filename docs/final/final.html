@@ -6,93 +6,205 @@
     <title>最终成果展示</title>
     <link rel="stylesheet" href="../../style.css">
     <style>
-        /* Final 专属排版优化 */
-        .content-section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
+        .result-page {
+            padding-top: 4rem;
         }
 
-        .content-section h3 {
-            font-size: 28px !important;
+        .result-hero {
+            text-align: center;
+            padding: 3rem 2rem 2.2rem;
+            margin: 2rem 0 2.2rem;
+            background: rgba(255, 255, 255, 0.55);
+            border: 1px solid rgba(168, 210, 255, 0.25);
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+        }
+
+        .eyebrow {
+            margin: 0 0 0.8rem;
+            font-size: 0.8rem;
+            letter-spacing: 0.32em;
+            text-transform: uppercase;
+            color: #8b7355;
+            font-weight: 700;
+        }
+
+        .result-hero h1 {
+            margin: 0 0 1rem;
+            font-size: 2.15rem;
             color: #2c3e50;
-            margin-bottom: 30px !important;
-            margin-top: 50px !important;
-            text-align: center !important;
-            line-height: 1.6;
+            line-height: 1.3;
         }
 
-        .content-section h3:first-child {
-            margin-top: 0 !important;
+        .hero-copy {
+            max-width: 760px;
+            margin: 0 auto 1.5rem;
+            font-size: 1.02rem;
+            line-height: 1.8;
+            color: #4a5568;
         }
 
-        .section-block {
-            background: linear-gradient(135deg, #fffef5 0%, #fff9e6 100%);
-            border-radius: 16px;
-            padding: 40px !important;
-            margin-bottom: 40px !important;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            border: 1px solid #fff5d6;
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.9rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.35rem;
+            border-radius: 999px;
+            font-weight: 600;
             transition: all 0.3s ease;
         }
 
-        .section-block:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        .btn:hover {
+            transform: translateY(-2px);
         }
 
-        .section-block h4 {
-            font-size: 24px !important;
-            color: #f5a623;
-            margin-bottom: 25px !important;
-            margin-top: 0;
-            line-height: 1.5;
+        .btn-primary {
+            background: #f5a623;
+            color: #fff;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.75);
+            color: #2c3e50;
+            border: 1px solid rgba(168, 210, 255, 0.3);
+        }
+
+        .document-link {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.95rem 1.4rem;
+            background: #f5a623;
+            color: #ffffff;
+            border-radius: 999px;
             font-weight: 600;
-            text-align: left;
+            transition: all 0.3s ease;
         }
 
-        .section-block p {
-            font-size: 16px !important;
-            line-height: 1.8;
-            color: #4a5568;
-            margin-bottom: 20px;
-            text-align: justify;
+        .document-link:hover {
+            opacity: 0.92;
         }
 
-        .section-block ul,
-        .section-block ol {
-            margin: 20px 0 !important;
-            padding-left: 30px;
+        .result-section {
+            margin-bottom: 2.2rem;
         }
 
-        .section-block li {
-            font-size: 16px !important;
-            line-height: 1.8;
-            color: #4a5568;
-            margin-bottom: 12px;
-        }
-
-        /* 视频容器样式 */
-        .video-container {
-            margin: 30px 0;
+        .section-heading {
             text-align: center;
+            margin-bottom: 1.2rem;
         }
 
-        .video-wrapper {
+        .section-heading h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: #2c3e50;
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1.15rem;
+        }
+
+        .cloud-summary-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.15rem;
+            margin-bottom: 1.15rem;
+        }
+
+        .cloud-summary-card {
+            position: relative;
+            overflow: hidden;
+            border-left: 6px solid transparent;
+        }
+
+        .cloud-summary-card:nth-child(1) {
+            border-left-color: #f5a623;
+        }
+
+        .cloud-summary-card:nth-child(2) {
+            border-left-color: #72b8ff;
+        }
+
+        .cloud-summary-card:nth-child(3) {
+            border-left-color: #7dcf9f;
+        }
+
+        .result-card,
+        .video-card,
+        .poster-card {
+            background: linear-gradient(135deg, #fffef5 0%, #fff9e6 100%);
+            border: 1px solid #fff5d6;
+            border-radius: 18px;
+            padding: 1.3rem 1.4rem;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .result-card:hover,
+        .video-card:hover,
+        .poster-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .result-card h3,
+        .video-card h3,
+        .poster-card h3 {
+            margin: 0 0 0.8rem;
+            font-size: 1.2rem;
+            color: #f5a623;
+        }
+
+        .result-card p,
+        .result-card li,
+        .video-card p,
+        .poster-card p {
+            margin: 0 0 0.7rem;
+            font-size: 0.97rem;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+
+        .result-card ul,
+        .result-card ol {
+            margin: 0.5rem 0 0;
+            padding-left: 1.1rem;
+        }
+
+        .result-card li {
+            margin-bottom: 0.45rem;
+        }
+
+        .video-layout {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 1.15rem;
+            align-items: start;
+        }
+
+        .video-frame {
             position: relative;
             width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            padding-bottom: 56.25%; /* 16:9 比例 */
-            height: 0;
+            padding-bottom: 56.25%;
             overflow: hidden;
-            border-radius: 16px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+            border-radius: 14px;
             background: #000;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
         }
 
-        .video-wrapper video,
-        .video-wrapper iframe {
+        .video-frame video,
+        .video-frame iframe {
             position: absolute;
             top: 0;
             left: 0;
@@ -102,97 +214,87 @@
         }
 
         .video-caption {
-            margin-top: 15px;
-            font-size: 14px;
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
             color: #8b7355;
             font-style: italic;
         }
 
-        /* 海报展板样式 */
-        .poster-container {
-            margin: 30px 0;
-            text-align: center;
+        /* 照片画廊样式 */
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.9rem;
+            margin-top: 1rem;
         }
 
-        .poster-wrapper {
-            display: inline-block;
-            max-width: 100%;
-            border-radius: 16px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .poster-wrapper:hover {
-            transform: scale(1.02);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.18);
-        }
-
-        .poster-wrapper img {
-            width: 100%;
-            max-width: 1200px;
-            height: auto;
-            display: block;
-        }
-
-        .poster-caption {
-            margin-top: 15px;
-            font-size: 14px;
-            color: #8b7355;
-            font-style: italic;
-        }
-
-        /* 项目概念部分特殊样式 */
-        .concept-highlight {
-            background: white;
+        .photo-item {
+            background: rgba(255,255,255,0.9);
             border-radius: 12px;
-            padding: 25px !important;
-            margin: 20px 0;
-            border-left: 4px solid #3498db;
-            line-height: 1.8;
+            overflow: hidden;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.06);
         }
 
-        .concept-highlight strong {
+        .photo-item img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
             display: block;
-            margin-bottom: 15px !important;
-            font-size: 18px;
-            color: #2c3e50;
+            cursor: pointer;
+            transition: transform 0.25s ease;
         }
 
-        /* 响应式调整 */
+        .photo-item img:hover { transform: scale(1.03); }
+
+
+        .poster-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.15rem;
+        }
+
+        .poster-card {
+            overflow: hidden;
+            padding: 0;
+        }
+
+        .poster-card img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        .poster-card .poster-content {
+            padding: 1.1rem 1.2rem 1.2rem;
+        }
+
+        @media (max-width: 900px) {
+            .result-grid,
+            .video-layout,
+            .poster-grid,
+            .cloud-summary-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         @media (max-width: 768px) {
-            .content-section {
-                padding: 20px 15px;
+            .result-hero {
+                padding: 2rem 1rem 1.6rem;
             }
 
-            .content-section h3 {
-                font-size: 24px !important;
-                margin-bottom: 25px !important;
-                margin-top: 40px !important;
+            .result-hero h1 {
+                font-size: 1.7rem;
             }
 
-            .section-block {
-                padding: 25px 20px !important;
-                margin-bottom: 30px !important;
+            .section-heading h2 {
+                font-size: 1.35rem;
             }
 
-            .section-block h4 {
-                font-size: 20px !important;
-                margin-bottom: 20px !important;
-            }
-
-            .section-block p,
-            .section-block li {
-                font-size: 15px !important;
-                line-height: 1.7;
-            }
-
-            .video-wrapper {
-                border-radius: 12px;
-            }
-
-            .poster-wrapper {
-                border-radius: 12px;
+            .result-card,
+            .video-card,
+            .poster-card {
+                padding: 1.1rem;
             }
         }
     </style>
@@ -217,164 +319,140 @@
                     </div>
                 </li>
                 <li class="nav-item" data-page="project">项目</li>
+                <li class="nav-item active" data-page="final">成果</li>
                 <li class="nav-item" data-page="team">团队介绍</li>
             </ul>
         </div>
     </nav>
 
-    <main class="main-content">
+    <main class="main-content result-page">
         <section class="page active">
-            <div class="homework-header">
+            <div class="result-hero">
                 <div class="week-badge">Final Project</div>
-                <h1 class="week-title">最终成果展示</h1>
-                <div class="title-divider"></div>
-            </div>
-
-            <div class="content-section">
-                <!-- 项目概念说明 -->
-                <h3>📖 项目概念说明</h3>
-                
-                <div class="section-block">
-                    <h4>🎯 项目概述</h4>
-                    <p contenteditable="true">本项目是一个综合性的智能小车设计与实现项目，涵盖了从网页开发、硬件电路、CAD建模、3D打印到IoT物联网架构的完整技术栈。通过六个周次的学习与实践，我们逐步构建了一个功能完善的智能教育小车系统。</p>
-                    
-                    <div class="concept-highlight">
-                        <strong>💡 核心目标</strong>
-                        <ul>
-                            <li>掌握现代Web开发技术与团队协作流程</li>
-                            <li>理解Arduino硬件控制与传感器应用</li>
-                            <li>熟练运用Fusion 360进行参数化建模设计</li>
-                            <li>实践3D打印技术在原型制作中的应用</li>
-                            <li>构建工业4.0级别的IoT物联网架构</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="section-block">
-                    <h4>🔧 技术栈与工具</h4>
-                    <p contenteditable="true">项目采用了多元化的技术工具和平台，确保每个环节都能得到专业级的支持：</p>
-                    <ul>
-                        <li><strong>Web开发：</strong>HTML5、CSS3、JavaScript、GitHub版本控制</li>
-                        <li><strong>硬件平台：</strong>Arduino Uno R4 WiFi、各类传感器（压力、触摸、伺服电机等）</li>
-                        <li><strong>CAD设计：</strong>Fusion 360 参数化建模软件</li>
-                        <li><strong>3D打印：</strong>FDM熔融沉积成型技术、切片软件</li>
-                        <li><strong>IoT架构：</strong>MQTT协议、云平台、边缘计算节点</li>
-                    </ul>
-                </div>
-
-                <div class="section-block">
-                    <h4>🚀 创新亮点</h4>
-                    <ol>
-                        <li><strong>模块化设计：</strong>采用可拆卸的模块化结构，便于后期维护和升级</li>
-                        <li><strong>智能化控制：</strong>集成多种传感器，实现自动避障、路径规划等功能</li>
-                        <li><strong>云端互联：</strong>通过IoT架构实现远程监控与数据可视化</li>
-                        <li><strong>开源协作：</strong>基于Sophicar和Autodesk社区的开源资源进行二次开发</li>
-                        <li><strong>完整文档：</strong>提供详尽的技术文档和使用说明，便于知识传承</li>
-                    </ol>
-                </div>
-
-                <!-- 成品视频展示 -->
-                <h3> 成品视频展示</h3>
-                
-                <div class="section-block">
-                    <h4>📹 项目演示视频</h4>
-                    <p contenteditable="true">以下视频展示了智能小车的完整运行过程，包括启动、行驶、传感器检测、云端数据传输等核心功能。</p>
-                    
-                    <div class="video-container">
-                        <div class="video-wrapper">
-                            <!-- 这里可以替换为实际的本地视频文件 -->
-                            <video controls poster="assets/final-poster.jpg">
-                                <source src="assets/final-demo.mp4" type="video/mp4">
-                                您的浏览器不支持视频播放。
-                            </video>
-                            <!-- 如果使用YouTube/Bilibili等在线视频，可以使用iframe：
-                            <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
-                            -->
-                        </div>
-                        <p class="video-caption">图：智能小车完整运行演示视频</p>
-                    </div>
-                </div>
-
-                <div class="section-block">
-                    <h4>🎥 制作过程回顾</h4>
-                    <p contenteditable="true">这段视频记录了从概念设计到最终成品的完整制作过程，包括各个阶段的关键节点和技术挑战。</p>
-                    
-                    <div class="video-container">
-                        <div class="video-wrapper">
-                            <video controls poster="assets/process-poster.jpg">
-                                <source src="assets/process-video.mp4" type="video/mp4">
-                                您的浏览器不支持视频播放。
-                            </video>
-                        </div>
-                        <p class="video-caption">图：项目制作过程回顾视频</p>
-                    </div>
-                </div>
-
-                <!-- 横板海报展板 -->
-                <h3>️ 横板海报展板</h3>
-                
-                <div class="section-block">
-                    <h4>📊 项目总览海报</h4>
-                    <p contenteditable="true">这张横板海报全面展示了项目的整体架构、技术路线和最终成果，适合用于展览和汇报展示。</p>
-                    
-                    <div class="poster-container">
-                        <div class="poster-wrapper">
-                            <img src="assets/final-poster-landscape.jpg" alt="项目总览横板海报" onclick="openImageModal(this.src)">
-                        </div>
-                        <p class="poster-caption">图：项目总览横板海报（建议尺寸：1920×1080px）</p>
-                    </div>
-                </div>
-
-                <div class="section-block">
-                    <h4>🏆 成果展示展板</h4>
-                    <p contenteditable="true">展板详细呈现了六个周次的学习成果，从网页搭建到IoT架构，形成完整的项目发展脉络。</p>
-                    
-                    <div class="poster-container">
-                        <div class="poster-wrapper">
-                            <img src="assets/results-poster.jpg" alt="成果展示横板展板" onclick="openImageModal(this.src)">
-                        </div>
-                        <p class="poster-caption">图：成果展示横板展板（建议尺寸：1920×1080px）</p>
-                    </div>
-                </div>
-
-                <div class="section-block">
-                    <h4>📐 技术细节展板</h4>
-                    <p contenteditable="true">展板聚焦于项目的核心技术细节，包括电路原理图、CAD模型爆炸图、3D打印层纹分析等专业内容。</p>
-                    
-                    <div class="poster-container">
-                        <div class="poster-wrapper">
-                            <img src="assets/technical-poster.jpg" alt="技术细节横板展板" onclick="openImageModal(this.src)">
-                        </div>
-                        <p class="poster-caption">图：技术细节横板展板（建议尺寸：1920×1080px）</p>
-                    </div>
-                </div>
-
-                <!-- 总结与展望 -->
-                <h3>✨ 总结与展望</h3>
-                
-                <div class="section-block">
-                    <h4>🎓 项目收获</h4>
-                    <p contenteditable="true">通过本项目的实施，我们在多个维度获得了宝贵的实践经验：</p>
-                    <ul>
-                        <li><strong>技术能力：</strong>掌握了从前端开发到硬件控制的完整技能链</li>
-                        <li><strong>工程思维：</strong>学会了系统化思考和问题分解的方法论</li>
-                        <li><strong>团队协作：</strong>体验了Git版本控制和敏捷开发的协作模式</li>
-                        <li><strong>创新意识：</strong>培养了将理论知识转化为实际产品的创新能力</li>
-                    </ul>
-                </div>
-
-                <div class="section-block">
-                    <h4>🔮 未来展望</h4>
-                    <p contenteditable="true">基于当前成果，我们计划在未来继续深化和完善：</p>
-                    <ol>
-                        <li>增加AI视觉识别功能，实现更智能的环境感知</li>
-                        <li>优化IoT架构，引入边缘计算提升响应速度</li>
-                        <li>开发移动端App，实现更便捷的远程控制</li>
-                        <li>扩展传感器类型，支持更多应用场景</li>
-                        <li>完善文档体系，打造开源教育资源库</li>
-                    </ol>
+                <h1>ASD 多感官互动沙盘系统</h1>
+                <p class="hero-copy">本项目面向 ASD 儿童，融合触觉、视觉、听觉与动态反馈，打造一个低刺激、可探索、具有安全感的沉浸式互动沙盘系统。</p>
+                <div class="hero-actions">
+                    <a class="btn btn-primary" href="#concept">项目概念</a>
+                    <a class="btn btn-secondary" href="#video">成品视频</a>
+                    <a class="btn btn-secondary" href="#poster">海报展板</a>
                 </div>
             </div>
+
+            <section id="concept" class="result-section">
+                <div class="section-heading">
+                    <p class="eyebrow">CONCEPT</p>
+                    <h2>项目概念与核心价值</h2>
+                </div>
+                <div class="result-grid">
+                    <article class="result-card">
+                        <h3>一、项目背景与痛点</h3>
+                        <p>自闭症儿童存在社交、情境理解与规则学习三重障碍，真实公共场景（如公交站台）易引发焦虑与失控。现有卡片、ABA、APP 与简易教具多为场景抽象、依赖人工、反馈单一，训练难以迁移到现实行为。本项目以公交站台为载体，打造低压力实体交互康复装置，契合 SDG3 健康、SDG4 特教、SDG10 平等发展目标。</p>
+                    </article>
+                    <article class="result-card">
+                        <h3>二、三维设计创新</h3>
+                        <ol>
+                            <li><strong>场景创新：</strong>实体还原进站 → 排队 → 乘车完整流程，采用柔和云朵视觉降低感官刺激，强化现实行为迁移。</li>
+                            <li><strong>交互创新：</strong>基于 Arduino 与多类型传感器构建多模态闭环系统，灯光、语音与触觉同步反馈，动作即可自主触发引导。</li>
+                            <li><strong>方法创新：</strong>使用状态机拆分分段训练任务并游戏化情境设计，提高儿童配合度与自主规则学习能力。</li>
+                        </ol>
+                    </article>
+                    <article class="result-card">
+                        <h3>三、材料与技术实现</h3>
+                        <p>系统采用“木质底座 + 毛毡场景 + 电子交互”三层结构：</p>
+                        <ol>
+                            <li><strong>主材：</strong>木板承重、羊毛毡弱化刺激、粘土丰富场景细节。</li>
+                            <li><strong>硬件：</strong>刷卡、压力传感器与按钮采集行为；LED 灯带、语音与画面系统联动输出反馈。</li>
+                            <li><strong>程序：</strong>三段式状态机控制训练流程，并针对信号延迟与误触发进行调试优化。</li>
+                        </ol>
+                    </article>
+                    <article class="result-card">
+                        <h3>四、市场与社会价值</h3>
+                        <p>市面缺少完整生活化的实体模拟教具，本装置以低成本填补市场空白。可控模拟环境减少外出焦虑，将抽象公共规则转化为可操作任务；降低特教机构康复设备门槛，推动包容性特殊教育，为自闭症社交辅助训练提供可落地的实践方案。</p>
+                    </article>
+                </div>
+            </section>
+
+            <section id="cloud-station" class="result-section">
+                <div class="section-heading">
+                    <p class="eyebrow">PROJECT SUMMARY</p>
+                    <h2>云朵车站项目简介</h2>
+                </div>
+                <div class="cloud-summary-grid">
+                    <article class="result-card cloud-summary-card">
+                        <h3>情境式训练场景</h3>
+                        <p>云朵车站是面向自闭症谱系障碍儿童研发的情境式交互康复训练系统，融合特殊教育与交互设计，以日常生活中的公交车站为原型搭建实体模拟场景，围绕进站、排队、乘车三大出行行为开展训练。</p>
+                    </article>
+                    <article class="result-card cloud-summary-card">
+                        <h3>低压力交互体验</h3>
+                        <p>项目采用柔和云朵主题视觉风格，打造低压力、高安全感的训练环境，通过灯光、语音、物理传感交互，引导儿童自主学习公共场合行为规则，改善社交适应能力。</p>
+                    </article>
+                    <article class="result-card cloud-summary-card">
+                        <h3>创新实现与价值</h3>
+                        <p>本项目通过实体公交实景训练空间、Arduino 多模态闭环交互系统和结构化任务拆解，将复杂社交行为分解为可执行训练单元，结合友好的视觉设计降低儿童抵触心理，提升生活技能迁移与参与度。</p>
+                    </article>
+                </div>
+                <div class="result-card">
+                    <h3>装置构建与可持续价值</h3>
+                    <p>装置以木质板材为基础框架，羊毛毡、粘土构建柔和卡通场景，依靠传感器、刷卡模块采集行为数据，配合 LED 灯带、语音画面系统提供视听引导，经软硬件调试保障长期稳定运行。</p>
+                    <p>项目依托情境干预与特殊教育辅助技术相关理论，契合 SDG3、SDG4、SDG10 目标，以低成本实体交互方案填补实景康复教具市场空白，为特教机构与家庭提供普惠型康复工具。</p>
+                    <a class="document-link" href="assets/report.docx" target="_blank" rel="noopener noreferrer">点击查看文档</a>
+                </div>
+            </section>
+
+            <section id="video" class="result-section">
+                <div class="section-heading">
+                    <p class="eyebrow">DEMO VIDEO</p>
+                    <h2>成品视频与制作回顾</h2>
+                </div>
+                <div class="video-layout">
+                    <div class="video-card" style="grid-column: span 2;">
+                        <div class="video-frame">
+                            <video controls poster="assets/demo-poster.jpg">
+                                <source src="assets/final.mp4" type="video/mp4">
+                                您的浏览器不支持视频播放。
+                            </video>
+                        </div>
+                        <p class="video-caption">图：ASD 多感官互动沙盘系统最终演示视频</p>
+                    </div>
+                </div>
+
+                <!-- 新增：成品照片画廊（保留视频） -->
+                <div class="section-heading" style="margin-top:18px;">
+                    <h2>成品照片</h2>
+                </div>
+                <div class="photo-gallery">
+                    <div class="photo-item"><img src="assets/p1.jpg" alt="成品照1" onclick="openImageModal(this.src)"></div>
+                    <div class="photo-item"><img src="assets/p2.jpg" alt="成品照2" onclick="openImageModal(this.src)"></div>
+                    <div class="photo-item"><img src="assets/p3.jpg" alt="成品照3" onclick="openImageModal(this.src)"></div>
+                </div>
+            </section>
+
+            <section id="process-photos" class="result-section">
+                <div class="section-heading" style="margin-top:18px;">
+                    <h2>过程照片</h2>
+                </div>
+                <div class="photo-gallery">
+                    <div class="photo-item"><img src="assets/g1.jpg" alt="过程照1" onclick="openImageModal(this.src)"></div>
+                    <div class="photo-item"><img src="assets/g2.jpg" alt="过程照2" onclick="openImageModal(this.src)"></div>
+                    <div class="photo-item"><img src="assets/g3.jpg" alt="过程照3" onclick="openImageModal(this.src)"></div>
+                </div>
+            </section>
+            
+            <section id="poster" class="result-section">
+                <div class="section-heading">
+                    <p class="eyebrow">POSTER BOARD</p>
+                    <h2>横板海报展板</h2>
+                </div>
+                <div class="poster-grid">
+                    <article class="poster-card">
+                        <img src="assets/poster.png" alt="ASD沙盘系统总览横板海报" onclick="openImageModal(this.src)">
+                        <div class="poster-content">
+                            <h3>项目总览海报</h3>
+                            <p>全面展示系统整体架构、技术路线与最终成果，适合展览与汇报展示。</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
         </section>
     </main>
 
@@ -438,6 +516,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             if (page === 'project') {
                 window.location.href = '../../docs/project/work.html';
+                return;
+            }
+            if (page === 'final') {
+                window.location.href = 'final.html';
                 return;
             }
             if (page === 'team') {

@@ -1,0 +1,400 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>课程作业系统 - 最终版本</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">课程系统</div>
+            <ul class="nav-menu">
+                <li class="nav-item active" data-page="home">Home</li>
+                <li class="nav-item has-dropdown" data-page="homework">
+                    <span>作业</span>
+                    <div class="dropdown">
+                        <div class="dropdown-weeks">
+                            <button class="week-btn active" data-week="1">Week 1 - 网络搭建</button>
+                            <button class="week-btn" data-week="2">Week 2 - Arduino硬件</button>
+                            <button class="week-btn" data-week="3">Week 3 - CAD小车</button>
+                            <button class="week-btn" data-week="4">Week 4 - 3D打印</button>
+                            <button class="week-btn" data-week="5">Week 5 - IoT架构</button>
+                            <button class="week-btn" data-week="6">Week 6 - 材料介绍</button>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item" data-page="project">项目</li>
+                <li class="nav-item" data-page="team">团队介绍</li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <!-- 首页 -->
+        <section id="home" class="page active">
+            <div class="home-header">
+                <h1 class="page-title">欢迎使用课程作业系统</h1>
+                <div class="title-divider"></div>
+            </div>
+            <div class="progress-section">
+                <div class="progress-card">
+                    <span class="progress-label">课程进度</span>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar"></div>
+                    </div>
+                    <span class="progress-text">已完成<span id="completedWeeks">8</span>/18 周</span>
+                </div>
+            </div>
+            <div class="cards-section">
+                <div class="feature-card" data-navigate-to="homework">
+                    <div class="card-icon">📚</div>
+                    <h3>最新作业</h3>
+                    <p>查看本周发布的作业任务和截止日期</p>
+                </div>
+                <div class="feature-card" data-navigate-to="project">
+                    <div class="card-icon">🎨</div>
+                    <h3>进行中的项目</h3>
+                    <p>跟踪您的项目进展和里程碑</p>
+                </div>
+                <div class="feature-card" data-navigate-to="final">
+                    <div class="card-icon">🏆</div>
+                    <h3>项目成果页</h3>
+                    <p>查看项目概念、成品视频与横板海报展板</p>
+                </div>
+                <div class="feature-card" data-navigate-to="team">
+                    <div class="card-icon">✨</div>
+                    <h3>团队新动态</h3>
+                    <p>了解团队成员的最新更新和分享</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 作业页 -->
+        <section id="homework" class="page">
+            <div class="homework-header">
+                <div class="week-badge" id="currentWeekBadge">Week 2</div>
+                <h2 class="week-title" id="weekTitle">ASD 多感官互动沙盘系统</h2>
+                <div class="title-divider"></div>
+            </div>
+
+            <div class="final-version-content">
+                <p>Week 1 已独立为单独页面，请点击上方 Week 1 按钮跳转到详情页。</p>
+            </div>
+
+            <div class="final-version-content">
+                <p>Week 2 已独立为单独页面，请点击上方 Week 2 按钮跳转到详情页。</p>
+            </div>
+        </section>
+
+        <!-- 项目页 -->
+        <section id="project" class="page">
+            <div class="project-header">
+                <h1 class="page-title">最终项目展示</h1>
+                <div class="title-divider"></div>
+            </div>
+            <div class="project-grid">
+                <div class="project-card" onclick="window.location.href='final.html'">
+                    <div class="project-image"></div>
+                    <h3>点击查看项目成果页</h3>
+                    <p>查看项目概念、成品视频与横板海报展板内容。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 团队介绍页 -->
+        <section id="team" class="page">
+            <div class="team-container">
+                <div class="team-title-wrap">
+                    <h1 class="page-title">团队介绍</h1>
+                    <p class="page-subtitle">CREATIVE & PROFESSIONAL TEAM</p>
+                    <div class="title-line"></div>
+                </div>
+
+                <div class="team-grid">
+                    <article class="team-card">
+                        <div class="card-avatar">
+                            <span class="avatar-border"></span>
+                            <span class="avatar-icon">🌟</span>
+                        </div>
+                        <h3 class="member-name">Yana</h3>
+                        <p class="member-job">项目统筹 / 设计表达</p>
+                    </article>
+                    <article class="team-card">
+                        <div class="card-avatar">
+                            <span class="avatar-border"></span>
+                            <span class="avatar-icon">💻</span>
+                        </div>
+                        <h3 class="member-name">Niki</h3>
+                        <p class="member-job">前端开发</p>
+                    </article>
+                    <article class="team-card" data-navigate-to="sophia" onclick="window.location.href='docs/Sophia/cwur2026/sophia_portfolio.html'">
+                        <div class="card-avatar">
+                            <span class="avatar-border"></span>
+                            <span class="avatar-icon">🎨</span>
+                        </div>
+                        <h3 class="member-name">Sophia</h3>
+                        <p class="member-job">UI 设计</p>
+                    </article>
+                    <article class="team-card" data-navigate-to="milky" onclick="window.location.href='docs/Milky2026/index.html'">
+                        <div class="card-avatar">
+                            <span class="avatar-border"></span>
+                            <span class="avatar-icon">📌</span>
+                        </div>
+                        <h3 class="member-name">Milky</h3>
+                        <p class="member-job">项目管理</p>
+                    </article>
+                    <article class="team-card">
+                        <div class="card-avatar">
+                            <span class="avatar-border"></span>
+                            <span class="avatar-icon">🔧</span>
+                        </div>
+                        <h3 class="member-name">Kakei</h3>
+                        <p class="member-job">硬件工程</p>
+                    </article>
+                    <article class="team-card" data-member="lynn">
+                        <div class="card-avatar">
+                            <span class="avatar-border"></span>
+                            <span class="avatar-icon">📝</span>
+                        </div>
+                        <h3 class="member-name">Lynn</h3>
+                        <p class="member-job">文档与表达</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 图片放大模态框 -->
+    <div class="modal image-modal" id="imageModal">
+        <div class="image-modal-content">
+            <span class="modal-close" id="modalClose">&times;</span>
+            <img src="" alt="放大预览" id="modalImage">
+        </div>
+    </div>
+
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const navItems = document.querySelectorAll('.nav-item');
+    const pages = document.querySelectorAll('.page');
+    const weekBtns = document.querySelectorAll('.week-btn');
+    const progressBar = document.querySelector('.progress-bar');
+    const completedWeeks = document.getElementById('completedWeeks');
+    const currentWeekBadge = document.getElementById('currentWeekBadge');
+    const weekTitle = document.getElementById('weekTitle');
+    const checklist = document.querySelectorAll('.checklist-item');
+    const imageModal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalClose = document.getElementById('modalClose');
+
+    // 视图切换元素
+    const viewBtns = document.querySelectorAll('.view-btn');
+    const viewToggle = document.querySelector('.view-toggle');
+    const finalView = document.getElementById('finalView');
+    const processView = document.getElementById('processView');
+
+    // 沙盘系统元素
+    const sandboxContent = document.getElementById('sandbox-content');
+
+    let currentWeek = 2;
+    
+    // ========== 作业清单功能（修复图标不统一问题） ==========
+    function updateChecklistIcons() {
+        checklist.forEach(item => {
+            const isCompleted = item.classList.contains('completed');
+            const iconSpan = item.querySelector('.check-icon');
+            if (iconSpan) {
+                // 使用 CSS 伪类显示不同图标，不再需要动态修改内容
+                if (isCompleted) {
+                    iconSpan.style.background = '#A8D2FF';
+                } else {
+                    iconSpan.style.background = 'rgba(168, 210, 255, 0.3)';
+                }
+            }
+        });
+    }
+    
+    function updateProgress() {
+        const completed = document.querySelectorAll('.checklist-item.completed').length;
+        const total = checklist.length;
+        if (total === 0) return;
+        if (completedWeeks) completedWeeks.textContent = completed;
+        if (progressBar) progressBar.style.width = `${(completed / total) * 100}%`;
+        updateChecklistIcons();
+    }
+    
+    checklist.forEach(item => {
+        item.addEventListener('click', (e) => {
+            e.stopPropagation();
+            item.classList.toggle('completed');
+            updateProgress();
+        });
+    });
+    
+    // 初始化图标
+    updateChecklistIcons();
+    
+    // ========== 图片放大功能 ==========
+    window.openImageModal = function(src) {
+        modalImage.src = src;
+        imageModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    };
+    
+    function closeImageModal() {
+        imageModal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    
+    if (modalClose) modalClose.addEventListener('click', closeImageModal);
+    if (imageModal) imageModal.addEventListener('click', (e) => { if (e.target === imageModal) closeImageModal(); });
+    
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && imageModal.classList.contains('active')) {
+            closeImageModal();
+        }
+    });
+    
+    // ========== 导航功能 ==========
+    navItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const page = item.dataset.page;
+            if (page === 'homework') {
+                // 在首页点击作业时，不跳转，保持当前页面
+                return;
+            }
+            if (page === 'project') {
+                window.location.href = 'docs/project/work.html';
+                return;
+            }
+            if (page === 'team') {
+                navItems.forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+                pages.forEach(p => p.classList.remove('active'));
+                document.getElementById(page).classList.add('active');
+                return;
+            }
+            if (page === 'home') {
+                navItems.forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+                pages.forEach(p => p.classList.remove('active'));
+                document.getElementById(page).classList.add('active');
+            }
+        });
+    });
+    
+    weekBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const week = parseInt(btn.dataset.week, 10);
+            if (week === 1) {
+                window.location.href = 'docs/week1/week1.html';
+                return;
+            }
+            if (week === 2) {
+                window.location.href = 'docs/week2/week2.html';
+                return;
+            }
+            if (week === 3) {
+                window.location.href = 'docs/week3/week3.html';
+                return;
+            }
+            if (week === 4) {
+                window.location.href = 'docs/week4/week4.html';
+                return;
+            }
+            if (week === 5) {
+                window.location.href = 'docs/week5/week5.html';
+                return;
+            }
+            if (week === 6) {
+                window.location.href = 'docs/week6/week6.html';
+                return;
+            }
+        });
+    });
+    
+    function toggleSandboxContent(week) {
+        if (week === 2) {
+            if (sandboxContent) sandboxContent.style.display = 'block';
+            if (viewToggle) viewToggle.style.display = 'none';
+            if (finalView) finalView.classList.remove('active');
+            if (processView) processView.classList.remove('active');
+        } else {
+            if (sandboxContent) sandboxContent.style.display = 'none';
+            if (viewToggle) viewToggle.style.display = 'flex';
+            if (finalView) finalView.classList.add('active');
+        }
+    }
+
+    if (document.querySelector('.progress-card')) {
+        document.querySelector('.progress-card').addEventListener('click', () => {
+            window.location.href = 'docs/week1/week1.html';
+        });
+    }
+    
+    document.querySelectorAll('.feature-card').forEach(card => {
+        card.addEventListener('click', () => {
+            const targetPage = card.dataset.navigateTo;
+            if (targetPage) {
+                if (targetPage === 'homework') {
+                    window.location.href = 'docs/week1/week1.html';
+                    return;
+                }
+                if (targetPage === 'project') {
+                    window.location.href = 'docs/project/work.html';
+                    return;
+                }
+                if (targetPage === 'final') {
+                    window.location.href = 'final.html';
+                    return;
+                }
+                navItems.forEach(i => i.classList.remove('active'));
+                document.querySelector(`[data-page="${targetPage}"]`).classList.add('active');
+                pages.forEach(p => p.classList.remove('active'));
+                document.getElementById(targetPage).classList.add('active');
+            }
+        });
+    });
+
+    // 团队成员点击跳转
+    document.querySelectorAll('.team-card').forEach((card, index) => {
+        console.log('绑定点击事件到卡片', index, card.querySelector('.member-name')?.textContent);
+        card.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('卡片被点击', index);
+            const memberNames = ['yana', 'niki', 'sophia', 'milky', 'kakei', 'lynn'];
+            const memberName = memberNames[index];
+            console.log('成员名称:', memberName);
+            if (memberName === 'yana') {
+                console.log('跳转到Yana');
+                window.location.href = 'docs/yana/yana.html';
+            } else if (memberName === 'niki') {
+                console.log('跳转到Niki');
+                window.location.href = 'docs/Niki/Niki.html';
+            } else if (memberName === 'sophia') {
+                console.log('跳转到Sophia');
+                window.location.href = 'docs/Sophia/cwur2026/sophia_portfolio.html';
+            } else if (memberName === 'milky') {
+                console.log('跳转到Milky');
+                window.location.href = 'docs/Milky2026/index.html';
+            } else if (memberName === 'kakei') {
+                console.log('跳转到Kakei');
+                window.location.href = 'docs/kakei/kakei.html';
+            } else if (memberName === 'lynn') {
+                console.log('跳转到Lynn');
+                window.location.href = encodeURI('docs/Lynn/cwur2026(1)/index.html');
+            }
+        });
+    });
+
+    toggleSandboxContent(currentWeek);
+    
+    updateProgress();
+});
+    </script>
+</body>
+</html>
